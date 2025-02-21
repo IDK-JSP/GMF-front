@@ -10,10 +10,9 @@ const FavoriteButton: FC<{}> = () => {
 
           <IconButton aria-label="add to Favorite" title="Ajouter aux favoris"
                         sx={{
-                            padding: "0px", color: "red",
+                            padding: "0px",
                             transition: "transform 0.3s ease-in-out", "&:hover": {transform: "scale(1.2)"}
                         }}>
-              blabla
                 <FavoriteIcon/>
             </IconButton>
 
