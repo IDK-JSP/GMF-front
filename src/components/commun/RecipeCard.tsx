@@ -1,6 +1,8 @@
 import {FC} from 'react';
 import {Box, Button, Card, CardContent, CardMedia, Rating, Typography} from "@mui/material";
 import FavoriteButton from "../button/FavoriteButton";
+import {RecipeType} from "../../1_types/RecipeType";
+import {useNavigate} from "react-router";
 
 const recipe = {
     "id": 1,
@@ -8,7 +10,7 @@ const recipe = {
     "title": "Pâtes Carbonara",
     "content": "Une recette italienne classique avec des œufs, du parmesan et du lard.",
     "image": "",
-    "person": "Alice Dupont",
+    "person": "4",
     "state": "published",
     "rate": 3.2,
     "nb_rate": 120,
@@ -16,8 +18,8 @@ const recipe = {
     "update": "2025-02-15"
 }
 
-const RecipeCard: FC<{/*recipe : RecipeType*/ }> = ({}) => {
-    //const navigate = useNavigate();
+const RecipeCard: FC<{ recipe : RecipeType }> = ({}) => {
+    const navigate = useNavigate();
 
     return (
         <Box
@@ -29,7 +31,7 @@ const RecipeCard: FC<{/*recipe : RecipeType*/ }> = ({}) => {
                 "&:hover": {transform: "scale(1.1)"},
             }}
         >
-            <Button /* onClick={() => navigate("../RecipeDetails/" + recipe.id)} */>
+            <Button onClick={() => navigate("../RecipeDetails/" + recipe.id)}>
                 <Card sx={{position: "relative"}}>
                     <CardMedia
                         sx={{height: 106, width: 200}}

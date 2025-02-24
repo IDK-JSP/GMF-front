@@ -1,7 +1,6 @@
 import {FC, useContext} from 'react';
 import {Navigate, Route, Routes} from 'react-router';
 import Layout from "../layout/Layout";
-import {Dashboard, Favorite, Login, Settings} from '@mui/icons-material';
 import RecipeDetails from '../pages/2_body/RecipeDetails';
 import Research from "../pages/2_body/Research";
 import Register from "../pages/2_body/Register";
@@ -10,6 +9,10 @@ import UserRecipes from "../pages/2_body/UserRecipes";
 import {AuthContext} from "../auth/AuthContext";
 import AdminDashboard from "../pages/2_body/AdminDashboard";
 import CategoryList from "../pages/2_body/CategoryList";
+import Favorite from "../pages/2_body/Favorite";
+import Settings from "../pages/2_body/Settings";
+import Login from "../pages/2_body/Login";
+import Dashboard from "../pages/2_body/Dashboard";
 
 const Router: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext)
