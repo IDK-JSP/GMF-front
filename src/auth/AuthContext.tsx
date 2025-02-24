@@ -5,4 +5,6 @@ export const AuthContext = createContext<AuthContextProps | undefined>(undefined
 interface AuthContextProps {
     isLoggedIn: boolean;
     setIsLoggedIn: any;
+    role: string;
+    setRole: any;
 }
