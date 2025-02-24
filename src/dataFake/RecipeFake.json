@@ -28,7 +28,7 @@
   {
     "id": 3,
     "email": "user3@example.com",
-    "title": "4",
+    "title": "Salade César",
     "content": "Salade romaine, poulet grillé, croûtons et sauce César maison.",
     "image": "https://via.placeholder.com/150",
     "person": 1,
@@ -119,8 +119,8 @@
   {
     "id": 10,
     "email": "user10@example.com",
-    "title": "Mousse au chocolat",
-    "content": "Un dessert aérien et gourmand au chocolat noir.",
+    "title": "Mousse au chocolat super bonne mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+    "content": "Un dessert aérien et gourmand au chocolat noir qui ravira les grands et les petits.",
     "image": "https://via.placeholder.com/150",
     "person": 2,
     "state": "published",

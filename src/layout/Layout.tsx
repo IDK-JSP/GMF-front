@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import NavBar from "../components/header/NavBar";
-import {Outlet} from "@mui/icons-material";
 import Footer from "../pages/3_footer/Footer";
+import {Outlet} from "react-router";
 
 const Layout: FC<{}> = ({}) => {
     return (

@@ -12,7 +12,6 @@ const Pages: FC<{ children: any }> = ({children}) => {
             </Helmet>
             {children}
         </Box>
-
     );
 };
 

@@ -1,52 +1,41 @@
 import {FC} from 'react';
-import {Box, Button, Card, CardContent, CardMedia, Rating, Typography} from "@mui/material";
+import {Box, Card, CardContent, CardMedia, Rating, Typography} from "@mui/material";
 import FavoriteButton from "../button/FavoriteButton";
 import {RecipeType} from "../../1_types/RecipeType";
 import {useNavigate} from "react-router";
 
-const recipe = {
-    "id": 1,
-    "email": "user1@example.com",
-    "title": "Pâtes Carbonara",
-    "content": "Une recette italienne classique avec des œufs, du parmesan et du lard.",
-    "image": "",
-    "person": "4",
-    "state": "published",
-    "rate": 3.2,
-    "nb_rate": 120,
-    "create": "2025-01-10",
-    "update": "2025-02-15"
-}
-
-const RecipeCard: FC<{ recipe : RecipeType }> = ({}) => {
+const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
     const navigate = useNavigate();
 
     return (
         <Box
             sx={{
-                height: 250,
-                width: 200,
                 margin: "15px 10px",
                 transition: "transform 0.3s ease-in-out",
                 "&:hover": {transform: "scale(1.1)"},
             }}
         >
-            <Button onClick={() => navigate("../RecipeDetails/" + recipe.id)}>
-                <Card sx={{position: "relative"}}>
-                    <CardMedia
-                        sx={{height: 106, width: 200}}
-                        component="img"
-                        image={recipe.image ?
+            <Card
+                key={recipe.id}
+                title={recipe.title}
+                sx={{position: "relative"}}
+                onClick={() => navigate("../RecipeDetails/" + recipe.id)}
+            >
+                <CardMedia
+                    sx={{height: 190, width: 270}}
+                    component="img"
+                    image={/*recipe.image ?
                             recipe.image
-                            :
-                            "https://placehold.co/100x150?text=No\nImage"
-                        }
-                        alt={recipe.title}
-                    />
-                    <Box sx={{position: "absolute", top: 5, left: 5}}>
-                        <FavoriteButton/>
-                    </Box>
-                    {/*{recipe.diet === "vege" && (
+                            :*/
+                        "https://placehold.co/200x220?text=No\nImage"
+                    }
+                    alt={recipe.title}
+                />
+
+                <Box component={"span"} sx={{position: "absolute", top: 5, left: 5}}>
+                    <FavoriteButton/>
+                </Box>
+                {/*{recipe.diet === "vege" && (
                         <Box
                             sx={{
                                 position: "absolute",
@@ -60,65 +49,70 @@ const RecipeCard: FC<{ recipe : RecipeType }> = ({}) => {
                         />
                     )}*/}
 
-                    <CardContent
+                <CardContent
+                    sx={{
+                        padding: "10px !important",
+                        height: 140,
+                        width: 250,
+                        display: "flex",
+                        //justifyContent: "space-between",
+                        flexDirection: "column",
+                        backgroundColor: "lightgray",
+                        overflow: "hidden"
+                    }}>
+
+                    {/* Nom */}
+                    <Typography
+                        gutterBottom
+                        variant="h6"
+                        component="div"
+                        title={recipe.title}
                         sx={{
-                            padding: "10px !important",
-                            height: 130,
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "space-between",
-                            backgroundColor: "lightgray",
-                        }}>
-                        <Box sx={{display: "flex", flexDirection: "column", overflow: "hidden",
-                            "& > *": {mb: "5px"}, // Ajoute un margin bottom à chaque enfant
-                            "& > *:last-child": {mb: 0}, // Sauf le dernier
-                        }}>
+                            fontSize: 19,
+                            textAlign: "left",
+                            display: "-webkit-box",
+                            WebkitBoxOrient: "vertical",
+                            WebkitLineClamp: 1,
+                            overflow: "hidden",
+                            textOverflow: "ellipsis"
+                        }}
+                    >
+                        {recipe.title}
+                    </Typography>
 
-                            {/* Nom */}
-                            <Typography
-                                variant="h6"
-                                component="div"
-                                title={recipe.title}
-                                sx={{
-                                    fontSize: 17,
-                                    textAlign: "left",
-                                    display: "-webkit-box",
-                                    WebkitBoxOrient: "vertical",
-                                    WebkitLineClamp: 2,
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis"
-                                }}
-                            >
-                                {recipe.title}
-                            </Typography>
-
+                    <Box>
+                        <Typography
+                            gutterBottom
+                            sx={{fontSize: 14, color: "gray", display: "flex", justifyContent: "space-between"}}>
                             {/* Durée */}
-                            <Typography sx={{fontSize: 12, color: "gray", textAlign: "left"}}>
-                                60 min {/*{recipe.time} min*/}
-                            </Typography>
-
+                            60 min {/*{recipe.time} min*/}
                             {/* Note */}
-                            <Box sx={{display: "flex", justifyContent: "center"}}>
-                                <Rating name="recipe-rating" defaultValue={recipe.rate} precision={0.25} readOnly/>
-                            </Box>
+                            <Rating sx={{
+                                "& .MuiRating-iconFilled": {color: "orange"},
+                                "& .MuiRating-iconEmpty": {color: "orange"}
+                            }}
+                                    name="recipe-rating" defaultValue={recipe.rate} precision={0.01} readOnly/>
+                        </Typography>
+                    </Box>
 
-                            {/* Description */}
-                            <Typography sx={{
-                                fontSize: 12,
-                                color: "gray",
-                                textAlign: "center",
-                                display: "-webkit-box",
-                                WebkitBoxOrient: "vertical",
-                                WebkitLineClamp: 3,
-                                overflow: "hidden",
-                                textOverflow: "ellipsis"
-                            }}>
-                                {recipe.content}
-                            </Typography>
-                        </Box>
-                    </CardContent>
-                </Card>
-            </Button>
+                    {/* Description */}
+                    <Typography
+                        title={recipe.content}
+                        gutterBottom
+                        sx={{
+                            fontSize: 15,
+                            color: "black",
+                            textAlign: "left",
+                            display: "-webkit-box",
+                            WebkitBoxOrient: "vertical",
+                            WebkitLineClamp: 3,
+                            overflow: "hidden",
+                            textOverflow: "ellipsis"
+                        }}>
+                        {recipe.content}
+                    </Typography>
+                </CardContent>
+            </Card>
         </Box>
     )
 };
