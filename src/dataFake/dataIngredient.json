@@ -1,0 +1,179 @@
+[
+    {
+      "name": "Lait",
+      "category": "Produits laitiers"
+    },
+    {
+      "name": "Beurre",
+      "category": "Produits laitiers"
+    },
+    {
+      "name": "Yaourt",
+      "category": "Produits laitiers"
+    },
+    {
+      "name": "Fromage",
+      "category": "Produits laitiers"
+    },
+    {
+      "name": "Boeuf",
+      "category": "Viandes"
+    },
+    {
+      "name": "Poulet",
+      "category": "Viandes"
+    },
+    {
+      "name": "Porc",
+      "category": "Viandes"
+    },
+    {
+      "name": "Saumon",
+      "category": "Poissons"
+    },
+    {
+      "name": "Thon",
+      "category": "Poissons"
+    },
+    {
+      "name": "Truite",
+      "category": "Poissons"
+    },
+    {
+      "name": "Carotte",
+      "category": "Légumes"
+    },
+    {
+      "name": "Tomate",
+      "category": "Légumes"
+    },
+    {
+      "name": "Brocoli",
+      "category": "Légumes"
+    },
+    {
+      "name": "Laitue",
+      "category": "Légumes"
+    },
+    {
+      "name": "Pommes",
+      "category": "Fruits"
+    },
+    {
+      "name": "Bananes",
+      "category": "Fruits"
+    },
+    {
+      "name": "Oranges",
+      "category": "Fruits"
+    },
+    {
+      "name": "Fraises",
+      "category": "Fruits"
+    },
+    {
+      "name": "Avoine",
+      "category": "Céréales"
+    },
+    {
+      "name": "Maïs",
+      "category": "Céréales"
+    },
+    {
+      "name": "Pâtes",
+      "category": "Féculents"
+    },
+    {
+      "name": "Pommes de terre",
+      "category": "Féculents"
+    },
+    {
+      "name": "Pain",
+      "category": "Féculents"
+    },
+    {
+      "name": "Chocolat",
+      "category": "Sucreries"
+    },
+    {
+      "name": "Bonbons",
+      "category": "Sucreries"
+    },
+    {
+      "name": "Gommes",
+      "category": "Sucreries"
+    },
+    {
+      "name": "Eau",
+      "category": "Boissons"
+    },
+    {
+      "name": "Jus d'orange",
+      "category": "Boissons"
+    },
+    {
+      "name": "Café",
+      "category": "Boissons"
+    },
+    {
+      "name": "Thé",
+      "category": "Boissons"
+    },
+    {
+      "name": "Poivre",
+      "category": "Épices"
+    },
+    {
+      "name": "Cannelle",
+      "category": "Épices"
+    },
+    {
+      "name": "Paprika",
+      "category": "Épices"
+    },
+    {
+      "name": "Curcuma",
+      "category": "Épices"
+    },
+    {
+      "name": "Moutarde",
+      "category": "Condiments"
+    },
+    {
+      "name": "Ketchup",
+      "category": "Condiments"
+    },
+    {
+      "name": "Mayonnaise",
+      "category": "Condiments"
+    },
+    {
+      "name": "Sauce tomate",
+      "category": "Sauces"
+    },
+    {
+      "name": "Sauce soja",
+      "category": "Sauces"
+    },
+    {
+      "name": "Sauce barbecue",
+      "category": "Sauces"
+    },
+    {
+      "name": "Œufs",
+      "category": "Autres"
+    },
+    {
+      "name": "Huile d'olive",
+      "category": "Autres"
+    },
+    {
+      "name": "Vinaigre",
+      "category": "Autres"
+    },
+    {
+      "name": "Herbes de Provence",
+      "category": "Autres"
+    }
+  ]
+  
