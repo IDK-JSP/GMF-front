@@ -5,9 +5,7 @@ const Footer: FC<{}> = ({}) => {
     return (
         <>
             <Typography sx={{backgroundColor : "salmon"}}>
-                blablabla<br/>
-                bliblibli<br/>
-                blublublu
+                Footer du site
             </Typography>
         </>
     );
