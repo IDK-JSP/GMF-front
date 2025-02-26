@@ -10,7 +10,7 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
     return (
         <Box
             sx={{
-                margin: "15px 10px",
+                margin: "1rem 0.6rem",
                 transition: "transform 0.3s ease-in-out",
                 "&:hover": {transform: "scale(1.1)"},
             }}
@@ -22,7 +22,7 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
                 onClick={() => navigate("../RecipeDetails/" + recipe.id)}
             >
                 <CardMedia
-                    sx={{height: 190, width: 270}}
+                    sx={{height: "12rem", width: "17rem"}}
                     component="img"
                     image={/*recipe.image ?
                             recipe.image
@@ -35,7 +35,7 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
                 <Box component={"span"} sx={{position: "absolute", top: 5, left: 5}}>
                     <FavoriteButton/>
                 </Box>
-                {/*{recipe.diet === "vege" && (
+                {/*{recipe.diet === "vege" && (*/}
                         <Box
                             sx={{
                                 position: "absolute",
@@ -47,7 +47,6 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
                                 borderRadius: "50%",
                             }}
                         />
-                    )}*/}
 
                 <CardContent
                     sx={{

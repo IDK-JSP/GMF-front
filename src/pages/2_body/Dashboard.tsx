@@ -1,5 +1,6 @@
 import {FC, useEffect, useState} from 'react';
-import {Box} from '@mui/material';
+import Grid from '@mui/material/Grid2';
+
 import RecipeCard from "../../components/commun/RecipeCard";
 import recipes from "../../dataFake/RecipeFake.json";
 import {RecipeType} from "../../1_types/RecipeType";
@@ -10,7 +11,6 @@ import {DisplayObservable$} from "../../observables/DisplayObservable$";
 
 const Dashboard: FC<{}> = ({}) => {
 
-    // observable pour l'affichage en liste ou en display
     const [isList, setIsList] = useState(true); // État local pour refléter l'observable
 
     useEffect(() => {
@@ -27,26 +27,22 @@ const Dashboard: FC<{}> = ({}) => {
     return (
         <>
             <Pages>
-                <Box sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    flexWrap: "wrap",
-                    padding: "10px 25px",
-                }}>
-                    <DisplayCardOrItem/>
+                <DisplayCardOrItem/>
+                <Grid container spacing={2}>
                     {recipeCollection.map((recipe) => (
                         isList ?
-                            <RecipeItem key={recipe.id} recipe={recipe}/>
+                            <Grid size={12}>
+                                <RecipeItem key={recipe.id} recipe={recipe}/>
+                            </Grid>
                             :
-                            <RecipeCard key={recipe.id} recipe={recipe}/>
+                            <Grid size={2.2}>
+                                <RecipeCard key={recipe.id} recipe={recipe}/>
+                            </Grid>
                     ))}
-                </Box>
+                </Grid>
             </Pages>
-
         </>
     );
-
 };
 
 export default Dashboard;
