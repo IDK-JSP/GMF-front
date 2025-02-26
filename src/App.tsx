@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import './App.css';
-import {HelmetProvider} from 'react-helmet-async';
 import Router from "./routers/Router";
 import {BrowserRouter} from "react-router";
 import {AuthContext} from "./auth/AuthContext";
@@ -12,9 +11,7 @@ function App() {
     return (
         <BrowserRouter>
             <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, role, setRole}}>
-                <HelmetProvider>
                     <Router/>
-                </HelmetProvider>
             </AuthContext.Provider>
         </BrowserRouter>
     );
