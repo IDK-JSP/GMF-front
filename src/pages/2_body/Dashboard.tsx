@@ -28,10 +28,10 @@ const Dashboard: FC<{}> = ({}) => {
         <>
             <Pages>
                 <DisplayCardOrItem/>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} justifyContent="center">
                     {recipeCollection.map((recipe) => (
                         isList ?
-                            <Grid size={12}>
+                            <Grid size={11}>
                                 <RecipeItem key={recipe.id} recipe={recipe}/>
                             </Grid>
                             :

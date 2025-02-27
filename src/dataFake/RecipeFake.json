@@ -15,8 +15,8 @@
   {
     "id": 2,
     "email": "user2@example.com",
-    "title": "Poulet au curry",
-    "content": "Un plat savoureux à base de poulet, lait de coco et épices.",
+    "title": "Poulet au curry miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam",
+    "content": "Un plat savoureux à base de poulet, lait de coco et épices. Miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam miam",
     "image": "https://via.placeholder.com/150",
     "person": 3,
     "state": "draft",
@@ -119,8 +119,8 @@
   {
     "id": 10,
     "email": "user10@example.com",
-    "title": "Mousse au chocolat super bonne mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
-    "content": "Un dessert aérien et gourmand au chocolat noir qui ravira les grands et les petits.",
+    "title": "Mousse au chocolat",
+    "content": "Un dessert aérien et gourmand au chocolat noir qui ravira les petits et les grands.",
     "image": "https://via.placeholder.com/150",
     "person": 2,
     "state": "published",
