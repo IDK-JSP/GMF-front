@@ -7,6 +7,7 @@ import FilterSelection from './FilterSelection';
 import "../../../styles/nav.css";
 import { getRecipe } from '../../../api/getRecipe';
 import ResultsList from './ResultsList';
+import { ResultsList$ } from '../../../observables/ResultsList$';
 
 export const InputSearch: React.FC = () => {
     const [filterIsVisible, setFilterIsVisible] = useState(false);
@@ -17,6 +18,15 @@ export const InputSearch: React.FC = () => {
     const [ingredientList, setIngredientList] = useState<IngredientType[]>([]);
     const [recipeList, setRecipelist] = useState<RecipeType[]>([]);
     const [recipeResults, setRecipeResults] = useState<RecipeType[]>([]);
+
+    const [resultsList, setResultsList] = useState<RecipeType[]>([])
+
+    useEffect(() => {
+        // S'abonner à l'observable pour écouter les changements
+        const subscription = ResultsList$.subscribe(setResultsList);
+
+        return () => subscription.unsubscribe(); // Nettoyage de l'abonnement
+    }, []);
 
     useEffect(() => {
         getIngredients().then(setIngredientList);
@@ -33,7 +43,10 @@ export const InputSearch: React.FC = () => {
 
         setRecipeResults(recipeList.filter((recipe) => {
             if (search.length > 0) {
-                return recipe.title.toLowerCase().includes(search.toLowerCase());
+                const result = recipe.title.toLowerCase().includes(search.toLowerCase());
+                // mise à jour de l'observalbe : 
+                setResultsList(recipeResults);
+                return result;
             }
             return [];
             })
@@ -58,9 +71,9 @@ export const InputSearch: React.FC = () => {
     return (
         <div className='search-bar'>
             <SearchBar search={search} setSearch={setSearch} toggleFilter={handleSwitchVisibility} checkedCount={checkedIngredients.length} />
-            {/* <FilterTags checkedIngredients={checkedIngredients} handleCheck={handleCheck} /> */}
+            {/*  */}
             <FilterSelection filterIsVisible={filterIsVisible} affined={affined} setAffined={setAffined} ingredientList={ingredientList} handleCheck={handleCheck} checkedIngredients={checkedIngredients} />
-            <ResultsList resultIsVisible={resultIsVisible} recipeResults={recipeResults} />
+            <ResultsList resultIsVisible={resultIsVisible} recipeResults={recipeResults} checkedIngredients={checkedIngredients} handleCheck={handleCheck} />
         </div>
     );
 };
