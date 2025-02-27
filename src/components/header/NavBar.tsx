@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/nav.css';
-import InputSearch from '../../components/commun/InputSearch';
+import InputSearch from './searchBar/InputSearch';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { useNavigate } from 'react-router';
 import PersonIcon from '@mui/icons-material/Person';
