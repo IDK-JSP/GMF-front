@@ -3,6 +3,9 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SearchIcon from '@mui/icons-material/Search';
 import ingredients from '../../dataFake/dataIngredient.json';
 import category from '../../dataFake/dataCategory.json';
+import { get } from 'http';
+import { getIngredients } from '../../api/getIngredients';
+import { IngredientType } from '../../1_types/IngredientType';
 
 
 
@@ -12,6 +15,7 @@ export const InputSearch: React.FC = () => {
     const [search, setSearch] = useState('');
     const [checkedIngredients, setCheckedIngredients] = useState<string[]>([]);
     const [affined, setAffined] = useState('');
+    const [ingredientList, setIngredientList] = useState<IngredientType[]>([]);
 
     useEffect(() => {
         console.log(search);
@@ -38,8 +42,12 @@ const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCheckedIngredients(checkedIngredients.filter((ing) => ing !== e.target.value));
     }
 }
-
-    
+    useEffect(() => {
+        getIngredients().then((ingredientList) => {
+            setIngredientList(ingredientList);
+        }
+        );
+    }, []);
 
 
     return (
@@ -116,7 +124,7 @@ const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
                     
                 </div>
                 <div className='filter-category'>
-                {category.map((cat) => {
+                {/* {category.map((cat) => {
                     return (
                         <div
                         style={{
@@ -126,10 +134,10 @@ const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
                             {ingredients.filter((ing) => ing.category.toLowerCase() === cat.toLowerCase())
                             .filter((ing) => ing.name.toLowerCase().includes(affined.toLowerCase())).length > 0 &&
                             <div>
-                                <h3>{cat}</h3>
+                                <h3>{cat}</h3> */}
                                 <div className='filter-list'>
-                                {ingredients
-                                .filter((ing) => ing.category.toLowerCase() === cat.toLowerCase())
+                                {ingredientList
+                                // .filter((ing) => ing.category.toLowerCase() === cat.toLowerCase())
                                 .filter((ing) => ing.name.toLowerCase().includes(affined.toLowerCase()))
                                 .map((ing) => {
                                     return (
@@ -145,15 +153,15 @@ const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
                                     )
                                 })}
                                 
-                                </div>
-                            
+                                </div> 
+{/*                             
                             </div>
                             }
                         </div>
                     );
-                }
+                } 
                 
-                )}</div>
+                )}*/}</div>
 
             </div>
             {/* FIN DE LA DIV QUI CONTIENT LA SELECTION DES FILTRES */}
