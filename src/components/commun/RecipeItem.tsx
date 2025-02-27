@@ -10,7 +10,6 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
     return (
         <Box
             sx={{
-                margin: "1rem",
                 transition: "transform 0.3s ease-in-out",
                 "&:hover": {transform: "scale(1.05)"},
             }}
@@ -22,23 +21,24 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
                 sx={{
                     display: "flex",
                     position: "relative",
-                    justifyContent: "space-between",
+                    justifyContent: "left",
                     width: "100%",
-                    padding: 2,
                     boxShadow: 2
                 }}
             >
                 <CardMedia
                     component="img"
-                    image={/*recipe.image ?
+                    image={recipe.image ?
                             recipe.image
-                            :*/
+                            :
                         "https://placehold.co/200x220?text=No\nImage"
                     }
                     sx={{
-                        width: "25%",
-                        aspectRatio: 1,
-                        objectFit: "cover"
+                        position: "absolute",
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        filter: "brightness(0.7)"
                     }}
                 />
                 <Box component={"span"} sx={{position: "absolute", top: 21, left: 21}}>
@@ -49,7 +49,7 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
                     sx={{
                         position: "absolute",
                         top: 21,
-                        left: "23%",
+                        left: "13%",
                         width: 24,
                         height: 24,
                         backgroundColor: "green",
@@ -57,7 +57,14 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
                     }}
                 />
 
-                <CardContent sx={{flexGrow: 1, maxWidth: "50%"}}>
+                <CardContent sx={{
+                    flexGrow: 1,
+                    maxWidth: "30%",
+                    position: "relative",
+                    zIndex: 1,
+                    padding: 2,
+                    background: "linear-gradient(to right, rgba(240,240,240,0.9),rgba(240,240,240,0.8), transparent)"
+                }}>
                     <Typography
                         title={recipe.title}
                         variant="h6"
@@ -97,9 +104,13 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
                     </Typography>
                 </CardContent>
                 {/* Barre verticale */}
-                <Divider orientation="vertical" flexItem sx={{mx: 2}}/>
+                <Divider orientation="vertical" flexItem sx={{
+                    zIndex: 1
+                    }}/>
 
-                <CardContent sx={{flexBasis: "10%", flexShrink: 0}}>
+                <CardContent sx={{
+                    zIndex: 1,
+                    flexBasis: "10%", flexShrink: 0}}>
                     <Typography variant="subtitle1" fontWeight="bold">
                         Allergènes
                     </Typography>
