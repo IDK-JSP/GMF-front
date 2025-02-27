@@ -25,10 +25,11 @@ const DisplayCardOrItem: FC<{}> = ({}) => {
     };
 
     return (
-        <Stack direction="row" justifyContent="center" mt={13} mb={5}>
+        <Stack direction="row" justifyContent="center" margin={5}>
             <ToggleButtonGroup
                 color="primary"
-                value={isItem} exclusive
+                value={isItem}
+                exclusive
                 onChange={toggleView}
                 aria-label="display of result"
             >

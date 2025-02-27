@@ -18,16 +18,15 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
             <Card
                 key={recipe.id}
                 title={recipe.title}
-                sx={{position: "relative"}}
+                sx={{position: "relative", boxShadow: 2}}
                 onClick={() => navigate("../RecipeDetails/" + recipe.id)}
             >
                 <CardMedia
-                    sx={{height: "12rem", width: "17rem"}}
                     component="img"
                     image={/*recipe.image ?
                             recipe.image
                             :*/
-                        "https://placehold.co/200x220?text=No\nImage"
+                        "https://placehold.co/500x500?text=No\nImage"
                     }
                     alt={recipe.title}
                 />
@@ -39,10 +38,10 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
                         <Box
                             sx={{
                                 position: "absolute",
-                                top: 5,
-                                right: 5,
-                                width: 20,
-                                height: 20,
+                                top: 7,
+                                right: 7,
+                                width: 24,
+                                height: 24,
                                 backgroundColor: "green",
                                 borderRadius: "50%",
                             }}
@@ -50,11 +49,10 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
 
                 <CardContent
                     sx={{
-                        padding: "10px !important",
-                        height: 140,
-                        width: 250,
+                        padding: "5% !important",
+                        height: "100%",
+                        width: "90%",
                         display: "flex",
-                        //justifyContent: "space-between",
                         flexDirection: "column",
                         backgroundColor: "lightgray",
                         overflow: "hidden"
