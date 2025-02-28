@@ -24,11 +24,11 @@ const RecipeList: FC<{ recipeCollection: RecipeType[] }> = ({recipeCollection}) 
                 {recipeCollection.map((recipe) => (
                     isList ?
                         <Grid size={10}>
-                            <RecipeItem key={recipe.id} recipe={recipe}/>
+                            <RecipeItem key={recipe.id_recipe} recipe={recipe}/>
                         </Grid>
                         :
                         <Grid size={2.2}>
-                            <RecipeCard key={recipe.id} recipe={recipe}/>
+                            <RecipeCard key={recipe.id_recipe} recipe={recipe}/>
                         </Grid>
                 ))}
             </Grid>

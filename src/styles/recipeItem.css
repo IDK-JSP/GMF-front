@@ -8,6 +8,7 @@
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     border-radius: 15px;
+    background-color: white;
 }
 
 .recipe-container:hover {
@@ -16,7 +17,9 @@
 
 .recipe-image {
     position: absolute;
-    width: 100%;
+    right: 0;
+    left: auto;
+    width: 50%;
     height: 100%;
     object-fit: cover;
     filter: brightness(0.8);
@@ -24,8 +27,8 @@
 
 .favorite-btn {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 5px;
+    left: 5px;
     font-size: 20px;
     cursor: pointer;
 }
@@ -33,7 +36,7 @@
 .recipe-badge {
     position: absolute;
     top: 10px;
-    left: 15%;
+    right: 10px;
     width: 24px;
     height: 24px;
     background-color: green;
@@ -41,12 +44,30 @@
 }
 
 .recipe-content {
+    display: flex;
     position: relative;
     z-index: 1;
     flex-grow: 1;
+    /*
     max-width: 30%;
+    */
     padding: 15px;
-    background: linear-gradient(to right, rgba(240, 240, 240, 0.9), rgba(240, 240, 240, 0.8), transparent);
+}
+
+.recipe-infos {
+    max-width: 30%;
+    flex-grow: 1;
+}
+
+.recipe-gradiant {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 35%;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.9), transparent);
+
 }
 
 .recipe-title {
@@ -55,6 +76,8 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    padding: 10px 0;
+    margin: 0;
 }
 
 .recipe-time {
@@ -63,18 +86,15 @@
     margin-left: 10px;
 }
 
-.recipe-rating {
-    margin-top: 5px;
-}
-
 .recipe-description {
-    font-size: 15px;
     color: black;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
+    padding: 0;
+    margin: 10px 0 0 0;
 }
 
 .recipe-divider {
@@ -86,5 +106,8 @@
 .recipe-constraints {
     z-index: 1;
     flex-basis: 10%;
-    padding: 15px;
+}
+
+.recipe-constraints > * {
+    margin: 10px 0;
 }
