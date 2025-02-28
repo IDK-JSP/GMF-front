@@ -6,7 +6,7 @@ import Research from "../pages/2_body/Research";
 import Register from "../pages/2_body/Register";
 import Error from "../pages/2_body/Error";
 import UserRecipes from "../pages/2_body/UserRecipes";
-import {AuthContext} from "../auth/AuthContext";
+import {AuthContext} from "../context/AuthContext";
 import AdminDashboard from "../pages/2_body/AdminDashboard";
 import CategoryList from "../pages/2_body/CategoryList";
 import Favorite from "../pages/2_body/Favorite";

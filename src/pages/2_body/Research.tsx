@@ -2,7 +2,6 @@ import {FC, useEffect, useState} from 'react';
 import AsideLeft from '../../components/layout/AsideLeft';
 import ContentWithLeftAside from '../../components/layout/ContentWithLeftAside';
 import {ResultsList$} from '../../observables/ResultsList$'
-import {DisplayObservable$} from "../../observables/DisplayObservable$";
 import {RecipeType} from '../../1_types/RecipeType';
 import RecipeList from "../../components/commun/RecipeList";
 import {IngredientType} from '../../1_types/IngredientType';
