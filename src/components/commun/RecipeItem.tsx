@@ -10,12 +10,18 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
 
     return (
         <div className="recipe-container" onClick={() => navigate("../RecipeDetails/" + recipe.id)}>
+
             {/* Image de fond */}
             <img
-                src={recipe.image ? recipe.image : "https://placehold.co/200x220?text=No\nImage"}
+                src={`/recipe/recipe_${recipe.id}.jpg`}
                 alt={recipe.title}
                 className="recipe-image"
             />
+
+            <div className="recipe-gradiant"></div>
+
+            {/* Contenu principal */}
+            <div className="recipe-content">
 
             {/* Bouton Favori */}
             <span className="favorite-btn">
@@ -26,8 +32,7 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
             {/*{recipe.diet === "vege" && (*/}
             <div className="recipe-badge"></div>
 
-            {/* Contenu principal */}
-            <div className="recipe-content">
+            <div className="recipe-infos">
                 <h3 className="recipe-title">{recipe.title} <span className="recipe-time">60min</span></h3>
                 <Rating sx={{
                     "& .MuiRating-iconFilled": {color: "orange"},
@@ -40,10 +45,11 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
             {/* Barre verticale */}
             <div className="recipe-divider"></div>
 
-            {/* Contrainte alimentaire */}
+            {/* Contraintes alimentaires */}
             <div className="recipe-constraints">
                 <h4>Allergènes</h4>
                 <p>vege<br/>vege<br/>noix</p>
+            </div>
             </div>
         </div>
     );
