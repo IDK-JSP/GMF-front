@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FC, useContext, useEffect, useState} from 'react';
+import {FC, useContext} from 'react';
 import {Stack, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import GridViewIcon from '@mui/icons-material/GridView';
