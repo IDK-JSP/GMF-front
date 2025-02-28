@@ -16,6 +16,8 @@
    --color-bg-black-tr-50: rgba(0,0,0,0.5); /* var(--color-bg-secondary); */
    --color-bg-white-tr-80: rgba(255,255,255,0.8); /* var(--color-bg-secondary); */
    --color-bg: #ECECEC; /* var(--color-bg); */
+   --color-bg-tr-90: rgba(236,236,236,0.9); /* var(--color-bg-secondary); */
+   --color-bg-tr-100: rgba(236,236,236,1); /* var(--color-bg-secondary); */
    --color-bg-container: #FFFFFF; /* var(--color-bg-container); */
 /* BORDER */
    --color-border : #000000; /* var(--color-border); */

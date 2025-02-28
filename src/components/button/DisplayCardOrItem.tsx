@@ -1,34 +1,27 @@
 import * as React from 'react';
-import {FC, useEffect, useState} from 'react';
+import {FC, useContext, useEffect, useState} from 'react';
 import {Stack, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import GridViewIcon from '@mui/icons-material/GridView';
-import {DisplayObservable$, setViewMode} from "../../observables/DisplayObservable$";
+import {DisplayContext} from "../../context/DisplayContext";
 
 const DisplayCardOrItem: FC<{}> = ({}) => {
 
-    const [isItem, setIsItem] = useState(true)
-
-    useEffect(() => {
-        // S'abonner à l'observable pour écouter les changements
-        const subscription = DisplayObservable$.subscribe(setIsItem);
-
-        return () => subscription.unsubscribe(); // Nettoyage de l'abonnement
-    }, []);
+    const displayContext = useContext(DisplayContext)
 
     const toggleView = (
         event: React.MouseEvent<HTMLElement>,
         newViewMode: boolean | null,
     ) => {
         if (newViewMode !== null)
-            setViewMode(newViewMode); // Màj l'observable
+            displayContext?.setIsItem(newViewMode);
     };
 
     return (
         <Stack direction="row" justifyContent="center" margin={5}>
             <ToggleButtonGroup
                 color="primary"
-                value={isItem}
+                value={displayContext?.isItem}
                 exclusive
                 onChange={toggleView}
                 aria-label="display of result"
