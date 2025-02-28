@@ -23,7 +23,6 @@ const Research: FC<{}> = ({}) => {
     useEffect(() => {
         // S'abonner à l'observable pour écouter les changements
         const subscription = ResultsList$.subscribe(setRecipeCollection);
-
         return () => subscription.unsubscribe(); // Nettoyage de l'abonnement
     }, []);
     

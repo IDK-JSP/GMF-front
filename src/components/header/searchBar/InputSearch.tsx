@@ -19,14 +19,6 @@ export const InputSearch: React.FC = () => {
     const [recipeList, setRecipelist] = useState<RecipeType[]>([]);
     const [recipeResults, setRecipeResults] = useState<RecipeType[]>([]);
 
-    const [resultsList, setResultsList] = useState<RecipeType[]>([])
-
-    useEffect(() => {
-        // S'abonner à l'observable pour écouter les changements
-        const subscription = ResultsList$.subscribe(setResultsList);
-
-        return () => subscription.unsubscribe(); // Nettoyage de l'abonnement
-    }, []);
 
     useEffect(() => {
         getIngredients().then(setIngredientList);
@@ -45,7 +37,7 @@ export const InputSearch: React.FC = () => {
             if (search.length > 0) {
                 const result = recipe.title.toLowerCase().includes(search.toLowerCase());
                 // mise à jour de l'observalbe : 
-                setResultsList(recipeResults);
+                ResultsList$.next(recipeList);
                 return result;
             }
             return [];
