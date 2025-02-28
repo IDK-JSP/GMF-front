@@ -29,7 +29,7 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({ resultIsVisibl
                 <FilterTags checkedIngredients={checkedIngredients} handleCheck={handleCheck} />
             <div>
                 {recipeResults.slice(0,3).map((recipe) => (
-                    <RecipeItem key={recipe.id} recipe={recipe}/>
+                    <RecipeItem key={recipe.id_recipe} recipe={recipe}/>
                 ))}
                 </div>
             <span>

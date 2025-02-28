@@ -5,10 +5,13 @@ import {ResultsList$} from '../../observables/ResultsList$'
 import {DisplayObservable$} from "../../observables/DisplayObservable$";
 import {RecipeType} from '../../1_types/RecipeType';
 import RecipeList from "../../components/commun/RecipeList";
+import {IngredientType} from '../../1_types/IngredientType';
+import {getIngredients} from '../../api/getIngredients';
 
 const Research: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[]>([]);
     const [isList, setIsList] = useState(true); // État local pour refléter l'observable
+    const [checkedIngredients, setCheckedIngredients] = useState<IngredientType[]>([]);
 
     useEffect(() => {
         // S'abonner à l'observable pour écouter les changements
@@ -16,6 +19,12 @@ const Research: FC<{}> = ({}) => {
 
         return () => subscription.unsubscribe(); // Nettoyage de l'abonnement
     }, []);
+
+useEffect(() => {
+        // s'abonner à l'observable pour écouter les changements
+        const subscription = DisplayObservable$.subscribe(setIsList);
+    }
+    , []);
 
     useEffect(() => {
         // S'abonner à l'observable pour écouter les changements
