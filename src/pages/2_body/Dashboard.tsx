@@ -3,6 +3,8 @@ import {RecipeType} from "../../1_types/RecipeType";
 import Pages from "../../components/layout/Pages";
 import RecipeList from "../../components/commun/RecipeList";
 import {getRecipe} from "../../api/getRecipe";
+import ContentWithoutAside from '../../components/layout/ContentWithLeftAside';
+import Presentation from '../../components/layout/Presentation';
 
 const Dashboard: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
@@ -26,11 +28,19 @@ const Dashboard: FC<{}> = ({}) => {
 
     return (
         <>
-            {!isPending && recipeCollection &&
-            <Pages>
-                <RecipeList recipeCollection={recipeCollection}/>
-            </Pages>
-            }
+            <Presentation>
+                Dashboard
+            </Presentation>
+            <ContentWithoutAside>
+                <section>
+                    <article>
+                        {!isPending && recipeCollection &&
+                        <RecipeList recipeCollection={recipeCollection}/>
+                        }
+                    </article>
+                </section>
+            </ContentWithoutAside>
+            
         </>
     );
 };
