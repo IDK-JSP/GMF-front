@@ -31,14 +31,15 @@ main {
 }
 
 .presentation {
-  height: calc(var(--height-nav) + 150px);
-  background-color: red;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   box-shadow: black 1px 1px 10px;
   font-size: 50px;
+  position:sticky;
+  top: calc(var(--height-nav) + 75px - var(--height-presentation));
+  z-index: 50;
 }
 .presentation > div {
   display: flex;
@@ -64,7 +65,7 @@ aside {
   height: calc(100% - var(--height-nav));
   background-color: var(--color-bg-container);
   z-index: -10;
-  position:fixed;
+  position: fixed;
 }
 .abs-left {
   left:0;

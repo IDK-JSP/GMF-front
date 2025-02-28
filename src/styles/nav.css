@@ -103,6 +103,7 @@
     padding: 5px;
     cursor: pointer;
   }
+  
 /* DIV DES RESULTATS*/
 .results-container{
   position: absolute;
@@ -115,13 +116,25 @@
   padding-top: 55px;
   background-color: var(--color-bg-white-tr-80);
   border-radius : 0 0 20px 20px;
-  height: 40vh;
+  height: fit-content;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: all 0.5s ease;
 }
+.results-container > span {
+  padding : 10px;
+  padding-bottom : unset;
+  display: flex;
+  justify-content: right;
+  }
 
-
-
+  #results-button {
+    background-color: var(--color-bg-secondary);
+    width: fit-content;
+    border-radius: 10px;
+    border-right : 1px solid var(--color-border) !important;
+    padding: 5px;
+    cursor: pointer;
+  }
 /* DIV DE SELECTION DES FILTRES  */
   .filter-container{
     position: absolute;
@@ -184,16 +197,16 @@
   /* DIV D'AFFICHAGE DES TAG DE LA BARRE DE RECHERCHE*/
   #search-filters{
     display: flex;
-    flex-direction: row-reverse;
-    height:40px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-left:none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height:fit-content;
+    width: 100%;
     gap: 10px;
+    padding: 10px;
     align-items: center;
     padding-right: 5px;
-    background-color: var(--color-bg);
   }
+
 
   /* TAG DU FILTRE */
   .search-tag {
@@ -209,10 +222,15 @@
     width: fit-content;
     color: var(--color-text-secondary);
     background-color: var(--color-bg-secondary);
-    box-shadow: #111 1px 1px 5px;
+    transition: all 0.5s ease;
   }
   .search-tag > input {
     display: none;
+  }
+  .search-tag:hover {
+    background-color: var(--color-bg-primary);
+    box-shadow: #111 1px 1px 5px;
+    transform: scale(1.10);
   }
 
   /* DIV DE LA LISTE DES FILTRES */
