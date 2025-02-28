@@ -45,15 +45,16 @@ export const InputSearch: React.FC = () => {
     )}, [search, checkedIngredients]);
 
     useEffect(() => {
-        if ((recipeResults.length > 0) && (search.length > 0)) {
+        if ((checkedIngredients.length > 0) || (search.length > 0)) {
             setResultIsVisible(true);
         } else {
             setResultIsVisible(false);
         }
     }
-    , [recipeResults]);
+    , [checkedIngredients, search]);
 
     const handleSwitchVisibility = () => setFilterIsVisible(!filterIsVisible);
+    const handleResultsVisibility = (value:boolean) => setResultIsVisible(value);
 
     const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value, checked } = e.target;
@@ -62,10 +63,9 @@ export const InputSearch: React.FC = () => {
 
     return (
         <div className='search-bar'>
-            <SearchBar search={search} setSearch={setSearch} toggleFilter={handleSwitchVisibility} checkedCount={checkedIngredients.length} />
-            {/*  */}
+            <SearchBar search={search} setSearch={setSearch} toggleResultsVisibility={handleResultsVisibility} toggleFilter={handleSwitchVisibility} checkedCount={checkedIngredients.length} />
             <FilterSelection filterIsVisible={filterIsVisible} affined={affined} setAffined={setAffined} ingredientList={ingredientList} handleCheck={handleCheck} checkedIngredients={checkedIngredients} />
-            <ResultsList resultIsVisible={resultIsVisible} recipeResults={recipeResults} checkedIngredients={checkedIngredients} handleCheck={handleCheck} />
+            <ResultsList resultIsVisible={resultIsVisible} toggleResultsVisibility={handleResultsVisibility} recipeResults={recipeResults} checkedIngredients={checkedIngredients} handleCheck={handleCheck} />
         </div>
     );
 };
