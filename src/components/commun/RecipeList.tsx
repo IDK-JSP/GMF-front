@@ -6,7 +6,7 @@ import DisplayCardOrItem from "../button/DisplayCardOrItem";
 import {RecipeType} from "../../1_types/RecipeType";
 import {DisplayObservable$} from "../../observables/DisplayObservable$";
 
-const RecipeList: FC<{recipeCollection: RecipeType[]}> = ({recipeCollection}) => {
+const RecipeList: FC<{ recipeCollection: RecipeType[] }> = ({recipeCollection}) => {
 
     const [isList, setIsList] = useState(true); // État local pour refléter l'observable
 
@@ -19,19 +19,19 @@ const RecipeList: FC<{recipeCollection: RecipeType[]}> = ({recipeCollection}) =>
 
     return (
         <>
-        <DisplayCardOrItem/>
-        <Grid container spacing={2} justifyContent="center">
-            {recipeCollection.map((recipe) => (
-                isList ?
-                    <Grid size={10}>
-                        <RecipeItem key={recipe.id} recipe={recipe}/>
-                    </Grid>
-                    :
-                    <Grid size={2.2}>
-                        <RecipeCard key={recipe.id} recipe={recipe}/>
-                    </Grid>
-            ))}
-        </Grid>
+            <DisplayCardOrItem/>
+            <Grid container spacing={2} justifyContent="center">
+                {recipeCollection.map((recipe) => (
+                    isList ?
+                        <Grid size={10}>
+                            <RecipeItem key={recipe.id} recipe={recipe}/>
+                        </Grid>
+                        :
+                        <Grid size={2.2}>
+                            <RecipeCard key={recipe.id} recipe={recipe}/>
+                        </Grid>
+                ))}
+            </Grid>
         </>
     );
 };
