@@ -2,20 +2,11 @@ import {FC, useEffect, useState} from 'react';
 import AsideLeft from '../../components/layout/AsideLeft';
 import ContentWithLeftAside from '../../components/layout/ContentWithLeftAside';
 import {ResultsList$} from '../../observables/ResultsList$'
-import {DisplayObservable$} from "../../observables/DisplayObservable$";
 import {RecipeType} from '../../1_types/RecipeType';
 import RecipeList from "../../components/commun/RecipeList";
 
 const Research: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[]>([]);
-    const [isList, setIsList] = useState(true); // État local pour refléter l'observable
-
-    useEffect(() => {
-        // S'abonner à l'observable pour écouter les changements
-        const subscription = DisplayObservable$.subscribe(setIsList);
-
-        return () => subscription.unsubscribe(); // Nettoyage de l'abonnement
-    }, []);
 
     useEffect(() => {
         // S'abonner à l'observable pour écouter les changements
