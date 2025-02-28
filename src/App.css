@@ -53,9 +53,7 @@ main {
   background-color:var( --color-bg-white-tr-80);
 }
 
-
 aside {
-  top : var(--height-presentation);
   box-sizing: border-box;
   padding: 20px;
   display: flex;
@@ -64,7 +62,7 @@ aside {
   justify-content: space-between;
   align-items: center;
   width: var(--width-aside);
-  height: calc(100% - var(--height-nav));
+  height: 100%;
   background-color: var(--color-bg-container);
   z-index: -10;
   position: fixed;

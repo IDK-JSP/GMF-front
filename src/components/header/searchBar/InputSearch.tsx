@@ -20,6 +20,7 @@ export const InputSearch: React.FC = () => {
     const [recipeResults, setRecipeResults] = useState<RecipeType[]>([]);
 
 
+    // Récupération de la liste des ingrédients du site
     useEffect(() => {
         getIngredients().then(setIngredientList);
     }, []);
@@ -28,21 +29,15 @@ export const InputSearch: React.FC = () => {
     useEffect(() => {
         console.log('search', search);
         console.log('checkedIngredients', checkedIngredients);
-        // console.log('recipeResults', recipeResults);
 
+        // A MODIFIER !!!!!!!!!!!!!!!!!!!!!!!!
         // Méthode de recherche a ajouter ICI
         getRecipe().then(setRecipelist);
-
-        setRecipeResults(recipeList.filter((recipe) => {
-            if (search.length > 0) {
-                const result = recipe.title.toLowerCase().includes(search.toLowerCase());
-                // mise à jour de l'observalbe : 
-                ResultsList$.next(recipeList);
-                return result;
-            }
-            return [];
-            })
-    )}, [search, checkedIngredients]);
+        
+        // Mise à jour de l'observable en fonction de la recherche 
+        ResultsList$.next(recipeList
+            .filter((recipe) => recipe.title.toLowerCase().includes(search.toLowerCase())));
+    }, [search, checkedIngredients]);
 
     useEffect(() => {
         if ((checkedIngredients.length > 0) || (search.length > 0)) {
