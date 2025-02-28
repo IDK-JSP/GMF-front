@@ -16,10 +16,10 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
             }}
         >
             <Card
-                key={recipe.id}
+                key={recipe.id_recipe}
                 title={recipe.title}
                 sx={{position: "relative", boxShadow: 2}}
-                onClick={() => navigate("../RecipeDetails/" + recipe.id)}
+                onClick={() => navigate("../RecipeDetails/" + recipe.id_recipe)}
             >
                 <CardMedia
                     component="img"

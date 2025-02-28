@@ -1,5 +1,5 @@
 export interface RecipeType {
-    "id" : number,
+    "id_recipe" : number,
     "email" : string,
     "title" : string,
     "content" : string,

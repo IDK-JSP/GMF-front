@@ -9,11 +9,11 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
     const navigate = useNavigate();
 
     return (
-        <div className="recipe-container" onClick={() => navigate("../RecipeDetails/" + recipe.id)}>
+        <div className="recipe-container" onClick={() => navigate("../RecipeDetails/" + recipe.id_recipe)}>
 
             {/* Image de fond */}
             <img
-                src={`/recipe/recipe_${recipe.id}.jpg`}
+                src={`/recipe/recipe_${recipe.id_recipe}.jpg`}
                 alt={recipe.title}
                 className="recipe-image"
             />

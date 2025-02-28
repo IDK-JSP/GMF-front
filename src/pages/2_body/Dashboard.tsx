@@ -1,20 +1,36 @@
-import {FC} from 'react';
-import recipes from "../../dataFake/RecipeFake.json";
+import {FC, useEffect, useState, useTransition} from 'react';
 import {RecipeType} from "../../1_types/RecipeType";
 import Pages from "../../components/layout/Pages";
 import RecipeList from "../../components/commun/RecipeList";
+import {getRecipe} from "../../api/getRecipe";
 
 const Dashboard: FC<{}> = ({}) => {
+    const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
+    const [isPending, startTransition] = useTransition()
 
-    const recipeCollection: RecipeType[] = recipes
+    const hydrate = () => {
+        // @ts-ignore
+        startTransition(async () => {
+            const results = await getRecipe()
+            startTransition(() => {
+                setRecipeCollection(results)
+            })
+        });
+    }
+
+    useEffect(() => {
+        hydrate();
+    }, []);
 
     console.log(recipeCollection)
 
     return (
         <>
+            {!isPending && recipeCollection &&
             <Pages>
                 <RecipeList recipeCollection={recipeCollection}/>
             </Pages>
+            }
         </>
     );
 };
