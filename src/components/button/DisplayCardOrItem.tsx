@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {FC, useContext} from 'react';
 import {Stack, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
