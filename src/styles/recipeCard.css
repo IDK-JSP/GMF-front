@@ -1,0 +1,74 @@
+.recipe-card {
+    margin: 1rem 0.6rem;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.recipe-card:hover {
+    transform: scale(1.1);
+}
+
+.recipe-card-container {
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: auto;
+}
+
+.favorite-button {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.veg-indicator {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 24px;
+    height: 24px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.recipe-card-content {
+    padding: 5%;
+    background-color: lightgray;
+    overflow: hidden;
+}
+
+.recipe-title {
+    font-size: 19px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recipe-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: gray;
+}
+
+.recipe-rating {
+    color: orange;
+}
+
+.recipe-description {
+    font-size: 15px;
+    color: black;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

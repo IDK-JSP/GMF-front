@@ -7,4 +7,6 @@ interface AuthContextProps {
     setIsLoggedIn: any;
     role: string;
     setRole: any;
+    token: string;
+    setToken: any;
 }

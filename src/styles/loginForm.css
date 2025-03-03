@@ -1,0 +1,57 @@
+/* LoginForm.css */
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    font-size: 20px;
+    border: 2px solid #aaa;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.error-message {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.error-text {
+    color: red;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 22px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.register-link {
+    margin-top: 15px;
+    font-size: 20px;
+    color: blue;
+    cursor: pointer;
+    font-weight: bold;
+}
