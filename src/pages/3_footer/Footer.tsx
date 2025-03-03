@@ -1,13 +1,12 @@
 import {FC} from 'react';
 import {Typography} from "@mui/material";
+import "../../styles/footer.css";
 
 const Footer: FC<{}> = ({}) => {
     return (
-        <>
-            <Typography sx={{backgroundColor : "salmon"}}>
+        <div className="footer">
                 Footer du site
-            </Typography>
-        </>
+        </div>
     );
 };
 

@@ -8,11 +8,12 @@ import {DisplayContext} from "./context/DisplayContext";
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const [role, setRole] = useState("ADMIN")
+    const [token, setToken] = useState("")
     const [isItem, setIsItem] = useState(true)
 
     return (
         <BrowserRouter>
-            <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, role, setRole}}>
+            <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, role, setRole, token, setToken}}>
                 <DisplayContext.Provider value={{isItem, setIsItem}}>
                     <Router/>
                 </DisplayContext.Provider>
