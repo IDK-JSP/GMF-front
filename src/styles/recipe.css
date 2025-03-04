@@ -1,0 +1,16 @@
+.recipe-stage {
+  transform: scale(1);
+}
+.recipe-stage:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+.recipe-stage span:first-child {
+  font-size: 3rem;
+  padding: 10px;
+  font-weight: 700;
+}
+.recipe-stage span:last-child {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
