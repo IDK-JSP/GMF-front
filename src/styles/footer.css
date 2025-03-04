@@ -1,6 +1,10 @@
 .footer {
-    background-color: salmon;
-    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    padding: 20px;
+    height: var(--height-footer);
+    background-color: var(--color-bg-primary);
     z-index: 1000;
-}
+  }
