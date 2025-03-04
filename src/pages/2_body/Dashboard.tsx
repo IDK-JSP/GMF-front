@@ -3,7 +3,7 @@ import {RecipeType} from "../../1_types/RecipeType";
 import Pages from "../../components/layout/Pages";
 import RecipeList from "../../components/commun/RecipeList";
 import {getRecipe} from "../../api/getRecipe";
-import ContentWithoutAside from '../../components/layout/ContentWithLeftAside';
+import ContentWithoutAside from '../../components/layout/ContentWithoutAside';
 import Presentation from '../../components/layout/Presentation';
 
 const Dashboard: FC<{}> = ({}) => {
