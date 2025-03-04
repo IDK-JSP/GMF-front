@@ -1,7 +1,7 @@
 import React from 'react';
 import { Children } from '../../1_types/PropsType';
 
-const ContentWithoutAside: React.FC<Children> = ({children}) => {
+const ContentWithLeftAside: React.FC<Children> = ({children}) => {
     return (
         <div className="content content-with-left-aside">
              {children}
@@ -9,4 +9,4 @@ const ContentWithoutAside: React.FC<Children> = ({children}) => {
     );
 };
 
-export default ContentWithoutAside;
+export default ContentWithLeftAside;

@@ -6,6 +6,7 @@ import {RecipeType} from '../../1_types/RecipeType';
 import RecipeList from "../../components/commun/RecipeList";
 import {IngredientType} from '../../1_types/IngredientType';
 import {getIngredients} from '../../api/getIngredients';
+import Presentation from '../../components/layout/Presentation';
 
 const Research: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[]>([]);
@@ -20,18 +21,11 @@ const Research: FC<{}> = ({}) => {
 
     return (
         <>
-            <div className='presentation'
-                 style={{
-                     backgroundImage: `url("/research.jpg")`,
-                     backgroundSize: "cover",
-                     backgroundPosition: "center",
-                     height: "300px",
-                     width: "100%"
-                 }}>
-                <div>Favoris</div>
-            </div>
+            <Presentation>
+            Recherches
+            </Presentation>
             <AsideLeft>
-                Aside
+                Aside avec les filtrages
             </AsideLeft>
             <ContentWithLeftAside>
                 <section>

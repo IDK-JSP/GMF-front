@@ -4,9 +4,17 @@ import { Children } from '../../1_types/PropsType';
 
 const Presentation: React.FC<Children> = ({children}) => {
     return (
-        <aside className="abs-left">
+        <div className='presentation'
+        style={{ 
+            backgroundImage: `url("/test.jpeg")`,  
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            height: "300px",
+            width: "100%"
+            }}><div>
              {children}
-        </aside>
+             </div>
+        </div>
     );
 };
 
