@@ -1,23 +1,31 @@
 import { FC } from "react";
 import { RecipeStageType } from "../../1_types/RecipeStageType";
+import withLoadingAndError from "../hoc/withLoadingAndError";
+import StageSkeleton from "./StageSkeleton";
 
-const IngredientResume: FC<{
+type Props = {
   stageList: Array<RecipeStageType>;
-}> = ({ stageList }) => {
-  return (
-    <>
-      {stageList && stageList.length > 0 ? (
-        stageList.map((stage, index) => (
+  isLoading: boolean;
+  error: string | null;
+};
+
+const StageResume: FC<Props> = ({ stageList, isLoading, error }) => {
+  return withLoadingAndError({
+    isLoading,
+    error,
+    data: stageList,
+    SkeletonComponent: StageSkeleton,
+    children: (data) => (
+      <>
+        {data.map((stage, index) => (
           <article key={index} className="recipe-stage">
             <span>{stage.stage}</span>
             <span>{stage.content}</span>
           </article>
-        ))
-      ) : (
-        <article>Aucune étape trouvée.</article>
-      )}
-    </>
-  );
+        ))}
+      </>
+    ),
+  });
 };
 
-export default IngredientResume;
+export default StageResume;

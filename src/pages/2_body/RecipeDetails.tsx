@@ -12,10 +12,12 @@ import { RecipeType } from "../../1_types/RecipeType";
 import IngredientResume from "../../components/RecipeDetails/IngredientResume";
 import StageResume from "../../components/RecipeDetails/StageResume";
 import OpinionsResume from "../../components/RecipeDetails/OpinionsResume";
+import DietResume from "../../components/RecipeDetails/DietResume";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const RecipeDetails: FC = () => {
   const location = useLocation();
-  let { id } = useParams(); // Récupération de l'ID depuis l'URL
+  let { id } = useParams();
 
   const [recipe, setRecipe] = useState<RecipeType | null>(null);
   const [recipeDetails, setRecipeDetails] = useState<RecipeDetailsType | null>(
@@ -24,73 +26,88 @@ const RecipeDetails: FC = () => {
   const [isPending, setIsPending] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fonction pour récupérer le recette
-
-  const getRecipe = async () => {
-    setIsPending(true);
-    setError(null);
-
-    try {
-      if (location.state?.recipe) {
-        // La recette est passée en tant que state, on l'enregistre
-        setRecipe(location.state.recipe as RecipeType);
-      } else if (id) {
-        // Sinon, on récupère la recette depuis l'API
-        const fetchedRecipe = await getRecipeFromId({
-          recipe_id: parseInt(id),
-        });
-        setRecipe(fetchedRecipe);
-      } else {
-        throw new Error("Aucun ID de recette disponible !");
-      }
-    } catch (err) {
-      console.error("Erreur lors de la récupération de la recette :", err);
-      setError(err instanceof Error ? err.message : "Erreur inconnue");
-    } finally {
-      setIsPending(false);
-    }
-  };
-
-  // Récupération de la recette au chargement de la page
   useEffect(() => {
-    getRecipe();
+    console.log("Chargement en cours :", isPending);
+  }, [isPending]);
+
+  // Récupération de la recette
+  useEffect(() => {
+    const fetchRecipe = async () => {
+      setIsPending(true);
+      setError(null);
+      try {
+        if (location.state?.recipe) {
+          setRecipe(location.state.recipe as RecipeType);
+        } else if (id) {
+          const fetchedRecipe = await getRecipeFromId({
+            recipe_id: parseInt(id),
+          });
+          setRecipe(fetchedRecipe);
+        } else {
+          throw new Error("Aucun ID de recette disponible !");
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Erreur inconnue");
+      } finally {
+        setIsPending(false);
+      }
+    };
+    fetchRecipe();
   }, [id, location]);
 
-  // Récupération des détails de la recette
+  // Récupération des détails de la recette si elle n’est pas déjà chargée
   useEffect(() => {
-    if (recipe?.id_recipe) {
-      getRecipeDetails({ recipe_id: recipe.id_recipe }).then((details) => {
-        setRecipeDetails(details);
-      });
+    if (recipe?.id_recipe && !recipeDetails) {
+      getRecipeDetails({ recipe_id: recipe.id_recipe }).then(setRecipeDetails);
     }
-  }, [recipe]);
+  }, [recipe, recipeDetails]);
 
-  if (isPending) return <p>Chargement...</p>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
-  if (!recipe) return <p>Aucune recette trouvée.</p>;
+  // Composant de gestion des états de chargement / erreur
+  const RenderState = () => {
+    if (isPending) return <p>Chargement...</p>;
+    if (error) return <p style={{ color: "red" }}>{error}</p>;
+    if (!recipe) return <p>Aucune recette trouvée.</p>;
+    return null;
+  };
 
   return (
     <>
-      <Presentation imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`}>
-        {recipe.title}
-      </Presentation>
-      <AsideLeft>
-        {/* Composant qui affiche les ingrédients de la recette */}
-        <IngredientResume
-          ingredientsList={recipeDetails?.ingredientDetails || []}
-        />
-      </AsideLeft>
-      <ContentWithBothAside>
-        <section>
-          {recipe.content}
-          {/* Composant qui affiche les étapes de la recette */}
-          <StageResume stageList={recipeDetails?.stages || []} />
-        </section>
-      </ContentWithBothAside>
-      <AsideRight>
-        {/* Composant qui affiche les avis de la recette */}
-        <OpinionsResume opinionsList={recipeDetails?.opinions || []} />
-      </AsideRight>
+      <RenderState />
+      {recipe && (
+        <>
+          <Presentation imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`}>
+            {recipe.title}
+          </Presentation>
+          <AsideLeft>
+            <IngredientResume
+              ingredientsList={recipeDetails?.ingredientDetailDtos || []}
+              person={recipe.person ?? 1}
+              isLoading={isPending}
+              error={error}
+            />
+            <DietResume dietList={recipeDetails?.ingredientDetailDtos || []} />
+          </AsideLeft>
+          <ContentWithBothAside>
+            <section>
+              {recipe.content}
+              <StageResume
+                stageList={recipeDetails?.stages || []}
+                isLoading={isPending}
+                error={error}
+              />
+            </section>
+          </ContentWithBothAside>
+          <AsideRight>
+            <OpinionsResume
+              opinionsList={recipeDetails?.opinions || []}
+              recipeRate={recipe.rate ?? 0}
+              recipeNbRate={recipe.nbRate ?? 0}
+              isLoading={isPending}
+              error={error}
+            />
+          </AsideRight>
+        </>
+      )}
     </>
   );
 };
