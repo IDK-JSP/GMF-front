@@ -26,6 +26,7 @@ const Router: FC<{}> = ({}) => {
                 <Route path="Research" element={<Research/>}/>
                 <Route path="Research/:searchQuery" element={<Research/>}/>
                 <Route path="CategoryList/:category" element={<CategoryList/>}/>
+                <Route path="Login" element={<Login/>}/>
             </Route>
 
             {authContext?.isLoggedIn &&
@@ -34,7 +35,6 @@ const Router: FC<{}> = ({}) => {
                     <Route path="UserRecipes" element={<UserRecipes/>}/>
                     <Route path="Settings" element={<Settings/>}/>
                     <Route path="Register" element={<Register/>}/>
-                    <Route path="Login" element={<Login/>}/>
                 </Route>}
 
             {authContext?.isLoggedIn && authContext.role === "ADMIN" &&
