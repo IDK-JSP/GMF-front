@@ -78,34 +78,38 @@ const RecipeDetails: FC = () => {
           <Presentation imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`}>
             {recipe.title}
           </Presentation>
-          <AsideLeft>
-            <IngredientResume
-              ingredientsList={recipeDetails?.ingredientDetailDtos || []}
-              person={recipe.person ?? 1}
-              isLoading={isPending}
-              error={error}
-            />
-            <DietResume dietList={recipeDetails?.ingredientDetailDtos || []} />
-          </AsideLeft>
-          <ContentWithBothAside>
-            <section>
-              {recipe.content}
-              <StageResume
-                stageList={recipeDetails?.stages || []}
+          <main>
+            <AsideLeft>
+              <IngredientResume
+                ingredientsList={recipeDetails?.ingredientDetailDtos || []}
+                person={recipe.person ?? 1}
                 isLoading={isPending}
                 error={error}
               />
-            </section>
-          </ContentWithBothAside>
-          <AsideRight>
-            <OpinionsResume
-              opinionsList={recipeDetails?.opinions || []}
-              recipeRate={recipe.rate ?? 0}
-              recipeNbRate={recipe.nbRate ?? 0}
-              isLoading={isPending}
-              error={error}
-            />
-          </AsideRight>
+              <DietResume
+                dietList={recipeDetails?.ingredientDetailDtos || []}
+              />
+            </AsideLeft>
+            <ContentWithBothAside>
+              <section>
+                {recipe.content}
+                <StageResume
+                  stageList={recipeDetails?.stages || []}
+                  isLoading={isPending}
+                  error={error}
+                />
+              </section>
+            </ContentWithBothAside>
+            <AsideRight>
+              <OpinionsResume
+                opinionsList={recipeDetails?.opinions || []}
+                recipeRate={recipe.rate ?? 0}
+                recipeNbRate={recipe.nbRate ?? 0}
+                isLoading={isPending}
+                error={error}
+              />
+            </AsideRight>
+          </main>
         </>
       )}
     </>

@@ -1,0 +1,30 @@
+.opinion-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.opinion-box > div {
+  border-top: 1px solid var(--color-border);
+}
+.opinion-recipe {
+  border-top: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.opinion-myself {
+  display: flex;
+  flex-direction: column;
+}
+.opinion-item {
+  display: flex;
+  flex-direction: column;
+}
+.opinion-item > span {
+  font-style: italic;
+}
+.opinion-item > span:last-child {
+  font-style: italic;
+  align-self: flex-end;
+}
