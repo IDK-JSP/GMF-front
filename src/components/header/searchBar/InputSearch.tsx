@@ -16,7 +16,7 @@ export const InputSearch: React.FC = () => {
     const [checkedIngredients, setCheckedIngredients] = useState<IngredientType[]>([]);
     const [affined, setAffined] = useState('');
     const [ingredientList, setIngredientList] = useState<IngredientType[]>([]);
-    const [recipeList, setRecipelist] = useState<RecipeType[]>([]);
+    const [recipeList, setRecipeList] = useState<RecipeType[]>([]);
     const [recipeResults, setRecipeResults] = useState<RecipeType[]>([]);
 
 
@@ -32,7 +32,7 @@ export const InputSearch: React.FC = () => {
 
         // A MODIFIER !!!!!!!!!!!!!!!!!!!!!!!!
         // Méthode de recherche a ajouter ICI
-        getRecipe().then(setRecipelist);
+        getRecipe().then(setRecipeList);
         
         // Mise à jour de l'observable en fonction de la recherche 
         ResultsList$.next(recipeList
