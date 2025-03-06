@@ -1,7 +1,8 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
+import LoginForm from '../../components/auth/LoginForm';
+import RegisterForm from '../../components/auth/RegisterForm';
+import '../../styles/loginForm.css';
 import ContentWithoutAside from "../../components/layout/ContentWithoutAside";
-import LoginForm from "../../components/auth/LoginForm";
-import RegisterForm from "../../components/auth/RegisterForm";
 
 const Login: FC<{}> = ({}) => {
     const [activeForm, setActiveForm] = useState<'none' | 'login' | 'register'>('none');
@@ -20,44 +21,45 @@ const Login: FC<{}> = ({}) => {
         };
     }, []);
 
+    const toggleForm = (form: 'login' | 'register') => {
+        setActiveForm(prev => (prev === form ? prev : form));
+    };
+
     return (
         <div className="login-container">
-            <div className='presentation'
-                 style={{
-                     backgroundImage: `url("/research.jpg")`,
-                     backgroundSize: "cover",
-                     backgroundPosition: "center",
-                     height: "300px",
-                     width: "100%"
-                 }}>
-                <div>Connexion</div>
+            <div className="presentation" style={{
+                backgroundImage: `url("/research.jpg")`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "300px",
+                width: "100%"
+            }}>
+                <div>Connexion / Inscription</div>
             </div>
-            <ContentWithoutAside>
-                {/*<section>
-                    <Box sx={{display: "flex", flexDirection: "row", gap: "100px", alignItems: "space-around"}}>
-                        <article>
 
+            <ContentWithoutAside>
+                <section>
+                    <div className="form-container" ref={formContainerRef}>
+                        <div
+                            className={`form-card ${activeForm === 'login' ? 'active' : activeForm === 'none' ? 'neutral' : ''}`}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                toggleForm('login');
+                            }}
+                        >
                             <LoginForm/>
-                        </article>
-                        <article>
+                        </div>
+                        <div
+                            className={`form-card ${activeForm === 'register' ? 'active' : activeForm === 'none' ? 'neutral' : ''}`}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                toggleForm('register');
+                            }}
+                        >
                             <RegisterForm/>
-                        </article>
-                    </Box>
-                </section>*/}
-                <div className="form-container" ref={formContainerRef}>
-                    <div
-                        className={`form-card ${activeForm === 'login' ? 'active' : activeForm === 'none' ? 'neutral' : ''}`}
-                        onClick={() => setActiveForm(activeForm === 'login' ? 'none' : 'login')}
-                    >
-                        <LoginForm/>
+                        </div>
                     </div>
-                    <div
-                        className={`form-card ${activeForm === 'register' ? 'active' : activeForm === 'none' ? 'neutral' : ''}`}
-                        onClick={() => setActiveForm(activeForm === 'register' ? 'none' : 'register')}
-                    >
-                        <RegisterForm/>
-                    </div>
-                </div>
+                </section>
             </ContentWithoutAside>
         </div>
     );

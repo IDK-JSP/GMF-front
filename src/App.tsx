@@ -6,7 +6,7 @@ import {AuthContext} from "./context/AuthContext";
 import {DisplayContext} from "./context/DisplayContext";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [role, setRole] = useState("ADMIN")
     const [token, setToken] = useState("")
     const [isItem, setIsItem] = useState(true)
