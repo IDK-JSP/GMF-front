@@ -21,10 +21,10 @@ const Dashboard: FC<{}> = ({}) => {
         });
     };
 
+        console.log(recipeCollection)
 
     useEffect(() => {
         hydrate();
-        console.log(recipeCollection)
         console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token)
     }, []);
 
