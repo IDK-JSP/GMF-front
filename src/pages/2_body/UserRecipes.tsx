@@ -3,7 +3,7 @@ import {FC} from 'react';
 const UserRecipes: FC<{}> = ({}) => {
     return (
         <>
-
+            UserRecipe
         </>
     );
 };

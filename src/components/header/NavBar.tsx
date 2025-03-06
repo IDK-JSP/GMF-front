@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router';
 import PersonIcon from '@mui/icons-material/Person';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import {AuthContext} from "../../context/AuthContext";
+import AvatarMenu from "./AvatarMenu";
 
 const Nav: React.FC = () => {
     const navigate=useNavigate();
@@ -23,8 +24,7 @@ const Nav: React.FC = () => {
             <div id='nav-container'>
                 <div style={{width:"100px"}}
             onClick= {()=>navigate('/Favorite')}><FavoriteIcon/></div>
-                <div style={{width:"100px", color: authContext?.isLoggedIn ? "green" : "white"}}
-            onClick= {()=>navigate('/Settings')}><PersonIcon/></div>
+               <AvatarMenu/>
             </div>
         </nav>
     );
