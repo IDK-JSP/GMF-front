@@ -4,7 +4,7 @@ import { RecipeStageType } from "./RecipeStageType";
 
 export interface RecipeDetailsType {
   id_recipe: number;
-  ingredientDetails: RecipeIngredientType[];
+  ingredientDetailDtos: RecipeIngredientType[];
   stages: RecipeStageType[];
   opinions: RecipeOpinionsType[];
 }

@@ -38,7 +38,7 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({ recipe }) => {
           <h3 className="recipe-title">
             {recipe.title} <span className="recipe-time">60min</span>
           </h3>
-          <StarRating rate={recipe.rate} />
+          <StarRating rate={recipe.rate} size="medium" />
           <p className="recipe-description">{recipe.content}</p>
         </div>
 
