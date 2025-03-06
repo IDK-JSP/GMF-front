@@ -1,3 +1,4 @@
+
 import {FC, useContext, useEffect, useState, useTransition} from 'react';
 import {RecipeType} from "../../1_types/RecipeType";
 import Pages from "../../components/layout/Pages";
@@ -12,40 +13,37 @@ const Dashboard: FC<{}> = ({}) => {
     const [isPending, startTransition] = useTransition()
     const authContext = useContext(AuthContext);
 
-    const hydrate = () => {
-        // @ts-ignore
-        startTransition(async () => {
-            const results = await getRecipe()
-            startTransition(() => {
-                setRecipeCollection(results)
-            })
-        });
-    }
+  const hydrate = () => {
+    // @ts-ignore
+    startTransition(async () => {
+      const results = await getRecipe();
+      startTransition(() => {
+        setRecipeCollection(results);
+      });
+    });
+  };
 
-    useEffect(() => {
-        hydrate();
-    }, []);
+  useEffect(() => {
+    hydrate();
+  }, []);
 
     console.log(recipeCollection)
     console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token)
 
-    return (
-        <>
-            <Presentation>
-                Dashboard
-            </Presentation>
-            <ContentWithoutAside>
-                <section>
-                    <article>
-                        {!isPending && recipeCollection &&
-                        <RecipeList recipeCollection={recipeCollection}/>
-                        }
-                    </article>
-                </section>
-            </ContentWithoutAside>
-            
-        </>
-    );
+  return (
+    <>
+      <Presentation imgUrl={"/test.jpg"}>Dashboard</Presentation>
+      <ContentWithoutAside>
+        <section>
+          <article>
+            {!isPending && recipeCollection && (
+              <RecipeList recipeCollection={recipeCollection} />
+            )}
+          </article>
+        </section>
+      </ContentWithoutAside>
+    </>
+  );
 };
 
 export default Dashboard;
