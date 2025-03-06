@@ -1,10 +1,12 @@
 import { FC } from "react";
-import withLoadingAndError from "../hoc/withLoadingAndError";
+import withLoadingAndError from "../hoc/WithLoadingAndError";
 import OpinionsSkeleton from "./OpinionsSkeleton";
 import { RecipeOpinionsType } from "../../1_types/RecipeOpinionsType";
 import StarRating from "../commun/StarRating";
 import ControlRating from "../commun/ControlRating";
 import "../../styles/opinions.css";
+import OpinionRecipe from "./OpinionRecipe";
+import OpinionMyself from "./OpinionMyself";
 
 type Props = {
   recipeRate: number;
@@ -15,8 +17,6 @@ type Props = {
 };
 
 const OpinionsResume: FC<Props> = ({
-  recipeRate,
-  recipeNbRate,
   opinionsList,
   isLoading,
   error,
@@ -27,22 +27,8 @@ const OpinionsResume: FC<Props> = ({
     data: opinionsList,
     SkeletonComponent: OpinionsSkeleton,
     children: (data) => (
-      <div className="opinion-box">
-        <div className="opinion-recipe">
-          <StarRating rate={recipeRate} size="large" />
-          {recipeRate}/5 sur {recipeNbRate} avis
-        </div>
-        <div className="opinion-myself">
-          <div className="flex-row">
-            <span>Ma note</span>
-            <ControlRating />
-          </div>
-          <textarea
-            placeholder="Votre commentaire..."
-            className="opinion-comment"
-          ></textarea>
-          <button className="opinion-submit">Envoyer</button>
-        </div>
+     <>
+        
 
         {opinionsList && opinionsList.length > 0 ? (
           opinionsList.map((opinion, index) => (
@@ -56,10 +42,11 @@ const OpinionsResume: FC<Props> = ({
           ))
         ) : (
           <div>Aucune note trouvée.</div>
-        )}
-      </div>
-    ),
-  });
-};
+          )}
+          </>
+      ),
+    });
+  };
+
 
 export default OpinionsResume;

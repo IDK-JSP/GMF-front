@@ -1,4 +1,4 @@
-import { Api } from "./Api";
+import { Api } from "./api";
 import { RecipeDetailsType } from "../1_types/RecipeDetailsType";
 
 interface GetRecipeProps {

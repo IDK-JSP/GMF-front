@@ -1,5 +1,5 @@
 import { startTransition } from "react";
-import { Api } from "./Api";
+import { Api } from "./api";
 import { RecipeType } from "../1_types/RecipeType";
 
 export const getRecipe = async (): Promise<RecipeType[]> => {

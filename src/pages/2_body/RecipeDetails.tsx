@@ -11,15 +11,18 @@ import "../../styles/recipe.css";
 import { RecipeType } from "../../1_types/RecipeType";
 import IngredientResume from "../../components/RecipeDetails/IngredientResume";
 import StageResume from "../../components/RecipeDetails/StageResume";
-import OpinionsResume from "../../components/RecipeDetails/OpinionsResume";
 import DietResume from "../../components/RecipeDetails/DietResume";
 import "react-loading-skeleton/dist/skeleton.css";
+import OpinionsDetails from "../../components/RecipeDetails/OpinionsDetails";
+import RecipeSkeleton from "../../components/RecipeDetails/RecipeSkeleton";
 
 const RecipeDetails: FC = () => {
   const location = useLocation();
   let { id } = useParams();
 
+  // Transformer en observable
   const [recipe, setRecipe] = useState<RecipeType | null>(null);
+
   const [recipeDetails, setRecipeDetails] = useState<RecipeDetailsType | null>(
     null
   );
@@ -33,8 +36,9 @@ const RecipeDetails: FC = () => {
   // Récupération de la recette
   useEffect(() => {
     const fetchRecipe = async () => {
-      setIsPending(true);
+      setIsPending(true);  // ✅ Assure que le chargement commence bien
       setError(null);
+  
       try {
         if (location.state?.recipe) {
           setRecipe(location.state.recipe as RecipeType);
@@ -48,12 +52,22 @@ const RecipeDetails: FC = () => {
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : "Erreur inconnue");
-      } finally {
-        setIsPending(false);
       }
     };
+  
     fetchRecipe();
   }, [id, location]);
+  
+  // 🔥 Assurer que `isPending` reste `true` jusqu'à ce que `recipeDetails` soit chargé
+  useEffect(() => {
+    if (recipe?.id_recipe) {
+      setIsPending(true);  // ✅ Remet `isPending` à `true` en attendant les détails
+      getRecipeDetails({ recipe_id: recipe.id_recipe }).then((details) => {
+        setRecipeDetails(details);
+        setIsPending(false);  // ✅ On désactive `isPending` uniquement après ce chargement
+      });
+    }
+  }, [recipe]);
 
   // Récupération des détails de la recette si elle n’est pas déjà chargée
   useEffect(() => {
@@ -62,18 +76,10 @@ const RecipeDetails: FC = () => {
     }
   }, [recipe, recipeDetails]);
 
-  // Composant de gestion des états de chargement / erreur
-  const RenderState = () => {
-    if (isPending) return <p>Chargement...</p>;
-    if (error) return <p style={{ color: "red" }}>{error}</p>;
-    if (!recipe) return <p>Aucune recette trouvée.</p>;
-    return null;
-  };
-
+  
   return (
     <>
-      <RenderState />
-      {recipe && (
+      {recipe ? (
         <>
           <Presentation imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`}>
             {recipe.title}
@@ -101,17 +107,19 @@ const RecipeDetails: FC = () => {
               </section>
             </ContentWithBothAside>
             <AsideRight>
-              <OpinionsResume
-                opinionsList={recipeDetails?.opinions || []}
-                recipeRate={recipe.rate ?? 0}
+              <OpinionsDetails
+                recipeRate={recipe?.rate ?? 0}
                 recipeNbRate={recipe.nbRate ?? 0}
+                recipeId={recipe.id_recipe}
+                opinionList={recipeDetails?.opinions || []}
                 isLoading={isPending}
                 error={error}
               />
             </AsideRight>
           </main>
         </>
-      )}
+      ):
+      <RecipeSkeleton />}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { RecipeStageType } from "../../1_types/RecipeStageType";
-import withLoadingAndError from "../hoc/withLoadingAndError";
+import withLoadingAndError from "../hoc/WithLoadingAndError";
 import StageSkeleton from "./StageSkeleton";
 
 type Props = {
