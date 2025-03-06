@@ -7,7 +7,7 @@ import "../../styles/loginForm.css"
 
 const RegisterForm: FC<{}> = ({}) => {
     const navigate = useNavigate();
-    const {register, handleSubmit, watch, formState: {errors, isSubmitting}} = useForm<RegisterFormType>({
+    const {register, handleSubmit, watch, formState: {errors, isSubmitting, isValid}} = useForm<RegisterFormType>({
         defaultValues: {
             email: "",
             password: "",
@@ -63,13 +63,10 @@ const RegisterForm: FC<{}> = ({}) => {
                 </div>
 
                 <button type="submit" className="login-button"
-                        disabled={isSubmitting}> {/*"disabled" évite le spam du bouton*/}
+                        disabled={isSubmitting || !isValid}> {/*"disabled" évite le spam du bouton*/}
                     S'inscrire
                 </button>
             </form>
-            {/*<p className="register-link" onClick={() => navigate("/Register")}>
-                Déjà inscrit ? Cliquez ici pour vous connecter !
-            </p>*/}
         </div>
     );
 };

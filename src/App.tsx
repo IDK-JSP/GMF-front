@@ -7,10 +7,10 @@ import { DisplayContext } from "./context/DisplayContext";
 import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [role, setRole] = useState("ADMIN");
-  const [token, setToken] = useState("");
-  const [isItem, setIsItem] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [role, setRole] = useState("ADMIN")
+    const [token, setToken] = useState("")
+    const [isItem, setIsItem] = useState(true)
 
   return (
     <BrowserRouter>

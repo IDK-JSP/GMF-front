@@ -1,11 +1,17 @@
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
 .recipe-card {
-    margin: 1rem 0.6rem;
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
 }
 
 .recipe-card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .recipe-card-container {

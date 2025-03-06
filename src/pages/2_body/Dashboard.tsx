@@ -1,16 +1,17 @@
-import { FC, useEffect, useState, useTransition } from "react";
-import { RecipeType } from "../../1_types/RecipeType";
+
+import {FC, useContext, useEffect, useState, useTransition} from 'react';
+import {RecipeType} from "../../1_types/RecipeType";
 import Pages from "../../components/layout/Pages";
 import RecipeList from "../../components/commun/RecipeList";
-import { getRecipe } from "../../api/getRecipe";
-import ContentWithoutAside from "../../components/layout/ContentWithoutAside";
-import Presentation from "../../components/layout/Presentation";
+import {getRecipe} from "../../api/getRecipe";
+import ContentWithoutAside from '../../components/layout/ContentWithoutAside';
+import Presentation from '../../components/layout/Presentation';
+import {AuthContext} from "../../context/AuthContext";
 
 const Dashboard: FC<{}> = ({}) => {
-  const [recipeCollection, setRecipeCollection] = useState<
-    RecipeType[] | undefined
-  >(undefined);
-  const [isPending, startTransition] = useTransition();
+    const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
+    const [isPending, startTransition] = useTransition()
+    const authContext = useContext(AuthContext);
 
   const hydrate = () => {
     // @ts-ignore
@@ -26,7 +27,8 @@ const Dashboard: FC<{}> = ({}) => {
     hydrate();
   }, []);
 
-  console.log(recipeCollection);
+    console.log(recipeCollection)
+    console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token)
 
   return (
     <>
