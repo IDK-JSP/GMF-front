@@ -1,4 +1,3 @@
-
 import {FC, useContext, useEffect, useState, useTransition} from 'react';
 import {RecipeType} from "../../1_types/RecipeType";
 import RecipeList from "../../components/commun/RecipeList";
@@ -12,37 +11,37 @@ const Dashboard: FC<{}> = ({}) => {
     const [isPending, startTransition] = useTransition()
     const authContext = useContext(AuthContext);
 
-  const hydrate = () => {
-    // @ts-ignore
-    startTransition(async () => {
-      const results = await getRecipe();
-      startTransition(() => {
-        setRecipeCollection(results);
-      });
-    });
-  };
+    const hydrate = () => {
+        // @ts-ignore
+        startTransition(async () => {
+            const results = await getRecipe();
+            startTransition(() => {
+                setRecipeCollection(results);
+            });
+        });
+    };
 
-  useEffect(() => {
-    hydrate();
-  }, []);
+        console.log(recipeCollection)
 
-    console.log(recipeCollection)
-    console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token)
+    useEffect(() => {
+        hydrate();
+        console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token)
+    }, []);
 
-  return (
-    <>
-      <Presentation imgUrl={"/test.jpg"}>Dashboard</Presentation>
-      <ContentWithoutAside>
-        <section>
-          <article>
-            {!isPending && recipeCollection && (
-              <RecipeList recipeCollection={recipeCollection} />
-            )}
-          </article>
-        </section>
-      </ContentWithoutAside>
-    </>
-  );
+    return (
+        <>
+            <Presentation imgUrl={"/test.jpg"}>Dashboard</Presentation>
+            <ContentWithoutAside>
+                <section>
+                    <article>
+                        {!isPending && recipeCollection && (
+                            <RecipeList recipeCollection={recipeCollection}/>
+                        )}
+                    </article>
+                </section>
+            </ContentWithoutAside>
+        </>
+    );
 };
 
 export default Dashboard;

@@ -1,0 +1,61 @@
+.navbar-avatar {
+    position: relative;
+}
+
+.avatar-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: var(--color-bg);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.avatar-menu.closed {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+.menu-item {
+    background: none;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    color: var(--color-text-primary);
+}
+
+.menu-item:hover {
+    background-color: var(--color-bg);
+}
+
+.menu-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin: 5px 0;
+}

@@ -1,58 +1,63 @@
-import { FC } from "react";
+import {FC} from "react";
 import FavoriteButton from "../button/FavoriteButton";
-import { RecipeType } from "../../1_types/RecipeType";
-import "../../styles/recipeCard.css";
-import { Rating } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import {RecipeType} from "../../1_types/RecipeType";
+import "../../styles/recipeDisplay.css";
+import {Rating} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
-const RecipeCard: FC<{ recipe: RecipeType }> = ({ recipe }) => {
-  const navigate = useNavigate();
+const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
+    const navigate = useNavigate();
 
-  const handleNavigate = (recipe: RecipeType) => {
-    navigate(`/RecipeDetails/${recipe.id_recipe}`, { state: { recipe } });
-  };
+    const handleNavigate = (recipe: RecipeType) => {
+        navigate(`/RecipeDetails/${recipe.id_recipe}`, {state: {recipe}});
+    };
 
-  return (
-    <div className="recipe-card" onClick={() => handleNavigate(recipe)}>
-      <div className="recipe-card-container">
-        <img
-          src={recipe.image || "https://placehold.co/500x500?text=No\nImage"}
-          alt={recipe.title}
-        />
+    return (
+        <div className="recipe-card" onClick={() => handleNavigate(recipe)}>
 
-        <span className="favorite-button">
-          <FavoriteButton />
-        </span>
-
-        {/*recipe.diet === "vege" && */}
-        <div className="veg-indicator" />
-
-        <div className="recipe-card-content">
-          <h3 className="recipe-title" title={recipe.title}>
-            {recipe.title}
-          </h3>
-
-          <div className="recipe-info">
-            <span>60 min {/*{recipe.time} min*/}</span>
-            <Rating
-              sx={{
-                "& .MuiRating-iconFilled": { color: "orange" },
-                "& .MuiRating-iconEmpty": { color: "orange" },
-              }}
-              name="recipe-rating"
-              defaultValue={recipe.rate}
-              precision={0.01}
-              readOnly
+            <img
+                src={`/recipe/recipe_${recipe.id_recipe}.jpg` || "https://placehold.co/500x500?text=No\nImage"}
+                alt={recipe.title}
+                className="recipe-card-image"
             />
-          </div>
 
-          <p className="recipe-description" title={recipe.content}>
-            {recipe.content}
-          </p>
+            <span className="favorite-btn">
+                <FavoriteButton/>
+            </span>
+
+            {/* Badges V */}
+            {recipe.diet === "Végétarien" &&
+                <div className="vegetarian-badge"/>}
+
+            {recipe.diet === "Végan" &&
+                <div className="vegan-badge"/>}
+
+            <div className="recipe-card-content">
+
+                <h3 className="recipe-title" title={recipe.title}>
+                    {recipe.title}
+                </h3>
+
+                <div className="recipe-card-info">
+                    <span className="recipe-time">60 min {/*{recipe.time} min*/}</span>
+                    <Rating
+                        sx={{
+                            "& .MuiRating-iconFilled": {color: "orange"},
+                            "& .MuiRating-iconEmpty": {color: "orange"},
+                        }}
+                        name="recipe-rating"
+                        defaultValue={recipe.rate}
+                        precision={0.01}
+                        readOnly
+                    />
+                </div>
+
+                <p className="recipe-description" title={recipe.content}>
+                    {recipe.content}
+                </p>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default RecipeCard;

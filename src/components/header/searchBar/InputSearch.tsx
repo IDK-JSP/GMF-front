@@ -19,6 +19,7 @@ export const InputSearch: React.FC = () => {
     const [checkedIngredients, setCheckedIngredients] = useState<IngredientType[]>([]);
     const [affined, setAffined] = useState('');
     const [ingredientList, setIngredientList] = useState<IngredientType[]>([]);
+
     const [recipeList, setRecipelist] = useState<RecipeType[]>([]);
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[]>([]);
     const [ingredientResults, setIngredientResults] = useState<IngredientType[]>([]);
@@ -50,6 +51,7 @@ export const InputSearch: React.FC = () => {
         }
         setIngredientResults(recipeResult?.ingredients);
     });
+
         
        
     }, [search, checkedIngredients]);
