@@ -1,4 +1,4 @@
-import { Api } from "./Api";
+import { api } from "./api";
 import { RecipeType } from "../1_types/RecipeType";
 
 interface GetRecipeProps {
@@ -15,7 +15,7 @@ export const getRecipeFromId = async ({
 
   try {
     // console.log("Appel API avec recipe_id :", recipe_id);
-    const data = await Api(`/recipe/${recipe_id}`, "GET");
+    const data = await api(`/recipe/${recipe_id}`, "GET");
 
     // console.log("Réponse brute API reçue :", data);
 

@@ -1,5 +1,6 @@
 .recipe-stage {
   transform: scale(1);
+  min-height: 100px;
 }
 .recipe-stage:hover {
   transform: scale(1.05);
