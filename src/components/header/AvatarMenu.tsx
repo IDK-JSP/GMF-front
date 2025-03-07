@@ -1,4 +1,4 @@
-import React, {FC, useContext, useState, useEffect, useRef} from "react";
+import React, {FC, useContext, useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import "../../styles/avatarMenu.css";
@@ -45,7 +45,7 @@ const NavBarAvatar: FC = () => {
     return (
         <div className="navbar-avatar" ref={menuRef}>
             <button className="avatar-button" onClick={toggleMenu}>
-                <PersonIcon className="avatar-icon" />
+                <PersonIcon className="avatar-icon"/>
             </button>
             <div className={`avatar-menu ${isOpen ? "open" : "closed"}`}>
                 {!authContext?.isLoggedIn ? (
@@ -61,7 +61,10 @@ const NavBarAvatar: FC = () => {
                             </button>
                         ))}
                         <div className="menu-divider"></div>
-                        <button className="menu-item" onClick={() => authContext?.setIsLoggedIn(false)}>
+                        <button className="menu-item" onClick={() => {
+                            handleCloseMenu();
+                            authContext?.setIsLoggedIn(false);
+                        }}>
                             Déconnexion
                         </button>
                     </>
