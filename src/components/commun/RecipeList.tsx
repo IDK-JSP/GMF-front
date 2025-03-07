@@ -5,7 +5,7 @@ import RecipeCard from "./RecipeCard";
 import DisplayCardOrItem from "../button/DisplayCardOrItem";
 import {RecipeType} from "../../1_types/RecipeType";
 import {DisplayContext} from "../../context/DisplayContext";
-import "../../styles/recipeCard.css";
+import "../../styles/recipeDisplay.css";
 
 const RecipeList: FC<{ recipeCollection: RecipeType[] }> = ({recipeCollection}) => {
 
@@ -17,13 +17,13 @@ const RecipeList: FC<{ recipeCollection: RecipeType[] }> = ({recipeCollection}) 
             {displayContext?.isItem ? (
                 <Grid container spacing={2} justifyContent="center">
                     {recipeCollection.map((recipe) => (
-                        <Grid size={11} key={recipe.id_recipe} paddingBottom={5}>
+                        <Grid size={11} key={recipe.id_recipe} paddingBottom="10px">
                             <RecipeItem recipe={recipe}/>
                         </Grid>
                     ))}
                 </Grid>
             ) : (
-                <div className="recipe-grid">
+                <div className="recipe-card-grid">
                     {recipeCollection.map((recipe) => (
                         <RecipeCard key={recipe.id_recipe} recipe={recipe}/>
                     ))}

@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import {useNavigate} from "react-router-dom";
 import {RecipeType} from "../../1_types/RecipeType";
 import FavoriteButton from "../button/FavoriteButton";
-import "../../styles/recipeItem.css";
+import "../../styles/recipeDisplay.css";
 import StarRating from "./StarRating";
 
 const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
@@ -14,32 +14,34 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
 
     return (
         <div className="recipe-container" onClick={() => handleNavigate(recipe)}>
-            {/* Image de fond */}
+
             <img
                 src={`/recipe/recipe_${recipe.id_recipe}.jpg`}
                 alt={recipe.title}
-                className="recipe-image"
+                className="recipe-item-image"
             />
 
+            {/* Dégradé blanc */}
             <div className="recipe-gradiant"></div>
 
             {/* Contenu principal */}
-            <div className="recipe-content">
-                {/* Bouton Favori */}
+            <div className="recipe-item-content">
+
                 <span className="favorite-btn">
                     <FavoriteButton/>
                 </span>
 
                 {/* Badges V */}
                 {recipe.diet === "Végétarien" &&
-                    <div className="veg-badge"/>}
+                    <div className="vegetarian-badge"/>}
 
                 {recipe.diet === "Végan" &&
                     <div className="vegan-badge"/>}
 
-                <div className="recipe-infos">
+                <div className="recipe-item-info">
                     <h3 className="recipe-title">
-                        {recipe.title} <span className="recipe-time">60min</span>
+                        {recipe.title}
+                        <span className="recipe-time"> 60min</span>
                     </h3>
                     <StarRating rate={recipe.rate} size="medium"/>
                     <p className="recipe-description">{recipe.content}</p>
