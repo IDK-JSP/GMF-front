@@ -1,0 +1,212 @@
+/* Styles Généraux */
+.recipe-container, .recipe-card {
+    display: flex;
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+
+}
+
+.recipe-container {
+    height: 20vh;
+}
+
+.recipe-card {
+    flex-direction: column;
+    height: auto;
+}
+
+.recipe-container:hover, .recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Image des recettes */
+.recipe-item-image {
+    position: absolute;
+    right: 0;
+    left: auto;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.recipe-card-image {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Bouton Favori */
+.favorite-btn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 5;
+}
+
+/* Badges */
+.vegetarian-badge, .vegan-badge {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.vegetarian-badge {
+    background-color: green;
+}
+
+.vegan-badge {
+    background-color: salmon;
+}
+
+/* Contenu des cartes */
+.recipe-item-content, .recipe-card-content {
+    display: flex;
+    padding: 10px;
+    z-index: 1;
+    flex: 1;
+    overflow: hidden;
+}
+
+.recipe-item-content {
+    position: relative;
+    flex-grow: 1;
+    /* max-width: 30%; */
+}
+
+.recipe-card-content {
+    flex-direction: column;
+    background-color: lightgray;
+}
+
+/* Titre */
+.recipe-title {
+    font-size: 25px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Info / Description */
+.recipe-card-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recipe-item-info {
+    max-width: 30%;
+    flex-grow: 1;
+}
+
+.recipe-time {
+    color: gray;
+    font-size: 14px;
+}
+
+.recipe-description {
+    font-size: 18px;
+    color: black;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Éléments spécifiques à RecipeItem */
+.recipe-gradiant {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 35%;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right, var(--color-bg-tr-100), var(--color-bg-tr-100), var(--color-bg-tr-90), transparent);
+}
+
+.recipe-divider {
+    width: 2px;
+    background-color: gray;
+    margin: 0 10px;
+}
+
+.recipe-constraints {
+    z-index: 1;
+    flex-basis: 10%;
+}
+
+.recipe-constraints > * {
+    margin: 10px 0;
+}
+
+/* Grid pour Card */
+.recipe-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .recipe-card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .recipe-title {
+        font-size: 20px;
+    }
+
+    .recipe-description {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .recipe-card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .recipe-title {
+        font-size: 18px;
+    }
+
+    .recipe-description {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .recipe-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recipe-title {
+        font-size: 16px;
+    }
+
+    .recipe-description {
+        font-size: 12px;
+    }
+}
+

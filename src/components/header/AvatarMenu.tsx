@@ -49,7 +49,7 @@ const NavBarAvatar: FC = () => {
             </button>
             <div className={`avatar-menu ${isOpen ? "open" : "closed"}`}>
                 {!authContext?.isLoggedIn ? (
-                    <button className="menu-item" onClick={() => navigate("/Login")}>
+                    <button className="menu-item" onClick={() => handleCloseMenu("/Login")}>
                         Connexion
                     </button>
                 ) : (
@@ -61,7 +61,7 @@ const NavBarAvatar: FC = () => {
                             </button>
                         ))}
                         <div className="menu-divider"></div>
-                        <button className="menu-item logout" onClick={() => authContext?.setIsLoggedIn(false)}>
+                        <button className="menu-item" onClick={() => authContext?.setIsLoggedIn(false)}>
                             Déconnexion
                         </button>
                     </>
