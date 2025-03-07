@@ -10,4 +10,5 @@ export interface RecipeType {
   nbRate?: number;
   create?: string;
   update?: string;
+  matching_ingredients?: number;
 }

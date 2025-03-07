@@ -3,7 +3,7 @@ import axios, { AxiosError } from "axios";
 const hostUrl = "http://localhost:8080";
 
 // Fonction API générique
-export const Api = async (
+export const api = async (
   url: string,
   method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
   body?: any

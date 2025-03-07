@@ -18,7 +18,17 @@ export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, toggl
 
         onMouseEnter={() => toggleResultsVisibility(true)}
         >
-            <input id='text-input' onChange={(e) => setSearch(e.target.value)} type='text' placeholder='Search...' />
+            <input id='text-input'
+            onChange={(e) => setSearch(e.target.value)}
+            // event sir touche entrée
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                    navigate('/Research');
+                }
+            }}
+            
+             type='text'
+             placeholder='Search...' />
             <button id='filter-button' onClick={toggleFilter}>
                 <FilterAltIcon /> <span>({checkedCount})</span>
             </button>
