@@ -1,13 +1,15 @@
-import {FC, useState} from 'react';
+import {FC, useContext, useState} from 'react';
 import {useNavigate} from "react-router";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {RegisterFormType} from "../../1_types/RegisterFormType";
 import {post} from "../../api/post";
 import "../../styles/loginForm.css"
+import {AuthContext} from "../../context/AuthContext";
 
 const RegisterForm: FC<{}> = ({}) => {
     const navigate = useNavigate();
-    const {register, handleSubmit, watch, formState: {errors, isSubmitting, isValid}} = useForm<RegisterFormType>({
+    const authContext = useContext(AuthContext);
+    const {register, handleSubmit, formState: {errors, isSubmitting, isValid}} = useForm<RegisterFormType>({
         defaultValues: {
             email: "",
             password: "",
@@ -32,16 +34,31 @@ const RegisterForm: FC<{}> = ({}) => {
             });
 
             if (response) {
-                console.log("Inscription réussie", response);
-                navigate("/Login");
+                console.log("Inscription réussie", response.data);
+
+                // Connexion automatique après l'inscription
+                const loginResponse = await post("http://localhost:8080/auth/login", {
+                    email: data.email,
+                    password: data.password,
+                });
+
+                if (loginResponse) {
+                    console.log("Connexion réussie", loginResponse.data);
+                    authContext?.setIsLoggedIn(true);
+                    authContext?.setToken(response);
+                    navigate("/Dashboard");
+                } else {
+                    setErrorMessage("Inscription réussie, mais échec de connexion automatique.");
+                }
             } else {
-                setErrorMessage("Erreur lors de l'inscription !");
+                setErrorMessage(response.data);
             }
         } catch (error) {
             setErrorMessage("Une erreur est survenue !");
             console.error("Erreur lors de l'inscription", error);
         }
     };
+
     return (
         <div className="login-card">
             {errorMessage && <p className="error-message">{errorMessage}</p>}
