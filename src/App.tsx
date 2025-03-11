@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import "./App.css";
 import Router from "./routers/Router";
 import {BrowserRouter} from "react-router-dom";
@@ -29,6 +29,7 @@ function App() {
     useEffect(() => {
         localStorage.setItem("role", role);
     }, [role]);
+    
 
     return (
         <BrowserRouter>

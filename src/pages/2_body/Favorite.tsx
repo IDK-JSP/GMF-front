@@ -17,6 +17,7 @@ const [isPending, setIsPending] = useState<boolean>(true);
 const [error, setError] = useState<string | null>(null);  
 const [recipes, setRecipes] = useState<RecipeType[] | null>(null);
 const [ingredients, setIngredients] = useState<IngredientType[] | null>(null);
+const [imagePresentation, setImagePresentation] = useState<string>("research.jpg");
 
 const hydrate = () => {
         startTransition(async () => {
@@ -37,6 +38,13 @@ const hydrate = () => {
         hydrate();
     }, []);
 
+// récupération de la premiere recette pour afficher l'image en fond
+useEffect(() => {
+  if (recipes !== null && recipes.length > 0 ) {
+    setImagePresentation("recipe/recipe_" + recipes[0].id_recipe + ".jpg");
+    console.log('imagePresentation', imagePresentation)
+  }
+}, [recipes]);
 
   return (
     <>
