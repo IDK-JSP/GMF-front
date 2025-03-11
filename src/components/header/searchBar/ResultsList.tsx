@@ -14,7 +14,6 @@ interface FilterSelectionProps {
     checkedIngredients: IngredientType[];
     handleCheck: (event: React.ChangeEvent<HTMLInputElement>) => void;
     handleClearSearch: () => void;
-    toggleResultsVisibility: (value: boolean) => void;
 }
 
 
@@ -25,7 +24,6 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
                                                                     checkedIngredients,
                                                                     handleCheck,
                                                                     handleClearSearch,
-                                                                    toggleResultsVisibility
                                                                 }) => {
     const navigate = useNavigate();
 
@@ -37,8 +35,6 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
     
     return (
         <div className='results-container'
-            // onMouseOut={() => setTimeout(() => toggleResultsVisibility() , 1000)}
-             onMouseLeave={() => setTimeout(() => toggleResultsVisibility(false), 1000)}
              style={{
                  display: resultIsVisible ? 'block' : 'none',
                  opacity: resultIsVisible ? '1' : '0',

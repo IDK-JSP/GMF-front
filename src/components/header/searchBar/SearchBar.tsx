@@ -8,15 +8,12 @@ interface SearchBarProps {
     setSearch: (value: string) => void;
     toggleFilter: () => void;
     checkedCount: number;
-    toggleResultsVisibility: (value:boolean) => void;
 }
 
-export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, toggleResultsVisibility }: SearchBarProps) => {
+export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount }: SearchBarProps) => {
     const navigate = useNavigate();
     return (
         <div className='search-container'
-
-        onMouseEnter={() => toggleResultsVisibility(true)}
         >
             <input id='text-input'
             onChange={(e) => setSearch(e.target.value)}

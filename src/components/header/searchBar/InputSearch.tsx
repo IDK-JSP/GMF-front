@@ -1,4 +1,4 @@
-import React, { useDebugValue, useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { getIngredients } from "../../../api/getIngredients";
 import { IngredientType } from "../../../1_types/IngredientType";
 import { RecipeType } from "../../../1_types/RecipeType";
@@ -54,19 +54,27 @@ export const InputSearch: React.FC = () => {
     });
   }, [search, checkedIngredients]);
 
-  // Test : retrait de la gestion de la visibilité des résultats
-
-  //   useEffect(() => {
-  //     if (checkedIngredients.length > 0 || search.length > 0) {
-  //       setResultIsVisible(true);
-  //     } else {
-  //       setResultIsVisible(false);
-  //     }
-  //   }, [checkedIngredients, search]);
-
   const handleSwitchVisibility = () => setFilterIsVisible(!filterIsVisible);
   const handleResultsVisibility = (value: boolean) => setResultIsVisible(value);
 
+
+  // Gestion de l'affichage des résultats
+  const containerRef = useRef<HTMLDivElement>(null);
+  const handleClickInside = () => {
+    setResultIsVisible(true);
+  };
+  const handleClickOutside = (event: MouseEvent) => {
+    if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      setResultIsVisible(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
     setCheckedIngredients((prev) =>
@@ -83,11 +91,11 @@ export const InputSearch: React.FC = () => {
   };
 
   return (
-    <div className="search-bar">
+    <div className="search-bar" ref={containerRef}
+    onClick={handleClickInside}>
       <SearchBar
         search={search}
         setSearch={setSearch}
-        toggleResultsVisibility={handleResultsVisibility}
         toggleFilter={handleSwitchVisibility}
         checkedCount={checkedIngredients.length}
       />
@@ -101,7 +109,6 @@ export const InputSearch: React.FC = () => {
       />
       <ResultsList
         resultIsVisible={resultIsVisible}
-        toggleResultsVisibility={handleResultsVisibility}
         recipeResults={recipeCollection}
         ingredientResults={ingredientResults}
         checkedIngredients={checkedIngredients}
@@ -114,45 +121,4 @@ export const InputSearch: React.FC = () => {
 
 export default InputSearch;
 
-// import { useState, useRef, useEffect } from "react";
 
-// const ToggleComponent = () => {
-//   const [isVisible, setIsVisible] = useState(false);
-//   const containerRef = useRef(null); // Référence pour englober les deux divs
-
-//   const handleClickInside = () => {
-//     setIsVisible(true);
-//   };
-
-//   const handleClickOutside = (event) => {
-//     if (containerRef.current && !containerRef.current.contains(event.target)) {
-//       setIsVisible(false);
-//     }
-//   };
-
-//   useEffect(() => {
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, []);
-
-//   return (
-//     <div ref={containerRef} className="relative">
-//       <div
-//         className="p-4 bg-blue-500 text-white cursor-pointer"
-//         onClick={handleClickInside}
-//       >
-//         Cliquer ici
-//       </div>
-
-//       {isVisible && (
-//         <div className="absolute top-12 left-0 p-4 bg-gray-300 shadow-md">
-//           Je suis visible !
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default ToggleComponent;
