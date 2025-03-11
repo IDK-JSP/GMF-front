@@ -11,21 +11,17 @@ interface FavoriteButtonProps {
 }
 
 const handleFavorite = (id: number, type: string) => {
-    postFavorite("recipe", id);
+    postFavorite(type, id);
     console.log(`Favorite button clicked for id: ${id}`);
 };
 
-
-
-
-
-const FavoriteButton: FC<FavoriteButtonProps> = ({ id }) => {
+const FavoriteButton: FC<FavoriteButtonProps> = ({ id,type }) => {
     const authContext = useContext(AuthContext);
     return (
         <>
         {authContext?.isLoggedIn ? (
           <IconButton aria-label="add to Favorite" title="Ajouter aux favoris"
-          onClick={() => handleFavorite(id, "recipe")}
+          onClick={() => handleFavorite(id, type)}
                         sx={{
                             padding: "0px",
                             transition: "transform 0.3s ease-in-out", "&:hover": {transform: "scale(1.2)"}

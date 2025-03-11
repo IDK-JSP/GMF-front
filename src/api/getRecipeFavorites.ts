@@ -8,22 +8,22 @@ interface GetRecipeFavoritesProps {
 export const getRecipeFavorites = async ({
   email,
 }: GetRecipeFavoritesProps): Promise<FavoritesType | null> => {
-  if (!email || email === undefined) {
-    console.error("Erreur : `user_mail` est invalide !");
+  if (!email) {
+    console.error("Erreur : `email` est invalide !");
     return null;
   }
 
   try {
-    const data = await api(`favorite/search?email=${email}`, "GET");
+    const data = await api(`/favorite/search?email=${encodeURIComponent(email)}`, "GET");
 
-    if (!data) {
-      console.error("Erreur : Aucune donnée reçue de l'API !");
+    if (!data || (Array.isArray(data) && data.length === 0) || Object.keys(data).length === 0) {
+      console.warn("Aucune recette favorite trouvée pour cet utilisateur.");
       return null;
     }
 
     return data as FavoritesType;
   } catch (error) {
-    console.error("Erreur lors de la récupération des données :", error);
+    console.error("Erreur lors de la récupération des favoris :", error);
     return null;
   }
 };

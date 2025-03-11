@@ -12,7 +12,7 @@ export const api = async (
   const urlFinal = hostUrl + url;
 
   const token = localStorage.getItem("token");
-  console.log("token" + token);
+
 
 
   // Ajout du token dans les headers
@@ -22,7 +22,6 @@ export const api = async (
   };
 
   try {
-    console.log("token" + token);
     const response = await axios({
       url: urlFinal,
       method,
