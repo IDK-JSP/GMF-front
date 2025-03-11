@@ -31,23 +31,20 @@ const IngredientResume: FC<Props> = ({
     SkeletonComponent: IngredientSkeleton,
     children: (data) => (
       <>
-        <p>
-          
-
-          <label htmlFor="tentacles">{data.length} ingrédients pour {person} personne(s) : </label>
-          <input type="number" id="tentacles" name="tentacles" min={1} max={100} defaultValue={person} onChange={handleChangePerson}/>
-        </p>
+      <article>
+        <div className="flex-row">
+          <label htmlFor="person"><h3>Recette pour </h3></label>
+          <input type="number" id="person" name="person" min={1} max={100} defaultValue={person} onChange={handleChangePerson}/>
+        </div>
         {data.map((ingredient, index) => (
-          <div key={index}>
-            <span>{ingredient.ingredient_name}</span>
+          <div key={index} className="flex-row">
+            <span style={{ flex: 1 }}>{ingredient.ingredient_name}</span>
             
-            <span> {Math.round((ingredient.quantity * personUpdate / person) * 10) / 10}</span>
-            <span> {ingredient.measurement}</span>
-            <span>
-              <small> ({ingredient.diet})</small>
-            </span>
+            <span style={{ marginLeft: '10px' }}>{Math.round((ingredient.quantity * personUpdate / person) * 10) / 10}</span>
+            <span style={{ marginLeft: '10px' }}>{ingredient.measurement}</span>
           </div>
         ))}
+        </article>
       </>
     ),
   });

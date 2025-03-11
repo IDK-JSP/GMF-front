@@ -63,12 +63,8 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
 
     return (
         <React.Fragment key={recipe.id_recipe}>
-            <span>match ({recipe.matching_ingredients}) - {Number(matchPercent)}</span>
-            <div style={{
-                border: Number(matchPercent) === 1 ? '2px solid green' :
-                        Number(matchPercent) > 0.5 ? '2px solid orange' :
-                        '2px solid red',
-                }}>
+            {/* <span>match ({recipe.matching_ingredients}) - {Number(matchPercent)}</span> */}
+            <div id= {matchPercent === '1.00' ? 'matching' : 'not-matching'}>
             <RecipeItem recipe={recipe} />
             </div>
         </React.Fragment>

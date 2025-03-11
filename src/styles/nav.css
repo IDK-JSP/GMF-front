@@ -248,3 +248,11 @@
     width: 50%;
     gap: 10px;
   }
+
+  #matching > div {
+    box-shadow: #4CAF50 1px 1px 5px;
+  }
+
+  #not-matching > div {
+    box-shadow: #FF0000 1px 1px 5px;
+  }
