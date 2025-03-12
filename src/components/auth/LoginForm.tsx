@@ -38,7 +38,6 @@ const LoginForm: FC<{}> = ({}) => {
 
     return (
         <div className="login-card">
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-group">
                     <label>Email</label>
@@ -50,12 +49,13 @@ const LoginForm: FC<{}> = ({}) => {
                     <input type="password" {...register("password", {required: "Mot de passe requis"})} />
                     {errors.password && <p className="error-text">{errors.password.message}</p>}
                 </div>
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <button type="submit" className="login-button"
                         disabled={isSubmitting}> {/*"disabled" évite le spam du bouton*/}
                     Se connecter
                 </button>
             </form>
-           {/* <p className="register-link" onClick={() => navigate("/Register")}>
+            {/* <p className="register-link" onClick={() => navigate("/Register")}>
                 Pas encore de compte ? Cliquez ici pour vous inscrire !
             </p>*/}
         </div>
