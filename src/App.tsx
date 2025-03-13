@@ -44,7 +44,17 @@ function App() {
                 </DisplayContext.Provider>
             </AuthContext.Provider>
         </BrowserRouter>
-        <ToastContainer />
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            />
         </>
     );
 }
