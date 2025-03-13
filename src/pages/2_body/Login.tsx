@@ -9,6 +9,7 @@ const Login: FC<{}> = ({}) => {
     const formContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        window.scrollTo({top: 0, behavior: "smooth"});
         const handleClickOutside = (event: MouseEvent) => {
             if (formContainerRef.current && !formContainerRef.current.contains(event.target as Node)) {
                 setActiveForm('none');

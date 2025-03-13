@@ -31,6 +31,7 @@ const Dashboard: FC<{}> = ({}) => {
     console.log(recipeCollectionCut)
 
     useEffect(() => {
+        window.scrollTo({top: 0, behavior: "smooth"});
         hydrate();
         console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token)
         if (authContext?.token) {
