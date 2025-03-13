@@ -40,6 +40,7 @@ export const api = async (
             switch (status) {
                 case 400:
                     toast.error(`⛔ Erreur 400 : ${message}`);
+                    localStorage.removeItem("token");
                     break;
                 case 401:
                     toast.warn(`🔒 Erreur 401 : Non autorisé`);
