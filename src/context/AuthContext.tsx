@@ -9,4 +9,5 @@ interface AuthContextProps {
     setRole: any;
     token: string;
     setToken: any;
+    setAuthContext?: (authContext: Partial<AuthContextProps>) => void;
 }

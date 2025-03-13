@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-const Error: FC<{}> = ({}) => {
+const ErrorPage: FC<{}> = ({}) => {
     return (
         <>
             <h3>Y a une erreur là mon reuf</h3>
@@ -8,4 +8,4 @@ const Error: FC<{}> = ({}) => {
     );
 };
 
-export default Error;
+export default ErrorPage;

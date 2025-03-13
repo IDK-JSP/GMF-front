@@ -5,7 +5,6 @@ import { ResultsList$ } from "../../observables/ResultsList$";
 import { RecipeType } from "../../1_types/RecipeType";
 import RecipeList from "../../components/commun/RecipeList";
 import { IngredientType } from "../../1_types/IngredientType";
-import { getIngredients } from "../../api/getIngredients";
 import Presentation from "../../components/layout/Presentation";
 
 const Research: FC<{}> = ({}) => {
@@ -14,6 +13,7 @@ const Research: FC<{}> = ({}) => {
   const [checkedIngredients, setCheckedIngredients] = useState<
     IngredientType[]
   >([]);
+  const [imagePresentation, setImagePresentation] = useState<string>("reseach.jpg");
 
   useEffect(() => {
     // S'abonner à l'observable pour écouter les changements
@@ -21,9 +21,17 @@ const Research: FC<{}> = ({}) => {
     return () => subscription.unsubscribe(); // Nettoyage de l'abonnement
   }, []);
 
+// récupération de la premiere recette pour afficher l'image en fond
+  useEffect(() => {
+    if (recipeCollection.length > 0) {
+      setImagePresentation("recipe/recipe_" + recipeCollection[0].id_recipe + ".jpg");
+    }
+  }, [recipeCollection]);
+
   return (
     <>
-      <Presentation imgUrl={"/test.jpg"}>Recherches</Presentation>
+      <Presentation imgUrl={imagePresentation}>Recherches</Presentation>
+      <main>
       <AsideLeft>Aside avec les filtrages</AsideLeft>
       <ContentWithLeftAside>
         <section>
@@ -33,6 +41,7 @@ const Research: FC<{}> = ({}) => {
           </article>
         </section>
       </ContentWithLeftAside>
+      </main>
     </>
   );
 };

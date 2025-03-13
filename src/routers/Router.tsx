@@ -1,10 +1,9 @@
-import {FC, useContext} from 'react';
+import {FC, useContext, useEffect} from 'react';
 import {Navigate, Route, Routes} from 'react-router';
 import Layout from "../layout/Layout";
 import RecipeDetails from '../pages/2_body/RecipeDetails';
 import Research from "../pages/2_body/Research";
 import Register from "../pages/2_body/Register";
-import Error from "../pages/2_body/Error";
 import UserRecipes from "../pages/2_body/UserRecipes";
 import {AuthContext} from "../context/AuthContext";
 import AdminDashboard from "../pages/2_body/AdminDashboard";
@@ -13,9 +12,27 @@ import Favorite from "../pages/2_body/Favorite";
 import Settings from "../pages/2_body/Settings";
 import Login from "../pages/2_body/Login";
 import Dashboard from "../pages/2_body/Dashboard";
+import { isTokenExpired } from '../components/auth/isTokenExpired';
+import { clearAuthContext } from '../components/auth/clearAuthContext';
+import ErrorPage from '../pages/2_body/ErrorPage';
 
 const Router: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext)
+    const context = useContext(AuthContext);
+
+    if (!context) {
+      throw new Error("AuthContext doit être utilisé dans un AuthProvider");
+    }
+  
+    const { setAuthContext } = context;
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+    
+        if (isTokenExpired(token) && setAuthContext) {
+          clearAuthContext(setAuthContext);
+        }
+      }, []);
 
     return (
         <Routes>
@@ -43,7 +60,7 @@ const Router: FC<{}> = ({}) => {
                 </Route>}
 
             <Route element={<Layout/>}>
-                <Route path="Error" element={<Error/>}/>
+                <Route path="Error" element={<ErrorPage/>}/>
                 <Route path="*" element={<Navigate to="/Error" replace/>}/>
             </Route>
         </Routes>

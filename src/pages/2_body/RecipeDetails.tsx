@@ -15,6 +15,8 @@ import DietResume from "../../components/RecipeDetails/DietResume";
 import "react-loading-skeleton/dist/skeleton.css";
 import OpinionsDetails from "../../components/RecipeDetails/OpinionsDetails";
 import RecipeSkeleton from "../../components/RecipeDetails/RecipeSkeleton";
+import Favorite from "./Favorite";
+import FavoriteButton from "../../components/button/FavoriteButton";
 
 const RecipeDetails: FC = () => {
   const location = useLocation();
@@ -83,6 +85,7 @@ const RecipeDetails: FC = () => {
         <>
           <Presentation imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`}>
             {recipe.title}
+            <FavoriteButton id={recipe.id_recipe} type="recipe"/>
           </Presentation>
           <main>
             <AsideLeft>

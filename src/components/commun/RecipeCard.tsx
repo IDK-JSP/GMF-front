@@ -22,7 +22,7 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
             />
 
             <span className="favorite-btn">
-                <FavoriteButton/>
+                <FavoriteButton id={recipe.id_recipe} type="recipe"/>
             </span>
 
             {/* Badges V */}
