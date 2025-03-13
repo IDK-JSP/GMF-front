@@ -11,7 +11,7 @@ interface FavoriteButtonProps {
 }
 
 const handleFavorite = (id: number, type: string) => {
-    toast("Favoris ajouté");
+    toast.success("Favoris ajouté");
     postFavorite(type, id);
     console.log(`Favorite button clicked for id: ${id}`);
 };

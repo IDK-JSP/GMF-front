@@ -1,12 +1,8 @@
-import { startTransition } from "react";
 import { api } from "./api";
 import { RecipeType } from "../1_types/RecipeType";
 
 export const getRecipe = async (): Promise<RecipeType[]> => {
     try {
-    //   // Gestion des filtres de recherche
-    //   const category = filtersProp.category ?? "all";
-    //   const productName = filtersProp.productName ?? "";
 
       try {
         let response;

@@ -9,9 +9,10 @@ interface SearchBarProps {
     toggleFilter: () => void;
     checkedCount: number;
     handleForceClose: () => void;
+    handleClickInside?: () => void;
 }
 
-export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handleForceClose}: SearchBarProps) => {
+export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handleForceClose, handleClickInside}: SearchBarProps) => {
 
     const handleClick = () => {
         handleForceClose();
@@ -24,6 +25,7 @@ export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handl
         >
             <input id='text-input'
             onChange={(e) => setSearch(e.target.value)}
+            onClick={handleClickInside}
             // event si touche entrée
             onKeyDown={(e) => {
                 if (e.key === 'Enter') {
