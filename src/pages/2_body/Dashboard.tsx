@@ -33,7 +33,7 @@ const Dashboard: FC<{}> = ({}) => {
     useEffect(() => {
         window.scrollTo({top: 0, behavior: "smooth"});
         hydrate();
-        console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token)
+        console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token, "local", localStorage.getItem("token"))
     }, []);
 
     return (

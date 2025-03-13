@@ -24,8 +24,8 @@ const LoginForm: FC<{}> = ({}) => {
             const response = await post(`http://localhost:8080/auth/login`, data);
 
             if (response) {
-                authContext?.setIsLoggedIn(true);
-                authContext?.setToken(response);
+                console.log("response", response)
+                authContext.login(response);
                 navigate("/Dashboard");
             } else {
                 setErrorMessage("Identifiants incorrects !");

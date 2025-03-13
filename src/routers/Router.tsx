@@ -12,29 +12,23 @@ import Favorite from "../pages/2_body/Favorite";
 import Settings from "../pages/2_body/Settings";
 import Login from "../pages/2_body/Login";
 import Dashboard from "../pages/2_body/Dashboard";
-import { isTokenExpired } from '../components/auth/isTokenExpired';
-import { clearAuthContext } from '../components/auth/clearAuthContext';
+import {isTokenExpired} from '../components/auth/isTokenExpired';
 import ErrorPage from '../pages/2_body/ErrorPage';
 
-
 const Router: FC<{}> = ({}) => {
-    const authContext = useContext(AuthContext)
-    const context = useContext(AuthContext);
+    const authContext = useContext(AuthContext);
 
-    if (!context) {
-      throw new Error("AuthContext doit être utilisé dans un AuthProvider");
+    if (!authContext) {
+        throw new Error("AuthContext doit être utilisé dans un AuthProvider");
     }
-  
-    const { setAuthContext } = context;
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        console.log("Token verification :", token);
-        if (isTokenExpired(token) && setAuthContext) {
-            console.log("Token expiré");
-          clearAuthContext(setAuthContext);
+
+        if (isTokenExpired(token)) {
+            authContext.logout();
         }
-      }, []);
+    }, [authContext]);
 
     return (
         <Routes>

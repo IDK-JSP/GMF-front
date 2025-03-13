@@ -1,44 +1,46 @@
-import axios, { AxiosError } from "axios";
+import axios, {AxiosError} from "axios";
+import {isTokenExpired} from "../components/auth/isTokenExpired";
 
 const hostUrl = "http://localhost:8080";
 
-// ✅ Fonction API qui prend le token en paramètre
 export const apiAuth = async (
-  url: string,
-  method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
-  token: string | null,
-  body?: any
+    url: string,
+    method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
+    body?: any
 ): Promise<any | null> => {
-  const urlFinal = hostUrl + url;
+    let token = localStorage.getItem("token");
 
-  // Ajout du token dans les headers
-  const headers = {
-    "Content-Type": "application/json",
-    ...(token ? { Authorization: `Bearer ${token}` } : {}),
-  };
-
-  try {
-    const response = await axios({
-      url: urlFinal,
-      method,
-      data: body,
-      headers,
-      withCredentials: true,
-    });
-
-    return response.data;
-  } catch (error) {
-    const axiosError = error as AxiosError;
-
-    if (axiosError.response) {
-      console.error("❌ Erreur serveur :", axiosError.response.data);
-      console.error("📌 Code statut :", axiosError.response.status);
-    } else if (axiosError.request) {
-      console.error("🚫 Aucune réponse du serveur :", axiosError.request);
-    } else {
-      console.error("⚙️ Erreur de configuration :", axiosError.message);
+    // Vérifier si le token est expiré
+    if (token && isTokenExpired(token)) {
+        console.warn("Token expiré, déconnexion...");
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+        token = null;
     }
 
-    throw axiosError; // ✅ On lance l'erreur au lieu de retourner `null`
-  }
+    const headers = {
+        "Content-Type": "application/json",
+        ...(token ? {Authorization: `Bearer ${token}`} : {}),
+    };
+
+    try {
+        const response = await axios({
+            url: hostUrl + url,
+            method,
+            data: body,
+            headers,
+            withCredentials: true,
+        });
+        return response.data;
+    } catch (error) {
+        const axiosError = error as AxiosError;
+        if (axiosError.response) {
+            console.error("❌ Erreur serveur :", axiosError.response.data);
+        } else if (axiosError.request) {
+            console.error("🚫 Aucune réponse du serveur :", axiosError.request);
+        } else {
+            console.error("⚙️ Erreur de configuration :", axiosError.message);
+        }
+        throw axiosError;
+    }
 };

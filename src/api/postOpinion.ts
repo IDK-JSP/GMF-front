@@ -10,10 +10,9 @@ const postOpinion = async (
     const response = await apiAuth(
       `/opinion/new`, // URL de l'API
       "POST",
-      token,
       {
         id_recipe: recipeId, // Correspond à la clé étrangère vers `recipe`
-        rate: rating  // Note (1 à 5)
+        rate: rating,  // Note (1 à 5)
         // comment: comment || null,  // Envoie `null` si vide
       }
     );
