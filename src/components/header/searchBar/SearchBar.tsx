@@ -17,7 +17,7 @@ export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount }: Sea
         >
             <input id='text-input'
             onChange={(e) => setSearch(e.target.value)}
-            // event sir touche entrée
+            // event si touche entrée
             onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                     navigate('/Research');
