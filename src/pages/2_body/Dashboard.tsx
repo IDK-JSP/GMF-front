@@ -9,6 +9,7 @@ import "../../styles/recipeDisplay.css";
 import "../../styles/dashboard.css";
 import {Typography} from "@mui/material";
 import {useNavigate} from "react-router";
+import RecipeCarousel from "../../components/RecipeCarousel";
 
 const Dashboard: FC<{}> = ({}) => {
     const navigate = useNavigate()
@@ -41,6 +42,7 @@ const Dashboard: FC<{}> = ({}) => {
                 <section>
                     {!isPending && recipeCollectionCut && (
                         <>
+                            <RecipeCarousel recipeCollection={recipeCollectionCut}/>
                             <article>
                                 <div className="article-header">
                                     <Typography variant="h5">Meilleures Notes</Typography>
