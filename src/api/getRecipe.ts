@@ -10,7 +10,7 @@ export const getRecipe = async (): Promise<RecipeType[]> => {
 
       try {
         let response;
-        response = await api("/recipe/all");
+        response = await api("/collection/top");
         return response as RecipeType[];
         
       } catch (error) {
