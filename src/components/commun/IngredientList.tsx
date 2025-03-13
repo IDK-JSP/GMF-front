@@ -1,6 +1,7 @@
 import {FC, useContext, useEffect, useState} from 'react';
 import "../../styles/recipeDisplay.css";
 import { IngredientType } from '../../1_types/IngredientType';
+import { toast } from 'react-toastify';
 
 interface Props {
     ingredientList: IngredientType[];
@@ -16,12 +17,12 @@ export const IngredientList: React.FC<Props> = ({ ingredientList, favoriteIngred
 
 const handleAddFavorite = (ingredient: IngredientType) => {
     setFavoriteIngredients([...favoriteIngredients, ingredient]);
-
+    toast("Favoris ajouté");
     console.log("add favoriteIngredients", favoriteIngredients);
 };
 const handleRemoveFavorite = (ingredient: IngredientType) => {
     setFavoriteIngredients(favoriteIngredients.filter((fav) => fav.name !== ingredient.name));
-
+    toast("Favoris retiré");
     console.log("remove favoriteIngredients", favoriteIngredients);
 };
 

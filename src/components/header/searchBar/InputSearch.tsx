@@ -7,7 +7,11 @@ import FilterSelection from "./FilterSelection";
 import "../../../styles/nav.css";
 import ResultsList from "./ResultsList";
 import { ResultsList$ } from "../../../observables/ResultsList$";
+import { IngredientList$ } from "../../../observables/IngredientList$";
 import postSearch from "../../../api/postSearch";
+
+// TODO : Utiliser l'observable pour mettre à jour la liste des ingrédients
+
 
 export const InputSearch: React.FC = () => {
   // Gestion de la visibilité des composants
@@ -29,8 +33,11 @@ export const InputSearch: React.FC = () => {
   useEffect(() => {
     // S'abonner à l'observable pour écouter les changements
     const subscription = ResultsList$.subscribe(setRecipeCollection);
-    console.log("mise ajour collection");
-    return () => subscription.unsubscribe(); // Nettoyage de l'abonnement
+    const subscription2 = IngredientList$.subscribe(setIngredientList);
+    return () => {
+      subscription.unsubscribe();
+      subscription2.unsubscribe();
+    };
   }, []);
 
   // Récupération de la liste des ingrédients du site
@@ -40,22 +47,18 @@ export const InputSearch: React.FC = () => {
 
   // Récupération de la recherche et des ingrédients :
   useEffect(() => {
-    console.log("search", search);
     const ingredientsId = checkedIngredients.map((ing) => ing.id_ingredient);
-    console.log("checkedIngredients", ingredientsId);
 
     postSearch(search, ingredientsId).then((recipeResult) => {
       // Mise à jour de l'observable en fonction de la recherche
       if (recipeResult?.recipes) {
         ResultsList$.next(recipeResult.recipes);
-        console.log("mise à jour observable : ", recipeResult.recipes);
       }
       setIngredientResults(recipeResult?.ingredients);
     });
   }, [search, checkedIngredients]);
 
   const handleSwitchVisibility = () => setFilterIsVisible(!filterIsVisible);
-  const handleResultsVisibility = (value: boolean) => setResultIsVisible(value);
 
 
   // Gestion de l'affichage des résultats
@@ -68,13 +71,18 @@ export const InputSearch: React.FC = () => {
       setResultIsVisible(false);
     }
   };
+  const handleForceClose = () => {
+    setTimeout(() => {
+      setResultIsVisible(false);
+    }, 100);
+  };
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
+
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
     setCheckedIngredients((prev) =>
@@ -82,12 +90,14 @@ export const InputSearch: React.FC = () => {
         ? [...prev, ingredientList.find((ing) => ing.name === value)!]
         : prev.filter((ing) => ing.name !== value)
     );
+    // Mise à jour de l'observable en fonction des ingrédients cochés
+    IngredientList$.next(checkedIngredients); // Mise à jour de l'observable avec la liste mise à jour
   };
 
   //handle pour vider la barre de recherche :
   const handleClearSearch = () => {
     setSearch("");
-    console.log("clear search");
+    console.log("DEBUG : clear search");
   };
 
   return (
@@ -98,6 +108,7 @@ export const InputSearch: React.FC = () => {
         setSearch={setSearch}
         toggleFilter={handleSwitchVisibility}
         checkedCount={checkedIngredients.length}
+        handleForceClose={handleForceClose}
       />
       <FilterSelection
         filterIsVisible={filterIsVisible}
@@ -114,6 +125,7 @@ export const InputSearch: React.FC = () => {
         checkedIngredients={checkedIngredients}
         handleCheck={handleCheck}
         handleClearSearch={handleClearSearch}
+        handleForceClose={handleForceClose}
       />
     </div>
   );

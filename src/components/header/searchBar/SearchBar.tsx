@@ -8,9 +8,16 @@ interface SearchBarProps {
     setSearch: (value: string) => void;
     toggleFilter: () => void;
     checkedCount: number;
+    handleForceClose: () => void;
 }
 
-export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount }: SearchBarProps) => {
+export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handleForceClose}: SearchBarProps) => {
+
+    const handleClick = () => {
+        handleForceClose();
+        navigate('/Research');
+      };
+
     const navigate = useNavigate();
     return (
         <div className='search-container'
@@ -20,7 +27,7 @@ export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount }: Sea
             // event si touche entrée
             onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                    navigate('/Research');
+                    handleClick();
                 }
             }}
             
@@ -29,7 +36,7 @@ export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount }: Sea
             <button id='filter-button' onClick={toggleFilter}>
                 <FilterAltIcon /> <span>({checkedCount})</span>
             </button>
-            <button id='validate-button' onClick={() => navigate('/Research')}><SearchIcon /></button>
+            <button id='validate-button' onClick={handleClick}><SearchIcon /></button>
         </div>
     );
 };

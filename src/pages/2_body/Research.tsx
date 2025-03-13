@@ -6,6 +6,8 @@ import { RecipeType } from "../../1_types/RecipeType";
 import RecipeList from "../../components/commun/RecipeList";
 import { IngredientType } from "../../1_types/IngredientType";
 import Presentation from "../../components/layout/Presentation";
+import FilterSelection from "../../components/header/searchBar/FilterSelection";
+import { IngredientList$ } from "../../observables/IngredientList$";
 
 const Research: FC<{}> = ({}) => {
   const [recipeCollection, setRecipeCollection] = useState<RecipeType[]>([]);
@@ -32,7 +34,33 @@ const Research: FC<{}> = ({}) => {
     <>
       <Presentation imgUrl={imagePresentation}>Recherches</Presentation>
       <main>
-      <AsideLeft>Aside avec les filtrages</AsideLeft>
+      <AsideLeft>
+        {/* map sur IngredientList$ */}
+        {IngredientList$.value.map((ingredient) => (
+          <div key={ingredient.id_ingredient}>
+            <input
+              type="checkbox"
+              id={ingredient.name}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setCheckedIngredients([...checkedIngredients, ingredient]);
+                } else {
+                  setCheckedIngredients(
+                    checkedIngredients.filter(
+                      (checkedIng) => checkedIng.id_ingredient !== ingredient.id_ingredient
+                    )
+                  );
+                }
+              }}
+              checked={checkedIngredients.some(
+                (checkedIng) => checkedIng.id_ingredient === ingredient.id_ingredient
+              )}
+            />
+            <label htmlFor={ingredient.name}>{ingredient.name}</label>
+          </div>
+        ))}
+
+      </AsideLeft>
       <ContentWithLeftAside>
         <section>
           section

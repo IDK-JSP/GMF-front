@@ -14,6 +14,7 @@ interface FilterSelectionProps {
     checkedIngredients: IngredientType[];
     handleCheck: (event: React.ChangeEvent<HTMLInputElement>) => void;
     handleClearSearch: () => void;
+    handleForceClose: () => void;
 }
 
 
@@ -24,6 +25,7 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
                                                                     checkedIngredients,
                                                                     handleCheck,
                                                                     handleClearSearch,
+                                                                    handleForceClose,
                                                                 }) => {
     const navigate = useNavigate();
 
@@ -31,6 +33,10 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
         const ingredientName = event.target.value;
         handleCheck(event);
         handleClearSearch();
+    };
+    const handleValidate = () => {
+        navigate('/Research');
+        handleForceClose();
     };
     
     return (
@@ -72,7 +78,7 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
                 {recipeResults.length == 0 && "aucun résultats"}
                 {recipeResults.length == 1 && "1 recette trouvée"}
                 {recipeResults.length > 1 && recipeResults.length + " recettes trouvées"}
-                <button id='results-button' onClick={() => navigate('/Research')}>
+                <button id='results-button' onClick={() => handleValidate()}>
                 {recipeResults.length == 0 && "Aller à la page de recherche"}
                     {recipeResults.length > 0 && "tout afficher"}
                 </button>

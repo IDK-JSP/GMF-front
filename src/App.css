@@ -35,7 +35,7 @@
   --color-bg-tr-100: rgba(236, 236, 236, 1); /* var(--color-bg-secondary); */
   --color-bg-container: #ffffff; /* var(--color-bg-container); */
   /* BORDER */
-  --color-border: #818181; /* var(--color-border); */
+  --color-border: #000000; /* var(--color-border); */
 }
 
 html,

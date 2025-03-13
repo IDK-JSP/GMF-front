@@ -3,7 +3,7 @@ import {IconButton} from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import postFavorite from '../../api/postFavorite';
 import { AuthContext } from '../../context/AuthContext';
-
+import { toast } from 'react-toastify';
 
 interface FavoriteButtonProps {
     id: number;
@@ -11,6 +11,7 @@ interface FavoriteButtonProps {
 }
 
 const handleFavorite = (id: number, type: string) => {
+    toast("Favoris ajouté");
     postFavorite(type, id);
     console.log(`Favorite button clicked for id: ${id}`);
 };

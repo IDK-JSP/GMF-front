@@ -5,6 +5,8 @@ import {BrowserRouter} from "react-router-dom";
 import {AuthContext} from "./context/AuthContext";
 import {DisplayContext} from "./context/DisplayContext";
 import "react-loading-skeleton/dist/skeleton.css";
+  import { ToastContainer, toast } from 'react-toastify';
+
 
 function App() {
     const storedToken = localStorage.getItem("");
@@ -32,6 +34,7 @@ function App() {
     
 
     return (
+        <>
         <BrowserRouter>
             <AuthContext.Provider
                 value={{isLoggedIn, setIsLoggedIn, role, setRole, token, setToken}}
@@ -41,6 +44,8 @@ function App() {
                 </DisplayContext.Provider>
             </AuthContext.Provider>
         </BrowserRouter>
+        <ToastContainer />
+        </>
     );
 }
 

@@ -16,6 +16,7 @@ import { isTokenExpired } from '../components/auth/isTokenExpired';
 import { clearAuthContext } from '../components/auth/clearAuthContext';
 import ErrorPage from '../pages/2_body/ErrorPage';
 
+
 const Router: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext)
     const context = useContext(AuthContext);
@@ -28,8 +29,9 @@ const Router: FC<{}> = ({}) => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-    
+        console.log("Token verification :", token);
         if (isTokenExpired(token) && setAuthContext) {
+            console.log("Token expiré");
           clearAuthContext(setAuthContext);
         }
       }, []);
