@@ -7,7 +7,7 @@ import {DisplayContext} from "./context/DisplayContext";
 import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("");
     const storedRole = localStorage.getItem("role") || "";
 
     const [token, setToken] = useState(storedToken || "");
@@ -18,10 +18,10 @@ function App() {
     // Mettre à jour localStorage quand le token change
     useEffect(() => {
         if (token) {
-            localStorage.setItem("token", token);
+            localStorage.setItem("", token);
             setIsLoggedIn(true);
         } else {
-            localStorage.removeItem("token");
+            localStorage.removeItem("");
             setIsLoggedIn(false);
         }
     }, [token]);

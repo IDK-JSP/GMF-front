@@ -38,6 +38,7 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
                 {recipe.diet === "Végan" &&
                     <div className="vegan-badge"/>}
 
+                {/* Titre, note et description */}
                 <div className="recipe-item-info">
                     <h3 className="recipe-title">
                         {recipe.title}
