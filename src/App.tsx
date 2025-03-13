@@ -1,46 +1,22 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState} from "react";
 import "./App.css";
 import Router from "./routers/Router";
 import {BrowserRouter} from "react-router-dom";
-import {AuthContext} from "./context/AuthContext";
+import {AuthProvider} from "./context/AuthContext";
 import {DisplayContext} from "./context/DisplayContext";
 import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
-    const storedToken = localStorage.getItem("");
-    const storedRole = localStorage.getItem("role") || "";
-
-    const [token, setToken] = useState(storedToken || "");
-    const [isLoggedIn, setIsLoggedIn] = useState(!!storedToken);
-    const [role, setRole] = useState(storedRole);
     const [isItem, setIsItem] = useState(true);
 
-    // Mettre à jour localStorage quand le token change
-    useEffect(() => {
-        if (token) {
-            localStorage.setItem("", token);
-            setIsLoggedIn(true);
-        } else {
-            localStorage.removeItem("");
-            setIsLoggedIn(false);
-        }
-    }, [token]);
-
-    useEffect(() => {
-        localStorage.setItem("role", role);
-    }, [role]);
-    
-
     return (
-        <BrowserRouter>
-            <AuthContext.Provider
-                value={{isLoggedIn, setIsLoggedIn, role, setRole, token, setToken}}
-            >
-                <DisplayContext.Provider value={{isItem, setIsItem}}>
+        <AuthProvider>
+            <DisplayContext.Provider value={{isItem, setIsItem}}>
+                <BrowserRouter>
                     <Router/>
-                </DisplayContext.Provider>
-            </AuthContext.Provider>
-        </BrowserRouter>
+                </BrowserRouter>
+            </DisplayContext.Provider>
+        </AuthProvider>
     );
 }
 

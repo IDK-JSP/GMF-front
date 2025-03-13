@@ -17,22 +17,19 @@ import { clearAuthContext } from '../components/auth/clearAuthContext';
 import ErrorPage from '../pages/2_body/ErrorPage';
 
 const Router: FC<{}> = ({}) => {
-    const authContext = useContext(AuthContext)
-    const context = useContext(AuthContext);
+    const authContext = useContext(AuthContext);
 
-    if (!context) {
-      throw new Error("AuthContext doit être utilisé dans un AuthProvider");
+    if (!authContext) {
+        throw new Error("AuthContext doit être utilisé dans un AuthProvider");
     }
-  
-    const { setAuthContext } = context;
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-    
-        if (isTokenExpired(token) && setAuthContext) {
-          clearAuthContext(setAuthContext);
+
+        if (isTokenExpired(token)) {
+            authContext.logout();
         }
-      }, []);
+    }, [authContext]);
 
     return (
         <Routes>

@@ -52,9 +52,8 @@ const RegisterForm: FC<{}> = ({}) => {
                 });
 
                 if (loginResponse) {
-                    console.log("Connexion réussie", loginResponse.data);
-                    authContext?.setIsLoggedIn(true);
-                    authContext?.setToken(loginResponse);
+                    console.log("Connexion réussie", "response", loginResponse);
+                    authContext.login(loginResponse);
                     navigate("/Dashboard");
                 } else {
                     setErrorMessage("Inscription réussie, mais échec de connexion automatique.");

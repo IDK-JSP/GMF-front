@@ -63,7 +63,7 @@ const NavBarAvatar: FC = () => {
                         <div className="menu-divider"></div>
                         <button className="menu-item" onClick={() => {
                             handleCloseMenu();
-                            authContext?.setIsLoggedIn(false);
+                            authContext.logout();
                         }}>
                             Déconnexion
                         </button>

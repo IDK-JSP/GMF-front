@@ -32,7 +32,7 @@ const Dashboard: FC<{}> = ({}) => {
 
     useEffect(() => {
         hydrate();
-        console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token)
+        console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token, "local", localStorage.getItem("token"))
     }, []);
 
     return (
