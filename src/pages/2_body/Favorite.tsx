@@ -5,11 +5,10 @@ import {IngredientType} from "../../1_types/IngredientType";
 import {RecipeType} from "../../1_types/RecipeType";
 import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext";
-import {getRecipeFavorites} from "../../api/getRecipeFavorites";
 import {getEmailFromToken} from "../../context/getEmailFromToken";
 import RecipeList from "../../components/commun/RecipeList";
 import IngredientList from "../../components/commun/IngredientList";
-import {getIngredients} from "../../api/getIngredients";
+import get from "../../api/get";
 import {set} from "react-hook-form";
 import RecipeCarousel from "../../components/RecipeCarousel";
 
@@ -26,8 +25,8 @@ export const Favorite: FC<{}> = ({}) => {
     const hydrate = () => {
         startTransition(async () => {
             const contextEmail = authContext?.token ? getEmailFromToken(authContext.token) : "Non connecté";
-            const results = await getRecipeFavorites({email: contextEmail});
-            const allIngredients = await getIngredients();
+            const results = await get("/favorite/search?email="+contextEmail);
+            const allIngredients = await get("/ingredient/all");
             startTransition(() => {
                 setRecipes(results?.recipes ?? null);
                 setFavoriteIngredients(results?.ingredients ?? null);

@@ -1,7 +1,7 @@
 import {FC, useContext} from 'react';
 import {IconButton} from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import postFavorite from '../../api/postFavorite';
+import post from '../../api/post';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 
@@ -19,7 +19,7 @@ const handleFavorite = (id: number, type: string, favorite: string) => {
         favoriteable_type: type,
         favoriteable_id : id,
     };
-    postFavorite("/favorite/new", data, "Favoris ajouté");
+    post("/favorite/new", data, "Favoris ajouté");
     console.log(`Favorite button clicked for id: ${id}`);
 
 };

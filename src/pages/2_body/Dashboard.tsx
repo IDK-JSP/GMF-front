@@ -1,6 +1,6 @@
 import {FC, useContext, useEffect, useState, useTransition} from 'react';
 import {RecipeType} from "../../1_types/RecipeType";
-import {getRecipe} from "../../api/getRecipe";
+import get from "../../api/get";
 import ContentWithoutAside from '../../components/layout/ContentWithoutAside';
 import Presentation from '../../components/layout/Presentation';
 import {AuthContext} from "../../context/AuthContext";
@@ -20,7 +20,7 @@ const Dashboard: FC<{}> = ({}) => {
     const hydrate = () => {
         // @ts-ignore
         startTransition(async () => {
-            const results = await getRecipe();
+            const results = await get("/collection/top");
             startTransition(() => {
                 setRecipeCollection(results);
             });

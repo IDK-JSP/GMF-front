@@ -1,16 +1,14 @@
 import {api} from "./api";
 import {toast} from "react-toastify";
 
-const postFavorite = async (
+const get = async (
     path: string,
-    data: {} | [],
     successMessage?: string
 ): Promise<any> => {
     try {
         const response = await api(
             path,
-            "POST",
-            data,
+            "GET"
         );
         if (response) {
             toast.success(successMessage)
@@ -21,4 +19,4 @@ const postFavorite = async (
     }
 };
 
-export default postFavorite;
+export default get;
