@@ -31,36 +31,25 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
                 <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"}/>
                 </span>
 
-                {/* Badges V */}
-                {recipe.diet === "Végétarien" &&
-                    <div className="vegetarian-badge"/>}
+                <div className="first-row">
 
-                {recipe.diet === "Végan" &&
-                    <div className="vegan-badge"/>}
+                    {/* Badges V */}
+                    {recipe.diet === "Non végétarien" &&
+                        <div className="vegetarian-badge"/>}
 
-                {/* Titre, note et description */}
-                <div className="recipe-item-info">
+                    {recipe.diet === "Végan" &&
+                        <div className="vegan-badge"/>}
+
+                    {/* Titre */}
                     <h3 className="recipe-title">
                         {recipe.title}
-                        <span className="recipe-time"> 60min</span>
                     </h3>
-                    <StarRating rate={recipe.rate} size="medium"/>
-                    <p className="recipe-description">{recipe.content}</p>
                 </div>
 
-                {/* Barre verticale */}
-                <div className="recipe-divider"></div>
-
-                {/* Contraintes alimentaires */}
-                <div className="recipe-constraints">
-                    <h4>Allergènes</h4>
-                    <p>
-                        vege
-                        <br/>
-                        vege
-                        <br/>
-                        noix
-                    </p>
+                {/* Note */}
+                <div className="recipe-item-info">
+                    <span className="recipe-time"> 60min</span>
+                    <StarRating rate={recipe.rate} size={"50px"}/>
                 </div>
             </div>
         </div>

@@ -25,18 +25,21 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
                 <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"}/>
             </span>
 
-            {/* Badges V */}
-            {recipe.diet === "Végétarien" &&
-                <div className="vegetarian-badge"/>}
-
-            {recipe.diet === "Végan" &&
-                <div className="vegan-badge"/>}
-
             <div className="recipe-card-content">
+
+                <div className="first-row">
 
                 <h3 className="recipe-title" title={recipe.title}>
                     {recipe.title}
                 </h3>
+
+                    {/* Badges V */}
+                    {recipe.diet === "Non végétarien" &&
+                        <div className="vegetarian-badge"/>}
+
+                    {recipe.diet === "Végan" &&
+                        <div className="vegan-badge"/>}
+                </div>
 
                 <div className="recipe-card-info">
                     <span className="recipe-time">60 min {/*{recipe.time} min*/}</span>
@@ -51,10 +54,6 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
                         readOnly
                     />
                 </div>
-
-                <p className="recipe-description" title={recipe.content}>
-                    {recipe.content}
-                </p>
             </div>
         </div>
     );
