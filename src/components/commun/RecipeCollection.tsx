@@ -28,7 +28,7 @@ const MyComponent: FC<{ path: string, title: string }> = ({path, title}) => {
         <article>
             <div className="article-header">
                 <Typography variant="h5">{title}</Typography>
-                <Typography sx={{cursor: "pointer"}} onClick={() => navigate("/CategoryList/" + path)}>Voir
+                <Typography sx={{cursor: "pointer"}} onClick={() => navigate("/CategoryList" + path)}>Voir
                     plus</Typography>
             </div>
             <div className="recipe-card-grid">
