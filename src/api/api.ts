@@ -11,13 +11,20 @@ export const api = async (
     body?: any
 ): Promise<any | null> => {
     const urlFinal = hostUrl + url;
-
     const token = localStorage.getItem("token");
-    // Ajout du token dans les headers
-    const headers = {
-        "Content-Type": "application/json",
-        ...(token ? {Authorization: `Bearer ${token}`} : {}),
-    };
+    let headers = {};
+    if (method == "GET") {
+        headers = {
+            "Content-Type": "application/json",
+            ...(token ? {Authorization: `Bearer ${token}`} : {}),
+        };
+    } else {
+        if (token) {
+            headers = {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    }
 
     try {
         const response = await axios({
@@ -48,7 +55,7 @@ export const api = async (
                     toast.error(`🚫 Erreur 403 : Accès refusé`);
                     break;
                 case 404:
-                    toast.info(`🔍 Erreur 404 : Ressource non trouvée`);
+                    console.log(`🔍 Erreur 404 : Ressource non trouvée`);
                     break;
                 case 500:
                     toast.error(`💥 Erreur 500 : Erreur serveur`);
