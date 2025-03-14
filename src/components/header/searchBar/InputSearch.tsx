@@ -101,14 +101,14 @@ export const InputSearch: React.FC = () => {
   };
 
   return (
-    <div className="search-bar" ref={containerRef}
-    onClick={handleClickInside}>
+    <div className="search-bar" ref={containerRef}>
       <SearchBar
         search={search}
         setSearch={setSearch}
         toggleFilter={handleSwitchVisibility}
         checkedCount={checkedIngredients.length}
         handleForceClose={handleForceClose}
+        handleClickInside={handleClickInside}
       />
       <FilterSelection
         filterIsVisible={filterIsVisible}
@@ -117,6 +117,7 @@ export const InputSearch: React.FC = () => {
         ingredientList={ingredientList}
         handleCheck={handleCheck}
         checkedIngredients={checkedIngredients}
+        handleClickInside={handleClickInside}
       />
       <ResultsList
         resultIsVisible={resultIsVisible}

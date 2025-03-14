@@ -2,8 +2,9 @@ import React, { useState, useContext } from "react";
 import ControlRating from "../commun/ControlRating";
 import postOpinion from "../../api/postOpinion";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
-const OpinionMyself: React.FC<{ recipeId: number; }> = ({ recipeId }) => {
+const OpinionMyself: React.FC<{ recipeId: number, setOpinions:any; }> = ({ recipeId,setOpinions }) => {
   const authContext = useContext(AuthContext); // 🔐 Récupère le token de l'utilisateur
   const token = authContext ? authContext.token : ""; // Gère le cas où authContext est undefined
   const [rating, setRating] = useState<number | null>(null);
@@ -20,20 +21,24 @@ const OpinionMyself: React.FC<{ recipeId: number; }> = ({ recipeId }) => {
       return;
     }
 
-    setLoading(true); // 🚀 Désactiver le bouton
+    setLoading(true);
     setError(null);
     setSuccess(null);
 
     try {
       await postOpinion(recipeId, rating, comment, token);
-      setSuccess("✅ Votre avis a bien été envoyé !");
+      // Mettre à jour la liste des avis
+
+      toast.success("Votre avis a bien été envoyé !");
+      setSuccess("Votre avis a bien été envoyé !");
       setError(null);
       setRating(null);
       setComment("");
     } catch (error) {
-      setError("❌ Une erreur est survenue lors de l'envoi.");
+      setError("Une erreur est survenue lors de l'envoi.");
+      toast.error("Une erreur est survenue lors de l'envoi.");
     } finally {
-      setLoading(false); // ✅ Réactiver le bouton après l'envoi
+      setLoading(false);
     }
   };
 

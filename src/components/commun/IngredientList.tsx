@@ -17,12 +17,12 @@ export const IngredientList: React.FC<Props> = ({ ingredientList, favoriteIngred
 
 const handleAddFavorite = (ingredient: IngredientType) => {
     setFavoriteIngredients([...favoriteIngredients, ingredient]);
-    toast("Favoris ajouté");
+    toast.success("Favoris ajouté");
     console.log("add favoriteIngredients", favoriteIngredients);
 };
 const handleRemoveFavorite = (ingredient: IngredientType) => {
     setFavoriteIngredients(favoriteIngredients.filter((fav) => fav.name !== ingredient.name));
-    toast("Favoris retiré");
+    toast.warn("Favoris retiré");
     console.log("remove favoriteIngredients", favoriteIngredients);
 };
 

@@ -2,7 +2,6 @@ import {FC, useEffect, useState} from "react";
 import ContentWithBothAside from "../../components/layout/ContentWithBothAside";
 import AsideLeft from "../../components/layout/AsideLeft";
 import AsideRight from "../../components/layout/AsideRight";
-import Presentation from "../../components/layout/Presentation";
 import {useLocation, useParams} from "react-router-dom";
 import {RecipeDetailsType} from "../../1_types/RecipeDetailsType";
 import {getRecipeDetails} from "../../api/getRecipeDetails";
@@ -15,8 +14,8 @@ import DietResume from "../../components/RecipeDetails/DietResume";
 import "react-loading-skeleton/dist/skeleton.css";
 import OpinionsDetails from "../../components/RecipeDetails/OpinionsDetails";
 import RecipeSkeleton from "../../components/RecipeDetails/RecipeSkeleton";
-import Favorite from "./Favorite";
 import FavoriteButton from "../../components/button/FavoriteButton";
+import PresentationRecipe from "../../components/layout/PresentationRecipe";
 
 const RecipeDetails: FC = () => {
     const location = useLocation();
@@ -84,10 +83,10 @@ const RecipeDetails: FC = () => {
         <>
             {recipe ? (
                     <>
-                        <Presentation imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`}>
+                        <PresentationRecipe imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`} recipeRate={recipe.rate ?? 0} recipeNbRate={recipe.nbRate ?? 0}>
                             {recipe.title}
-                            <FavoriteButton id={recipe.id_recipe} type="recipe"/>
-                        </Presentation>
+                            <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"}/>
+                        </PresentationRecipe>
                         <main>
                             <AsideLeft>
                                 <IngredientResume
