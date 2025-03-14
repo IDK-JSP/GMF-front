@@ -11,10 +11,12 @@ interface FavoriteButtonProps {
     favorite : string;
 }
 
-const handleFavorite = (id: number, type: string) => {
-    toast.success("Favoris ajouté");
-    postFavorite(type, id);
-    console.log(`Favorite button clicked for id: ${id}`);
+const handleFavorite = (id: number, type: string, favorite:string) => {
+    if (favorite === "true") {
+        toast.error("Favoris supprimé");
+    }
+        toast.success("Favoris ajouté");
+    return;
 };
 
 const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite }) => {
@@ -23,7 +25,7 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite }) => {
         <>
         {authContext?.isLoggedIn ? (
           <IconButton aria-label="add to Favorite" title="Ajouter aux favoris"
-          onClick={() => handleFavorite(id, type)}
+          onClick={() => handleFavorite(id, type, favorite)}
                         sx={{
                             color: favorite==="true" ? "red" : "white",
                             padding: "0px",

@@ -13,7 +13,7 @@ const postOpinion = async (
       {
         id_recipe: recipeId, // Correspond à la clé étrangère vers `recipe`
         rate: rating,  // Note (1 à 5)
-        // comment: comment || null,  // Envoie `null` si vide
+        comment: comment || null,  // Envoie `null` si vide
       }
     );
 

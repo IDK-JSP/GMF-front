@@ -21,12 +21,8 @@ const PresentationRecipe: React.FC<PresentationProps> = ({ children, imgUrl, rec
       }}
     >
         <div>
-          <div>{children}</div>
-          <div
-          style={{
-            width: "300px",
-          }
-          }><OpinionRecipe recipeRate={recipeRate} recipeNbRate={recipeNbRate} /></div>
+          <div className="presentation-titre">{children}</div>
+          <div className="presentation-aside"><OpinionRecipe recipeRate={recipeRate} recipeNbRate={recipeNbRate} /></div>
       </div>
     </div>
   );

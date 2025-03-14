@@ -72,10 +72,14 @@ main {
   height: 75px;
   background-color: var(--color-bg-white-tr-80);
 }
-.presentation > div > div:first-child {
-  width: 100%;
-  padding-left: 300px;
+.presentation-titre {
+padding-left: var(--width-aside);
 }
+.presentation-aside {
+width: var(--width-aside);
+font-size: 0.5em;
+}
+
 aside {
   box-sizing: border-box;
   padding: 10px;
