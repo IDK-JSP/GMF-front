@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import ControlRating from "../commun/ControlRating";
 import postOpinion from "../../api/postOpinion";
 import { AuthContext } from "../../context/AuthContext";
+import postFavorite from "../../api/postFavorite";
 
 const OpinionMyself: React.FC<{ recipeId: number; }> = ({ recipeId }) => {
   const authContext = useContext(AuthContext); // 🔐 Récupère le token de l'utilisateur
@@ -25,7 +26,11 @@ const OpinionMyself: React.FC<{ recipeId: number; }> = ({ recipeId }) => {
     setSuccess(null);
 
     try {
-      await postOpinion(recipeId, rating, comment, token);
+      const data = {
+        id_recipe: recipeId,
+        rating: rating
+      }
+      await postFavorite("/opinion/new",data,"Avis ajouté avec succé");
       setSuccess("✅ Votre avis a bien été envoyé !");
       setError(null);
       setRating(null);
