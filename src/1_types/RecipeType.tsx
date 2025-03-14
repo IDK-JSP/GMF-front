@@ -12,4 +12,5 @@ export interface RecipeType {
   update?: string;
   matching_ingredients?: number;
   diet?: string;
+  favorite?: string;
 }

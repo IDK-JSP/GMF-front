@@ -28,7 +28,7 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
             <div className="recipe-item-content">
 
                 <span className="favorite-btn">
-                    <FavoriteButton id={recipe.id_recipe} type="recipe"/>
+                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"}/>
                 </span>
 
                 {/* Badges V */}

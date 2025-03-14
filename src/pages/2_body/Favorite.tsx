@@ -63,7 +63,7 @@ export const Favorite: FC<{}> = ({}) => {
                             facilement ici. De plus, marquez vos ingrédients favoris pour qu'ils apparaissent en tête de
                             liste lors de vos recherches.</p>
 
-                        {/* <article><RecipeList recipeCollection={recipes ?? []} /></article> */}
+                        <article><RecipeList recipeCollection={recipes ?? []} /></article>
                         <article><IngredientList ingredientList={allIngredients ?? []}
                                                  favoriteIngredients={favoriteIngredients ?? []}
                                                  setFavoriteIngredients={setFavoriteIngredients}/></article>

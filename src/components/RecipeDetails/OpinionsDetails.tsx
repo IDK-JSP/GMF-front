@@ -17,7 +17,6 @@ const OpinionsDetails: React.FC<OpinionsDetailsProps> = ({recipeId, recipeRate, 
 
     const [opinions, setOpinions] = useState<Array<RecipeOpinionsType>>(opinionList);
         const authContext = useContext(AuthContext);
-
     // Observer les changements de opinionList et mettre à jour l'état local
     useEffect(() => {
         setOpinions(opinionList);
@@ -25,7 +24,7 @@ const OpinionsDetails: React.FC<OpinionsDetailsProps> = ({recipeId, recipeRate, 
 
     return (
         <div className="opinion-box">
-            <OpinionRecipe recipeRate={recipeRate} recipeNbRate={recipeNbRate} />
+            {/* <OpinionRecipe recipeRate={recipeRate} recipeNbRate={recipeNbRate} /> */}
 
             {/* <div style={{width:"100px", color: authContext?.isLoggedIn ? "green" : "white"}} */}
  

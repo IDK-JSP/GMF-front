@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 interface FavoriteButtonProps {
     id: number;
     type : string;
+    favorite : string;
 }
 
 const handleFavorite = (id: number, type: string) => {
@@ -16,7 +17,7 @@ const handleFavorite = (id: number, type: string) => {
     console.log(`Favorite button clicked for id: ${id}`);
 };
 
-const FavoriteButton: FC<FavoriteButtonProps> = ({ id,type }) => {
+const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite }) => {
     const authContext = useContext(AuthContext);
     return (
         <>
@@ -24,10 +25,11 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({ id,type }) => {
           <IconButton aria-label="add to Favorite" title="Ajouter aux favoris"
           onClick={() => handleFavorite(id, type)}
                         sx={{
+                            color: favorite==="true" ? "red" : "white",
                             padding: "0px",
                             transition: "transform 0.3s ease-in-out", "&:hover": {transform: "scale(1.2)"}
                         }}>
-                <FavoriteIcon/>
+                   <FavoriteIcon/>
             </IconButton>
         ) : null}
         </>
