@@ -1,5 +1,6 @@
 import React, {createContext, FC, useEffect, useState} from "react";
 import {isTokenExpired} from "../components/auth/isTokenExpired";
+import {toast} from "react-toastify";
 
 interface AuthContextProps {
     isLoggedIn: boolean;
@@ -24,11 +25,23 @@ export const AuthProvider: FC<{ children: any }> = ({children}) => {
 
     // Vérifier si le token est expiré
     useEffect(() => {
-        if (token && isTokenExpired(token)) {
-            console.warn("⏳ Token expiré, suppression et déconnexion...");
-            logout();
-        }
+        const checkTokenValidity = () => {
+            if (token && isTokenExpired(token)) {
+                console.warn("⏳ Token expiré, suppression et déconnexion...");
+                toast.warn("Session expirée, vous avez été déconnecté")
+                logout();
+            }
+        };
+
+        // Vérifier au début
+        checkTokenValidity();
+
+        // Vérifier toutes les 60 secondes
+        const interval = setInterval(checkTokenValidity, 60000);
+
+        return () => clearInterval(interval); // Nettoyage du timer
     }, [token]);
+
 
     const login = (newToken: string) => {
         localStorage.setItem("token", newToken);
