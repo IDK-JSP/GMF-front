@@ -18,7 +18,7 @@ const IngredientResume: FC<Props> = ({
   error,
 }) => {
 
-  const [personUpdate, setPersonUpdate] = useState(1);
+  const [personUpdate, setPersonUpdate] = useState(person);
 
   const handleChangePerson = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPersonUpdate(Number(event.target.value));
