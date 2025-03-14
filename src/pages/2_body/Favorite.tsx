@@ -11,6 +11,7 @@ import RecipeList from "../../components/commun/RecipeList";
 import IngredientList from "../../components/commun/IngredientList";
 import {getIngredients} from "../../api/getIngredients";
 import {set} from "react-hook-form";
+import RecipeCarousel from "../../components/RecipeCarousel";
 
 export const Favorite: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext);
@@ -55,7 +56,7 @@ export const Favorite: FC<{}> = ({}) => {
 
     return (
         <>
-            <Presentation imgUrl={"/test.jpg"}>Favoris</Presentation>
+            <Presentation imgUrl={"/test.jpg"} carousel={<RecipeCarousel recipeCollection={recipes ?? []}/>}>Favoris</Presentation>
             <main>
                 <ContentWithoutAside>
                     <section>

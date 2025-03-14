@@ -8,6 +8,7 @@ import { IngredientType } from "../../1_types/IngredientType";
 import Presentation from "../../components/layout/Presentation";
 import FilterSelection from "../../components/header/searchBar/FilterSelection";
 import { IngredientList$ } from "../../observables/IngredientList$";
+import RecipeCarousel from "../../components/RecipeCarousel";
 
 const Research: FC<{}> = ({}) => {
   const [recipeCollection, setRecipeCollection] = useState<RecipeType[]>([]);
@@ -33,7 +34,7 @@ const Research: FC<{}> = ({}) => {
 
   return (
     <>
-      <Presentation imgUrl={imagePresentation}>Recherches</Presentation>
+      <Presentation imgUrl={imagePresentation} carousel={<RecipeCarousel recipeCollection={recipeCollection ?? []}/>}>Recherches</Presentation>
       <main>
       <AsideLeft>
         {/* map sur IngredientList$ */}
