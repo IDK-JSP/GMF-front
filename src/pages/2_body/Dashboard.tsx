@@ -10,7 +10,16 @@ import "../../styles/dashboard.css";
 import {Typography} from "@mui/material";
 import {useNavigate} from "react-router";
 import RecipeCarousel from "../../components/RecipeCarousel";
+import RecipeCollection from "../../components/commun/RecipeCollection";
 
+const collections = [
+    {title: "Les mieux notées", path: "/top"},
+    {title: "Les incontournables", path: "/nbRate"},
+    {title: "Nos recentes", path: "/recent"},
+    {title: "Les veges", path: "/vege"},
+    {title: "Les vegan", path: "/vegan"},
+    {title: "Nos sources sur", path: "/validate"}
+]
 const Dashboard: FC<{}> = ({}) => {
     const navigate = useNavigate()
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
@@ -46,33 +55,15 @@ const Dashboard: FC<{}> = ({}) => {
 
                     <ContentWithoutAside>
                         <section>
-                            <article>
-                                <div className="article-header">
-                                    <Typography variant="h5">Meilleures Notes</Typography>
-                                    <Typography sx={{cursor: "pointer"}} onClick={() => navigate("/settings")}>Voir
-                                        plus</Typography>
-                                </div>
-                                <div className="recipe-card-grid">
-                                    {recipeCollectionCut.map((recipe) => (
-                                        <RecipeCard key={recipe.id_recipe} recipe={recipe}/>
-                                    ))}
-                                </div>
-                            </article>
-                            <article>
-                                <div className="recipe-card-grid">
-                                    {recipeCollectionCut.map((recipe) => (
-                                        <RecipeCard key={recipe.id_recipe} recipe={recipe}/>
-                                    ))}
-                                </div>
-                            </article>
-                            <article>
-                                <div className="recipe-card-grid">
-                                    {recipeCollectionCut.map((recipe) => (
-                                        <RecipeCard key={recipe.id_recipe} recipe={recipe}/>
-                                    ))}
-                                </div>
-                            </article>
-                            )
+                            {recipeCollection ?
+                                collections.map((collection) => (
+
+                                    <RecipeCollection path={collection.path}
+                                                      title={collection.title}/>
+                                ))
+                                :
+                                <></>
+                            }
                         </section>
                     </ContentWithoutAside>
                 </>
