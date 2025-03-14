@@ -2,9 +2,10 @@ import {FC, useContext, useState} from "react";
 import {useNavigate} from "react-router";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {RegisterFormType} from "../../1_types/RegisterFormType";
-import {post} from "../../api/post";
 import "../../styles/loginForm.css";
 import {AuthContext} from "../../context/AuthContext";
+import postFavorite from "../../api/postFavorite";
+import {toast} from "react-toastify";
 
 const RegisterForm: FC<{}> = ({}) => {
     const navigate = useNavigate();
@@ -19,14 +20,6 @@ const RegisterForm: FC<{}> = ({}) => {
         },
     });
 
-    const handleError = (error: any) => {
-        if (error.response && error.response.data) {
-            setErrorMessage(Object.values(error.response.data).join(" "));
-        } else {
-            setErrorMessage("Une erreur est survenue.");
-        }
-        console.error("Erreur API :", error);
-    };
 
     const onSubmit: SubmitHandler<RegisterFormType> = async (data) => {
         setErrorMessage(null);
@@ -36,32 +29,26 @@ const RegisterForm: FC<{}> = ({}) => {
             return;
         }
 
-        try {
-            const response = await post("http://localhost:8080/auth/register", {
+        const dataConnexion = {
+            email: data.email,
+            password: data.password
+        }
+        const response = await postFavorite("/auth/register", dataConnexion, "Inscription réussie");
+        if (response) {
+            console.log("Inscription réussie", response.data);
+            // Connexion automatique après l'inscription
+            const loginResponse = await postFavorite("/auth/login", {
                 email: data.email,
                 password: data.password,
             });
-
-            if (response) {
-                console.log("Inscription réussie", response.data);
-
-                // Connexion automatique après l'inscription
-                const loginResponse = await post("http://localhost:8080/auth/login", {
-                    email: data.email,
-                    password: data.password,
-                });
-
-                if (loginResponse) {
-                    console.log("Connexion réussie", "response", loginResponse);
-                    authContext.login(loginResponse);
-                    navigate("/Dashboard");
-                } else {
-                    setErrorMessage("Inscription réussie, mais échec de connexion automatique.");
-                }
+            if (loginResponse) {
+                authContext.login(loginResponse);
+                navigate("/Dashboard");
+            } else {
+                toast.error("Inscription réussie, mais échec de connexion automatique.");
             }
-        } catch (error) {
-            handleError(error);
         }
+
     };
 
     return (

@@ -3,8 +3,8 @@ import {toast} from "react-toastify";
 
 const postFavorite = async (
     path: string,
-    data: {},
-    successMessage: string
+    data: {} | [],
+    successMessage?: string
 ): Promise<any> => {
     try {
         const response = await api(
@@ -13,7 +13,7 @@ const postFavorite = async (
             data,
         );
         if (response) {
-            toast(successMessage)
+            toast.success(successMessage)
         }
         return response;
     } catch (error) {

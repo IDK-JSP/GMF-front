@@ -4,7 +4,8 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {AuthContext} from "../../context/AuthContext";
 import {LoginFormType} from "../../1_types/LoginFormType";
 import "../../styles/loginForm.css"
-import {post} from "../../api/post";
+import postFavorite from "../../api/postFavorite";
+import {toast} from "react-toastify";
 
 const LoginForm: FC<{}> = ({}) => {
     const navigate = useNavigate();
@@ -20,20 +21,15 @@ const LoginForm: FC<{}> = ({}) => {
 
     const onSubmit: SubmitHandler<LoginFormType> = async (data) => {
         setErrorMessage(null);
-        try {
-            const response = await post(`http://localhost:8080/auth/login`, data);
-
+            const response = await postFavorite(`/auth/login`, data,"Connexion réussie");
             if (response) {
                 console.log("response", response)
                 authContext.login(response);
                 navigate("/Dashboard");
-            } else {
-                setErrorMessage("Identifiants incorrects !");
+            }else{
+                toast.error("Mauvais idenfiants")
             }
-        } catch (error) {
-            setErrorMessage("Identifiants incorrects ou erreur serveur !");
-            console.error("Erreur lors de la connexion", error);
-        }
+
     };
 
     return (

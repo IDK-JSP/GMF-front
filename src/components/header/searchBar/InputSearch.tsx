@@ -8,7 +8,7 @@ import "../../../styles/nav.css";
 import ResultsList from "./ResultsList";
 import { ResultsList$ } from "../../../observables/ResultsList$";
 import { IngredientList$ } from "../../../observables/IngredientList$";
-import postSearch from "../../../api/postSearch";
+import postFavorite from "../../../api/postFavorite";
 
 // TODO : Utiliser l'observable pour mettre à jour la liste des ingrédients
 
@@ -49,7 +49,7 @@ export const InputSearch: React.FC = () => {
   useEffect(() => {
     const ingredientsId = checkedIngredients.map((ing) => ing.id_ingredient);
 
-    postSearch(search, ingredientsId).then((recipeResult) => {
+    postFavorite(`/search?title=${search}`, ingredientsId).then((recipeResult) => {
       // Mise à jour de l'observable en fonction de la recherche
       if (recipeResult?.recipes) {
         ResultsList$.next(recipeResult.recipes);

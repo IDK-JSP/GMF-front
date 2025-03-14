@@ -25,21 +25,16 @@ const OpinionMyself: React.FC<{ recipeId: number, setOpinions:any; }> = ({ recip
     setError(null);
     setSuccess(null);
 
-    try {
       const data = {
         id_recipe: recipeId,
-        rating: rating
+        rate: Number(rating),
+        comment: comment
       }
+      console.log(data)
       await postFavorite("/opinion/new",data,"Avis ajouté avec succé");
-      setSuccess("✅ Votre avis a bien été envoyé !");
-      setError(null);
       setRating(null);
       setComment("");
-    } catch (error) {
-      setError("❌ Une erreur est survenue lors de l'envoi.");
-    } finally {
       setLoading(false); // ✅ Réactiver le bouton après l'envoi
-    }
   };
 
   return (
