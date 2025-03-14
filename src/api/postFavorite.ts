@@ -1,23 +1,24 @@
-import { api } from "./api";
+import {api} from "./api";
+import {toast} from "react-toastify";
 
 const postFavorite = async (
-  favoriteable_type: string, // recipe ou ingredient
-  favoriteable_id: number, 
+    path: string,
+    data: {},
+    successMessage: string
 ): Promise<any> => {
-  const data = {
-    favoriteable_type,
-    favoriteable_id,
-  };
-  try {
-    const response = await api(
-      `/favorite/new`,
-      "POST",
-      data,
-    );
-    return response;
-  } catch (error) {
-    throw error;
-  }
+    try {
+        const response = await api(
+            path,
+            "POST",
+            data,
+        );
+        if (response) {
+            toast(successMessage)
+        }
+        return response;
+    } catch (error) {
+        throw error;
+    }
 };
 
 export default postFavorite;

@@ -11,12 +11,17 @@ interface FavoriteButtonProps {
     favorite : string;
 }
 
-const handleFavorite = (id: number, type: string, favorite:string) => {
+const handleFavorite = (id: number, type: string, favorite: string) => {
     if (favorite === "true") {
         toast.error("Favoris supprimé");
     }
-        toast.success("Favoris ajouté");
-    return;
+    const data = {
+        favoriteable_type: type,
+        favoriteable_id : id,
+    };
+    postFavorite("/favorite/new", data, "Favoris ajouté");
+    console.log(`Favorite button clicked for id: ${id}`);
+
 };
 
 const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite }) => {

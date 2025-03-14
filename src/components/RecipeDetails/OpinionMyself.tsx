@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import ControlRating from "../commun/ControlRating";
-import postOpinion from "../../api/postOpinion";
+import postFavorite from "../../api/postFavorite";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 
@@ -21,24 +21,24 @@ const OpinionMyself: React.FC<{ recipeId: number, setOpinions:any; }> = ({ recip
       return;
     }
 
-    setLoading(true);
+    setLoading(true); // 🚀 Désactiver le bouton
     setError(null);
     setSuccess(null);
 
     try {
-      await postOpinion(recipeId, rating, comment, token);
-      // Mettre à jour la liste des avis
-
-      toast.success("Votre avis a bien été envoyé !");
-      setSuccess("Votre avis a bien été envoyé !");
+      const data = {
+        id_recipe: recipeId,
+        rating: rating
+      }
+      await postFavorite("/opinion/new",data,"Avis ajouté avec succé");
+      setSuccess("✅ Votre avis a bien été envoyé !");
       setError(null);
       setRating(null);
       setComment("");
     } catch (error) {
-      setError("Une erreur est survenue lors de l'envoi.");
-      toast.error("Une erreur est survenue lors de l'envoi.");
+      setError("❌ Une erreur est survenue lors de l'envoi.");
     } finally {
-      setLoading(false);
+      setLoading(false); // ✅ Réactiver le bouton après l'envoi
     }
   };
 
