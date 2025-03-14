@@ -38,16 +38,19 @@ const Dashboard: FC<{}> = ({}) => {
 
     return (
         <>
-            <Presentation imgUrl={"/test.jpg"}>Dashboard</Presentation>
-            <ContentWithoutAside>
-                <section>
-                    {!isPending && recipeCollectionCut && (
-                        <>
-                            <RecipeCarousel recipeCollection={recipeCollectionCut}/>
+            {!isPending && recipeCollectionCut && (
+                <>
+                    <Presentation carousel={<RecipeCarousel recipeCollection={recipeCollectionCut}/>}>
+                        Dashboard
+                    </Presentation>
+
+                    <ContentWithoutAside>
+                        <section>
                             <article>
                                 <div className="article-header">
                                     <Typography variant="h5">Meilleures Notes</Typography>
-                                    <Typography sx={{cursor: "pointer"}} onClick={() => navigate("/settings")}>Voir plus</Typography>
+                                    <Typography sx={{cursor: "pointer"}} onClick={() => navigate("/settings")}>Voir
+                                        plus</Typography>
                                 </div>
                                 <div className="recipe-card-grid">
                                     {recipeCollectionCut.map((recipe) => (
@@ -69,12 +72,12 @@ const Dashboard: FC<{}> = ({}) => {
                                     ))}
                                 </div>
                             </article>
-                        </>
-                    )}
-                </section>
-            </ContentWithoutAside>
-        </>
-    );
+                            )
+                        </section>
+                    </ContentWithoutAside>
+                </>
+            )};
+        </>)
 };
 
 export default Dashboard;
