@@ -23,7 +23,7 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
             />
 
             <span className="favorite-btn">
-                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"}/>
+                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={50}/>
             </span>
 
             <div className="recipe-card-content">

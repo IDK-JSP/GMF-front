@@ -82,7 +82,7 @@ const RecipeDetails: FC = () => {
                     <>
                         <PresentationRecipe imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`} recipeRate={recipe.rate ?? 0} recipeNbRate={recipe.nbRate ?? 0}>
                             {recipe.title}
-                            <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"}/>
+                            <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={50} />
                         </PresentationRecipe>
                         <main>
                             <AsideLeft>
