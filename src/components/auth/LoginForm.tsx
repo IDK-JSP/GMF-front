@@ -4,7 +4,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {AuthContext} from "../../context/AuthContext";
 import {LoginFormType} from "../../1_types/LoginFormType";
 import "../../styles/loginForm.css"
-import postFavorite from "../../api/postFavorite";
+import post from "../../api/post";
 import {toast} from "react-toastify";
 
 const LoginForm: FC<{}> = ({}) => {
@@ -21,7 +21,7 @@ const LoginForm: FC<{}> = ({}) => {
 
     const onSubmit: SubmitHandler<LoginFormType> = async (data) => {
         setErrorMessage(null);
-            const response = await postFavorite(`/auth/login`, data,"Connexion réussie");
+            const response = await post(`/auth/login`, data,"Connexion réussie");
             if (response) {
                 console.log("response", response)
                 authContext.login(response);

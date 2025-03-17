@@ -4,8 +4,7 @@ import AsideLeft from "../../components/layout/AsideLeft";
 import AsideRight from "../../components/layout/AsideRight";
 import {useLocation, useParams} from "react-router-dom";
 import {RecipeDetailsType} from "../../1_types/RecipeDetailsType";
-import {getRecipeDetails} from "../../api/getRecipeDetails";
-import {getRecipeFromId} from "../../api/getRecipeFromId";
+import get from "../../api/get";
 import "../../styles/recipe.css";
 import {RecipeType} from "../../1_types/RecipeType";
 import IngredientResume from "../../components/RecipeDetails/IngredientResume";
@@ -45,9 +44,7 @@ const RecipeDetails: FC = () => {
                 if (location.state?.recipe) {
                     setRecipe(location.state.recipe as RecipeType);
                 } else if (id) {
-                    const fetchedRecipe = await getRecipeFromId({
-                        recipe_id: parseInt(id),
-                    });
+                    const fetchedRecipe = await get("/recipe/"+ parseInt(id));
                     setRecipe(fetchedRecipe);
                 } else {
                     throw new Error("Aucun ID de recette disponible !");
@@ -64,7 +61,7 @@ const RecipeDetails: FC = () => {
     useEffect(() => {
         if (recipe?.id_recipe) {
             setIsPending(true);  // ✅ Remet `isPending` à `true` en attendant les détails
-            getRecipeDetails({recipe_id: recipe.id_recipe}).then((details) => {
+            get('/recipe/details/'+ recipe.id_recipe).then((details) => {
                 setRecipeDetails(details);
                 setIsPending(false);  // ✅ On désactive `isPending` uniquement après ce chargement
             });
@@ -74,7 +71,7 @@ const RecipeDetails: FC = () => {
     // Récupération des détails de la recette si elle n’est pas déjà chargée
     useEffect(() => {
         if (recipe?.id_recipe && !recipeDetails) {
-            getRecipeDetails({recipe_id: recipe.id_recipe}).then(setRecipeDetails);
+            get('/recipe/details/' + recipe.id_recipe).then(setRecipeDetails);
         }
     }, [recipe, recipeDetails]);
 

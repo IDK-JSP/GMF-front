@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { getIngredients } from "../../../api/getIngredients";
+import get from "../../../api/get";
 import { IngredientType } from "../../../1_types/IngredientType";
 import { RecipeType } from "../../../1_types/RecipeType";
 import SearchBar from "./SearchBar";
@@ -8,7 +8,7 @@ import "../../../styles/nav.css";
 import ResultsList from "./ResultsList";
 import { ResultsList$ } from "../../../observables/ResultsList$";
 import { IngredientList$ } from "../../../observables/IngredientList$";
-import postFavorite from "../../../api/postFavorite";
+import post from "../../../api/post";
 
 // TODO : Utiliser l'observable pour mettre à jour la liste des ingrédients
 
@@ -42,14 +42,14 @@ export const InputSearch: React.FC = () => {
 
   // Récupération de la liste des ingrédients du site
   useEffect(() => {
-    getIngredients().then(setIngredientList);
+    get("/ingredient/all").then(setIngredientList);
   }, []);
 
   // Récupération de la recherche et des ingrédients :
   useEffect(() => {
     const ingredientsId = checkedIngredients.map((ing) => ing.id_ingredient);
 
-    postFavorite(`/search?title=${search}`, ingredientsId).then((recipeResult) => {
+    post(`/search?title=${search}`, ingredientsId).then((recipeResult) => {
       // Mise à jour de l'observable en fonction de la recherche
       if (recipeResult?.recipes) {
         ResultsList$.next(recipeResult.recipes);

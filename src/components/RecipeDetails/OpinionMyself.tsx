@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import ControlRating from "../commun/ControlRating";
-import postFavorite from "../../api/postFavorite";
+import post from "../../api/post";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 
@@ -31,7 +31,7 @@ const OpinionMyself: React.FC<{ recipeId: number, setOpinions:any; }> = ({ recip
         comment: comment
       }
       console.log(data)
-      await postFavorite("/opinion/new",data,"Avis ajouté avec succé");
+      await post("/opinion/new",data,"Avis ajouté avec succé");
       setRating(null);
       setComment("");
       setLoading(false); // ✅ Réactiver le bouton après l'envoi

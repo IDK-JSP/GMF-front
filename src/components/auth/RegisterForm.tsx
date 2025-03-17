@@ -4,7 +4,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {RegisterFormType} from "../../1_types/RegisterFormType";
 import "../../styles/loginForm.css";
 import {AuthContext} from "../../context/AuthContext";
-import postFavorite from "../../api/postFavorite";
+import post from "../../api/post";
 import {toast} from "react-toastify";
 
 const RegisterForm: FC<{}> = ({}) => {
@@ -33,11 +33,11 @@ const RegisterForm: FC<{}> = ({}) => {
             email: data.email,
             password: data.password
         }
-        const response = await postFavorite("/auth/register", dataConnexion, "Inscription réussie");
+        const response = await post("/auth/register", dataConnexion, "Inscription réussie");
         if (response) {
             console.log("Inscription réussie", response.data);
             // Connexion automatique après l'inscription
-            const loginResponse = await postFavorite("/auth/login", {
+            const loginResponse = await post("/auth/login", {
                 email: data.email,
                 password: data.password,
             });
