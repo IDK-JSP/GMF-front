@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../../styles/nav.css';
-import InputSearch from './InputSearch';
+import InputSearchV2 from './InputSearchV2';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import {useNavigate} from 'react-router';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -20,7 +20,7 @@ const Nav: React.FC = () => {
                 <HomeOutlinedIcon style={{fontSize: "50px"}}/>
                 <h1>Recettes</h1>
             </div>
-            <InputSearch/>
+            <InputSearchV2/>
             <div id='nav-container'>
             {authContext?.isLoggedIn ? (
                 <div style={{width: "100px"}}

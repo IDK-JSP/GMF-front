@@ -3,7 +3,7 @@
   --height-footer: 150px;
   --height-presentation: 300px;
   --width-body: 100%;
-  --width-aside: 300px;
+  --width-aside: max(25vw, 300px);
   --width-border: 2px;
   /* TEXTS */
   --color-text-primary: #000000;

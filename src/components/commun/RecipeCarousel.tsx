@@ -3,6 +3,7 @@ import {AnimatePresence, motion} from "framer-motion";
 import {RecipeType} from "../../1_types/RecipeType";
 import "../../styles/recipeCarousel.css";
 import StarRating from "./StarRating";
+import DietBadge from "./DietBadge";
 
 const RecipeCarousel: FC<{ recipeCollection: RecipeType[] }> = ({recipeCollection}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -46,21 +47,23 @@ const RecipeCarousel: FC<{ recipeCollection: RecipeType[] }> = ({recipeCollectio
                     className="carousel-slide"
                 >
                     {/* Badges V */}
-                    {recipeCollection[currentIndex].diet === "Végétarien" &&
-                        <div className="vegetarian-badge"/>}
+                    {recipeCollection[currentIndex]?.diet && (
+                        <DietBadge diet={recipeCollection[currentIndex].diet} sizeInPixels={0} />
+                        )}
 
-                    {recipeCollection[currentIndex].diet === "Végan" &&
-                        <div className="vegan-badge"/>}
-
-                    <img
-                        src={`/recipe/recipe_${recipeCollection[currentIndex].id_recipe}.jpg` || "https://placehold.co/500x500?text=No\nImage"}
-                        alt={recipeCollection[currentIndex].title}
-                        className="carousel-image"
-                    />
-                    <div className="carousel-overlay">
-                        <h2 className="carousel-title">{recipeCollection[currentIndex].title}</h2>
-                        <StarRating rate={recipeCollection[currentIndex].rate} size="medium"/>
-                    </div>
+                    {recipeCollection[currentIndex]?.id_recipe && (
+                        <>
+                        <img
+                            src={`/recipe/recipe_${recipeCollection[currentIndex].id_recipe}.jpg` || "https://placehold.co/500x500?text=No\nImage"}
+                            alt={recipeCollection[currentIndex].title}
+                            className="carousel-image"
+                        />
+                        <div className="carousel-overlay">
+                            <h2 className="carousel-title">{recipeCollection[currentIndex].title}</h2>
+                            <StarRating rate={recipeCollection[currentIndex].rate} size="medium"/>
+                        </div>
+                        </>
+                    )}
                 </motion.div>
             </AnimatePresence>
 
