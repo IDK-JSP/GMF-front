@@ -91,17 +91,26 @@
 }
 
 /* Titre */
-.recipe-title {
-    font-size: 3rem;
+
+.recipe-item-title, .recipe-card-title {
     font-weight: bold;
     white-space: nowrap;
-    padding: 10px 0;
-    margin: 0 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     justify-content: space-between;
     align-items: center;
     text-shadow: 0 0 10px lightgray;
+}
+
+.recipe-item-title {
+    font-size: 3rem;
+    padding: 10px 0;
+    margin: 0 10px;
+}
+
+.recipe-card-title {
+    font-size: 1.5rem;
+    margin: 0 10px;
 }
 
 .first-row {

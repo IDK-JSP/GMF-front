@@ -41,7 +41,7 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
                         <div className="vegan-badge"/>}
 
                     {/* Titre */}
-                    <h3 className="recipe-title">
+                    <h3 className="recipe-item-title">
                         {recipe.title}
                     </h3>
                 </div>

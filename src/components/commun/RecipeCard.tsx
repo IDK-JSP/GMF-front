@@ -29,7 +29,7 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
 
                 <div className="first-row">
 
-                <h3 className="recipe-title" title={recipe.title}>
+                <h3 className="recipe-card-title" title={recipe.title}>
                     {recipe.title}
                 </h3>
 
