@@ -14,6 +14,7 @@ import Login from "../pages/2_body/Login";
 import Dashboard from "../pages/2_body/Dashboard";
 import {isTokenExpired} from '../components/auth/isTokenExpired';
 import ErrorPage from '../pages/2_body/ErrorPage';
+import CreateRecipe from "../pages/2_body/CreateRecipe";
 
 const Router: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext);
@@ -46,6 +47,7 @@ const Router: FC<{}> = ({}) => {
                 <Route element={<Layout/>}>
                     <Route path="Favorite" element={<Favorite/>}/>
                     <Route path="UserRecipes" element={<UserRecipes/>}/>
+                    <Route path="CreateRecipe" element={<CreateRecipe/>}/>
                     <Route path="Settings" element={<Settings/>}/>
                     <Route path="Register" element={<Register/>}/>
                 </Route>}
