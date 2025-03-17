@@ -32,7 +32,6 @@ export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handl
                     handleClick();
                 }
             }}
-            
              type='text'
              placeholder='Search...' />
             <button id='filter-button' onClick={toggleFilter}>
