@@ -7,7 +7,6 @@ import "../../styles/nav.css";
 import { ResultsList$ } from "../../observables/ResultsList$";
 import { SearchIngredientsList$ } from "../../observables/SearchIngredientsList$"; 
 import post from "../../api/post";
-import { toast } from "react-toastify";
 import ResultsListV2 from "./ResultsListV2";
 import { FilterSelectionV2 } from "./FilterSelectionV2";
 
@@ -64,7 +63,6 @@ export const InputSearch: React.FC = () => {
           const isFresh = Date.now() - Number(cachedTimestamp) < 24 * 60 * 60 * 1000;
           if (isFresh) {
             setIngredientList(JSON.parse(cachedData));
-            toast.warn("DEBUG : Liste des ingrédients récupérée du cache (valide)");
             return;
           }
         }
@@ -74,11 +72,9 @@ export const InputSearch: React.FC = () => {
         setIngredientList(ingredients);
         localStorage.setItem("ingredients", JSON.stringify(ingredients));
         localStorage.setItem("ingredients_timestamp", Date.now().toString());
-        toast.warn("DEBUG : Liste des ingrédients récupérée de l'API");
   
       } catch (error) {
         console.error("Erreur lors de la récupération des ingrédients :", error);
-        toast.error("Impossible de récupérer la liste des ingrédients.");
       }
     };
   
@@ -144,8 +140,6 @@ export const InputSearch: React.FC = () => {
       const updatedList = isAlreadyChecked
         ? prev.filter((ing) => ing.id_ingredient !== ingredient.id_ingredient)
         : [...prev, ingredient];
-  
-      toast.warn(`DEBUG : handleCheck : (${ingredient.name}) ${!isAlreadyChecked}`);
       return prev.length !== updatedList.length ? updatedList : prev; // Évite un re-render inutile
     });
   };
@@ -155,7 +149,7 @@ export const InputSearch: React.FC = () => {
   //handle pour vider la barre de recherche :
   const handleClearSearch = () => {
     setSearchOnName("");
-    toast.warn("DEBUG : clear search");
+    console.log("DEBUG : clear search");
   };
 
   return (

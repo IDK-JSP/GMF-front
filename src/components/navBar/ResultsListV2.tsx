@@ -64,11 +64,13 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
 
             <div>
             {recipeResults.slice(0, 3).map((recipe) => {
-    const matchPercent = ((recipe.matching_ingredients ?? 0) / searchIngredientsList.length).toFixed(2);
+                const matchPercent = searchIngredientsList.length > 0 
+                ? ((recipe.matching_ingredients ?? 0) / searchIngredientsList.length).toFixed(2) 
+                : "0.00";
 
     return (
         <React.Fragment key={recipe.id_recipe}>
-            {/* <span>match ({recipe.matching_ingredients}) - {Number(matchPercent)}</span> */}
+            <span>match ({recipe.matching_ingredients}) - {Number(matchPercent)}</span>
             <div>
             <RecipeItem recipe={recipe} />
             </div>
