@@ -22,7 +22,7 @@ const MyComponent: FC<{ path: string, title: string }> = ({path, title}) => {
     useEffect(() => {
         hydrate()
     }, []);
-    const recipeCollectionCut = recipeCollection?.slice(0, 4)
+    const recipeCollectionCut = recipeCollection?.slice(0, 6)
     console.log(recipeCollectionCut)
     return (
         <article>
