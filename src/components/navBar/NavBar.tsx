@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../../styles/nav.css';
-import InputSearch from './searchBar/InputSearch';
+import InputSearch from './InputSearch';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import {useNavigate} from 'react-router';
 import FavoriteIcon from '@mui/icons-material/Favorite';

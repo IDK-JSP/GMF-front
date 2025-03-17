@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {IngredientType} from '../../../1_types/IngredientType';
-import "../../../styles/nav.css";
-import {RecipeType} from '../../../1_types/RecipeType';
-import RecipeItem from '../../commun/RecipeItem';
+import {IngredientType} from '../../1_types/IngredientType';
+import "../../styles/nav.css";
+import {RecipeType} from '../../1_types/RecipeType';
+import RecipeItem from '../commun/RecipeItem';
 import FilterTags from './FilterTags';
 import {useNavigate} from 'react-router';
 

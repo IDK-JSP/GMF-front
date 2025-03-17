@@ -9,8 +9,7 @@ import {getEmailFromToken} from "../../context/getEmailFromToken";
 import RecipeList from "../../components/commun/RecipeList";
 import IngredientList from "../../components/commun/IngredientList";
 import get from "../../api/get";
-import {set} from "react-hook-form";
-import RecipeCarousel from "../../components/RecipeCarousel";
+import RecipeCarousel from "../../components/commun/RecipeCarousel";
 
 export const Favorite: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext);

@@ -1,6 +1,6 @@
 import { FC } from "react";
-import NavBar from "../components/header/NavBar";
-import Footer from "../pages/3_footer/Footer";
+import NavBar from "../components/navBar/NavBar";
+import Footer from "../components/layout/Footer";
 import { Outlet } from "react-router";
 import "../App.css";
 

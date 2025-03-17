@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import "../../styles/avatarMenu.css";
 import {AuthContext} from "../../context/AuthContext";
-import { clearAuthContext } from "../auth/clearAuthContext";
 
 const avatarMenu = [
     {name: "Paramètres", navigation: "../Setting"},

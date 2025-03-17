@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
-import get from "../../../api/get";
-import { IngredientType } from "../../../1_types/IngredientType";
-import { RecipeType } from "../../../1_types/RecipeType";
+import get from "../../api/get";
+import { IngredientType } from "../../1_types/IngredientType";
+import { RecipeType } from "../../1_types/RecipeType";
 import SearchBar from "./SearchBar";
 import FilterSelection from "./FilterSelection";
-import "../../../styles/nav.css";
+import "../../styles/nav.css";
 import ResultsList from "./ResultsList";
-import { ResultsList$ } from "../../../observables/ResultsList$";
-import { IngredientList$ } from "../../../observables/IngredientList$";
-import post from "../../../api/post";
+import { ResultsList$ } from "../../observables/ResultsList$";
+import { IngredientList$ } from "../../observables/IngredientList$";
+import post from "../../api/post";
 
 // TODO : Utiliser l'observable pour mettre à jour la liste des ingrédients
 

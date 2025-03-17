@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
-import {RecipeType} from "../1_types/RecipeType";
-import "../styles/recipeCarousel.css"
-import StarRating from "./commun/StarRating";
+import {RecipeType} from "../../1_types/RecipeType";
+import "../../styles/recipeCarousel.css";
+import StarRating from "./StarRating";
 
 const RecipeCarousel: FC<{ recipeCollection: RecipeType[] }> = ({recipeCollection}) => {
     const [currentIndex, setCurrentIndex] = useState(0);

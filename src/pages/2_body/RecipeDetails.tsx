@@ -7,12 +7,12 @@ import {RecipeDetailsType} from "../../1_types/RecipeDetailsType";
 import get from "../../api/get";
 import "../../styles/recipe.css";
 import {RecipeType} from "../../1_types/RecipeType";
-import IngredientResume from "../../components/RecipeDetails/IngredientResume";
-import StageResume from "../../components/RecipeDetails/StageResume";
-import DietResume from "../../components/RecipeDetails/DietResume";
+import IngredientResume from "../../components/recipeDetails/IngredientResume";
+import StageResume from "../../components/recipeDetails/StageResume";
+import DietResume from "../../components/recipeDetails/DietResume";
 import "react-loading-skeleton/dist/skeleton.css";
-import OpinionsDetails from "../../components/RecipeDetails/OpinionsDetails";
-import RecipeSkeleton from "../../components/RecipeDetails/RecipeSkeleton";
+import OpinionsDetails from "../../components/recipeDetails/OpinionsDetails";
+import RecipeSkeleton from "../../components/recipeDetails/RecipeSkeleton";
 import FavoriteButton from "../../components/button/FavoriteButton";
 import PresentationRecipe from "../../components/layout/PresentationRecipe";
 
@@ -81,8 +81,8 @@ const RecipeDetails: FC = () => {
             {recipe ? (
                     <>
                         <PresentationRecipe imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`} recipeRate={recipe.rate ?? 0} recipeNbRate={recipe.nbRate ?? 0}>
-                            {recipe.title}
-                            <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={50} />
+                        <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={50} />
+                        {recipe.title}
                         </PresentationRecipe>
                         <main>
                             <AsideLeft>
