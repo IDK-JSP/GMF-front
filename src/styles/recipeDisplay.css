@@ -14,7 +14,7 @@
 }
 
 .recipe-container {
-    height: 20vh;
+    height: auto;
 }
 
 .recipe-card {
@@ -32,7 +32,7 @@
     position: absolute;
     right: 0;
     left: auto;
-    width: 50%;
+    width: 78%;
     height: 100%;
     object-fit: cover;
     filter: brightness(0.8);
@@ -55,12 +55,10 @@
 
 /* Badges */
 .vegetarian-badge, .vegan-badge {
-    position: absolute;
-    top: 7px;
-    right: 7px;
-    width: 24px;
-    height: 24px;
+    min-width: 44px;
+    height: 44px;
     border-radius: 50%;
+    margin: 5px;
 }
 
 .vegetarian-badge {
@@ -82,8 +80,9 @@
 
 .recipe-item-content {
     position: relative;
+    flex-direction: column;
     flex-grow: 1;
-    /* max-width: 30%; */
+    max-width: 50%;
 }
 
 .recipe-card-content {
@@ -92,17 +91,31 @@
 }
 
 /* Titre */
-.recipe-title {
-    font-size: 25px;
+
+.recipe-item-title, .recipe-card-title {
     font-weight: bold;
-    text-overflow: ellipsis;
-    overflow: hidden;
     white-space: nowrap;
-    padding: 10px 0;
-    margin: 0;
-    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
     justify-content: space-between;
     align-items: center;
+    text-shadow: 0 0 10px lightgray;
+}
+
+.recipe-item-title {
+    font-size: 3rem;
+    padding: 10px 0;
+    margin: 0 10px;
+}
+
+.recipe-card-title {
+    font-size: 1.5rem;
+    margin: 0 10px;
+}
+
+.first-row {
+    display: flex;
+    flex-direction: row;
 }
 
 /* Info / Description */
@@ -113,49 +126,29 @@
 }
 
 .recipe-item-info {
-    max-width: 30%;
-    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 10px;
+    /*
+    justify-content: space-between;
+    */
 }
 
 .recipe-time {
     color: gray;
-    font-size: 14px;
+    font-size: 1.75rem;
 }
 
-.recipe-description {
-    font-size: 18px;
-    color: black;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* Éléments spécifiques à RecipeItem */
+/* Dégradé blanc de RecipeItem */
 .recipe-gradiant {
     position: absolute;
     z-index: 1;
     top: 0;
-    right: 35%;
-    width: 20%;
+    right: 55%;
+    width: 30%;
     height: 100%;
     background: linear-gradient(to right, var(--color-bg-tr-100), var(--color-bg-tr-100), var(--color-bg-tr-90), transparent);
-}
-
-.recipe-divider {
-    width: 2px;
-    background-color: gray;
-    margin: 0 10px;
-}
-
-.recipe-constraints {
-    z-index: 1;
-    flex-basis: 10%;
-}
-
-.recipe-constraints > * {
-    margin: 10px 0;
 }
 
 /* Grid pour Card */
@@ -174,11 +167,11 @@
     }
 
     .recipe-title {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 
     .recipe-description {
-        font-size: 16px;
+        font-size: 1rem;
     }
 }
 
@@ -188,11 +181,11 @@
     }
 
     .recipe-title {
-        font-size: 18px;
+        font-size: 1.15rem;
     }
 
     .recipe-description {
-        font-size: 14px;
+        font-size: 0.85rem;
     }
 }
 
@@ -202,11 +195,11 @@
     }
 
     .recipe-title {
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .recipe-description {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 }
 

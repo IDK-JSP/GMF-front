@@ -72,7 +72,8 @@
     margin-top: 20px;
 }
 
-/* Badges */
+/*
+!* Badges *!
 .vegetarian-badge, .vegan-badge {
     position: absolute;
     top: 7px;
@@ -88,4 +89,4 @@
 
 .vegan-badge {
     background-color: salmon;
-}
+}*/

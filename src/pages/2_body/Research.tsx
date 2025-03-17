@@ -9,6 +9,7 @@ import Presentation from "../../components/layout/Presentation";
 import FilterSelection from "../../components/header/searchBar/FilterSelection";
 import { IngredientList$ } from "../../observables/IngredientList$";
 import RecipeCarousel from "../../components/RecipeCarousel";
+import ContentWithoutAside from "../../components/layout/ContentWithoutAside";
 
 const Research: FC<{}> = ({}) => {
   const [recipeCollection, setRecipeCollection] = useState<RecipeType[]>([]);
@@ -36,8 +37,8 @@ const Research: FC<{}> = ({}) => {
     <>
       <Presentation imgUrl={imagePresentation} carousel={<RecipeCarousel recipeCollection={recipeCollection ?? []}/>}>Recherches</Presentation>
       <main>
-      <AsideLeft>
-        {/* map sur IngredientList$ */}
+      {/*<AsideLeft>
+         map sur IngredientList$
         {IngredientList$.value.map((ingredient) => (
           <div key={ingredient.id_ingredient}>
             <input
@@ -62,15 +63,15 @@ const Research: FC<{}> = ({}) => {
           </div>
         ))}
 
-      </AsideLeft>
-      <ContentWithLeftAside>
+      </AsideLeft>*/}
+      <ContentWithoutAside>
         <section>
           section
           <article>
             <RecipeList recipeCollection={recipeCollection} />
           </article>
         </section>
-      </ContentWithLeftAside>
+      </ContentWithoutAside>
       </main>
     </>
   );

@@ -36,7 +36,7 @@ const Dashboard: FC<{}> = ({}) => {
         });
     };
 
-    const recipeCollectionCut = recipeCollection?.slice(0, 4)
+    const recipeCollectionCut = recipeCollection?.slice(0, 9)
     console.log(recipeCollectionCut)
 
     useEffect(() => {

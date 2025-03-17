@@ -3,16 +3,16 @@ import { Rating } from "@mui/material";
 
 const StarRating: FC<{
   rate: number | undefined;
-  size: "small" | "medium" | "large" | undefined;
+  size: string | "small" | "medium" | "large" | undefined;
 }> = ({ rate, size }) => {
   return (
     <Rating
       sx={{
+          fontSize: size,
         "& .MuiRating-iconFilled": { color: "orange" },
         "& .MuiRating-iconEmpty": { color: "orange" },
       }}
       name="recipe-rating"
-      size={size || "medium"}
       defaultValue={rate}
       precision={0.01}
       readOnly
