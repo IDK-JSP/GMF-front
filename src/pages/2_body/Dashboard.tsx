@@ -10,7 +10,7 @@ import {useNavigate} from "react-router";
 import RecipeCarousel from "../../components/commun/RecipeCarousel";
 import RecipeCollection from "../../components/commun/RecipeCollection";
 
-const collections = [
+export const collections = [
     {title: "Les mieux notées", path: "/top"},
     {title: "Les incontournables", path: "/nbRate"},
     {title: "Nos recentes", path: "/recent"},

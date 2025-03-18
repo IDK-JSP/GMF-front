@@ -6,6 +6,7 @@ import DisplayCardOrItem from "../button/DisplayCardOrItem";
 import {RecipeType} from "../../1_types/RecipeType";
 import {DisplayContext} from "../../context/DisplayContext";
 import "../../styles/recipeDisplay.css";
+import DynamicFilter from './DynamicFilter';
 
 const RecipeList: FC<{ recipeCollection: RecipeType[] }> = ({recipeCollection}) => {
 
@@ -13,7 +14,6 @@ const RecipeList: FC<{ recipeCollection: RecipeType[] }> = ({recipeCollection}) 
 
     return (
         <>
-            <DisplayCardOrItem/>
             {displayContext?.isItem ? (
                 <Grid container spacing={2} justifyContent="center">
                     {recipeCollection.map((recipe) => (

@@ -9,7 +9,6 @@ import { SearchIngredientsList$ } from "../../observables/SearchIngredientsList$
 import post from "../../api/post";
 import { FilterSelection } from "./FilterSelection";
 import ResultsList from "./ResultsList";
-import { Search } from "@mui/icons-material";
 
 // TODO : Utiliser l'observable pour mettre à jour la liste des ingrédients
 // TODO : Alléger le composant en séparant les méthodes et fonctions. 

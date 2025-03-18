@@ -6,7 +6,6 @@ import "../../styles/recipeDisplay.css";
 import StarRating from "./StarRating";
 import DietBadge from "./DietBadge";
 import withLoadingAndError from "../hoc/WithLoadingAndError";
-import CardSkeleton from "../skeleton/CardSkeleton";
 import ImageLoarder from "./ImageLoader";
 import ItemSkeleton from "../skeleton/ItemSkeleton";
 
@@ -52,7 +51,7 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
 
                     {/* Titre */}
                     <h3 className="recipe-item-title">
-                        {recipe.title} ({recipe.matching_ingredients})
+                        {recipe.title}
                     </h3>
                 </div>
 

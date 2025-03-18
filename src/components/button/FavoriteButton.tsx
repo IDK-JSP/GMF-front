@@ -22,17 +22,24 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite, sizeInPix
 
     const handleFavorite = (id: number, type: string, favorite: string) => {
         if (favorite === "true") {
-            setIsFavorite('false');
-            del("/favorite/delete/recipe/"+id,"Favoris supprimé avec succés");
+            del("/favorite/delete/recipe/"+id,"Favoris supprimé avec succés")
+            .then((response) => {
+                if (response && response.success) {
+                    setIsFavorite("false");
+                } else {}
+            }
+        )  
         }else{
             const data = {
                 favoriteable_type: type,
                 favoriteable_id: id,
             };
-            post("/favorite/new", data, "Favoris ajouté");
-            setIsFavorite('true');
-        }
-    
+            post("/favorite/new", data, "Favoris ajouté")
+            .then((response) => {
+                if (response && response.success) {
+                setIsFavorite("true");
+                } else {}
+            })};
     };
 
     
