@@ -4,12 +4,10 @@ import get from "../../api/get";
 import ContentWithoutAside from '../../components/layout/ContentWithoutAside';
 import Presentation from '../../components/layout/Presentation';
 import {AuthContext} from "../../context/AuthContext";
-import RecipeCard from "../../components/commun/RecipeCard";
 import "../../styles/recipeDisplay.css";
 import "../../styles/dashboard.css";
-import {Typography} from "@mui/material";
 import {useNavigate} from "react-router";
-import RecipeCarousel from "../../components/RecipeCarousel";
+import RecipeCarousel from "../../components/commun/RecipeCarousel";
 import RecipeCollection from "../../components/commun/RecipeCollection";
 
 const collections = [

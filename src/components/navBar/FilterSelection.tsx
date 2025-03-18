@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { IngredientType } from '../../../1_types/IngredientType';
-import "../../../styles/nav.css";
+import { IngredientType } from '../../1_types/IngredientType';
+import "../../styles/nav.css";
 
 interface FilterSelectionProps {
 

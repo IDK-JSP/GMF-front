@@ -1,6 +1,6 @@
 import React from "react";
 import { Children } from "../../1_types/PropsType";
-import OpinionRecipe from "../RecipeDetails/OpinionRecipe";
+import OpinionRecipe from "../recipeDetails/OpinionRecipe";
 
 interface PresentationProps extends Children {
   imgUrl: string;

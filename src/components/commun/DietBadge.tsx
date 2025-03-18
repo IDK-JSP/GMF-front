@@ -2,44 +2,53 @@ import React from 'react';
 
 interface DietBadgeProps {
     diet: string;
+    sizeInPixels: number;
 }
 
-const DietBadge: React.FC<DietBadgeProps> = ({ diet }) => {
-    let badgeClass: string;
+const DietBadge: React.FC<DietBadgeProps> = ({ diet, sizeInPixels }) => {
+    let badgeImage: string;
     let badgeColor: string;
     let badgeText: string;
 
     switch (diet) {
-        case 'vegan':
-            badgeClass = 'vegetarian-badge';
+        case 'Végan':
+            badgeImage = 'vegan.png';
             badgeColor = 'green';
-            badgeText = 'Vegan';
+            badgeText = 'Végan';
             break;
-        case 'vegetarian':
-            badgeClass = 'vegetarian-badge';
+        case 'Végétarien':
+            badgeImage = 'vege.png';
             badgeColor = 'orange';
-            badgeText = 'Vegetarian';
+            badgeText = 'Végétarien';
             break;
-        case 'gluten-free':
-            badgeClass = 'vegetarian-badge';
-            badgeColor = 'blue';
-            badgeText = 'Gluten-Free';
-            break;
-        case 'keto':
-            badgeClass = 'vegetarian-badge';
-            badgeColor = 'purple';
-            badgeText = 'Keto';
+        case 'Non renseigné':
+            badgeImage = '';
+            badgeColor = 'grey';
+            badgeText = 'Non renseigné';
             break;
         default:
-            badgeClass = 'vegetarian-badge';
-            badgeColor = 'gray';
+            badgeImage = '';
+            badgeColor = 'black';
             badgeText = 'Unknown';
     }
 
     return (
-        <span style={{ backgroundColor: badgeColor, padding: '5px', borderRadius: '5px', color: 'white' }}>
-            {badgeText}
+        <>
+        {badgeImage != ''
+        ? <span style={{
+            backgroundColor: badgeColor,
+            padding: '5px',
+            width: sizeInPixels + 'px',
+            height: sizeInPixels + 'px',
+            borderRadius: '50%',
+            color: 'white',
+            backgroundImage: `url(/${badgeImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            }}>
         </span>
+        : ''}
+        </>
     );
 };
 

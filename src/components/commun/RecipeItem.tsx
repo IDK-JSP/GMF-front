@@ -4,6 +4,7 @@ import {RecipeType} from "../../1_types/RecipeType";
 import FavoriteButton from "../button/FavoriteButton";
 import "../../styles/recipeDisplay.css";
 import StarRating from "./StarRating";
+import DietBadge from "./DietBadge";
 
 const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
     const navigate = useNavigate();
@@ -28,21 +29,17 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
             <div className="recipe-item-content">
 
                 <span className="favorite-btn">
-                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"}/>
+                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={50}/>
                 </span>
 
                 <div className="first-row">
 
                     {/* Badges V */}
-                    {recipe.diet === "Non végétarien" &&
-                        <div className="vegetarian-badge"/>}
-
-                    {recipe.diet === "Végan" &&
-                        <div className="vegan-badge"/>}
+                    <DietBadge diet={recipe.diet} sizeInPixels={40}/>
 
                     {/* Titre */}
                     <h3 className="recipe-item-title">
-                        {recipe.title}
+                        {recipe.title}{recipe.diet}
                     </h3>
                 </div>
 

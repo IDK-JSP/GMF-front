@@ -52,6 +52,25 @@ main {
   width: 100%;
 }
 
+.favorite-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0px;
+  border-radius: 50%;
+  background-color: grey;
+}
+
+.favorite{
+  color: red;
+  background-color: white;
+}
+.favorite-btn:hover {
+  scale: 1.1;
+  transition: all ease 0.5s;
+}
+
 .presentation {
   width: 100%;
   display: flex;

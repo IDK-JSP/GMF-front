@@ -4,6 +4,7 @@ import {RecipeType} from "../../1_types/RecipeType";
 import "../../styles/recipeDisplay.css";
 import {Rating} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+import DietBadge from "./DietBadge";
 
 const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
             />
 
             <span className="favorite-btn">
-                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"}/>
+                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={50}/>
             </span>
 
             <div className="recipe-card-content">
@@ -34,11 +35,7 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
                 </h3>
 
                     {/* Badges V */}
-                    {recipe.diet === "Non végétarien" &&
-                        <div className="vegetarian-badge"/>}
-
-                    {recipe.diet === "Végan" &&
-                        <div className="vegan-badge"/>}
+                    <DietBadge diet={recipe.diet} sizeInPixels={20}/>
                 </div>
 
                 <div className="recipe-card-info">

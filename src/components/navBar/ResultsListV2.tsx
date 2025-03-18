@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {IngredientType} from '../../../1_types/IngredientType';
-import "../../../styles/nav.css";
-import {RecipeType} from '../../../1_types/RecipeType';
-import RecipeItem from '../../commun/RecipeItem';
+import {IngredientType} from '../../1_types/IngredientType';
+import "../../styles/nav.css";
+import {RecipeType} from '../../1_types/RecipeType';
+import RecipeItem from '../commun/RecipeItem';
 import FilterTags from './FilterTags';
 import {useNavigate} from 'react-router';
 
@@ -11,8 +11,8 @@ interface FilterSelectionProps {
     resultIsVisible: boolean;
     recipeResults: RecipeType[];
     ingredientResults: IngredientType[];
-    checkedIngredients: IngredientType[];
-    handleCheck: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    searchIngredientsList: IngredientType[];
+    handleCheck: (arg0 : IngredientType) => void;
     handleClearSearch: () => void;
     handleForceClose: () => void;
 }
@@ -22,18 +22,17 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
                                                                     resultIsVisible,
                                                                     recipeResults,
                                                                     ingredientResults,
-                                                                    checkedIngredients,
+                                                                    searchIngredientsList,
                                                                     handleCheck,
                                                                     handleClearSearch,
                                                                     handleForceClose,
                                                                 }) => {
     const navigate = useNavigate();
 
-    const handleAddIngredient = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const ingredientName = event.target.value;
-        handleCheck(event);
+    const handleAddIngredient = (ing: IngredientType) => {
+        handleCheck(ing);
         handleClearSearch();
-    };
+      };
     const handleValidate = () => {
         navigate('/Research');
         handleForceClose();
@@ -46,35 +45,44 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
                  opacity: resultIsVisible ? '1' : '0',
                  top: resultIsVisible ? 0 : -500
              }}>
-            <FilterTags checkedIngredients={checkedIngredients} handleCheck={handleCheck}/>
+            <FilterTags checkedIngredients={searchIngredientsList} handleCheck={handleCheck}/>
 
-                {ingredientResults?.length > 0 && ingredientResults
-                .filter((ingredient) => !checkedIngredients.find((ing) => ing.id_ingredient === ingredient.id_ingredient))
+            {ingredientResults?.length > 0 && ingredientResults
+                .filter((ingredient) => !searchIngredientsList.some((ing) => ing.id_ingredient === ingredient.id_ingredient))
                 .slice(0, 3)
                 .map((ingredient) => (
-                    
                     <div key={ingredient.name}>
-                            <input type='checkbox' id={ingredient.name} onChange={handleAddIngredient} value={ingredient.name} checked={checkedIngredients.some((checkedIng) => checkedIng.name === ingredient.name)} />
-                            <label htmlFor={ingredient.name}>{ingredient.name}</label>
-                        </div>
+                    <input 
+                        type="checkbox" 
+                        id={`ingredient-${ingredient.id_ingredient}`} 
+                        onChange={() => handleAddIngredient(ingredient)}
+                        checked={searchIngredientsList.some((checkedIng) => checkedIng.id_ingredient === ingredient.id_ingredient)}
+                        />
+                    <label htmlFor={ingredient.name}>{ingredient.name}</label>
+                    </div>
                 ))}
 
             <div>
             {recipeResults.slice(0, 3).map((recipe) => {
-    const matchPercent = ((recipe.matching_ingredients ?? 0) / checkedIngredients.length).toFixed(2);
+                const matchPercent = searchIngredientsList.length > 0 
+                ? ((recipe.matching_ingredients ?? 0) / searchIngredientsList.length).toFixed(2) 
+                : "1";
 
     return (
         <React.Fragment key={recipe.id_recipe}>
-            {/* <span>match ({recipe.matching_ingredients}) - {Number(matchPercent)}</span> */}
-            <div id= {matchPercent === '1.00' ? 'matching' : 'not-matching'}>
-            <RecipeItem recipe={recipe} />
+            
+            <div
+                style={{
+                    opacity: matchPercent,
+                    padding: '5px',
+                    }}>
+            <RecipeItem recipe={recipe}/>
             </div>
         </React.Fragment>
     );
 })}
             </div>
             <span>
-            
                 {recipeResults.length == 0 && "aucun résultats"}
                 {recipeResults.length == 1 && "1 recette trouvée"}
                 {recipeResults.length > 1 && recipeResults.length + " recettes trouvées"}
