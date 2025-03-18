@@ -1,19 +1,36 @@
-import React, {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {RecipeType} from "../../1_types/RecipeType";
 import FavoriteButton from "../button/FavoriteButton";
 import "../../styles/recipeDisplay.css";
 import StarRating from "./StarRating";
 import DietBadge from "./DietBadge";
+import withLoadingAndError from "../hoc/WithLoadingAndError";
+import CardSkeleton from "../skeleton/CardSkeleton";
+import ImageLoarder from "./ImageLoader";
+import ItemSkeleton from "../skeleton/ItemSkeleton";
 
-const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
+export const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
+    const [recipeData, setRecipeData] = useState<RecipeType>(recipe);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
+      useEffect(() => {
+            setRecipeData(recipe);
+            setIsLoading(false);
+        }, [recipe]);
+        
     const handleNavigate = (recipe: RecipeType) => {
         navigate(`/RecipeDetails/${recipe.id_recipe}`, {state: {recipe}});
     };
 
-    return (
+    return withLoadingAndError({
+        isLoading,
+        error,
+        data: [recipeData],
+        SkeletonComponent: ItemSkeleton,
+        children: (data) => (
         <div className="recipe-container" onClick={() => handleNavigate(recipe)}>
 
             <img
@@ -50,7 +67,8 @@ const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
                 </div>
             </div>
         </div>
-    );
+        ),
+    });
 };
 
 export default RecipeItem;

@@ -1,6 +1,6 @@
 import {FC, useEffect, useState, useTransition} from 'react';
 import {RecipeType} from "../../1_types/RecipeType";
-import RecipeCard from "./RecipeCard";
+import { RecipeCard } from "./RecipeCard";
 import {Typography} from "@mui/material";
 import {useNavigate} from "react-router";
 import get from "../../api/get";

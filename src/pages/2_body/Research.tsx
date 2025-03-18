@@ -6,8 +6,6 @@ import { IngredientType } from "../../1_types/IngredientType";
 import Presentation from "../../components/layout/Presentation";
 import RecipeCarousel from  "../../components/commun/RecipeCarousel";
 import ContentWithoutAside from "../../components/layout/ContentWithoutAside";
-import AsideLeft from "../../components/layout/AsideLeft";
-import { SearchIngredientsList$ } from "../../observables/SearchIngredientsList$";
 import DynamicFilter from "../../components/commun/DynamicFilter";
 
 
@@ -32,6 +30,9 @@ const Research: FC<{}> = ({}) => {
       setImagePresentation("recipe/recipe_" + recipeCollection[0].id_recipe + ".jpg");
     }
   }, [recipeCollection]);
+
+// On masque l'affichage des résultats de la recherche
+  
 
   return (
     <>

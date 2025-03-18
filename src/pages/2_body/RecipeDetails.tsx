@@ -12,7 +12,7 @@ import StageResume from "../../components/recipeDetails/StageResume";
 import DietResume from "../../components/recipeDetails/DietResume";
 import "react-loading-skeleton/dist/skeleton.css";
 import OpinionsDetails from "../../components/recipeDetails/OpinionsDetails";
-import RecipeSkeleton from "../../components/recipeDetails/RecipeSkeleton";
+import RecipeSkeleton from "../../components/skeleton/RecipeSkeleton";
 import FavoriteButton from "../../components/button/FavoriteButton";
 import PresentationRecipe from "../../components/layout/PresentationRecipe";
 
@@ -39,7 +39,7 @@ const RecipeDetails: FC = () => {
     useEffect(() => {
         window.scrollTo({top: 0, behavior: "smooth"});
         const fetchRecipe = async () => {
-            setIsPending(true);  // ✅ Assure que le chargement commence bien
+            setIsPending(true);
             setError(null);
 
             try {
@@ -59,13 +59,13 @@ const RecipeDetails: FC = () => {
         fetchRecipe();
     }, [id, location]);
 
-    // 🔥 Assurer que `isPending` reste `true` jusqu'à ce que `recipeDetails` soit chargé
+    // Assurer que `isPending` reste `true` jusqu'à ce que `recipeDetails` soit chargé
     useEffect(() => {
         if (recipe?.id_recipe) {
-            setIsPending(true);  // ✅ Remet `isPending` à `true` en attendant les détails
+            setIsPending(true);
             get('/recipe/details/'+ recipe.id_recipe).then((details) => {
                 setRecipeDetails(details);
-                setIsPending(false);  // ✅ On désactive `isPending` uniquement après ce chargement
+                setIsPending(false);
             });
         }
     }, [recipe]);

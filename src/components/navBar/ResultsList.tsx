@@ -75,14 +75,15 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
                 style={{
                     opacity: matchPercent,
                     padding: '5px',
-                    }}>
+                    }}
+                onClick={handleForceClose}>
             <RecipeItem recipe={recipe}/>
             </div>
         </React.Fragment>
     );
 })}
             </div>
-            <span>
+            <span className='flex-row' style={{justifyContent: 'space-between'}}>
                 {recipeResults.length == 0 && "aucun résultats"}
                 {recipeResults.length == 1 && "1 recette trouvée"}
                 {recipeResults.length > 1 && recipeResults.length + " recettes trouvées"}

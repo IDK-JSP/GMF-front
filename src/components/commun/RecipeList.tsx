@@ -1,7 +1,7 @@
 import {FC, useContext} from 'react';
 import Grid from "@mui/material/Grid2";
 import RecipeItem from "./RecipeItem";
-import RecipeCard from "./RecipeCard";
+import {RecipeCard} from "./RecipeCard";
 import DisplayCardOrItem from "../button/DisplayCardOrItem";
 import {RecipeType} from "../../1_types/RecipeType";
 import {DisplayContext} from "../../context/DisplayContext";

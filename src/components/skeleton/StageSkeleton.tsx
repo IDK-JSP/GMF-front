@@ -1,6 +1,5 @@
 import Skeleton from "react-loading-skeleton";
 import "../../styles/recipe.css";
-import { max } from "rxjs";
 
 const StageSkeleton = () => (
   <>

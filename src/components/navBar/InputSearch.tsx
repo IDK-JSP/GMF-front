@@ -7,11 +7,11 @@ import "../../styles/nav.css";
 import { ResultsList$ } from "../../observables/ResultsList$";
 import { SearchIngredientsList$ } from "../../observables/SearchIngredientsList$"; 
 import post from "../../api/post";
-import ResultsListV2 from "./ResultsListV2";
-import { FilterSelectionV2 } from "./FilterSelectionV2";
+import { FilterSelection } from "./FilterSelection";
+import ResultsList from "./ResultsList";
 
 // TODO : Utiliser l'observable pour mettre à jour la liste des ingrédients
-
+// TODO : Alléger le composant en séparant les méthodes et fonctions. 
 
 export const InputSearch: React.FC = () => {
   // Gestion de la visibilité des composants
@@ -120,12 +120,10 @@ export const InputSearch: React.FC = () => {
     }
   };
   const handleForceClose = () => {
-    setTimeout(() => {
       setResultIsVisible(false);
-    }, 100);
   };
 
-  // TODO : refacto pour éviter les fuites de mémoire
+  // TODO : refacto pour éviter les fuites de mémoire sur la gestion des événements
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -162,7 +160,7 @@ export const InputSearch: React.FC = () => {
         handleForceClose={handleForceClose}
         handleClickInside={handleClickInside}
       />
-      <FilterSelectionV2
+      <FilterSelection
         filterIsVisible={filterIsVisible}
         ingredientList={ingredientList}
         handleCheck={handleCheck}
@@ -170,7 +168,7 @@ export const InputSearch: React.FC = () => {
         setSearchIngredientsList={setSearchIngredientsList}
         handleClickInside={handleClickInside}
       />
-      <ResultsListV2
+      <ResultsList
         resultIsVisible={resultIsVisible}
         recipeResults={recipeCollection}
         ingredientResults={ingredientResults}

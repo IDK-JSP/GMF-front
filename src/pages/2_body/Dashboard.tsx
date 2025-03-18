@@ -45,7 +45,7 @@ const Dashboard: FC<{}> = ({}) => {
 
     return (
         <>
-            {!isPending && recipeCollectionCut && (
+            { recipeCollectionCut && (
                 <>
                     <Presentation carousel={<RecipeCarousel recipeCollection={recipeCollectionCut}/>}>
                         Dashboard

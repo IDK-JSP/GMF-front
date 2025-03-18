@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { RecipeIngredientType } from "../../1_types/RecipeIngredientType";
 import withLoadingAndError from "../hoc/WithLoadingAndError";
-import IngredientSkeleton from "./IngredientSkeleton";
+import IngredientSkeleton from "../skeleton/IngredientSkeleton";
 
 type Props = {
   ingredientsList: Array<RecipeIngredientType>;

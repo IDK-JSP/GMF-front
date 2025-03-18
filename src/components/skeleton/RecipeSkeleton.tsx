@@ -1,13 +1,12 @@
 import Skeleton from "react-loading-skeleton";
 import Presentation from "../layout/Presentation";
 import AsideLeft from "../layout/AsideLeft";
-import IngredientResume from "./IngredientResume";
-import IngredientSkeleton from "./IngredientSkeleton";
-import DietSkeleton from "./DietSkeleton";
+import IngredientSkeleton from "../skeleton/IngredientSkeleton";
+import DietSkeleton from "../skeleton/DietSkeleton";
 import ContentWithBothAside from "../layout/ContentWithBothAside";
 import AsideRight from "../layout/AsideRight";
-import OpinionsSkeleton from "./OpinionsSkeleton";
-import StageSkeleton from "./StageSkeleton";
+import OpinionsSkeleton from "../skeleton/OpinionsSkeleton";
+import StageSkeleton from "../skeleton/StageSkeleton";
 
 const RecipeSkeleton = () => (
   <>
