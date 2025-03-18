@@ -14,7 +14,6 @@ interface FavoriteButtonProps {
 }
 
 
-
 const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite, sizeInPixels}) => {
 
     const [isFavorite, setIsFavorite] = React.useState(favorite);
