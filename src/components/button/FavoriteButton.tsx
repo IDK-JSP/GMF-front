@@ -1,30 +1,26 @@
-import {FC, useContext} from 'react';
-import {IconButton} from "@mui/material";
+import React, {FC, useContext, useState} from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import post from '../../api/post';
-import { AuthContext } from '../../context/AuthContext';
-import { toast } from 'react-toastify';
+import {AuthContext} from '../../context/AuthContext';
 import del from "../../api/del";
-import React from 'react';
+
 interface FavoriteButtonProps {
     id: number;
-    type : string;
-    favorite : string;
-    sizeInPixels : number
+    type: string;
+    favorite: string;
+    sizeInPixels: number
 }
 
+const FavoriteButton: FC<FavoriteButtonProps> = ({id, type, favorite, sizeInPixels}) => {
 
-const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite, sizeInPixels}) => {
-
-    const [isFavorite, setIsFavorite] = React.useState(favorite);
+    const [isFavorite, setIsFavorite] = useState(favorite);
     const authContext = useContext(AuthContext);
-
 
     const handleFavorite = (id: number, type: string, favorite: string) => {
         if (favorite === "true") {
             setIsFavorite('false');
-            del("/favorite/delete/recipe/"+id,"Favoris supprimé avec succés");
-        }else{
+            del("/favorite/delete/recipe/" + id, "Favoris supprimé avec succés");
+        } else {
             const data = {
                 favoriteable_type: type,
                 favoriteable_id: id,
@@ -32,24 +28,25 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite, sizeInPix
             post("/favorite/new", data, "Favoris ajouté");
             setIsFavorite('true');
         }
-    
     };
 
-    
     return (
         <>
-        {authContext?.isLoggedIn ? (
-          <div
-          onClick={() => handleFavorite(id, type, isFavorite)}
-          className={isFavorite === 'true' ? "favorite-btn favorite" : "favorite-btn"}
-          style={{
-            width: sizeInPixels,
-            height: sizeInPixels,
-          }}
-          >
-            <FavoriteIcon fontSize="large" />
-          </div>
-        ) : null}
+            {authContext?.isLoggedIn ? (
+                <div
+                    onClick={(e) => {
+                        e.stopPropagation(); // Empêche la propagation de l'événement
+                        handleFavorite(id, type, isFavorite);
+                    }}
+                    className={isFavorite === 'true' ? "favorite-btn favorite" : "favorite-btn"}
+                    style={{
+                        width: sizeInPixels,
+                        height: sizeInPixels,
+                    }}
+                >
+                    <FavoriteIcon fontSize="large"/>
+                </div>
+            ) : null}
         </>
     );
 };

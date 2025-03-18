@@ -1,15 +1,15 @@
 import {FC, startTransition, useEffect, useState} from "react";
-import ContentWithoutAside from "../../components/layout/ContentWithoutAside";
-import Presentation from "../../components/layout/Presentation";
-import {IngredientType} from "../../1_types/IngredientType";
-import {RecipeType} from "../../1_types/RecipeType";
+import ContentWithoutAside from "../components/layout/ContentWithoutAside";
+import Presentation from "../components/layout/Presentation";
+import {IngredientType} from "../1_types/IngredientType";
+import {RecipeType} from "../1_types/RecipeType";
 import {useContext} from "react";
-import {AuthContext} from "../../context/AuthContext";
-import {getEmailFromToken} from "../../context/getEmailFromToken";
-import RecipeList from "../../components/commun/RecipeList";
-import IngredientList from "../../components/commun/IngredientList";
-import get from "../../api/get";
-import RecipeCarousel from "../../components/commun/RecipeCarousel";
+import {AuthContext} from "../context/AuthContext";
+import {getEmailFromToken} from "../context/getEmailFromToken";
+import RecipeList from "../components/common/RecipeList";
+import IngredientList from "../components/common/IngredientList";
+import get from "../api/get";
+import RecipeCarousel from "../components/common/RecipeCarousel";
 
 export const Favorite: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext);

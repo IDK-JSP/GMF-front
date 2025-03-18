@@ -1,20 +1,20 @@
 import {FC, useEffect, useState} from "react";
-import ContentWithBothAside from "../../components/layout/ContentWithBothAside";
-import AsideLeft from "../../components/layout/AsideLeft";
-import AsideRight from "../../components/layout/AsideRight";
+import ContentWithBothAside from "../components/layout/ContentWithBothAside";
+import AsideLeft from "../components/layout/AsideLeft";
+import AsideRight from "../components/layout/AsideRight";
 import {useLocation, useParams} from "react-router-dom";
-import {RecipeDetailsType} from "../../1_types/RecipeDetailsType";
-import get from "../../api/get";
-import "../../styles/recipe.css";
-import {RecipeType} from "../../1_types/RecipeType";
-import IngredientResume from "../../components/recipeDetails/IngredientResume";
-import StageResume from "../../components/recipeDetails/StageResume";
-import DietResume from "../../components/recipeDetails/DietResume";
+import {RecipeDetailsType} from "../1_types/RecipeDetailsType";
+import get from "../api/get";
+import "../styles/recipe.css";
+import {RecipeType} from "../1_types/RecipeType";
+import IngredientResume from "../components/recipeDetails/IngredientResume";
+import StageResume from "../components/recipeDetails/StageResume";
+import DietResume from "../components/recipeDetails/DietResume";
 import "react-loading-skeleton/dist/skeleton.css";
-import OpinionsDetails from "../../components/recipeDetails/OpinionsDetails";
-import RecipeSkeleton from "../../components/recipeDetails/RecipeSkeleton";
-import FavoriteButton from "../../components/button/FavoriteButton";
-import PresentationRecipe from "../../components/layout/PresentationRecipe";
+import OpinionsDetails from "../components/recipeDetails/OpinionsDetails";
+import RecipeSkeleton from "../components/recipeDetails/RecipeSkeleton";
+import FavoriteButton from "../components/button/FavoriteButton";
+import PresentationRecipe from "../components/layout/PresentationRecipe";
 
 const RecipeDetails: FC = () => {
     const location = useLocation();

@@ -1,14 +1,14 @@
 import { FC, useEffect, useState } from "react";
-import { ResultsList$ } from "../../observables/ResultsList$";
-import { RecipeType } from "../../1_types/RecipeType";
-import RecipeList from "../../components/commun/RecipeList";
-import { IngredientType } from "../../1_types/IngredientType";
-import Presentation from "../../components/layout/Presentation";
-import RecipeCarousel from  "../../components/commun/RecipeCarousel";
-import ContentWithoutAside from "../../components/layout/ContentWithoutAside";
-import AsideLeft from "../../components/layout/AsideLeft";
-import { SearchIngredientsList$ } from "../../observables/SearchIngredientsList$";
-import DynamicFilter from "../../components/commun/DynamicFilter";
+import { ResultsList$ } from "../observables/ResultsList$";
+import { RecipeType } from "../1_types/RecipeType";
+import RecipeList from "../components/common/RecipeList";
+import { IngredientType } from "../1_types/IngredientType";
+import Presentation from "../components/layout/Presentation";
+import RecipeCarousel from "../components/common/RecipeCarousel";
+import ContentWithoutAside from "../components/layout/ContentWithoutAside";
+import AsideLeft from "../components/layout/AsideLeft";
+import { SearchIngredientsList$ } from "../observables/SearchIngredientsList$";
+import DynamicFilter from "../components/common/DynamicFilter";
 
 
 const Research: FC<{}> = ({}) => {

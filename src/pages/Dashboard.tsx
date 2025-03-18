@@ -1,22 +1,21 @@
 import {FC, useContext, useEffect, useState, useTransition} from 'react';
-import {RecipeType} from "../../1_types/RecipeType";
-import get from "../../api/get";
-import ContentWithoutAside from '../../components/layout/ContentWithoutAside';
-import Presentation from '../../components/layout/Presentation';
-import {AuthContext} from "../../context/AuthContext";
-import "../../styles/recipeDisplay.css";
-import "../../styles/dashboard.css";
+import {RecipeType} from "../1_types/RecipeType";
+import get from "../api/get";
+import ContentWithoutAside from '../components/layout/ContentWithoutAside';
+import Presentation from '../components/layout/Presentation';
+import {AuthContext} from "../context/AuthContext";
+import "../styles/dashboard.css";
 import {useNavigate} from "react-router";
-import RecipeCarousel from "../../components/commun/RecipeCarousel";
-import RecipeCollection from "../../components/commun/RecipeCollection";
+import RecipeCarousel from "../components/common/RecipeCarousel";
+import RecipeCollection from "../components/common/RecipeCollection";
 
 const collections = [
     {title: "Les mieux notées", path: "/top"},
     {title: "Les incontournables", path: "/nbRate"},
-    {title: "Nos recentes", path: "/recent"},
-    {title: "Les veges", path: "/vege"},
+    {title: "Nos récentes", path: "/recent"},
+    {title: "Les végés", path: "/vege"},
     {title: "Les vegan", path: "/vegan"},
-    {title: "Nos sources sur", path: "/validate"}
+    {title: "Nos sources sûres", path: "/validate"}
 ]
 const Dashboard: FC<{}> = ({}) => {
     const navigate = useNavigate()
@@ -25,29 +24,27 @@ const Dashboard: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext);
 
     const hydrate = () => {
-        // @ts-ignore
         startTransition(async () => {
-            const results = await get("/collection/top");
-            startTransition(() => {
+            try {
+                const results = await get("/collection/top");
                 setRecipeCollection(results);
-            });
+            } catch (error) {
+                console.error("Erreur lors du chargement des recettes :", error);
+            }
         });
     };
 
-    const recipeCollectionCut = recipeCollection?.slice(0, 9)
-    console.log(recipeCollectionCut)
 
     useEffect(() => {
         window.scrollTo({top: 0, behavior: "smooth"});
         hydrate();
-        console.log("log :", authContext?.isLoggedIn, "token :", authContext?.token, "local", localStorage.getItem("token"))
     }, []);
 
     return (
         <>
-            {!isPending && recipeCollectionCut && (
+            {!isPending && recipeCollection && (
                 <>
-                    <Presentation carousel={<RecipeCarousel recipeCollection={recipeCollectionCut}/>}>
+                    <Presentation carousel={<RecipeCarousel recipeCollection={recipeCollection}/>}>
                         Dashboard
                     </Presentation>
 
@@ -55,8 +52,8 @@ const Dashboard: FC<{}> = ({}) => {
                         <section>
                             {recipeCollection ?
                                 collections.map((collection) => (
-
-                                    <RecipeCollection path={collection.path}
+                                    <RecipeCollection key={collection.path}
+                                                      path={collection.path}
                                                       title={collection.title}/>
                                 ))
                                 :

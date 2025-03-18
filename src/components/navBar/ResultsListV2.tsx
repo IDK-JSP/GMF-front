@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {IngredientType} from '../../1_types/IngredientType';
 import "../../styles/nav.css";
 import {RecipeType} from '../../1_types/RecipeType';
-import RecipeItem from '../commun/RecipeItem';
+import RecipeItem from '../common/RecipeItem';
 import FilterTags from './FilterTags';
 import {useNavigate} from 'react-router';
 
@@ -12,7 +12,7 @@ interface FilterSelectionProps {
     recipeResults: RecipeType[];
     ingredientResults: IngredientType[];
     searchIngredientsList: IngredientType[];
-    handleCheck: (arg0 : IngredientType) => void;
+    handleCheck: (arg0: IngredientType) => void;
     handleClearSearch: () => void;
     handleForceClose: () => void;
 }
@@ -32,12 +32,12 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
     const handleAddIngredient = (ing: IngredientType) => {
         handleCheck(ing);
         handleClearSearch();
-      };
+    };
     const handleValidate = () => {
         navigate('/Research');
         handleForceClose();
     };
-    
+
     return (
         <div className='results-container'
              style={{
@@ -52,35 +52,35 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
                 .slice(0, 3)
                 .map((ingredient) => (
                     <div key={ingredient.name}>
-                    <input 
-                        type="checkbox" 
-                        id={`ingredient-${ingredient.id_ingredient}`} 
-                        onChange={() => handleAddIngredient(ingredient)}
-                        checked={searchIngredientsList.some((checkedIng) => checkedIng.id_ingredient === ingredient.id_ingredient)}
+                        <input
+                            type="checkbox"
+                            id={`ingredient-${ingredient.id_ingredient}`}
+                            onChange={() => handleAddIngredient(ingredient)}
+                            checked={searchIngredientsList.some((checkedIng) => checkedIng.id_ingredient === ingredient.id_ingredient)}
                         />
-                    <label htmlFor={ingredient.name}>{ingredient.name}</label>
+                        <label htmlFor={ingredient.name}>{ingredient.name}</label>
                     </div>
                 ))}
 
             <div>
-            {recipeResults.slice(0, 3).map((recipe) => {
-                const matchPercent = searchIngredientsList.length > 0 
-                ? ((recipe.matching_ingredients ?? 0) / searchIngredientsList.length).toFixed(2) 
-                : "1";
+                {recipeResults.slice(0, 3).map((recipe) => {
+                    const matchPercent = searchIngredientsList.length > 0
+                        ? ((recipe.matching_ingredients ?? 0) / searchIngredientsList.length).toFixed(2)
+                        : "1";
 
-    return (
-        <React.Fragment key={recipe.id_recipe}>
-            
-            <div
-                style={{
-                    opacity: matchPercent,
-                    padding: '5px',
-                    }}>
-            <RecipeItem recipe={recipe}/>
-            </div>
-        </React.Fragment>
-    );
-})}
+                    return (
+                        <React.Fragment key={recipe.id_recipe}>
+
+                            <div
+                                style={{
+                                    opacity: matchPercent,
+                                    padding: '5px',
+                                }}>
+                                <RecipeItem recipe={recipe}/>
+                            </div>
+                        </React.Fragment>
+                    );
+                })}
             </div>
             <span>
                 {recipeResults.length == 0 && "aucun résultats"}

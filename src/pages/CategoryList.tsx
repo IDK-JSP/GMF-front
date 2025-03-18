@@ -1,10 +1,10 @@
 import {FC, startTransition, useEffect, useState} from 'react';
-import ContentWithoutAside from "../../components/layout/ContentWithoutAside";
-import Presentation from "../../components/layout/Presentation";
-import get from "../../api/get";
-import {RecipeType} from "../../1_types/RecipeType";
+import ContentWithoutAside from "../components/layout/ContentWithoutAside";
+import Presentation from "../components/layout/Presentation";
+import get from "../api/get";
+import {RecipeType} from "../1_types/RecipeType";
 import {useLocation} from "react-router-dom";
-import RecipeList from "../../components/commun/RecipeList";
+import RecipeList from "../components/common/RecipeList";
 
 const CategoryList: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
