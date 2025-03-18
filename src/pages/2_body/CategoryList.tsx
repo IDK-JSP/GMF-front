@@ -1,12 +1,9 @@
 import {FC, startTransition, useEffect, useState} from 'react';
 import ContentWithoutAside from "../../components/layout/ContentWithoutAside";
-import RecipeCarousel from "../../components/RecipeCarousel";
 import Presentation from "../../components/layout/Presentation";
-import RecipeCard from "../../components/commun/RecipeCard";
 import get from "../../api/get";
 import {RecipeType} from "../../1_types/RecipeType";
 import {useLocation} from "react-router-dom";
-import RecipeCollection from "../../components/commun/RecipeCollection";
 import RecipeList from "../../components/commun/RecipeList";
 
 const CategoryList: FC<{}> = ({}) => {

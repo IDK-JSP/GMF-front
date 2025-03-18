@@ -2,6 +2,8 @@ import {FC, useContext, useEffect, useState} from 'react';
 import "../../styles/recipeDisplay.css";
 import { IngredientType } from '../../1_types/IngredientType';
 import { toast } from 'react-toastify';
+import post from '../../api/post';
+import del from '../../api/del';
 
 interface Props {
     ingredientList: IngredientType[];
@@ -17,22 +19,23 @@ export const IngredientList: React.FC<Props> = ({ ingredientList, favoriteIngred
 
 const handleAddFavorite = (ingredient: IngredientType) => {
     setFavoriteIngredients([...favoriteIngredients, ingredient]);
-    toast.success("Favoris ajouté");
-    console.log("add favoriteIngredients", favoriteIngredients);
+    const data = {
+        favoriteable_type: "ingredient",
+        favoriteable_id: ingredient.id_ingredient,
+    };
+    post("/favorite/new", data, "Favoris ajouté");
 };
 const handleRemoveFavorite = (ingredient: IngredientType) => {
     setFavoriteIngredients(favoriteIngredients.filter((fav) => fav.name !== ingredient.name));
-    toast.warn("Favoris retiré");
-    console.log("remove favoriteIngredients", favoriteIngredients);
+    del("/favorite/delete/recipe/"+ingredient.id_ingredient,"Favoris supprimé avec succés");
+    
 };
-
 
     return (
         <>
         {        ingredientList.length ?
         <>
             <div className="flex-row" style={{flexWrap: "wrap", gap : "1rem"}}>
-                <div onClick={() => handleAddFavorite(ingredientList[10])}>+</div>
                 {ingredientList
                     .filter((ing) => favoriteIngredients.some(fav => ing.name.toLowerCase().includes(fav.name.toLowerCase())))
                     .map((ing) => (

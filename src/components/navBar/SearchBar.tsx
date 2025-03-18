@@ -1,6 +1,6 @@
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SearchIcon from '@mui/icons-material/Search';
-import "../../../styles/nav.css";
+import "../../styles/nav.css";
 import { useNavigate } from 'react-router';
 
 interface SearchBarProps {
@@ -32,7 +32,6 @@ export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handl
                     handleClick();
                 }
             }}
-            
              type='text'
              placeholder='Search...' />
             <button id='filter-button' onClick={toggleFilter}>
