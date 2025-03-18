@@ -6,9 +6,10 @@ import ImageSkeleton from "../skeleton/ImageSkeleton";
 interface ImageLoaderProps {
     imgUrl: string;
     title: string;
+    classCss: string;
 }
 
-const ImageLoader: React.FC<ImageLoaderProps> = ({ imgUrl, title }) => {
+const ImageLoader: React.FC<ImageLoaderProps> = ({ imgUrl, title, classCss }) => {
     const { image, isLoading, error } = useImage(imgUrl);
 
     return withLoadingAndError({
@@ -20,7 +21,7 @@ const ImageLoader: React.FC<ImageLoaderProps> = ({ imgUrl, title }) => {
             <img
                 src={data[0] || "https://placehold.co/500x500?text=No\nImage"}
                 alt={title}
-                className="recipe-card-image"
+                className={classCss}
             />
         ),
     });

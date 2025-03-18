@@ -33,11 +33,7 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
         children: (data) => (
         <div className="recipe-container" onClick={() => handleNavigate(recipe)}>
 
-            <img
-                src={`/recipe/recipe_${recipe.id_recipe}.jpg`}
-                alt={recipe.title}
-                className="recipe-item-image"
-            />
+            <ImageLoarder imgUrl={`/recipe/recipe_${data[0].id_recipe}.jpg`} title={data[0].title} classCss={"recipe-item-image"} />
 
             {/* Dégradé blanc */}
             <div className="recipe-gradiant"></div>

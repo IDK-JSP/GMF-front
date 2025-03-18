@@ -33,7 +33,7 @@ export const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
         children: (data) => (
         <div className="recipe-card" onClick={() => handleNavigate(recipe)}>
 
-            <ImageLoarder imgUrl={`/recipe/recipe_${data[0].id_recipe}.jpg`} title={data[0].title} />
+            <ImageLoarder imgUrl={`/recipe/recipe_${data[0].id_recipe}.jpg`} title={data[0].title} classCss={"recipe-card-image"}/>
 
             <span className="favorite-btn">
                 <FavoriteButton id={data[0].id_recipe} type="recipe" favorite={data[0].favorite ?? "false"} sizeInPixels={50}/>
