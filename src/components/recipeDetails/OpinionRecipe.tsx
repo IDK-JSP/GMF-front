@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRating from '../commun/StarRating';
+import StarRating from '../common/StarRating';
 interface OpinionRecipeProps {
     recipeRate: number;
     recipeNbRate: number;

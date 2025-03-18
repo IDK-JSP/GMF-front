@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import ControlRating from "../commun/ControlRating";
+import ControlRating from "../common/ControlRating";
 import post from "../../api/post";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";

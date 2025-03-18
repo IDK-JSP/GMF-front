@@ -23,16 +23,17 @@ const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
             />
 
             <span className="favorite-btn">
-                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={50}/>
+                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"}
+                                sizeInPixels={50}/>
             </span>
 
             <div className="recipe-card-content">
 
                 <div className="first-row">
 
-                <h3 className="recipe-card-title" title={recipe.title}>
-                    {recipe.title}
-                </h3>
+                    <h3 className="recipe-card-title" title={recipe.title}>
+                        {recipe.title}
+                    </h3>
 
                     {/* Badges V */}
                     <DietBadge diet={recipe.diet} sizeInPixels={20}/>

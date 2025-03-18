@@ -1,0 +1,25 @@
+.recipe-collection-container {
+    display: flex;
+    flex-wrap: nowrap; /* Empêche le retour à la ligne */
+    overflow-x: auto; /* Active le défilement horizontal si nécessaire */
+    gap: 16px; /* Espacement entre les cartes */
+    padding: 10px;
+    scroll-behavior: smooth; /* Animation fluide du scroll */
+}
+
+.recipe-card {
+    flex: 0 0 auto; /* Empêche le redimensionnement automatique */
+    width: 250px;
+    height: 350px;
+    overflow: hidden;
+}
+
+/* Masquer la scrollbar sur certains navigateurs */
+.recipe-collection-container::-webkit-scrollbar {
+    display: none;
+}
+
+.recipe-collection-container {
+    -ms-overflow-style: none; /* IE et Edge */
+    scrollbar-width: none; /* Firefox */
+}

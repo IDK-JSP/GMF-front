@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
-import LoginForm from '../../components/auth/LoginForm';
-import RegisterForm from '../../components/auth/RegisterForm';
-import '../../styles/loginForm.css';
-import ContentWithoutAside from "../../components/layout/ContentWithoutAside";
+import LoginForm from '../components/auth/LoginForm';
+import RegisterForm from '../components/auth/RegisterForm';
+import '../styles/loginForm.css';
+import ContentWithoutAside from "../components/layout/ContentWithoutAside";
 
 const Login: FC<{}> = ({}) => {
     const [activeForm, setActiveForm] = useState<'none' | 'login' | 'register'>('none');

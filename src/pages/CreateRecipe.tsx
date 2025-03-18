@@ -1,11 +1,11 @@
 import React, {FC, useContext, useEffect, useState} from 'react';
-import Presentation from "../../components/layout/Presentation";
-import AsideLeft from "../../components/layout/AsideLeft";
-import ContentWithLeftAside from "../../components/layout/ContentWithLeftAside";
-import AuthContext from "../../context/AuthContext";
-import "../../styles/createRecipe.css";
-import post from "../../api/post";
-import get from "../../api/get";
+import Presentation from "../components/layout/Presentation";
+import AsideLeft from "../components/layout/AsideLeft";
+import ContentWithLeftAside from "../components/layout/ContentWithLeftAside";
+import AuthContext from "../context/AuthContext";
+import "../styles/createRecipe.css";
+import post from "../api/post";
+import get from "../api/get";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Typography} from "@mui/material";
 
