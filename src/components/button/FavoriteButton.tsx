@@ -26,6 +26,7 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite, sizeInPix
             .then((response) => {
                 if (response && response.success) {
                     setIsFavorite("false");
+                    toast.success("DEBUG : Favoris supprimé avec succés")
                 } else {}
             }
         )  
@@ -38,6 +39,7 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite, sizeInPix
             .then((response) => {
                 if (response && response.success) {
                 setIsFavorite("true");
+                toast.success("DEBUG : Favoris ajouté")
                 } else {}
             })};
     };
@@ -47,7 +49,10 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({ id, type, favorite, sizeInPix
         <>
         {authContext?.isLoggedIn ? (
           <div
-          onClick={() => handleFavorite(id, type, isFavorite)}
+          onClick={(event) => {
+            event.stopPropagation();
+            handleFavorite(id, type, isFavorite);
+          }}
           className={isFavorite === 'true' ? "favorite-btn favorite" : "favorite-btn"}
           style={{
             width: sizeInPixels,

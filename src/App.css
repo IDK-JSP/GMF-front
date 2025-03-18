@@ -93,6 +93,10 @@ main {
 }
 .presentation-titre {
 padding-left: var(--width-aside);
+  font-size: clamp(16px, 5vw, 48px); /* Min: 16px, Auto: 5vw, Max: 48px */
+  white-space: nowrap; /* Empêche le texte de passer à la ligne */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ajoute "..." si le texte dépasse */
 }
 .presentation-aside {
 width: var(--width-aside);

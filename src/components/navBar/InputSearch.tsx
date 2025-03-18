@@ -10,6 +10,7 @@ import post from "../../api/post";
 import { FilterSelection } from "./FilterSelection";
 import ResultsList from "./ResultsList";
 
+
 // TODO : Utiliser l'observable pour mettre à jour la liste des ingrédients
 // TODO : Alléger le composant en séparant les méthodes et fonctions. 
 
@@ -85,24 +86,30 @@ export const InputSearch: React.FC = () => {
 
 
   // Récupération de la recherche et des ingrédients :
-  useEffect(() => {
-    const fetchResults = () => {
-      const ingredientIds = searchIngredientsList.map((ing) => ing.id_ingredient);
-  
-      post(`/search?title=${searchOnName}`, ingredientIds).then((recipeResult) => {
-        if (recipeResult?.recipes) {
-          ResultsList$.next(recipeResult.recipes);
+  const prevSearchIngredientsList = useRef(searchIngredientsList);
+
+useEffect(() => {
+  const fetchResults = () => {
+    const ingredientIds = searchIngredientsList.map((ing) => ing.id_ingredient);
+
+    post(`/search?title=${searchOnName}`, ingredientIds).then((recipeResult) => {
+      if (recipeResult?.recipes) {
+        ResultsList$.next(recipeResult.recipes);
+
+        // Vérification de la modification de la liste des ingrédients
+        if (JSON.stringify(prevSearchIngredientsList.current) !== JSON.stringify(searchIngredientsList)) {
           SearchIngredientsList$.next(searchIngredientsList);
-          console.log("DEBUG : matching" + recipeResult.recipes[0].matching_ingredents);
+          prevSearchIngredientsList.current = searchIngredientsList;
         }
-        setIngredientResults(recipeResult?.ingredients);
-      }).catch((error) => {
-        console.error("Erreur lors de la recherche :", error);
-      });
-    };
-  
-    fetchResults();
-  }, [searchOnName, searchIngredientsList]);
+      }
+      setIngredientResults(recipeResult?.ingredients);
+    }).catch((error) => {
+      console.error("Erreur lors de la recherche :", error);
+    });
+  };
+
+  fetchResults();
+}, [searchOnName, searchIngredientsList]);
   
 
   const handleSwitchVisibility = () => setFilterIsVisible(!filterIsVisible);
@@ -149,7 +156,6 @@ export const InputSearch: React.FC = () => {
   //handle pour vider la barre de recherche :
   const handleClearSearch = () => {
     setSearchOnName("");
-    console.log("DEBUG : clear search");
   };
 
   return (

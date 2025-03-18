@@ -35,9 +35,15 @@ export const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
 
             <ImageLoarder imgUrl={`/recipe/recipe_${data[0].id_recipe}.jpg`} title={data[0].title} classCss={"recipe-card-image"}/>
 
-            <span className="favorite-btn">
+            {/* Bouton Favoris */}   
+            <div className="favorite-btn">
                 <FavoriteButton id={data[0].id_recipe} type="recipe" favorite={data[0].favorite ?? "false"} sizeInPixels={50}/>
-            </span>
+            </div>
+
+            {/* Badges V */}
+            <div className="diet-badge">
+                <DietBadge diet={data[0].diet} sizeInPixels={50}/>
+            </div>
 
             <div className="recipe-card-content">
 
@@ -47,8 +53,7 @@ export const RecipeCard: FC<{ recipe: RecipeType }> = ({recipe}) => {
                     {data[0].title}
                 </h3>
 
-                    {/* Badges V */}
-                    <DietBadge diet={data[0].diet} sizeInPixels={20}/>
+                    
                 </div>
 
                 <div className="recipe-card-info">

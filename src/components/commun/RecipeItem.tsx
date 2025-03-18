@@ -34,20 +34,21 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
 
             <ImageLoarder imgUrl={`/recipe/recipe_${data[0].id_recipe}.jpg`} title={data[0].title} classCss={"recipe-item-image"} />
 
+            <div className="item-btn-container">
+                <DietBadge diet={recipe.diet} sizeInPixels={60}/>
+                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={60}/>
+                </div>
+
             {/* Dégradé blanc */}
             <div className="recipe-gradiant"></div>
 
             {/* Contenu principal */}
             <div className="recipe-item-content">
 
-                <span className="favorite-btn">
-                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={50}/>
-                </span>
-
                 <div className="first-row">
 
                     {/* Badges V */}
-                    <DietBadge diet={recipe.diet} sizeInPixels={40}/>
+                    
 
                     {/* Titre */}
                     <h3 className="recipe-item-title">
