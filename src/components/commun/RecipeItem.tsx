@@ -52,7 +52,7 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
 
                     {/* Titre */}
                     <h3 className="recipe-item-title">
-                        {recipe.title}{recipe.diet}
+                        {recipe.title} ({recipe.matching_ingredients})
                     </h3>
                 </div>
 

@@ -3,19 +3,24 @@ import { RecipeType } from '../../1_types/RecipeType';
 import { ResultsList$ } from '../../observables/ResultsList$';
 import { DynamicFilterContext } from '../../context/DynamicFilterContext';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import GridViewIcon from '@mui/icons-material/GridView';
+import { toast } from 'react-toastify';
+import DisplayCardOrItem from '../button/DisplayCardOrItem';
 
-const DynamicFilter: React.FC = () => {
+const DynamicFilter: React.FC<{ matching: boolean,  display: boolean;}> = ({ matching, display }) => {
 
     const filterContext = useContext(DynamicFilterContext)
 
     const toggleFilter = (
         event: React.MouseEvent<HTMLElement>,
-        newFilter: boolean | null,
+        newFilter: boolean | null
     ) => {
-        if (newFilter !== null)
-            filterContext?.setIsMatching(newFilter);
+        if (!filterContext) {
+            return;
+        }
+
+        if (newFilter !== null) {
+            filterContext.setIsMatching(newFilter);
+        }
     };
     
 
@@ -29,6 +34,7 @@ const DynamicFilter: React.FC = () => {
 
     return (
         <div>
+            {matching ?
             <ToggleButtonGroup
                 color="primary"
                 value={filterContext?.isMatching}
@@ -43,6 +49,10 @@ const DynamicFilter: React.FC = () => {
                     Not Match
                 </ToggleButton>
             </ToggleButtonGroup>
+            : null}
+            {display ?
+            <DisplayCardOrItem/>
+            : null}
         </div>
     );
 };
