@@ -5,7 +5,7 @@ import {Typography} from "@mui/material";
 import {useNavigate} from "react-router";
 import get from "../../api/get";
 
-const MyComponent: FC<{ path: string, title: string }> = ({path, title}) => {
+const RecipeCollection: FC<{ path: string, title: string }> = ({path, title}) => {
     let navigate = useNavigate();
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
     const [isPending, startTransition] = useTransition()
@@ -28,8 +28,9 @@ const MyComponent: FC<{ path: string, title: string }> = ({path, title}) => {
         <article>
             <div className="article-header">
                 <Typography variant="h5">{title}</Typography>
-                <Typography sx={{cursor: "pointer"}} onClick={() => navigate("/CategoryList" + path)}>Voir
-                    plus</Typography>
+                <Typography sx={{cursor: "pointer"}} onClick={() => navigate("/CategoryList" + path)}>
+                    Voir plus
+                </Typography>
             </div>
             <div className="recipe-card-grid">
                 {recipeCollectionCut?.map((recipe) => (
@@ -40,4 +41,4 @@ const MyComponent: FC<{ path: string, title: string }> = ({path, title}) => {
     );
 };
 
-export default MyComponent;
+export default RecipeCollection;

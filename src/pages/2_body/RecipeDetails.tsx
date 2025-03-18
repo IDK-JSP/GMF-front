@@ -31,6 +31,8 @@ const RecipeDetails: FC = () => {
 
     useEffect(() => {
         console.log("Chargement en cours :", isPending);
+        console.log("recette", recipe);
+        console.log("recetteD", recipeDetails);
     }, [isPending]);
 
     // Récupération de la recette
