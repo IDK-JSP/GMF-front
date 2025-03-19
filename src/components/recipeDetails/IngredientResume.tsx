@@ -37,9 +37,9 @@ const IngredientResume: FC<Props> = ({
           <input type="number" id="person" name="person" min={1} max={100} defaultValue={person} onChange={handleChangePerson}/>
         </div>
         {data.map((ingredient, index) => (
-          <div key={index} className="flex-row">
+          <div key={index} className="flex-row ingredient-row">
+            <img src={`/ingredient/${ingredient.ingredient_name}.png`} alt={ingredient.ingredient_name} width={30} height={30}/>
             <span style={{ flex: 1 }}>{ingredient.ingredient_name}</span>
-            
             <span style={{ marginLeft: '10px' }}>{Math.round((ingredient.quantity * personUpdate / person) * 10) / 10}</span>
             <span style={{ marginLeft: '10px' }}>{ingredient.measurement}</span>
           </div>

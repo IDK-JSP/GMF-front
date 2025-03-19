@@ -44,7 +44,8 @@ export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredi
                                     borderRadius: "1rem"
                                 }}
                                      onClick={() => handleRemoveFavorite(ing)}>
-                                    <span>image</span>
+                                    <img src={`ingredient/${ing.name}.png`} alt={ing.name} width={50} height={50}/>
+
                                     <span>{ing.name}</span>
                                 </div>
                             ))}
@@ -56,7 +57,7 @@ export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredi
                             .map((ing) => (
                                 <div key={ing.name} className="flex-column"
                                      onClick={() => handleAddFavorite(ing)}>
-                                    <span>image</span>
+                                    <img src={`ingredient/${ing.name}.png`} alt={ing.name} width={50} height={50}/>
                                     <span>{ing.name}</span>
                                 </div>
                             ))}
