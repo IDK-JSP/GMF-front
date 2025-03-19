@@ -1,9 +1,19 @@
 import {FC} from 'react';
+import Presentation from "../components/layout/Presentation";
 
 const Settings: FC<{}> = ({}) => {
     return (
         <>
-            Settings
+            <Presentation>
+                Paramètres
+            </Presentation>
+            <main>
+                <section>
+                    <article>
+
+                    </article>
+                </section>
+            </main>
         </>
     );
 };

@@ -5,7 +5,7 @@ import "../../styles/avatarMenu.css";
 import {AuthContext} from "../../context/AuthContext";
 
 const avatarMenu = [
-    {name: "Paramètres", navigation: "../Setting"},
+    {name: "Paramètres", navigation: "../Settings"},
     {name: "Mes Recettes", navigation: "../UserRecipes"},
 ];
 
@@ -43,8 +43,8 @@ const NavBarAvatar: FC = () => {
     }, [isOpen]);
 
     return (
-        <div className="navbar-avatar" ref={menuRef}>
-            <button className="avatar-button" onClick={toggleMenu}>
+        <div className="navbar-avatar" ref={menuRef} onClick={toggleMenu}>
+            <button className="avatar-button">
                 <PersonIcon className="avatar-icon"/>
             </button>
             <div className={`avatar-menu ${isOpen ? "open" : "closed"}`}>
