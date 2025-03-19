@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import { IngredientsSectionProps } from '../../1_types/CreateRecipeType';
 
 const IngredientsSection: FC<IngredientsSectionProps> = ({
                                                              ingredients,

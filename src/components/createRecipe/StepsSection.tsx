@@ -1,6 +1,7 @@
 import {Typography} from '@mui/material';
 import {FC} from 'react';
 import DeleteIcon from "@mui/icons-material/Delete";
+import { StepsSectionProps } from '../../1_types/CreateRecipeType';
 
 const StepsSection: FC<StepsSectionProps> = ({steps, addStep, updateStep, removeStep}) => {
 

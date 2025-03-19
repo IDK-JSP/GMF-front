@@ -12,7 +12,7 @@ import StageResume from "../components/recipeDetails/StageResume";
 import DietResume from "../components/recipeDetails/DietResume";
 import "react-loading-skeleton/dist/skeleton.css";
 import OpinionsDetails from "../components/recipeDetails/OpinionsDetails";
-import RecipeSkeleton from "../components/recipeDetails/RecipeSkeleton";
+import RecipeSkeleton from "../components/skeleton/RecipeSkeleton";
 import FavoriteButton from "../components/button/FavoriteButton";
 import PresentationRecipe from "../components/layout/PresentationRecipe";
 

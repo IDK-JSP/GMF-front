@@ -1,4 +1,4 @@
-import { FC, useEffect, useContext, useState } from "react";
+import { FC, useEffect, useContext, useState, SetStateAction } from "react";
 import { ResultsList$ } from "../observables/ResultsList$";
 import { RecipeType } from "../1_types/RecipeType";
 import RecipeList from "../components/common/RecipeList";
@@ -6,9 +6,9 @@ import { IngredientType } from "../1_types/IngredientType";
 import Presentation from "../components/layout/Presentation";
 import RecipeCarousel from "../components/common/RecipeCarousel";
 import ContentWithoutAside from "../components/layout/ContentWithoutAside";
-import AsideLeft from "../components/layout/AsideLeft";
 import { SearchIngredientsList$ } from "../observables/SearchIngredientsList$";
 import DynamicFilter from "../components/common/DynamicFilter";
+import { DynamicFilterContext } from "../context/DynamicFilterContext";
 
 
 

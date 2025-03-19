@@ -43,7 +43,7 @@ const Dashboard: FC<{}> = ({}) => {
     return (
         <>
 
-            { recipeCollectionCut && (
+            { recipeCollection && (
                 <>
                     <Presentation carousel={<RecipeCarousel recipeCollection={recipeCollection}/>}>
                         Dashboard

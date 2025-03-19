@@ -2,7 +2,7 @@ import { FC } from "react";
 import withLoadingAndError from "../hoc/WithLoadingAndError";
 import OpinionsSkeleton from "../skeleton/OpinionsSkeleton";
 import { RecipeOpinionsType } from "../../1_types/RecipeOpinionsType";
-import StarRating from "../commun/StarRating";
+import StarRating from "../common/StarRating";
 import "../../styles/opinions.css";
 
 type Props = {
