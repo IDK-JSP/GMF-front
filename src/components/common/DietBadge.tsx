@@ -35,8 +35,9 @@ const DietBadge: React.FC<DietBadgeProps> = ({ diet, sizeInPixels }) => {
     return (
         <>
         {badgeImage != ''
-        ? <span style={{
+        ? <div style={{
             backgroundColor: badgeColor,
+            boxSizing: 'border-box',
             padding: '5px',
             width: sizeInPixels + 'px',
             height: sizeInPixels + 'px',
@@ -45,8 +46,9 @@ const DietBadge: React.FC<DietBadgeProps> = ({ diet, sizeInPixels }) => {
             backgroundImage: `url(/${badgeImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            boxShadow: '0 0 10px 0 rgba(255, 255, 255, 0.8)',
             }}>
-        </span>
+        </div>
         : ''}
         </>
     );

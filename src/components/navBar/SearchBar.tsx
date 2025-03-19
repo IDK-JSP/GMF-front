@@ -14,7 +14,7 @@ interface SearchBarProps {
 
 export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handleForceClose, handleClickInside}: SearchBarProps) => {
 
-    const handleClick = () => {
+    const handleNavigateToSearchPage = () => {
         handleForceClose();
         navigate('/Research');
       };
@@ -29,7 +29,7 @@ export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handl
             // event si touche entrée
             onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                    handleClick();
+                    handleNavigateToSearchPage();
                 }
             }}
              type='text'
@@ -37,7 +37,7 @@ export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handl
             <button id='filter-button' onClick={toggleFilter}>
                 <FilterAltIcon /> <span>({checkedCount})</span>
             </button>
-            <button id='validate-button' onClick={handleClick}><SearchIcon /></button>
+            <button id='validate-button' onClick={handleNavigateToSearchPage}><SearchIcon /></button>
         </div>
     );
 };

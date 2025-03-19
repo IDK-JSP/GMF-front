@@ -49,25 +49,29 @@
 .favorite-btn {
     position: absolute;
     top: 5px;
-    left: 5px;
+    right: 5px;
     z-index: 5;
 }
 
 /* Badges */
-.vegetarian-badge, .vegan-badge {
-    min-width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    margin: 5px;
+.diet-badge {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 5;
+}
+/* Container Item Btn */
+.item-btn-container {
+    position: absolute;
+    right: 5px;
+    top:30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width:130px;
 }
 
-.vegetarian-badge {
-    background-color: green;
-}
-
-.vegan-badge {
-    background-color: salmon;
-}
 
 /* Contenu des cartes */
 .recipe-item-content, .recipe-card-content {
@@ -94,12 +98,18 @@
 
 .recipe-item-title, .recipe-card-title {
     font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
     justify-content: space-between;
     align-items: center;
     text-shadow: 0 0 10px lightgray;
+
+    font-size: clamp(8px, 3vw, 36px); /* Min: 16px, Auto: 5vw, Max: 48px */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ajoute "..." si le texte dépasse */
+
 }
 
 .recipe-item-title {

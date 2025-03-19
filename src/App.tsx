@@ -6,6 +6,7 @@ import {AuthProvider} from "./context/AuthContext";
 import {DisplayContext} from "./context/DisplayContext";
 import "react-loading-skeleton/dist/skeleton.css";
 import {ToastContainer} from 'react-toastify';
+import { DynamicFilterProvider } from "./context/DynamicFilterContext";
 
 
 function App() {
@@ -15,9 +16,11 @@ function App() {
         <>
             <AuthProvider>
                 <DisplayContext.Provider value={{isItem, setIsItem}}>
-                    <BrowserRouter>
-                        <Router/>
-                    </BrowserRouter>
+                    <DynamicFilterProvider>
+                        <BrowserRouter>
+                            <Router/>
+                        </BrowserRouter>
+                    </DynamicFilterProvider>
                 </DisplayContext.Provider>
         <ToastContainer
             position="top-right"

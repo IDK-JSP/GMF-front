@@ -68,21 +68,22 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
                         ? ((recipe.matching_ingredients ?? 0) / searchIngredientsList.length).toFixed(2)
                         : "1";
 
-                    return (
-                        <React.Fragment key={recipe.id_recipe}>
-
-                            <div
-                                style={{
-                                    opacity: matchPercent,
-                                    padding: '5px',
-                                }}>
-                                <RecipeItem recipe={recipe}/>
-                            </div>
-                        </React.Fragment>
-                    );
-                })}
+    return (
+        <React.Fragment key={recipe.id_recipe}>
+            
+            <div
+                style={{
+                    opacity: matchPercent,
+                    padding: '5px',
+                    }}
+                onClick={handleForceClose}>
+            <RecipeItem recipe={recipe}/>
             </div>
-            <span>
+        </React.Fragment>
+    );
+})}
+            </div>
+            <span className='flex-row' style={{justifyContent: 'space-between'}}>
                 {recipeResults.length == 0 && "aucun résultats"}
                 {recipeResults.length == 1 && "1 recette trouvée"}
                 {recipeResults.length > 1 && recipeResults.length + " recettes trouvées"}

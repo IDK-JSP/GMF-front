@@ -9,7 +9,7 @@ import {useNavigate} from "react-router";
 import RecipeCarousel from "../components/common/RecipeCarousel";
 import RecipeCollection from "../components/common/RecipeCollection";
 
-const collections = [
+export const collections = [
     {title: "Les mieux notées", path: "/top"},
     {title: "Les incontournables", path: "/nbRate"},
     {title: "Nos récentes", path: "/recent"},
@@ -42,7 +42,8 @@ const Dashboard: FC<{}> = ({}) => {
 
     return (
         <>
-            {!isPending && recipeCollection && (
+
+            { recipeCollectionCut && (
                 <>
                     <Presentation carousel={<RecipeCarousel recipeCollection={recipeCollection}/>}>
                         Dashboard

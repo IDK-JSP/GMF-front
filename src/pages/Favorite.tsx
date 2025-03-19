@@ -19,7 +19,6 @@ export const Favorite: FC<{}> = ({}) => {
     const [favoriteIngredients, setFavoriteIngredients] = useState<IngredientType[] | null>(null);
     const [imagePresentation, setImagePresentation] = useState<string>("research.jpg");
     const [allIngredients, setAllIngredients] = useState<IngredientType[] | null>(null);
-// const [results, setResults] = useState<any>(null);
 
     const hydrate = () => {
         startTransition(async () => {
@@ -29,15 +28,10 @@ export const Favorite: FC<{}> = ({}) => {
             startTransition(() => {
                 setRecipes(results?.recipes ?? null);
                 setFavoriteIngredients(results?.ingredients ?? null);
-                // setResults(results ?? null);
                 setAllIngredients(allIngredients ?? null);
             });
         });
     };
-    //console.log('all ingredients', allIngredients)
-    //console.log('recipe', recipes)
-    //console.log('ingredients', ingredients)
-    //console.log('email', authContext ? getEmailFromToken(authContext.token) : "No token")
 
     useEffect(() => {
         window.scrollTo({top: 0, behavior: "smooth"});
@@ -48,7 +42,6 @@ export const Favorite: FC<{}> = ({}) => {
     useEffect(() => {
         if (recipes !== null && recipes.length > 0) {
             setImagePresentation("recipe/recipe_" + recipes[0].id_recipe + ".jpg");
-            //console.log('imagePresentation', imagePresentation)
         }
     }, [recipes]);
 
