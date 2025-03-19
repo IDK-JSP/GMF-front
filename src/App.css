@@ -135,6 +135,18 @@ font-weight: bold;
   font-size: small;
   font-weight: bold;
 }
+.ingredient-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px !important;
+  justify-content: center;
+  font-weight: bold;
+}
+.ingredient-list > div {
+  cursor: pointer;
+  gap: 10px;
+}
 
 aside {
   box-sizing: border-box;

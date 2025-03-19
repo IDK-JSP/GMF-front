@@ -2,6 +2,7 @@ import "../../styles/recipeDisplay.css";
 import {IngredientType} from '../../1_types/IngredientType';
 import post from '../../api/post';
 import del from '../../api/del';
+import { toast } from "react-toastify";
 
 interface Props {
     ingredientList: IngredientType[];
@@ -13,19 +14,30 @@ interface Props {
 
 export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredients, setFavoriteIngredients}) => {
 
-//const [favoriteIngredientsState, setFavoriteIngredientsState] = useState<IngredientType[]>(favoriteIngredients);
-
     const handleAddFavorite = (ingredient: IngredientType) => {
-        setFavoriteIngredients([...favoriteIngredients, ingredient]);
         const data = {
             favoriteable_type: "ingredient",
             favoriteable_id: ingredient.id_ingredient,
         };
-        post("/favorite/new", data, "Favoris ajouté");
+        post("/favorite/new", data, "Favori ajouté").then((response) => {
+            if (
+                (typeof response === "object")
+              ) {
+                setFavoriteIngredients([...favoriteIngredients, ingredient]);
+            } else {}
+        }
+        );
     };
     const handleRemoveFavorite = (ingredient: IngredientType) => {
-        setFavoriteIngredients(favoriteIngredients.filter((fav) => fav.name !== ingredient.name));
-        del("/favorite/delete/recipe/" + ingredient.id_ingredient, "Favoris supprimé avec succés");
+        del("/favorite/delete/ingredient/" + ingredient.id_ingredient, "Favori supprimé avec succès.").then((response) => {
+            if (
+                (response === "Favori supprimé avec succès.")
+              ) { 
+                // TODO : vérifier si le filtre est bien appliqué
+                setFavoriteIngredients(favoriteIngredients.filter((fav) => fav.name !== ingredient.name));
+            } else {}
+        });
+
 
     };
 
@@ -33,7 +45,7 @@ export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredi
         <>
             {ingredientList.length ?
                 <>
-                    <div className="flex-row" style={{flexWrap: "wrap", gap: "1rem"}}>
+                    <div className="ingredient-list">
                         {ingredientList
                             .filter((ing) => favoriteIngredients.some(fav => ing.name.toLowerCase().includes(fav.name.toLowerCase())))
                             .map((ing) => (
@@ -51,7 +63,7 @@ export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredi
                             ))}
                     </div>
                     <hr/>
-                    <div className="flex-row" style={{flexWrap: "wrap", gap: "1rem", padding: "2rem"}}>
+                    <div className="ingredient-list">
                         {ingredientList
                             .filter((ing) => !favoriteIngredients.some(fav => fav.name.toLowerCase().includes(ing.name.toLowerCase())))
                             .map((ing) => (
