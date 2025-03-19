@@ -1,10 +1,10 @@
 .recipe-collection-container {
     display: flex;
-    flex-wrap: nowrap; /* Empêche le retour à la ligne */
+    flex-wrap: nowrap;
     overflow-x: auto; /* Active le défilement horizontal si nécessaire */
-    gap: 16px; /* Espacement entre les cartes */
+    gap: 16px;
     padding: 10px;
-    scroll-behavior: smooth; /* Animation fluide du scroll */
+    scroll-behavior: smooth;
 }
 
 .recipe-card {
