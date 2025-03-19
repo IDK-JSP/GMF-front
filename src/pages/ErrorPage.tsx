@@ -3,12 +3,14 @@ import ContentWithoutAside from "../components/layout/ContentWithoutAside";
 import {Typography} from "@mui/material";
 import {useNavigate} from "react-router";
 import "../styles/errorPage.css"
+import Pages from "../components/layout/Pages";
+
 
 const ErrorPage: FC<{}> = ({}) => {
     const navigate = useNavigate()
 
     return (
-        <>
+        <Pages>
             <main>
                 <ContentWithoutAside>
                     <section>
@@ -28,7 +30,7 @@ const ErrorPage: FC<{}> = ({}) => {
                     </section>
                 </ContentWithoutAside>
             </main>
-        </>
+        </Pages>
     );
 };
 

@@ -1,9 +1,11 @@
 import {FC} from 'react';
 import Presentation from "../components/layout/Presentation";
+import Pages from "../components/layout/Pages";
+
 
 const Settings: FC<{}> = ({}) => {
     return (
-        <>
+        <Pages>
             <Presentation>
                 Paramètres
             </Presentation>
@@ -14,7 +16,7 @@ const Settings: FC<{}> = ({}) => {
                     </article>
                 </section>
             </main>
-        </>
+        </Pages>
     );
 };
 

@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import '../../styles/nav.css';
 import InputSearch from './InputSearch';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import {useNavigate} from 'react-router';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AvatarMenu from "./AvatarMenu";
-import { AuthContext } from "../../context/AuthContext"; // Chemin à adapter
+import { AuthContext } from "../../context/AuthContext";
 import { toast } from 'react-toastify';
 
 const Nav: React.FC = () => {
@@ -17,8 +16,8 @@ const Nav: React.FC = () => {
             <div id='title-container'
                  onClick={() => navigate('/')}
             >
-                <HomeOutlinedIcon style={{fontSize: "50px"}}/>
-                <h1>Recettes</h1>
+                <img src={"/GMF-logo.png"} alt={"GMF-logo"} style={{fontSize: "50px"}}/>
+                <h1>GMF</h1>
             </div>
             <InputSearch/>
             <div id='nav-container'>

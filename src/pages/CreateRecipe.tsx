@@ -6,6 +6,8 @@ import "../styles/createRecipe.css";
 import IngredientsSection from "../components/createRecipe/IngredientsSection";
 import {useRecipeForm} from "../components/createRecipe/useRecipeForm";
 import StepsSection from "../components/createRecipe/StepsSection";
+import Pages from "../components/layout/Pages";
+
 
 const CreateRecipe: FC<{}> = ({}) => {
     const {
@@ -18,7 +20,7 @@ const CreateRecipe: FC<{}> = ({}) => {
     } = useRecipeForm();
 
     return (
-        <>
+        <Pages>
             <Presentation>Créer une recette</Presentation>
             <main>
                 <AsideLeft>
@@ -47,7 +49,7 @@ const CreateRecipe: FC<{}> = ({}) => {
                     </section>
                 </ContentWithLeftAside>
             </main>
-        </>
+        </Pages>
     );
 };
 

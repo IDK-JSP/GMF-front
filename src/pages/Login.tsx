@@ -3,6 +3,8 @@ import LoginForm from '../components/auth/LoginForm';
 import RegisterForm from '../components/auth/RegisterForm';
 import '../styles/loginForm.css';
 import ContentWithoutAside from "../components/layout/ContentWithoutAside";
+import Pages from "../components/layout/Pages";
+
 
 const Login: FC<{}> = ({}) => {
     const [activeForm, setActiveForm] = useState<'none' | 'login' | 'register'>('none');
@@ -27,42 +29,44 @@ const Login: FC<{}> = ({}) => {
     };
 
     return (
-        <div className="login-container">
-            <div className="presentation" style={{
-                backgroundImage: `url("/research.jpg")`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "300px",
-                width: "100%"
-            }}>
-                <div>Connexion / Inscription</div>
-            </div>
+        <Pages>
+            <div className="login-container">
+                <div className="presentation" style={{
+                    backgroundImage: `url("/research.jpg")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    height: "300px",
+                    width: "100%"
+                }}>
+                    <div>Connexion / Inscription</div>
+                </div>
 
-            <ContentWithoutAside>
-                <section>
-                    <div className="form-container" ref={formContainerRef}>
-                        <div
-                            className={`form-card ${activeForm === 'login' ? 'active' : activeForm === 'none' ? 'neutral' : ''}`}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                toggleForm('login');
-                            }}
-                        >
-                            <LoginForm/>
+                <ContentWithoutAside>
+                    <section>
+                        <div className="form-container" ref={formContainerRef}>
+                            <div
+                                className={`form-card ${activeForm === 'login' ? 'active' : activeForm === 'none' ? 'neutral' : ''}`}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleForm('login');
+                                }}
+                            >
+                                <LoginForm/>
+                            </div>
+                            <div
+                                className={`form-card ${activeForm === 'register' ? 'active' : activeForm === 'none' ? 'neutral' : ''}`}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleForm('register');
+                                }}
+                            >
+                                <RegisterForm/>
+                            </div>
                         </div>
-                        <div
-                            className={`form-card ${activeForm === 'register' ? 'active' : activeForm === 'none' ? 'neutral' : ''}`}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                toggleForm('register');
-                            }}
-                        >
-                            <RegisterForm/>
-                        </div>
-                    </div>
-                </section>
-            </ContentWithoutAside>
-        </div>
+                    </section>
+                </ContentWithoutAside>
+            </div>
+        </Pages>
     );
 };
 
