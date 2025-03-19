@@ -11,7 +11,8 @@ const DisplayCardOrItem: FC = () => {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", margin: "20px" }}>
+    <div className='dyna-filter-container'>
+      <span>Affichage </span>
       <button onClick={() => toggleView(true)} disabled={selected === true}>
         liste
       </button>

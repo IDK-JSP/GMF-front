@@ -37,7 +37,7 @@ const Login: FC<{}> = ({}) => {
             }}>
                 <div>Connexion / Inscription</div>
             </div>
-
+<main>
             <ContentWithoutAside>
                 <section>
                     <div className="form-container" ref={formContainerRef}>
@@ -62,6 +62,7 @@ const Login: FC<{}> = ({}) => {
                     </div>
                 </section>
             </ContentWithoutAside>
+            </main>
         </div>
     );
 };

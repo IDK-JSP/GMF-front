@@ -2,7 +2,7 @@ import Skeleton from "react-loading-skeleton";
 
 const ItemSkeleton = () => (
   <div>
-    <Skeleton height={150} width="100%"/>
+    <Skeleton height={120} width="100%"/>
   </div>
 );
 

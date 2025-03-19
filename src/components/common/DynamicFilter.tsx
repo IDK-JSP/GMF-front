@@ -32,15 +32,15 @@ const DynamicFilter: React.FC<DynamicFilterProps> = ({ matching = false, display
     , []);
 
     return (
-        <div>
+        <div className='flex-row'>
             {matching ?
-            <div>
-            Afficher les recettes qui n'ont pas tous les ingrédients que vous avez sélectionnés : 
+            <div className='dyna-filter-container'>
+            <span>Afficher les recettes qui n'ont pas tous les ingrédients que vous avez sélectionnés </span>
             <button onClick={() => handleToggle(true)} disabled={selected === true}>
-              non
+              oui
             </button>
             <button onClick={() => handleToggle(false)} disabled={selected === false}>
-              oui
+              non
             </button>
           </div>
             : null}
