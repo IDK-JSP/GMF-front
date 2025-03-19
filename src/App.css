@@ -59,12 +59,12 @@ main {
   color: white;
   padding: 0px;
   border-radius: 50%;
-  background-color: grey;
+  background-color: rgba(0, 0, 0, 0.103);
 }
 
 .favorite{
   color: red;
-  background-color: white;
+  background-color: rgba(255,255,255,0.5);
 }
 .favorite-btn:hover {
   scale: 1.1;
@@ -93,6 +93,10 @@ main {
 }
 .presentation-titre {
 padding-left: var(--width-aside);
+  font-size: clamp(16px, 5vw, 48px); /* Min: 16px, Auto: 5vw, Max: 48px */
+  white-space: nowrap; /* Empêche le texte de passer à la ligne */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ajoute "..." si le texte dépasse */
 }
 .presentation-aside {
 width: var(--width-aside);

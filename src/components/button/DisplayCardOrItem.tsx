@@ -1,40 +1,25 @@
-import React from 'react';
-import {FC, useContext} from 'react';
-import {Stack, ToggleButton, ToggleButtonGroup} from "@mui/material";
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import GridViewIcon from '@mui/icons-material/GridView';
-import {DisplayContext} from "../../context/DisplayContext";
+import React, { FC, useContext, useState } from "react";
+import { DisplayContext } from "../../context/DisplayContext";
 
-const DisplayCardOrItem: FC<{}> = ({}) => {
+const DisplayCardOrItem: FC = () => {
+  const displayContext = useContext(DisplayContext);
+  const [selected, setSelected] = useState(displayContext?.isItem);
 
-    const displayContext = useContext(DisplayContext)
+  const toggleView = (newViewMode: boolean) => {
+    setSelected(newViewMode);
+    displayContext?.setIsItem(newViewMode);
+  };
 
-    const toggleView = (
-        event: React.MouseEvent<HTMLElement>,
-        newViewMode: boolean | null,
-    ) => {
-        if (newViewMode !== null)
-            displayContext?.setIsItem(newViewMode);
-    };
-
-    return (
-        <Stack direction="row" justifyContent="center" margin={5}>
-            <ToggleButtonGroup
-                color="primary"
-                value={displayContext?.isItem}
-                exclusive
-                onChange={toggleView}
-                aria-label="display of result"
-            >
-                <ToggleButton value={true} aria-label="display item">
-                    <FormatListBulletedIcon/>
-                </ToggleButton>
-                <ToggleButton value={false} aria-label="display card">
-                    <GridViewIcon/>
-                </ToggleButton>
-            </ToggleButtonGroup>
-        </Stack>
-    );
+  return (
+    <div style={{ display: "flex", justifyContent: "center", margin: "20px" }}>
+      <button onClick={() => toggleView(true)} disabled={selected === true}>
+        liste
+      </button>
+      <button onClick={() => toggleView(false)} disabled={selected === false}>
+        grille
+      </button>
+    </div>
+  );
 };
 
 export default DisplayCardOrItem;

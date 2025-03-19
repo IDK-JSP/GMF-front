@@ -1,5 +1,4 @@
 import axios, {AxiosError} from "axios";
-import {useEffect, useState} from "react";
 import {toast} from "react-toastify";
 
 const hostUrl = "http://localhost:8080";

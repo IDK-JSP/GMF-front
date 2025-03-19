@@ -1,5 +1,6 @@
 import { FC, JSX } from "react";
 import Skeleton from "react-loading-skeleton";
+import { RecipeType } from "../../1_types/RecipeType";
 
 type Props<T> = {
   isLoading: boolean;
@@ -9,6 +10,10 @@ type Props<T> = {
   children: (data: T[]) => JSX.Element;
 };
 
+// Un HOC (Higher Order Component) est une fonction qui prend un composant et retourne un autre composant
+
+// Utilisation d'un type générique pour pouvoir passer n'importe quel type de données
+
 const WithLoadingAndError = <T,>({
   isLoading,
   error,
@@ -16,22 +21,22 @@ const WithLoadingAndError = <T,>({
   SkeletonComponent,
   children,
 }: Props<T>) => {
-  // 🔥 Vérification stricte du chargement
+  // Vérification stricte du chargement
   if (isLoading) {
     return SkeletonComponent ? <SkeletonComponent /> : <Skeleton count={3} />;
   }
 
-  // 🛑 Vérification de l'erreur
+  // Vérification de l'erreur
   if (error) {
-    return <p style={{ color: "red", fontWeight: "bold" }}>❌ {error}</p>;
+    return <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>;
   }
 
-  // 🚨 Si les données sont vides après le chargement
+  // Si les données sont vides après le chargement
   if (!data || data.length === 0) {
     return <p style={{ color: "gray" }}>Aucune donnée trouvée.</p>;
   }
 
-  // ✅ Affichage normal si tout est bon
+  // Affichage normal si tout est bon
   return children(data);
 };
 

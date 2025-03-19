@@ -1,12 +1,9 @@
 import { FC } from "react";
 import withLoadingAndError from "../hoc/WithLoadingAndError";
-import OpinionsSkeleton from "./OpinionsSkeleton";
+import OpinionsSkeleton from "../skeleton/OpinionsSkeleton";
 import { RecipeOpinionsType } from "../../1_types/RecipeOpinionsType";
 import StarRating from "../common/StarRating";
-import ControlRating from "../common/ControlRating";
 import "../../styles/opinions.css";
-import OpinionRecipe from "./OpinionRecipe";
-import OpinionMyself from "./OpinionMyself";
 
 type Props = {
   recipeRate: number;
