@@ -10,7 +10,6 @@
 .recipe-card {
     flex: 0 0 auto; /* Empêche le redimensionnement automatique */
     width: 250px;
-    height: 350px;
     overflow: hidden;
 }
 

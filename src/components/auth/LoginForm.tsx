@@ -25,9 +25,9 @@ const LoginForm: FC<{}> = ({}) => {
             if (response) {
                 console.log("response", response)
                 authContext.login(response);
-                navigate("/Dashboard");
+                navigate("/Home");
             }else{
-                toast.error("Mauvais idenfiants")
+                toast.error("Mauvais identifiants")
             }
 
     };
