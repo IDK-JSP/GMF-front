@@ -10,6 +10,8 @@ import RecipeList from "../components/common/RecipeList";
 import IngredientList from "../components/common/IngredientList";
 import get from "../api/get";
 import RecipeCarousel from "../components/common/RecipeCarousel";
+import Pages from "../components/layout/Pages";
+
 
 export const Favorite: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext);
@@ -46,7 +48,7 @@ export const Favorite: FC<{}> = ({}) => {
     }, [recipes]);
 
     return (
-        <>
+        <Pages>
             <Presentation imgUrl={"/test.jpg"} carousel={<RecipeCarousel recipeCollection={recipes ?? []}/>}>Favoris</Presentation>
             <main>
                 <ContentWithoutAside>
@@ -62,7 +64,7 @@ export const Favorite: FC<{}> = ({}) => {
                     </section>
                 </ContentWithoutAside>
             </main>
-        </>
+        </Pages>
     );
 };
 export default Favorite;

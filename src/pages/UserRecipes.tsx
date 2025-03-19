@@ -5,6 +5,8 @@ import DynamicFilter from "../components/common/DynamicFilter";
 import RecipeList from "../components/common/RecipeList";
 import get from "../api/get";
 import {RecipeType} from "../1_types/RecipeType";
+import Pages from "../components/layout/Pages";
+
 
 const UserRecipes: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
@@ -23,7 +25,7 @@ const UserRecipes: FC<{}> = ({}) => {
     }, []);
 
     return (
-        <>
+        <Pages>
             <Presentation>
                 Mes recettes
             </Presentation>
@@ -40,7 +42,7 @@ const UserRecipes: FC<{}> = ({}) => {
                     </article>
                 </section>
             </ContentWithoutAside>
-        </>
+        </Pages>
     );
 };
 

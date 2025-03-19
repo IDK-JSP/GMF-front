@@ -3,7 +3,6 @@ import {Navigate, Route, Routes} from 'react-router';
 import Layout from "../layout/Layout";
 import RecipeDetails from '../pages/RecipeDetails';
 import Research from "../pages/Research";
-import Register from "../pages/Register";
 import UserRecipes from "../pages/UserRecipes";
 import {AuthContext} from "../context/AuthContext";
 import AdminDashboard from "../pages/AdminDashboard";
@@ -45,7 +44,6 @@ const Router: FC<{}> = ({}) => {
                     <Route path="UserRecipes" element={<UserRecipes/>}/>
                     <Route path="CreateRecipe" element={<CreateRecipe/>}/>
                     <Route path="Settings" element={<Settings/>}/>
-                    <Route path="Register" element={<Register/>}/>
                 </Route>}
 
             {authContext?.isLoggedIn && authContext.role === "ADMIN" &&

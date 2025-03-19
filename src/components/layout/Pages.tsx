@@ -6,7 +6,7 @@ const Pages: FC<{ children: any }> = ({children}) => {
     return (
         <>
             <title>Projet GMF</title>
-            <link rel="icon" href="" type="image/x-icon"/>
+            <link rel="icon" href="/GMF-logo.png" type="image/x-icon"/>
             {children}
         </>
     );

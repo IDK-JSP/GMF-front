@@ -1,13 +1,13 @@
-import {FC, useContext, useEffect, useState, useTransition} from 'react';
+import {FC, useEffect, useState, useTransition} from 'react';
 import {RecipeType} from "../1_types/RecipeType";
 import get from "../api/get";
 import ContentWithoutAside from '../components/layout/ContentWithoutAside';
 import Presentation from '../components/layout/Presentation';
-import {AuthContext} from "../context/AuthContext";
 import "../styles/home.css";
 import RecipeCarousel from "../components/common/RecipeCarousel";
 import RecipeCollection from "../components/common/RecipeCollection";
 import {collections} from "../1_types/CollectionsNames";
+import Pages from "../components/layout/Pages";
 
 const Home: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
@@ -30,7 +30,7 @@ const Home: FC<{}> = ({}) => {
     }, []);
 
     return (
-        <>
+        <Pages>
             {!isPending && recipeCollection && (
                 <>
                     <Presentation carousel={<RecipeCarousel recipeCollection={recipeCollection}/>}>
@@ -51,7 +51,8 @@ const Home: FC<{}> = ({}) => {
                     </ContentWithoutAside>
                 </>
             )}
-        </>)
+        </Pages>
+    )
 };
 
 export default Home;

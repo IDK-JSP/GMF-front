@@ -7,6 +7,7 @@ import {useLocation} from "react-router-dom";
 import RecipeList from "../components/common/RecipeList";
 import DynamicFilter from '../components/common/DynamicFilter';
 import {collections} from "../1_types/CollectionsNames";
+import Pages from "../components/layout/Pages";
 
 
 const CategoryList: FC<{}> = ({}) => {
@@ -27,7 +28,7 @@ const CategoryList: FC<{}> = ({}) => {
         hydrate()
     }, []);
     return (
-        <>
+        <Pages>
             <Presentation>
             {title}
             </Presentation>
@@ -44,7 +45,7 @@ const CategoryList: FC<{}> = ({}) => {
                     </article>
                 </section>
             </ContentWithoutAside>
-        </>
+        </Pages>
     );
 };
 
