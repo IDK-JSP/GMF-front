@@ -1,13 +1,33 @@
-import React from 'react';
+import React, {FC} from "react";
+import "../../styles/footer.css";
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
     return (
-        <footer>
+        <footer className="footer">
             <p>© 2025 Projet GMF – Site réalisé dans le cadre d'une formation.</p>
-            <p><a href="">Mentions légales</a> | <a href="">Contact</a> | <a href="">Code source</a></p>
-            <p>Hébergé par <a href="" target="_blank"></a></p>
-        </footer>
+            <p>
+                <a href="/mentions-legales"> Mentions légales </a>
+                |
+                <a href="/contact"> Contact </a>
+                |
+                <a href="https://github.com/IDK-JSP/GMF-front" target="_blank"> Code source </a>
+            </p>
+            <p>
+                Hébergé par <a href="https://www.monhébergeur.com" target="_blank">MonHébergeur.com</a>
+            </p>
 
+            <div className="social-icons">
+                <a href="https://facebook.com" target="_blank">
+                    <i className="fab fa-facebook"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <i className="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <i className="fab fa-twitter"></i>
+                </a>
+            </div>
+        </footer>
     );
 };
 
