@@ -51,9 +51,6 @@ const LoginForm: FC<{}> = ({}) => {
                     Se connecter
                 </button>
             </form>
-            {/* <p className="register-link" onClick={() => navigate("/Register")}>
-                Pas encore de compte ? Cliquez ici pour vous inscrire !
-            </p>*/}
         </div>
     );
 };

@@ -6,7 +6,7 @@ import {RecipeType} from "../1_types/RecipeType";
 import {useLocation} from "react-router-dom";
 import RecipeList from "../components/common/RecipeList";
 import DynamicFilter from '../components/common/DynamicFilter';
-import {collections} from "./Dashboard";
+import {collections} from "../1_types/CollectionsNames";
 
 
 const CategoryList: FC<{}> = ({}) => {

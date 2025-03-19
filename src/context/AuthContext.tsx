@@ -27,7 +27,7 @@ export const AuthProvider: FC<{ children: any }> = ({children}) => {
     useEffect(() => {
         const checkTokenValidity = () => {
             if (token && isTokenExpired(token)) {
-                console.warn("⏳ Token expiré, suppression et déconnexion...");
+                console.warn("Token expiré, suppression et déconnexion...");
                 toast.warn("Session expirée, vous avez été déconnecté")
                 logout();
             }
@@ -36,8 +36,8 @@ export const AuthProvider: FC<{ children: any }> = ({children}) => {
         // Vérifier au début
         checkTokenValidity();
 
-        // Vérifier toutes les 60 secondes
-        const interval = setInterval(checkTokenValidity, 60000);
+        // Vérifier toutes les 600 secondes
+        const interval = setInterval(checkTokenValidity, 600000);
 
         return () => clearInterval(interval); // Nettoyage du timer
     }, [token]);

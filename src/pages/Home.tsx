@@ -5,20 +5,11 @@ import ContentWithoutAside from '../components/layout/ContentWithoutAside';
 import Presentation from '../components/layout/Presentation';
 import {AuthContext} from "../context/AuthContext";
 import "../styles/dashboard.css";
-import {useNavigate} from "react-router";
 import RecipeCarousel from "../components/common/RecipeCarousel";
 import RecipeCollection from "../components/common/RecipeCollection";
+import {collections} from "../1_types/CollectionsNames";
 
-export const collections = [
-    {title: "Les mieux notées", path: "/top"},
-    {title: "Les incontournables", path: "/nbRate"},
-    {title: "Nos récentes", path: "/recent"},
-    {title: "Les végés", path: "/vege"},
-    {title: "Les vegan", path: "/vegan"},
-    {title: "Nos sources sûres", path: "/validate"}
-]
-const Dashboard: FC<{}> = ({}) => {
-    const navigate = useNavigate()
+const Home: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
     const [isPending, startTransition] = useTransition()
     const authContext = useContext(AuthContext);
@@ -34,7 +25,6 @@ const Dashboard: FC<{}> = ({}) => {
         });
     };
 
-
     useEffect(() => {
         window.scrollTo({top: 0, behavior: "smooth"});
         hydrate();
@@ -42,13 +32,11 @@ const Dashboard: FC<{}> = ({}) => {
 
     return (
         <>
-
-            { recipeCollection && (
+            {!isPending && recipeCollection && (
                 <>
                     <Presentation carousel={<RecipeCarousel recipeCollection={recipeCollection}/>}>
-                        Dashboard
+                        Home
                     </Presentation>
-
                     <ContentWithoutAside>
                         <section>
                             {recipeCollection ?
@@ -63,9 +51,9 @@ const Dashboard: FC<{}> = ({}) => {
                         </section>
                     </ContentWithoutAside>
                 </>
-            )};
+            )}
         </>)
 };
 
-export default Dashboard;
+export default Home;
 

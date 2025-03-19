@@ -1,7 +1,7 @@
 import {useState, useEffect, FormEvent} from "react";
 import post from "../../api/post";
 import get from "../../api/get";
-import { RecipeIngredient, Ingredient, Measurement } from "../../1_types/CreateRecipeType";
+import {Ingredient, Measurement, RecipeIngredient} from "../../1_types/CreateRecipeType";
 
 export const useRecipeForm = () => {
     const [title, setTitle] = useState("");
