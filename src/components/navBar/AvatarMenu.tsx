@@ -8,6 +8,7 @@ import {toast} from "react-toastify";
 const avatarMenu = [
     {name: "Paramètres", navigation: "../Setting"},
     {name: "Mes Recettes", navigation: "../UserRecipes"},
+    {name: "Créer une recette", navigation: "../CreateRecipe"},
 ];
 
 const NavBarAvatar: FC = () => {

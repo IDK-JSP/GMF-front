@@ -4,7 +4,7 @@ import get from "../api/get";
 import ContentWithoutAside from '../components/layout/ContentWithoutAside';
 import Presentation from '../components/layout/Presentation';
 import {AuthContext} from "../context/AuthContext";
-import "../styles/dashboard.css";
+import "../styles/home.css";
 import RecipeCarousel from "../components/common/RecipeCarousel";
 import RecipeCollection from "../components/common/RecipeCollection";
 import {collections} from "../1_types/CollectionsNames";
@@ -12,7 +12,6 @@ import {collections} from "../1_types/CollectionsNames";
 const Home: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
     const [isPending, startTransition] = useTransition()
-    const authContext = useContext(AuthContext);
 
     const hydrate = () => {
         startTransition(async () => {

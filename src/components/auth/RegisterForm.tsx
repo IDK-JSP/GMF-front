@@ -43,7 +43,7 @@ const RegisterForm: FC<{}> = ({}) => {
             });
             if (loginResponse) {
                 authContext.login(loginResponse);
-                navigate("/Dashboard");
+                navigate("/Home");
             } else {
                 toast.error("Inscription réussie, mais échec de connexion automatique.");
             }
