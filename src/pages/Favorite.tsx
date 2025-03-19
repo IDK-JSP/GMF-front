@@ -5,7 +5,7 @@ import {IngredientType} from "../1_types/IngredientType";
 import {RecipeType} from "../1_types/RecipeType";
 import {useContext} from "react";
 import {AuthContext} from "../context/AuthContext";
-import {getEmailFromToken} from "../context/getEmailFromToken";
+import {getEmailFromToken} from "../components/auth/getEmailFromToken";
 import RecipeList from "../components/common/RecipeList";
 import IngredientList from "../components/common/IngredientList";
 import get from "../api/get";

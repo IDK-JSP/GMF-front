@@ -53,6 +53,8 @@ export const api = async (
                     break;
                 case 403:
                     toast.error(`🚫 Erreur 403 : Accès refusé`);
+                    // if request.body === "token expired" ---> toast.error(veuillez vous reco) + redirect login
+                    // TODO
                     break;
                 case 404:
                     console.log(`🔍 Erreur 404 : Ressource non trouvée`);

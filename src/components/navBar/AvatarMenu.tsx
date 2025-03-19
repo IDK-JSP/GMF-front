@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import "../../styles/avatarMenu.css";
 import {AuthContext} from "../../context/AuthContext";
+import {toast} from "react-toastify";
 
 const avatarMenu = [
     {name: "Paramètres", navigation: "../Setting"},
@@ -64,6 +65,8 @@ const NavBarAvatar: FC = () => {
                         <button className="menu-item" onClick={() => {
                             handleCloseMenu();
                             authContext.logout();
+                            navigate("/login");
+                            toast.warn("Vous avez été déconnecté.e")
                         }}>
                             Déconnexion
                         </button>

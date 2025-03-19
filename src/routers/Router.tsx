@@ -11,17 +11,13 @@ import CategoryList from "../pages/CategoryList";
 import Favorite from "../pages/Favorite";
 import Settings from "../pages/Settings";
 import Login from "../pages/Login";
-import Dashboard from "../pages/Dashboard";
+import Home from "../pages/Home";
 import {isTokenExpired} from '../components/auth/isTokenExpired';
 import ErrorPage from '../pages/ErrorPage';
 import CreateRecipe from "../pages/CreateRecipe";
 
 const Router: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext);
-
-    if (!authContext) {
-        throw new Error("AuthContext doit être utilisé dans un AuthProvider");
-    }
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -34,8 +30,8 @@ const Router: FC<{}> = ({}) => {
     return (
         <Routes>
             <Route element={<Layout/>}>
-                <Route path="/" element={<Navigate to="/Dashboard" replace/>}/>
-                <Route path="Dashboard" element={<Dashboard/>}/>
+                <Route path="/" element={<Navigate to="/Home" replace/>}/>
+                <Route path="Home" element={<Home/>}/>
                 <Route path="RecipeDetails/:id" element={<RecipeDetails/>}/>
                 <Route path="Research" element={<Research/>}/>
                 <Route path="Research/:searchQuery" element={<Research/>}/>
