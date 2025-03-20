@@ -1,15 +1,17 @@
-import * as React from 'react';
-import {FC} from 'react';
-import {Box} from "@mui/material";
+import { FC } from "react";
+import { Children } from "../../1_types/PropsType";
 
-const Pages: FC<{ children: any }> = ({children}) => {
-    return (
-        <>
-            <title>Projet GMF</title>
-            <link rel="icon" href="/GMF-logo.png" type="image/x-icon"/>
-            {children}
-        </>
-    );
+interface PagesProps extends Children {
+  pageTitle?: string;
+}
+const Pages: FC<PagesProps> = ({ children, pageTitle = "GMF" }) => {
+  return (
+    <>
+      {pageTitle ? <title>{pageTitle}</title> : <title>GMF</title>}
+      <link rel="icon" href="/GMF-logo.png" type="image/x-icon" />
+      {children}
+    </>
+  );
 };
 
 export default Pages;

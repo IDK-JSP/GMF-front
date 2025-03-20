@@ -7,7 +7,6 @@ interface PresentationProps extends Children {
   recipeRate?: number;
   recipeNbRate?: number;
   carousel?: any;
-  pageTitle?: string;
   titleBanner?: boolean;
 }
 
@@ -17,15 +16,14 @@ const HeroSection: React.FC<PresentationProps> = ({
   recipeNbRate,
   recipeRate,
   carousel,
-  pageTitle = "GMF",
   titleBanner = true,
 }) => {
   return (
     <>
-      {pageTitle ? <title>GMF - {pageTitle}</title> : <title>GMF</title>}
-
       <div
-        className="presentation"
+        className={
+          carousel ? "presentation presentation-carousel" : "presentation "
+        }
         style={{
           backgroundImage: `url("${imgUrl}")`,
           backgroundSize: "cover",

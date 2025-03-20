@@ -33,12 +33,11 @@ const Home: FC<{}> = ({}) => {
   }, []);
 
   return (
-    <Pages>
+    <Pages pageTitle={"Accueil"}>
       {!isPending && recipeCollection && (
         <>
           <HeroSection
             carousel={<RecipeCarousel recipeCollection={recipeCollection} />}
-            pageTitle="Accueil"
             titleBanner={false}
           >
             Accueil
