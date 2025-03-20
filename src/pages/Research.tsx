@@ -54,13 +54,19 @@ useEffect(() => {
 const ingredientLength = ingredientCollection.length;
 let filteredRecipes;
 let matchingButton = false;
+// S'il n'y a pas d'ingrédient selectionné on affiche toutes les recettes
 if (ingredientLength === 0) {
   filteredRecipes = recipeCollection;
 } else {
   matchingButton = true;
+  // Si on veut afficher les recettes qui ont aussi des ingrédients non selectionnés
   filteredRecipes = filterContext?.isMatching
-    ? recipeCollection.filter(recipe => recipe.matching_ingredients === ingredientLength)
-    : recipeCollection.filter(recipe => recipe.matching_ingredients !== ingredientLength);
+    ? recipeCollection
+    : recipeCollection.filter(recipe => recipe.matching_ingredients === ingredientLength);
+
+    // filteredRecipes = filterContext?.isMatching
+    // ? recipeCollection.filter(recipe => recipe.matching_ingredients === ingredientLength)
+    // : recipeCollection.filter(recipe => recipe.matching_ingredients !== ingredientLength);
 }
 
   return (

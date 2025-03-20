@@ -33,33 +33,28 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({recipe}) => {
         <div className="recipe-container" onClick={() => handleNavigate(recipe)}>
 
             <ImageLoarder imgUrl={`/recipe/recipe_${data[0].id_recipe}.jpg`} title={data[0].title} classCss={"recipe-item-image"} />
-
-            <div className="item-btn-container">
-                <DietBadge diet={recipe.diet} sizeInPixels={60}/>
-                <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={60}/>
-                </div>
-
             {/* Dégradé blanc */}
             <div className="recipe-gradiant"></div>
-
-            {/* Contenu principal */}
-            <div className="recipe-item-content">
-
-                <div className="first-row">
-
-                    {/* Badges V */}
-                    
-
-                    {/* Titre */}
-                    <h3 className="recipe-item-title">
-                        {recipe.title}
-                    </h3>
+            <div className="flex-row" style={{justifyContent: "space-between", width: "100%"}}>
+                {/* Contenu principal */}
+                <div className="recipe-item-content">
+                    <div className="first-row">
+                        {/* Titre */}
+                        <h3 className="recipe-item-title">
+                            {recipe.title}
+                        </h3>
+                    </div>
+                    {/* Note */}
+                    <div className="recipe-item-info">
+                        <span className="recipe-time"> 60min</span>
+                        <StarRating rate={recipe.rate} size={"50px"}/>
+                    </div>
                 </div>
-
-                {/* Note */}
-                <div className="recipe-item-info">
-                    <span className="recipe-time"> 60min</span>
-                    <StarRating rate={recipe.rate} size={"50px"}/>
+                <div className="item-btn-container badge-item-card">
+                    {/* Badges V */}
+                    <DietBadge diet={recipe.diet} sizeInPixels={60}/>
+                    {/* Favorite Btn */}
+                    <FavoriteButton id={recipe.id_recipe} type="recipe" favorite={recipe.favorite ?? "false"} sizeInPixels={60}/>
                 </div>
             </div>
         </div>

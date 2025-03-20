@@ -114,10 +114,6 @@ useEffect(() => {
 
   const handleSwitchVisibility = () => setFilterIsVisible(!filterIsVisible);
 
-
-
-
-
   // Gestion de l'affichage des résultats
   const containerRef = useRef<HTMLDivElement>(null);
   const handleClickInside = () => {
@@ -126,10 +122,12 @@ useEffect(() => {
   const handleClickOutside = (event: MouseEvent) => {
     if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
       setResultIsVisible(false);
+      setFilterIsVisible(false);
     }
   };
   const handleForceClose = () => {
       setResultIsVisible(false);
+      setFilterIsVisible(false);
   };
 
   // TODO : refacto pour éviter les fuites de mémoire sur la gestion des événements

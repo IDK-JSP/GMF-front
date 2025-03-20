@@ -50,6 +50,7 @@ main {
   flex-direction: row;
   flex-wrap: nowrap;
   width: 100%;
+  min-height: 80vh;
 }
 
 .favorite-btn {
@@ -101,6 +102,50 @@ padding-left: var(--width-aside);
 .presentation-aside {
 width: var(--width-aside);
 font-size: 0.5em;
+}
+
+.dyna-filter-container{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: white;
+  overflow: hidden;
+  
+}
+.dyna-filter-container > button, .dyna-filter-container > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  height: 30px;
+  min-width: 50px;
+  padding : 5px;
+  box-sizing: border-box;
+}
+.dyna-filter-container > button:disabled {
+background-color: var(--color-bg-secondary);
+color: var(--color-text-secondary);
+font-weight: bold;
+}
+.dyna-filter-container > span {
+  font-size: small;
+  font-weight: bold;
+}
+.ingredient-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px !important;
+  justify-content: center;
+  font-weight: bold;
+}
+.ingredient-list > div {
+  cursor: pointer;
+  gap: 10px;
 }
 
 aside {

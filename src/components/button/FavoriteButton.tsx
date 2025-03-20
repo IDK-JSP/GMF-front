@@ -21,9 +21,8 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({id, type, favorite, sizeInPixe
         if (favorite === "true") {
             del("/favorite/delete/recipe/"+id,"Favori supprimé avec succès")
             .then((response) => {
-                if (response === "Favori supprimé avec succès") {
+                if (response === "Favori supprimé avec succès.") {
                     setIsFavorite("false");
-                    toast.success("DEBUG : OK");
                 } else {}
             }
         )  
@@ -34,9 +33,10 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({id, type, favorite, sizeInPixe
             };
             post("/favorite/new", data, "Favori ajouté")
             .then((response) => {
-                if (response === "Favori ajouté") {
+                if (
+                    (typeof response === "object")
+                  ) {
                 setIsFavorite("true");
-                toast.success("DEBUG : OK");
                 } else {}
             })};
     };

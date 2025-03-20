@@ -2,6 +2,7 @@ import "../../styles/recipeDisplay.css";
 import {IngredientType} from '../../1_types/IngredientType';
 import post from '../../api/post';
 import del from '../../api/del';
+import { toast } from "react-toastify";
 
 interface Props {
     ingredientList: IngredientType[];
@@ -13,19 +14,29 @@ interface Props {
 
 export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredients, setFavoriteIngredients}) => {
 
-//const [favoriteIngredientsState, setFavoriteIngredientsState] = useState<IngredientType[]>(favoriteIngredients);
-
     const handleAddFavorite = (ingredient: IngredientType) => {
-        setFavoriteIngredients([...favoriteIngredients, ingredient]);
         const data = {
             favoriteable_type: "ingredient",
             favoriteable_id: ingredient.id_ingredient,
         };
-        post("/favorite/new", data, "Favoris ajouté");
+        post("/favorite/new", data, "Favori ajouté").then((response) => {
+            if (
+                (typeof response === "object")
+              ) {
+                setFavoriteIngredients([...favoriteIngredients, ingredient]);
+            } else {}
+        }
+        );
     };
     const handleRemoveFavorite = (ingredient: IngredientType) => {
-        setFavoriteIngredients(favoriteIngredients.filter((fav) => fav.name !== ingredient.name));
-        del("/favorite/delete/recipe/" + ingredient.id_ingredient, "Favoris supprimé avec succés");
+        del("/favorite/delete/ingredient/" + ingredient.id_ingredient, "Favori supprimé avec succès.").then((response) => {
+            if (
+                (response === "Favori supprimé avec succès.")
+              ) {
+                setFavoriteIngredients(favoriteIngredients.filter((fav) => fav.id_ingredient !== ingredient.id_ingredient));
+            } else {}
+        });
+
 
     };
 
@@ -33,9 +44,9 @@ export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredi
         <>
             {ingredientList.length ?
                 <>
-                    <div className="flex-row" style={{flexWrap: "wrap", gap: "1rem"}}>
+                    <div className="ingredient-list">
                         {ingredientList
-                            .filter((ing) => favoriteIngredients.some(fav => ing.name.toLowerCase().includes(fav.name.toLowerCase())))
+                            .filter((ing) => favoriteIngredients.some(fav => ing.id_ingredient === fav.id_ingredient))
                             .map((ing) => (
                                 <div key={ing.name} className="flex-column" style={{
                                     cursor: "pointer",
@@ -44,19 +55,20 @@ export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredi
                                     borderRadius: "1rem"
                                 }}
                                      onClick={() => handleRemoveFavorite(ing)}>
-                                    <span>image</span>
+                                    <img src={`ingredient/${ing.name}.png`} alt={ing.name} width={50} height={50}/>
+
                                     <span>{ing.name}</span>
                                 </div>
                             ))}
                     </div>
                     <hr/>
-                    <div className="flex-row" style={{flexWrap: "wrap", gap: "1rem", padding: "2rem"}}>
+                    <div className="ingredient-list">
                         {ingredientList
-                            .filter((ing) => !favoriteIngredients.some(fav => fav.name.toLowerCase().includes(ing.name.toLowerCase())))
+                            .filter((ing) => !favoriteIngredients.some(fav => ing.id_ingredient === fav.id_ingredient))
                             .map((ing) => (
                                 <div key={ing.name} className="flex-column"
                                      onClick={() => handleAddFavorite(ing)}>
-                                    <span>image</span>
+                                    <img src={`ingredient/${ing.name}.png`} alt={ing.name} width={50} height={50}/>
                                     <span>{ing.name}</span>
                                 </div>
                             ))}
