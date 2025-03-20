@@ -15,6 +15,7 @@ import OpinionsDetails from "../components/recipeDetails/OpinionsDetails";
 import RecipeSkeleton from "../components/skeleton/RecipeSkeleton";
 import FavoriteButton from "../components/button/FavoriteButton";
 import PresentationRecipe from "../components/layout/PresentationRecipe";
+import Pages from "../components/layout/Pages";
 
 
 const RecipeDetails: FC = () => {
@@ -80,7 +81,7 @@ const RecipeDetails: FC = () => {
 
 
     return (
-        <>
+        <Pages>
             {recipe ? (
                     <>
                         <PresentationRecipe imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`} recipeRate={recipe.rate ?? 0} recipeNbRate={recipe.nbRate ?? 0}>
@@ -123,7 +124,7 @@ const RecipeDetails: FC = () => {
                     </>
                 ) :
                 <RecipeSkeleton/>}
-        </>
+        </Pages>
     );
 };
 

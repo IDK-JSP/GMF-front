@@ -25,9 +25,9 @@ const LoginForm: FC<{}> = ({}) => {
             if (response) {
                 console.log("response", response)
                 authContext.login(response);
-                navigate("/Dashboard");
+                navigate("/Home");
             }else{
-                toast.error("Mauvais idenfiants")
+                toast.error("Mauvais identifiants")
             }
 
     };
@@ -51,9 +51,6 @@ const LoginForm: FC<{}> = ({}) => {
                     Se connecter
                 </button>
             </form>
-            {/* <p className="register-link" onClick={() => navigate("/Register")}>
-                Pas encore de compte ? Cliquez ici pour vous inscrire !
-            </p>*/}
         </div>
     );
 };

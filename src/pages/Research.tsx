@@ -1,15 +1,15 @@
-import { FC, useEffect, useContext, useState, SetStateAction } from "react";
-import { ResultsList$ } from "../observables/ResultsList$";
-import { RecipeType } from "../1_types/RecipeType";
+import {FC, SetStateAction, useContext, useEffect, useState} from "react";
+import {ResultsList$} from "../observables/ResultsList$";
+import {RecipeType} from "../1_types/RecipeType";
 import RecipeList from "../components/common/RecipeList";
-import { IngredientType } from "../1_types/IngredientType";
+import {IngredientType} from "../1_types/IngredientType";
 import Presentation from "../components/layout/Presentation";
 import RecipeCarousel from "../components/common/RecipeCarousel";
 import ContentWithoutAside from "../components/layout/ContentWithoutAside";
-import { SearchIngredientsList$ } from "../observables/SearchIngredientsList$";
+import {SearchIngredientsList$} from "../observables/SearchIngredientsList$";
 import DynamicFilter from "../components/common/DynamicFilter";
-import { DynamicFilterContext } from "../context/DynamicFilterContext";
-
+import {DynamicFilterContext} from "../context/DynamicFilterContext";
+import Pages from "../components/layout/Pages";
 
 
 const Research: FC<{}> = ({}) => {
@@ -24,7 +24,7 @@ const Research: FC<{}> = ({}) => {
       setIsMatching(filterContext.isMatching);
     }
   }, [filterContext]);
-  
+
 
   useEffect(() => {
     // S'abonner à l'observable pour écouter les changements
@@ -70,7 +70,7 @@ if (ingredientLength === 0) {
 }
 
   return (
-    <>
+    <Pages>
       <Presentation imgUrl={imagePresentation} carousel={<RecipeCarousel recipeCollection={recipeCollection ?? []}/>}>Recherches</Presentation>
       <main>
       <ContentWithoutAside>
@@ -82,7 +82,7 @@ if (ingredientLength === 0) {
         </section>
       </ContentWithoutAside>
       </main>
-    </>
+    </Pages>
   );
 };
 

@@ -6,7 +6,7 @@ import {AuthProvider} from "./context/AuthContext";
 import {DisplayContext} from "./context/DisplayContext";
 import "react-loading-skeleton/dist/skeleton.css";
 import {ToastContainer} from 'react-toastify';
-import { DynamicFilterProvider } from "./context/DynamicFilterContext";
+import {StockRecipeProvider} from "./context/StockRecipeContext";
 
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
     return (
         <>
             <AuthProvider>
-                <DisplayContext.Provider value={{isItem, setIsItem}}>
-                    <DynamicFilterProvider>
+                <StockRecipeProvider>
+                    <DisplayContext.Provider value={{isItem, setIsItem}}>
                         <BrowserRouter>
                             <Router/>
                         </BrowserRouter>

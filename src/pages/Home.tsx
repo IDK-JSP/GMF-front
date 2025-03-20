@@ -1,27 +1,17 @@
-import {FC, useContext, useEffect, useState, useTransition} from 'react';
+import {FC, useEffect, useState, useTransition} from 'react';
 import {RecipeType} from "../1_types/RecipeType";
 import get from "../api/get";
 import ContentWithoutAside from '../components/layout/ContentWithoutAside';
 import Presentation from '../components/layout/Presentation';
-import {AuthContext} from "../context/AuthContext";
-import "../styles/dashboard.css";
-import {useNavigate} from "react-router";
+import "../styles/home.css";
 import RecipeCarousel from "../components/common/RecipeCarousel";
 import RecipeCollection from "../components/common/RecipeCollection";
+import {collections} from "../1_types/CollectionsNames";
+import Pages from "../components/layout/Pages";
 
-export const collections = [
-    {title: "Les mieux notées", path: "/top"},
-    {title: "Les incontournables", path: "/nbRate"},
-    {title: "Nos récentes", path: "/recent"},
-    {title: "Les végés", path: "/vege"},
-    {title: "Les vegan", path: "/vegan"},
-    {title: "Nos sources sûres", path: "/validate"}
-]
-const Dashboard: FC<{}> = ({}) => {
-    const navigate = useNavigate()
+const Home: FC<{}> = ({}) => {
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
     const [isPending, startTransition] = useTransition()
-    const authContext = useContext(AuthContext);
 
     const hydrate = () => {
         startTransition(async () => {
@@ -34,21 +24,18 @@ const Dashboard: FC<{}> = ({}) => {
         });
     };
 
-
     useEffect(() => {
         window.scrollTo({top: 0, behavior: "smooth"});
         hydrate();
     }, []);
 
     return (
-        <>
-
-            { recipeCollection && (
+        <Pages>
+            {!isPending && recipeCollection && (
                 <>
                     <Presentation carousel={<RecipeCarousel recipeCollection={recipeCollection}/>}>
-                        Dashboard
+                        Home
                     </Presentation>
-
                     <ContentWithoutAside>
                         <section>
                             {recipeCollection ?
@@ -63,9 +50,10 @@ const Dashboard: FC<{}> = ({}) => {
                         </section>
                     </ContentWithoutAside>
                 </>
-            )};
-        </>)
+            )}
+        </Pages>
+    )
 };
 
-export default Dashboard;
+export default Home;
 

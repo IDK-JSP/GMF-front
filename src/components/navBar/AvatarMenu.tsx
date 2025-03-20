@@ -3,10 +3,12 @@ import {useNavigate} from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import "../../styles/avatarMenu.css";
 import {AuthContext} from "../../context/AuthContext";
+import {toast} from "react-toastify";
 
 const avatarMenu = [
-    {name: "Paramètres", navigation: "../Setting"},
+    {name: "Paramètres", navigation: "../Settings"},
     {name: "Mes Recettes", navigation: "../UserRecipes"},
+    {name: "Créer une recette", navigation: "../CreateRecipe"},
 ];
 
 const NavBarAvatar: FC = () => {
@@ -43,8 +45,8 @@ const NavBarAvatar: FC = () => {
     }, [isOpen]);
 
     return (
-        <div className="navbar-avatar" ref={menuRef}>
-            <button className="avatar-button" onClick={toggleMenu}>
+        <div className="navbar-avatar" ref={menuRef} onClick={toggleMenu}>
+            <button className="avatar-button">
                 <PersonIcon className="avatar-icon"/>
             </button>
             <div className={`avatar-menu ${isOpen ? "open" : "closed"}`}>
@@ -64,6 +66,8 @@ const NavBarAvatar: FC = () => {
                         <button className="menu-item" onClick={() => {
                             handleCloseMenu();
                             authContext.logout();
+                            navigate("/login");
+                            toast.warn("Vous avez été déconnecté.e")
                         }}>
                             Déconnexion
                         </button>
