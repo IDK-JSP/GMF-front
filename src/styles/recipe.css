@@ -26,3 +26,24 @@
   border: none;
   padding: 10px;
 }
+.recipe-stage:focus {
+  transform: scale(1.05);
+  border: 2px solid var(--color-bg-secondary) !important;
+  box-shadow: 0 0 10px var(--color-bg-secondary);
+  font-weight: bold !important;
+}
+.recipe-stage:focus > span:first-child {
+  color: var(--color-bg-secondary);
+  font-size: 4rem;
+}
+.recipe-content > .recipe-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 80%;
+}
+.recipe-content > p:last-child {
+  text-align: right;
+}

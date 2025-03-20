@@ -121,7 +121,12 @@ const RecipeDetails: FC = () => {
             </AsideLeft>
             <ContentWithBothAside>
               <section>
-                {recipe.content}
+                <span className="recipe-content">
+                  <p>{recipe.content}</p>
+                  <p>
+                    par <b>{recipe.email}</b>
+                  </p>
+                </span>
                 <StageResume
                   stageList={recipeDetails?.stages || []}
                   isLoading={isPending}

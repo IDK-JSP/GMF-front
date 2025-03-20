@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { RecipeIngredientType } from "../../1_types/RecipeIngredientType";
 import withLoadingAndError from "../hoc/WithLoadingAndError";
 import IngredientSkeleton from "../skeleton/IngredientSkeleton";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 
 type Props = {
   ingredientsList: Array<RecipeIngredientType>;
@@ -30,7 +31,12 @@ const IngredientResume: FC<Props> = ({
     children: (data) => (
       <>
         <article>
-          <h3>Recette prévue pour {person}</h3>
+          <h3
+            className="flex-row"
+            style={{ justifyContent: "center", gap: "0.3rem" }}
+          >
+            Recette prévue pour {person} <PeopleAltIcon />
+          </h3>
         </article>
         <article>
           <div className="flex-row">
