@@ -1,6 +1,7 @@
 import React, {FC, useContext, useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import PersonIcon from "@mui/icons-material/Person";
+import HowToRegRoundedIcon from '@mui/icons-material/HowToRegRounded';
+import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import "../../styles/avatarMenu.css";
 import {AuthContext} from "../../context/AuthContext";
 import {toast} from "react-toastify";
@@ -11,7 +12,7 @@ const avatarMenu = [
     {name: "Créer une recette", navigation: "../CreateRecipe"},
 ];
 
-const NavBarAvatar: FC = () => {
+const NavBarAvatar: FC<{}> = () => {
     const authContext = useContext(AuthContext);
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +48,11 @@ const NavBarAvatar: FC = () => {
     return (
         <div className="navbar-avatar" ref={menuRef} onClick={toggleMenu}>
             <button className="avatar-button">
-                <PersonIcon className="avatar-icon"/>
+                {!authContext?.isLoggedIn ? (
+                    <PersonOutlineRoundedIcon fontSize="large"/>
+                ) : (
+                    <HowToRegRoundedIcon fontSize="large"/>
+                )}
             </button>
             <div className={`avatar-menu ${isOpen ? "open" : "closed"}`}>
                 {!authContext?.isLoggedIn ? (
