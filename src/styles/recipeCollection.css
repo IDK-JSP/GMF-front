@@ -1,24 +1,18 @@
 .recipe-collection-container {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto; /* Active le défilement horizontal si nécessaire */
-    gap: 16px;
-    padding: 10px;
-    scroll-behavior: smooth;
-}
-
-.recipe-card {
-    flex: 0 0 auto; /* Empêche le redimensionnement automatique */
-    width: 250px;
-    overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto; /* Active le défilement horizontal si nécessaire */
+  gap: 16px;
+  padding: 10px;
+  scroll-behavior: smooth;
 }
 
 /* Masquer la scrollbar sur certains navigateurs */
 .recipe-collection-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .recipe-collection-container {
-    -ms-overflow-style: none; /* IE et Edge */
-    scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE et Edge */
+  scrollbar-width: none; /* Firefox */
 }
