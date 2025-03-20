@@ -13,20 +13,14 @@ type Props = {
   error: string | null;
 };
 
-const OpinionsResume: FC<Props> = ({
-  opinionsList,
-  isLoading,
-  error,
-}) => {
+const OpinionsResume: FC<Props> = ({ opinionsList, isLoading, error }) => {
   return withLoadingAndError({
     isLoading,
     error,
     data: opinionsList,
     SkeletonComponent: OpinionsSkeleton,
     children: (data) => (
-     <>
-        
-
+      <>
         {opinionsList && opinionsList.length > 0 ? (
           opinionsList.map((opinion, index) => (
             <div key={index} className="opinion-item">
@@ -39,11 +33,10 @@ const OpinionsResume: FC<Props> = ({
           ))
         ) : (
           <div>Aucune note trouvée.</div>
-          )}
-          </>
-      ),
-    });
-  };
-
+        )}
+      </>
+    ),
+  });
+};
 
 export default OpinionsResume;
