@@ -1,6 +1,8 @@
 .recipe-stage {
   transform: scale(1);
   min-height: 100px;
+  display: flex;
+  align-items: flex-start;
 }
 .recipe-stage:hover {
   transform: scale(1.05);
@@ -19,4 +21,8 @@
   height: 50px;
   gap: 10px;
   font-weight: bold;
+}
+.input-person {
+  border: none;
+  padding: 10px;
 }

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import ContentWithBothAside from "../components/layout/ContentWithBothAside";
 import AsideLeft from "../components/layout/AsideLeft";
 import AsideRight from "../components/layout/AsideRight";
@@ -17,6 +17,7 @@ import FavoriteButton from "../components/button/FavoriteButton";
 import PresentationRecipe from "../components/layout/PresentationRecipe";
 import Pages from "../components/layout/Pages";
 import HeroSection from "../components/layout/HeroSection";
+import AuthContext from "../context/AuthContext";
 
 const RecipeDetails: FC = () => {
   const location = useLocation();
@@ -79,6 +80,9 @@ const RecipeDetails: FC = () => {
     }
   }, [recipe, recipeDetails]);
 
+  // Récuperation du mail depuis le token du localStorage
+  const authContext = useContext(AuthContext);
+
   return (
     <Pages>
       {recipe ? (
@@ -88,13 +92,20 @@ const RecipeDetails: FC = () => {
             recipeRate={recipe.rate ?? 0}
             recipeNbRate={recipe.nbRate ?? 0}
           >
-            <FavoriteButton
-              id={recipe.id_recipe}
-              type="recipe"
-              favorite={recipe.favorite ?? "false"}
-              sizeInPixels={50}
-            />
-            {recipe.title}
+            <div
+              className="flex-row"
+              style={{ gap: "1rem", alignItems: "center" }}
+            >
+              {recipe.title}
+              {authContext?.isLoggedIn && (
+                <FavoriteButton
+                  id={recipe.id_recipe}
+                  type="recipe"
+                  favorite={recipe.favorite ?? "false"}
+                  sizeInPixels={50}
+                />
+              )}
+            </div>
           </HeroSection>
           <main>
             <AsideLeft>

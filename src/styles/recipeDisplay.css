@@ -51,8 +51,8 @@
 }
 
 /* Bouton Favori */
-.favorite-btn {
-  position: absolute;
+.favorite-badge {
+  position: absolute !important;
   top: 5px;
   right: 5px;
   z-index: 5;
@@ -141,7 +141,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 0 10px;
+  font-size: clamp(0.5em, 5vw, 2em);
   /*
     justify-content: space-between;
     */
@@ -205,6 +205,18 @@
   .recipe-description {
     font-size: 0.85rem;
   }
+  .favorite-btn {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .favorite-btn > * {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .badge-item-card > div {
+    width: 50px !important;
+    height: 50px !important;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -218,5 +230,17 @@
 
   .recipe-description {
     font-size: 0.75rem;
+  }
+  .favorite-btn {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .favorite-btn > * {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .badge-item-card > div {
+    width: 40px !important;
+    height: 40px !important;
   }
 }
