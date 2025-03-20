@@ -171,11 +171,12 @@ aside {
 
 .content {
   box-sizing: border-box;
-  padding: 20px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .content-with-left-aside {
-  width: calc(100% - var(--width-aside));
+  width: calc(100% - var(--width-aside)) !important;
 }
 .content-with-right-aside {
   width: calc(100% - var(--width-aside));
@@ -228,6 +229,15 @@ article {
   aside {
     width: 100%;
   }
+  .content-with-left-aside {
+    width: 100% !important;
+  }
+  .content-with-right-aside {
+    width: 100% !important;
+  }
+  .content-with-both-aside {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -236,5 +246,14 @@ article {
   }
   aside {
     width: 100%;
+  }
+  .content-with-left-aside {
+    width: 100% !important;
+  }
+  .content-with-right-aside {
+    width: 100% !important;
+  }
+  .content-with-both-aside {
+    width: 100% !important;
   }
 }

@@ -50,10 +50,10 @@ const HeroSection: React.FC<PresentationProps> = ({
 
         {/* Barre horizontale de titre */}
         {titleBanner && (
-          <div>
+          <div className="flex-column">
             <div className="presentation-titre">{children}</div>
 
-            {recipeRate && recipeNbRate && (
+            {recipeRate !== undefined && recipeNbRate !== undefined && (
               <div className="presentation-aside">
                 <OpinionRecipe
                   recipeRate={recipeRate}
