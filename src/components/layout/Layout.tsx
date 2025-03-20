@@ -1,8 +1,8 @@
 import { FC } from "react";
-import NavBar from "../components/navBar/NavBar";
-import Footer from "../components/layout/Footer";
+import NavBar from "../navBar/NavBar";
+import Footer from "./Footer";
 import { Outlet } from "react-router";
-import "../App.css";
+import "../../App.css";
 
 const Layout: FC<{}> = ({}) => {
   return (
