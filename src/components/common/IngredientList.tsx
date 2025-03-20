@@ -32,9 +32,8 @@ export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredi
         del("/favorite/delete/ingredient/" + ingredient.id_ingredient, "Favori supprimé avec succès.").then((response) => {
             if (
                 (response === "Favori supprimé avec succès.")
-              ) { 
-                // TODO : vérifier si le filtre est bien appliqué
-                setFavoriteIngredients(favoriteIngredients.filter((fav) => fav.name !== ingredient.name));
+              ) {
+                setFavoriteIngredients(favoriteIngredients.filter((fav) => fav.id_ingredient !== ingredient.id_ingredient));
             } else {}
         });
 
@@ -47,7 +46,7 @@ export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredi
                 <>
                     <div className="ingredient-list">
                         {ingredientList
-                            .filter((ing) => favoriteIngredients.some(fav => ing.name.toLowerCase().includes(fav.name.toLowerCase())))
+                            .filter((ing) => favoriteIngredients.some(fav => ing.id_ingredient === fav.id_ingredient))
                             .map((ing) => (
                                 <div key={ing.name} className="flex-column" style={{
                                     cursor: "pointer",
@@ -65,7 +64,7 @@ export const IngredientList: React.FC<Props> = ({ingredientList, favoriteIngredi
                     <hr/>
                     <div className="ingredient-list">
                         {ingredientList
-                            .filter((ing) => !favoriteIngredients.some(fav => fav.name.toLowerCase().includes(ing.name.toLowerCase())))
+                            .filter((ing) => !favoriteIngredients.some(fav => ing.id_ingredient === fav.id_ingredient))
                             .map((ing) => (
                                 <div key={ing.name} className="flex-column"
                                      onClick={() => handleAddFavorite(ing)}>
