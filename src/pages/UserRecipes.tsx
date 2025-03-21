@@ -12,18 +12,18 @@ const UserRecipes: FC<{}> = ({}) => {
     RecipeType[] | undefined
   >(undefined);
 
-  const hydrate = () => {
-    // @ts-ignore
-    startTransition(async () => {
-      const results = await get("/collection/top");
-      startTransition(() => {
-        setRecipeCollection(results);
-      });
-    });
-  };
-  useEffect(() => {
-    hydrate();
-  }, []);
+    const hydrate = () => {
+        // @ts-ignore
+        startTransition(async () => {
+            const results = await get("/recipe/user");
+            startTransition(() => {
+                setRecipeCollection(results);
+            });
+        });
+    };
+    useEffect(() => {
+        hydrate()
+    }, []);
 
   return (
     <Pages>

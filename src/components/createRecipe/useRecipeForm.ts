@@ -6,6 +6,7 @@ import {Ingredient, Measurement, RecipeIngredient} from "../../1_types/CreateRec
 export const useRecipeForm = () => {
     const [title, setTitle] = useState("");
     const [person, setPerson] = useState(1);
+    const [description, setDescription] = useState("");
     const [ingredients, setIngredients] = useState<RecipeIngredient[]>([]);
     const [steps, setSteps] = useState<string[]>([""]);
     const [allIngredients, setAllIngredients] = useState<Ingredient[]>([]);
@@ -40,6 +41,10 @@ export const useRecipeForm = () => {
         newIngredients[index] = {...newIngredients[index], [field]: value};
         setIngredients(newIngredients);
     };
+    const removeIngredient = (index: number) => {
+        setIngredients((prev) => prev.length > 1 ? prev.filter((_, i) => i !== index) : prev);
+    };
+
 
     const addStep = () => setSteps([...steps, ""]);
     const updateStep = (index: number, value: string) => {
@@ -50,6 +55,7 @@ export const useRecipeForm = () => {
     const removeStep = (index: number) => {
         setSteps(steps.filter((_, i) => i !== index));
     };
+
 
     const submitRecipe = async (e: FormEvent) => {
         e.preventDefault();
@@ -71,7 +77,8 @@ export const useRecipeForm = () => {
     return {
         title, setTitle,
         person, setPerson,
-        ingredients, addIngredient, updateIngredient,
+        description, setDescription,
+        ingredients, addIngredient, updateIngredient, removeIngredient,
         steps, addStep, updateStep, removeStep,
         allIngredients, allMeasurements,
         submitRecipe
