@@ -2,6 +2,13 @@ article {
     text-align: center;
 }
 
+.error-img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 100px auto;
+}
+
 .home-btn {
     background-color: var(--color-bg-secondary);
     width: fit-content;

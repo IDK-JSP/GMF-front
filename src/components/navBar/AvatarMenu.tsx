@@ -7,8 +7,8 @@ import {AuthContext} from "../../context/AuthContext";
 import {toast} from "react-toastify";
 
 const avatarMenu = [
-    {name: "Paramètres", navigation: "../Settings"},
-    {name: "Mes Recettes", navigation: "../UserRecipes"},
+    //{name: "Paramètres", navigation: "../Settings"},
+    {name: "Mes recettes", navigation: "../UserRecipes"},
     {name: "Créer une recette", navigation: "../CreateRecipe"},
 ];
 
