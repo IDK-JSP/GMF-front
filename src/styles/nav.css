@@ -329,14 +329,15 @@ span.flex-row {
 }
 
 .search-focus-background {
-  position: absolute;
-  z-index: -50;
-  top: 0;
+  position: fixed;
+  top: var(--height-nav);
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: calc(100% - var(--height-nav));
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 60;
 }
+
 
 .nav-favorite {
   transition: transform 0.5s ease, color 0.5s ease;
