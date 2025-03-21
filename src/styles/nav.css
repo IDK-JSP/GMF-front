@@ -301,6 +301,17 @@ nav {
 #not-matching > div {
   box-shadow: #ff0000 1px 1px 5px;
 }
+
+.search-focus-background {
+  position: absolute;
+  z-index: -50;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 768px) {
   .results-container {
     position: absolute;

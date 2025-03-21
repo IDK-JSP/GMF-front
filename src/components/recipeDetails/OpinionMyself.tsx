@@ -23,7 +23,7 @@ const OpinionMyself: React.FC<{ recipeId: number; setOpinions: any }> = ({
       return;
     }
 
-    setLoading(true); // 🚀 Désactiver le bouton
+    setLoading(true);
     setError(null);
     setSuccess(null);
 
@@ -33,10 +33,10 @@ const OpinionMyself: React.FC<{ recipeId: number; setOpinions: any }> = ({
       comment: comment,
     };
     console.log(data);
-    await post("/opinion/new", data, "Avis ajouté avec succé");
+    await post("/opinion/new", data, "Avis ajouté avec succès");
     setRating(null);
     setComment("");
-    setLoading(false); // ✅ Réactiver le bouton après l'envoi
+    setLoading(false);
   };
 
   return (

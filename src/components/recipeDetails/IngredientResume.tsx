@@ -55,13 +55,15 @@ const IngredientResume: FC<Props> = ({
           <hr />
           {data.map((ingredient, index) => (
             <div key={index} className="flex-row ingredient-row">
-              <img
-                src={`/ingredient/${ingredient.ingredient_name}.png`}
-                alt={ingredient.ingredient_name}
-                width={30}
-                height={30}
-              />
-              <span>{ingredient.ingredient_name}</span>
+              <div className="flex-row" style={{ gap: "10px" }}>
+                <img
+                  src={`/ingredient/${ingredient.ingredient_name}.png`}
+                  alt={ingredient.ingredient_name}
+                  width={30}
+                  height={30}
+                />
+                <span>{ingredient.ingredient_name}</span>
+              </div>
               <div className="flex-row">
                 <span style={{ marginLeft: "10px" }}>
                   {Math.round(
