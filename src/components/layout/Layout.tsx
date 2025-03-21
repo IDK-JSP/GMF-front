@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import { Outlet } from "react-router";
 import "../../App.css";
 
+// Organisation de la page du site (NavBar, Footer, contenu de la page)
+
 const Layout: FC<{}> = ({}) => {
   return (
     <>

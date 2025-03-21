@@ -1,5 +1,4 @@
 body {
-  background-color: var(--color-bg);
   width: var(--width-body);
   margin-right: auto;
   margin-left: auto;
@@ -45,15 +44,15 @@ nav {
 }
 
 #nav-container > * {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    height: 50px;
-    width: 50px !important;
-    box-sizing: border-box;
-    border-radius: 50%;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 50px;
+  width: 50px !important;
+  box-sizing: border-box;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 /* CONTENEUR DE LA BAR DE RECHERCHE COMPLETE, AVEC INPUTS*/
@@ -66,6 +65,7 @@ nav {
 }
 
 .search-container {
+  padding: 1em;
   display: flex;
   width: 100%;
   flex-wrap: nowrap;
@@ -90,10 +90,11 @@ nav {
 }
 
 #text-input {
+  padding: 1em;
   width: 100%;
   box-sizing: border-box;
   border-left: 1px solid var(--color-border) !important;
-  background-color: var(--color-bg);
+  background-color: var(--toastify-text-color-dark);
   border-radius: 10px 0 0 10px;
   color: var(--color-text);
 }
@@ -115,7 +116,7 @@ nav {
   width: 50px;
   border-radius: 0 10px 10px 0;
   border-right: 1px solid var(--color-border) !important;
-  padding: 5px;
+  padding: 0.6em 1em;
   cursor: pointer;
 }
 
@@ -139,7 +140,8 @@ nav {
   width: 100%;
   padding: 10px;
   padding-top: 55px;
-  background-color: var(--color-bg-white-tr-80);
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0.9;
   border-radius: 0 0 20px 20px;
   height: fit-content;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -153,13 +155,21 @@ nav {
   justify-content: right;
 }
 
+span.flex-row {
+  justify-content: space-between;
+  font-weight: bold;
+}
+
 #results-button {
   background-color: var(--color-bg-secondary);
-  width: fit-content;
   border-radius: 10px;
-  border-right: 1px solid var(--color-border) !important;
-  padding: 5px;
+  padding: 1em 1.5em 1em 2em;
+  border: none;
   cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 /* DIV DE SELECTION DES FILTRES  */
@@ -172,9 +182,9 @@ nav {
   width: 100%;
   padding: 10px;
   padding-top: 55px;
-  background-color: var(--color-bg-secondary-tr-80);
+  background-color: var(--toastify-text-color-dark);
   border-radius: 0 0 20px 20px;
-  height: 40vh;
+  height: 65vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease;
 }
@@ -190,7 +200,7 @@ nav {
 
 /* DIV DE LA LISTE DES INGREDIENTS */
 .filter-container > div:last-child {
-  height: calc(40vh - 55px);
+  height: calc(45vh - 55px);
   background-color: var(--color-bg-white-tr-80);
   overflow-y: auto;
   overflow-x: hidden;
@@ -198,6 +208,8 @@ nav {
 
 #filter-input {
   height: 40px;
+  margin-top: 1.5em;
+  padding: 0 1em;
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   align-self: end;
@@ -209,7 +221,8 @@ nav {
 
 #filter-raz {
   height: 40px;
-  background-color: rgb(206, 169, 169);
+  padding: 0 1em;
+  background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   align-self: end;
   border-bottom: none;
@@ -226,14 +239,15 @@ nav {
 /* LISTE DES INGREDIENTS SOUS UNE CATEGORY */
 .filter-list {
   display: flex;
-  box-sizing: border-box;
-  gap: 10px;
+  display: flex;
+  gap: 8px;
   flex-wrap: wrap;
-  align-items: flex-start;
-  align-content: flex-start;
-  width: 100%;
   padding: 10px;
-  list-style: none;
+  padding-top: 1.5em;
+
+  & div {
+    width: 130px;
+  }
 }
 
 /* DIV D'AFFICHAGE DES TAG DE LA BARRE DE RECHERCHE*/
@@ -241,7 +255,6 @@ nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: fit-content;
   width: 100%;
   gap: 10px;
   padding: 10px;
@@ -325,6 +338,7 @@ nav {
     box-shadow: unset;
     box-sizing: border-box;
   }
+
   .filter-container {
     position: absolute;
     display: block;

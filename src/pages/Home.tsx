@@ -1,8 +1,7 @@
 import { FC, useEffect, useState, useTransition } from "react";
 import { RecipeType } from "../1_types/RecipeType";
 import get from "../api/get";
-import ContentWithoutAside from "../components/layout/ContentWithoutAside";
-import Presentation from "../components/layout/Presentation";
+import Content from "../components/layout/Content";
 import "../styles/home.css";
 import RecipeCarousel from "../components/common/RecipeCarousel";
 import RecipeCollection from "../components/common/RecipeCollection";
@@ -43,7 +42,7 @@ const Home: FC<{}> = ({}) => {
             Accueil
           </HeroSection>
           <main>
-            <ContentWithoutAside>
+            <Content>
               <section>
                 {recipeCollection ? (
                   collections.map((collection) => (
@@ -57,7 +56,7 @@ const Home: FC<{}> = ({}) => {
                   <></>
                 )}
               </section>
-            </ContentWithoutAside>
+            </Content>
           </main>
         </>
       )}
