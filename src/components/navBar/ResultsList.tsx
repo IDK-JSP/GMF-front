@@ -5,6 +5,7 @@ import { RecipeType } from "../../1_types/RecipeType";
 import RecipeItem from "../common/RecipeItem";
 import FilterTags from "./FilterTags";
 import { useNavigate } from "react-router";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface FilterSelectionProps {
   resultIsVisible: boolean;
@@ -38,6 +39,7 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
 
   return (
     <>
+      {/* TODO : ajouter un div de focus pour éviter le click sur la page */}
       {/* <div className="search-focus-background">div de focus pour éviter le click sur la page</div> */}
       <div
         className="results-container"
@@ -101,14 +103,14 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
             );
           })}
         </div>
-        <span className="flex-row" style={{ justifyContent: "space-between" }}>
-          {recipeResults.length == 0 && "aucun résultats"}
+        <span className="flex-row">
+          {recipeResults.length == 0 && "aucun résultat"}
           {recipeResults.length == 1 && "1 recette trouvée"}
           {recipeResults.length > 1 &&
             recipeResults.length + " recettes trouvées"}
           <button id="results-button" onClick={() => handleValidate()}>
             {recipeResults.length == 0 && "Aller à la page de recherche"}
-            {recipeResults.length > 0 && "tout afficher"}
+            {recipeResults.length > 0 && "Tout afficher"} <ArrowForwardIcon />
           </button>
         </span>
       </div>

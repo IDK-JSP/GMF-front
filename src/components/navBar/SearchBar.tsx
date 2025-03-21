@@ -12,28 +12,28 @@ interface SearchBarProps {
     handleClickInside?: () => void;
 }
 
-export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handleForceClose, handleClickInside}: SearchBarProps) => {
+export const SearchBar = ({ search, setSearch, toggleFilter, checkedCount, handleForceClose, handleClickInside }: SearchBarProps) => {
 
     const handleNavigateToSearchPage = () => {
         handleForceClose();
         navigate('/Research');
-      };
+    };
 
     const navigate = useNavigate();
     return (
         <div className='search-container'
         >
             <input id='text-input'
-            onChange={(e) => setSearch(e.target.value)}
-            onClick={handleClickInside}
-            // event si touche entrée
-            onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                    handleNavigateToSearchPage();
-                }
-            }}
-             type='text'
-             placeholder='Search...' />
+                onChange={(e) => setSearch(e.target.value)}
+                onClick={handleClickInside}
+                // event si touche entrée
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        handleNavigateToSearchPage();
+                    }
+                }}
+                type='text'
+                placeholder='Rercherche un plat...' />
             <button id='filter-button' onClick={toggleFilter}>
                 <FilterAltIcon /> <span>({checkedCount})</span>
             </button>

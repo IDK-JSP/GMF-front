@@ -1,14 +1,15 @@
-import {FC, useEffect, useState, useTransition} from 'react';
-import {RecipeType} from "../../1_types/RecipeType";
-import {RecipeCard} from "./RecipeCard";
-import {Typography} from "@mui/material";
-import {useNavigate} from "react-router";
+import { FC, useEffect, useState, useTransition } from 'react';
+import { RecipeType } from "../../1_types/RecipeType";
+import { RecipeCard } from "./RecipeCard";
+import { Typography } from "@mui/material";
+import { useNavigate } from "react-router";
 import get from "../../api/get";
 import "../../styles/recipeDisplay.css";
 import "../../styles/recipeCollection.css"
 
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const RecipeCollection: FC<{ path: string, title: string }> = ({path, title}) => {
+const RecipeCollection: FC<{ path: string, title: string }> = ({ path, title }) => {
     let navigate = useNavigate();
     const [recipeCollection, setRecipeCollection] = useState<RecipeType[] | undefined>(undefined)
     const [isPending, startTransition] = useTransition()
@@ -45,14 +46,17 @@ const RecipeCollection: FC<{ path: string, title: string }> = ({path, title}) =>
     return (
         <article>
             <div className="article-header">
-                <Typography variant="h5">{title}</Typography>
-                <Typography sx={{cursor: "pointer"}} onClick={() => navigate("/CategoryList" + path)}>
-                    Voir plus
-                </Typography>
+                <Typography fontWeight="fontWeightBold" variant="h5">{title}</Typography>
+                <div className="article-header-see-more">
+                    <Typography sx={{ cursor: "pointer" }} onClick={() => navigate("/CategoryList" + path)}>
+                        Voir plus
+                    </Typography>
+                    <ArrowForwardIcon />
+                </div>
             </div>
             <div className="recipe-collection-container">
                 {recipeCollectionCut?.map((recipe) => (
-                    <RecipeCard key={recipe.id_recipe} recipe={recipe}/>
+                    <RecipeCard key={recipe.id_recipe} recipe={recipe} />
                 ))}
             </div>
         </article>

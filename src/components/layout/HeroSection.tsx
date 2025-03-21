@@ -2,6 +2,12 @@ import React from "react";
 import { Children } from "../../1_types/PropsType";
 import OpinionRecipe from "../recipeDetails/OpinionRecipe";
 
+// Composant qui est utilisé dans toutes les pages pour afficher un header dynamique
+// une image de fond, un titre et une note de recette peuvent être passé en props
+// le composant peut aussi afficher un carousel en arrière-plan
+// la bannière de titre peut être désactivée si besoin
+// les props sont optionnelles
+
 interface PresentationProps extends Children {
   imgUrl?: string;
   recipeRate?: number;

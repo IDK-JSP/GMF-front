@@ -1,9 +1,10 @@
 .recipe-collection-container {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto; /* Active le défilement horizontal si nécessaire */
-  gap: 16px;
-  padding: 10px;
+  overflow-x: auto;
+  /* Active le défilement horizontal si nécessaire */
+  gap: 3em;
+  padding: 1em 0;
   scroll-behavior: smooth;
 }
 
@@ -12,7 +13,14 @@
   display: none;
 }
 
+.article-header-see-more {
+  display: flex;
+  gap: .4em;
+}
+
 .recipe-collection-container {
-  -ms-overflow-style: none; /* IE et Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE et Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }

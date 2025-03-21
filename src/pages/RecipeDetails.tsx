@@ -1,5 +1,4 @@
 import { FC, useContext, useEffect, useState } from "react";
-import ContentWithBothAside from "../components/layout/ContentWithBothAside";
 import AsideLeft from "../components/layout/AsideLeft";
 import AsideRight from "../components/layout/AsideRight";
 import { useLocation, useParams } from "react-router-dom";
@@ -14,10 +13,11 @@ import "react-loading-skeleton/dist/skeleton.css";
 import OpinionsDetails from "../components/recipeDetails/OpinionsDetails";
 import RecipeSkeleton from "../components/skeleton/RecipeSkeleton";
 import FavoriteButton from "../components/button/FavoriteButton";
-import PresentationRecipe from "../components/layout/PresentationRecipe";
 import Pages from "../components/layout/Pages";
 import HeroSection from "../components/layout/HeroSection";
 import AuthContext from "../context/AuthContext";
+import Content from "../components/layout/Content";
+import { Typography } from "@mui/material";
 
 const RecipeDetails: FC = () => {
   const location = useLocation();
@@ -31,12 +31,6 @@ const RecipeDetails: FC = () => {
   );
   const [isPending, setIsPending] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    console.log("Chargement en cours :", isPending);
-    console.log("recette", recipe);
-    console.log("recetteD", recipeDetails);
-  }, [isPending]);
 
   // Récupération de la recette
   useEffect(() => {
@@ -84,7 +78,7 @@ const RecipeDetails: FC = () => {
   const authContext = useContext(AuthContext);
 
   return (
-    <Pages>
+    <Pages pageTitle={recipe?.title}>
       {recipe ? (
         <>
           <HeroSection
@@ -119,21 +113,29 @@ const RecipeDetails: FC = () => {
                 dietList={recipeDetails?.ingredientDetailDtos || []}
               />
             </AsideLeft>
-            <ContentWithBothAside>
+            <Content asideRight asideLeft>
               <section>
                 <span className="recipe-content">
-                  <p>{recipe.content}</p>
+                  <Typography fontWeight="fontWeightBold" variant="h5">
+                    La recette
+                  </Typography>
+                  <p style={{ margin: 0 }}>{recipe.content}</p>
                   <p>
-                    par <b>{recipe.email}</b>
+                    par <b>{recipe.email.split("@")[0]}</b>
                   </p>
                 </span>
-                <StageResume
-                  stageList={recipeDetails?.stages || []}
-                  isLoading={isPending}
-                  error={error}
-                />
+                <span className="recipe-content">
+                  <Typography fontWeight="fontWeightBold" variant="h5">
+                    Les étapes
+                  </Typography>
+                  <StageResume
+                    stageList={recipeDetails?.stages || []}
+                    isLoading={isPending}
+                    error={error}
+                  />
+                </span>
               </section>
-            </ContentWithBothAside>
+            </Content>
             <AsideRight>
               <OpinionsDetails
                 recipeRate={recipe?.rate ?? 0}
