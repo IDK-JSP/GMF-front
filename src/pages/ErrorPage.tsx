@@ -14,7 +14,7 @@ const ErrorPage: FC<{}> = ({}) => {
         <ContentWithoutAside>
           <section style={{ marginTop: "75px" }}>
             <article>
-              <img src={"/404.png"} alt={"Erreur 404"} />
+              <img className="error-img" src={"/404-removebg.png"} alt={"Erreur 404"} />
               <Typography variant="h5">
                 Oops ! La page que vous avez demandée n'existe pas...
               </Typography>

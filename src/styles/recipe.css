@@ -3,10 +3,10 @@
   min-height: 100px;
   display: flex;
   align-items: flex-start;
+  transition: all 0.3s ease;
 }
 .recipe-stage:hover {
   transform: scale(1.05);
-  transition: all 0.3s ease;
 }
 .recipe-stage span:first-child {
   font-size: 3rem;

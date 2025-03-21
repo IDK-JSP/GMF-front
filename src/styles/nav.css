@@ -21,18 +21,32 @@ nav {
 }
 
 #title-container {
-  width: 25%;
-  display: flex;
-  color: var(--color-text-secondary);
-  padding-left: 20px;
+  width: 25%
 }
 
-#title-container:hover {
-  width: 25%;
+#title {
+  display: flex;
+  width: fit-content;
+  color: var(--color-text-secondary);
+  padding-left: 20px;
+  cursor: pointer;
+  transition: transform 0.5s ease, color 0.5s ease;
+  transform-origin: center left;
+}
+
+#title h1 {
+  margin: auto 0;
+}
+
+#title img {
+  max-height: var(--height-nav);
+  object-fit: contain;
+}
+
+#title:hover {
   display: flex;
   color: var(--color-bg-secondary);
   transform: scale(1.2);
-  transition: transform 0.5s ease;
   transform-origin: center left;
 }
 
@@ -336,6 +350,11 @@ nav {
 }
 
 @media (max-width: 480px) {
+
+  #title h1 {
+    display: none;
+  }
+
   .results-container {
     position: absolute;
     display: block;

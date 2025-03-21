@@ -4,8 +4,8 @@ import InputSearch from './InputSearch';
 import {useNavigate} from 'react-router';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AvatarMenu from "./AvatarMenu";
-import { AuthContext } from "../../context/AuthContext";
-import { toast } from 'react-toastify';
+import {AuthContext} from "../../context/AuthContext";
+import {toast} from 'react-toastify';
 
 const Nav: FC = () => {
     const navigate = useNavigate();
@@ -13,23 +13,23 @@ const Nav: FC = () => {
 
     return (
         <nav>
-            <div id='title-container'
-                 onClick={() => navigate('/')}
-            >
-                <img src={"/GMF-logo.png"} alt={"GMF-logo"}/>
-                <h1>GMF</h1>
+            <div id='title-container'>
+                <div id="title" onClick={() => navigate('/')}>
+                    <img src={"/GMF-logo.png"} alt={"GMF-logo"}/>
+                    <h1>GMF</h1>
+                </div>
             </div>
             <InputSearch/>
             <div id='nav-container'>
-            {authContext?.isLoggedIn ? (
-                <div onClick={() => navigate('/Favorite')}>
-                    <FavoriteIcon fontSize="large"/>
-                </div>
-            ) : (
-                <div onClick={() => toast.error("Veuillez-vous connecter")}>
-                    <FavoriteIcon fontSize="large"/>
-                </div>
-            )}
+                {authContext?.isLoggedIn ? (
+                    <div onClick={() => navigate('/Favorite')}>
+                        <FavoriteIcon fontSize="large"/>
+                    </div>
+                ) : (
+                    <div onClick={() => toast.error("Veuillez-vous connecter")}>
+                        <FavoriteIcon fontSize="large"/>
+                    </div>
+                )}
                 <AvatarMenu/>
             </div>
         </nav>
