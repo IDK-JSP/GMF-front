@@ -41,25 +41,30 @@ const LoginForm: FC<{}> = ({}) => {
         Se connecter
       </Typography>
       <hr />
-            <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <div className="input-group">
-                        <label>Email</label>
-                        <input type="email" {...register("email", { required: "Email requis" })} />
-                        {errors.email && <p className="error-text">{errors.email.message}</p>}
-                    </div>
-                    <div className="input-group">
-                        <label>Mot de passe</label>
-                        <input type="password" {...register("password", { required: "Mot de passe requis" })} />
-                        {errors.password && <p className="error-text">{errors.password.message}</p>}
-                    </div>
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
-                </div>
-                <button type="submit" className="login-button"
-                    disabled={isSubmitting}> {/*"disabled" évite le spam du bouton*/}
-                    Se connecter
-                </button>
-            </form>
+
+      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <div className="input-group">
+            <label>Email</label>
+            <input
+              type="email"
+              {...register("email", { required: "Email requis" })}
+            />
+            {errors.email && (
+              <p className="error-text">{errors.email.message}</p>
+            )}
+          </div>
+          <div className="input-group">
+            <label>Mot de passe</label>
+            <input
+              type="password"
+              {...register("password", { required: "Mot de passe requis" })}
+            />
+            {errors.password && (
+              <p className="error-text">{errors.password.message}</p>
+            )}
+          </div>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
         <button type="submit" className="login-button" disabled={isSubmitting}>
           {" "}
