@@ -8,7 +8,12 @@ interface PresentationProps extends Children {
   recipeNbRate: number;
 }
 
-const PresentationRecipe: React.FC<PresentationProps> = ({ children, imgUrl, recipeNbRate, recipeRate }) => {
+const PresentationRecipe: React.FC<PresentationProps> = ({
+  children,
+  imgUrl,
+  recipeNbRate,
+  recipeRate,
+}) => {
   return (
     <div
       className="presentation"
@@ -20,9 +25,11 @@ const PresentationRecipe: React.FC<PresentationProps> = ({ children, imgUrl, rec
         width: "100%",
       }}
     >
-        <div>
-          <div className="presentation-titre">{children}</div>
-          <div className="presentation-aside"><OpinionRecipe recipeRate={recipeRate} recipeNbRate={recipeNbRate} /></div>
+      <div>
+        <div className="presentation-titre">{children}</div>
+        <div className="presentation-aside">
+          <OpinionRecipe recipeRate={recipeRate} recipeNbRate={recipeNbRate} />
+        </div>
       </div>
     </div>
   );

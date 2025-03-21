@@ -3,16 +3,7 @@
   flex-direction: column;
   gap: 15px;
 }
-.opinion-box > div {
-  border-top: 1px solid var(--color-border);
-}
-.opinion-recipe {
-  border-top: none !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
+
 .opinion-myself {
   display: flex;
   flex-direction: column;
@@ -20,6 +11,10 @@
 .opinion-item {
   display: flex;
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 80px;
 }
 .opinion-item > span {
   font-style: italic;
@@ -27,4 +22,20 @@
 .opinion-item > span:last-child {
   font-style: italic;
   align-self: flex-end;
+}
+.opinion-comment {
+  padding: 10px;
+  border-radius: 10px 10px 0 0 !important;
+}
+.opinion-submit {
+  background-color: #4caf50;
+  color: white;
+  border-radius: 0 0 10px 10px;
+  height: 30px;
+}
+.opinion-feedback {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,14 +1,14 @@
-import React, {FC} from 'react';
+import React, { FC } from "react";
 import Presentation from "../components/layout/Presentation";
 import AsideLeft from "../components/layout/AsideLeft";
 import ContentWithLeftAside from "../components/layout/ContentWithLeftAside";
 import "../styles/createRecipe.css";
 import IngredientsSection from "../components/createRecipe/IngredientsSection";
-import {useRecipeForm} from "../components/createRecipe/useRecipeForm";
+import { useRecipeForm } from "../components/createRecipe/useRecipeForm";
 import StepsSection from "../components/createRecipe/StepsSection";
 import Pages from "../components/layout/Pages";
+import HeroSection from "../components/layout/HeroSection";
 import {Typography} from "@mui/material";
-
 
 const CreateRecipe: FC<{}> = ({}) => {
     const {
@@ -23,7 +23,7 @@ const CreateRecipe: FC<{}> = ({}) => {
 
     return (
         <Pages>
-            <Presentation>Créer une recette</Presentation>
+            <HeroSection>Créer une recette</HeroSection>
             <main>
                 <AsideLeft>
                     <IngredientsSection

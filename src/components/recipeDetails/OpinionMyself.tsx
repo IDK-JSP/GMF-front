@@ -2,9 +2,11 @@ import React, { useState, useContext } from "react";
 import ControlRating from "../common/ControlRating";
 import post from "../../api/post";
 import { AuthContext } from "../../context/AuthContext";
-import { toast } from "react-toastify";
 
-const OpinionMyself: React.FC<{ recipeId: number, setOpinions:any; }> = ({ recipeId,setOpinions }) => {
+const OpinionMyself: React.FC<{ recipeId: number; setOpinions: any }> = ({
+  recipeId,
+  setOpinions,
+}) => {
   const authContext = useContext(AuthContext); // 🔐 Récupère le token de l'utilisateur
   const token = authContext ? authContext.token : ""; // Gère le cas où authContext est undefined
   const [rating, setRating] = useState<number | null>(null);
@@ -21,20 +23,20 @@ const OpinionMyself: React.FC<{ recipeId: number, setOpinions:any; }> = ({ recip
       return;
     }
 
-    setLoading(true); // 🚀 Désactiver le bouton
+    setLoading(true);
     setError(null);
     setSuccess(null);
 
-      const data = {
-        id_recipe: recipeId,
-        rate: Number(rating),
-        comment: comment
-      }
-      console.log(data)
-      await post("/opinion/new",data,"Avis ajouté avec succé");
-      setRating(null);
-      setComment("");
-      setLoading(false); // ✅ Réactiver le bouton après l'envoi
+    const data = {
+      id_recipe: recipeId,
+      rate: Number(rating),
+      comment: comment,
+    };
+    console.log(data);
+    await post("/opinion/new", data, "Avis ajouté avec succès");
+    setRating(null);
+    setComment("");
+    setLoading(false);
   };
 
   return (
@@ -43,8 +45,6 @@ const OpinionMyself: React.FC<{ recipeId: number, setOpinions:any; }> = ({ recip
         <span>Ma note</span>
         <ControlRating value={rating ?? 0} setValue={setRating} />
       </div>
-      {error && <p style={{ color: "red", fontSize: "0.9rem" }}>{error}</p>}
-      {success && <p style={{ color: "green", fontSize: "0.9rem" }}>{success}</p>}
 
       <textarea
         placeholder="Votre commentaire..."
@@ -54,8 +54,15 @@ const OpinionMyself: React.FC<{ recipeId: number, setOpinions:any; }> = ({ recip
       ></textarea>
 
       <button className="opinion-submit" type="submit" disabled={loading}>
-        {loading ? "Envoi..." : "Envoyer"} {/* 🔄 Changement du texte du bouton */}
+        {loading ? "Envoi..." : "Envoyer mon avis"}{" "}
+        {/* 🔄 Changement du texte du bouton */}
       </button>
+      <div className="opinion-feedback">
+        {error && <p style={{ color: "red", fontSize: "0.9rem" }}>{error}</p>}
+        {success && (
+          <p style={{ color: "green", fontSize: "0.9rem" }}>{success}</p>
+        )}
+      </div>
     </form>
   );
 };
