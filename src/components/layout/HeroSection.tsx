@@ -31,8 +31,8 @@ const HeroSection: React.FC<PresentationProps> = ({
           carousel ? "presentation presentation-carousel" : "presentation "
         }
         style={{
-            backgroundImage: carousel ? "none" : `url("${imgUrl}")`,
-            backgroundSize: "cover",
+          backgroundImage: carousel ? "none" : `url("${imgUrl}")`,
+          backgroundSize: "cover",
           backgroundPosition: "center",
           height: "300px",
           width: "100%",

@@ -33,7 +33,7 @@ export const RecipeCard: FC<{ recipe: RecipeType }> = ({ recipe }) => {
     children: (data) => (
       <div className="recipe-card" onClick={() => handleNavigate(recipe)}>
         <ImageLoarder
-          imgUrl={`/recipe/recipe_${data[0].id_recipe}.jpg`}
+          imgUrl={`/recipe/card/recipe_${data[0].id_recipe}.png`}
           title={data[0].title}
           classCss={"recipe-card-image"}
         />
