@@ -14,7 +14,7 @@ const UserRecipes: FC<{}> = ({}) => {
     const hydrate = () => {
         // @ts-ignore
         startTransition(async () => {
-            const results = await get("/collection/top");
+            const results = await get("/recipe/user");
             startTransition(() => {
                 setRecipeCollection(results);
             });

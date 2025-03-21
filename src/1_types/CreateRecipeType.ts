@@ -24,6 +24,7 @@ export interface IngredientsSectionProps {
     ingredients: RecipeIngredient[];
     addIngredient: () => void;
     updateIngredient: (index: number, field: keyof RecipeIngredient, value: number) => void;
+    removeIngredient: (index: number) => void
     allIngredients: Ingredient[];
     allMeasurements: Measurement[];
 }
