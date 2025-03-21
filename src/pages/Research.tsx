@@ -48,7 +48,7 @@ const Research: FC<{}> = ({}) => {
   useEffect(() => {
     if (recipeCollection.length > 0) {
       setImagePresentation(
-        "recipe/recipe_" + recipeCollection[0].id_recipe + ".jpg"
+        "recipe/carousel/recipe_" + recipeCollection[0].id_recipe + ".png"
       );
     }
   }, [recipeCollection]);

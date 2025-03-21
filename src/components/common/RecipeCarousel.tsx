@@ -17,7 +17,6 @@ const RecipeCarousel: FC<{ recipeCollection: RecipeType[] }> = ({
 
   useEffect(() => {
     if (recipeCollection.length === 0) return; // évite une erreur si la liste est vide
-    console.log(recipeCollection);
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % recipeCollection.length);
@@ -60,7 +59,7 @@ const RecipeCarousel: FC<{ recipeCollection: RecipeType[] }> = ({
             <img
               src={
                 `/recipe/carousel/recipe_${recipeCollection[currentIndex].id_recipe}.png` ||
-                "research.jpg"
+                "/research.jpg"
               }
               alt={recipeCollection[currentIndex].title}
               className="carousel-image"
