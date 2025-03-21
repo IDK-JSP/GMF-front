@@ -28,7 +28,7 @@ const OpinionsResume: FC<Props> = ({ opinionsList, isLoading, error }) => {
                 <StarRating rate={opinion.rate} size="medium" />
               </div>
               <span>"{opinion.comment}"</span>
-              <span>{opinion.email}</span>
+              <span>{opinion.email.split("@")[0]}</span>
             </div>
           ))
         ) : (

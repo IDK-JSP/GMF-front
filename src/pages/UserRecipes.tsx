@@ -1,35 +1,34 @@
 import { FC, startTransition, useEffect, useState } from "react";
-import Presentation from "../components/layout/Presentation";
-import ContentWithoutAside from "../components/layout/ContentWithoutAside";
+import Content from "../components/layout/Content";
 import DynamicFilter from "../components/common/DynamicFilter";
 import RecipeList from "../components/common/RecipeList";
 import get from "../api/get";
 import { RecipeType } from "../1_types/RecipeType";
 import Pages from "../components/layout/Pages";
+import HeroSection from "../components/layout/HeroSection";
 
 const UserRecipes: FC<{}> = ({}) => {
   const [recipeCollection, setRecipeCollection] = useState<
     RecipeType[] | undefined
   >(undefined);
 
-    const hydrate = () => {
-        // @ts-ignore
-        startTransition(async () => {
-            const results = await get("/recipe/user");
-            startTransition(() => {
-                setRecipeCollection(results);
-            });
-        });
-    };
-    useEffect(() => {
-        hydrate()
-    }, []);
+  const hydrate = () => {
+    // @ts-ignore
+    startTransition(async () => {
+      const results = await get("/recipe/user");
+      startTransition(() => {
+        setRecipeCollection(results);
+      });
+    });
+  };
+  useEffect(() => {
+    hydrate();
+  }, []);
 
   return (
-    <Pages>
-      <Presentation>Mes recettes</Presentation>
-
-      <ContentWithoutAside>
+    <Pages pageTitle="Mes recettes">
+      <HeroSection>Mes recettes</HeroSection>
+      <Content>
         <section>
           <DynamicFilter display={true} />
           <article>
@@ -40,7 +39,7 @@ const UserRecipes: FC<{}> = ({}) => {
             )}
           </article>
         </section>
-      </ContentWithoutAside>
+      </Content>
     </Pages>
   );
 };

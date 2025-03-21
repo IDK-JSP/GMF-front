@@ -41,7 +41,13 @@ const OpinionMyself: React.FC<{ recipeId: number; setOpinions: any }> = ({
 
   return (
     <form className="opinion-myself" onSubmit={handleSubmit}>
-      <div className="flex-row">
+      <div
+        className="flex-row"
+        style={{
+          justifyContent: "start",
+          gap: "10px",
+        }}
+      >
         <span>Ma note</span>
         <ControlRating value={rating ?? 0} setValue={setRating} />
       </div>

@@ -38,6 +38,7 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
 
   return (
     <>
+      {/* TODO : ajouter un div de focus pour éviter le click sur la page */}
       {/* <div className="search-focus-background">div de focus pour éviter le click sur la page</div> */}
       <div
         className="results-container"
@@ -77,29 +78,37 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
             ))}
 
         <div>
-          {recipeResults.slice(0, 3).map((recipe) => {
-            const matchPercent =
-              searchIngredientsList.length > 0
-                ? (
-                    (recipe.matching_ingredients ?? 0) /
-                    searchIngredientsList.length
-                  ).toFixed(2)
-                : "1";
+          {recipeResults
+            .slice(0, 3)
+            .filter(
+              (recipe) =>
+                (recipe.matching_ingredients ?? 0) /
+                  searchIngredientsList.length ===
+                1
+            )
+            .map((recipe) => {
+              const matchPercent =
+                searchIngredientsList.length > 0
+                  ? (
+                      (recipe.matching_ingredients ?? 0) /
+                      searchIngredientsList.length
+                    ).toFixed(2)
+                  : "1";
 
-            return (
-              <React.Fragment key={recipe.id_recipe}>
-                <div
-                  style={{
-                    opacity: matchPercent,
-                    padding: "5px",
-                  }}
-                  onClick={handleForceClose}
-                >
-                  <RecipeItem recipe={recipe} />
-                </div>
-              </React.Fragment>
-            );
-          })}
+              return (
+                <React.Fragment key={recipe.id_recipe}>
+                  <div
+                    style={{
+                      opacity: matchPercent,
+                      padding: "5px",
+                    }}
+                    onClick={handleForceClose}
+                  >
+                    <RecipeItem recipe={recipe} />
+                  </div>
+                </React.Fragment>
+              );
+            })}
         </div>
         <span className="flex-row" style={{ justifyContent: "space-between" }}>
           {recipeResults.length == 0 && "aucun résultats"}

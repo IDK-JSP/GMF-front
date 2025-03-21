@@ -1,6 +1,5 @@
 import { FC, startTransition, useEffect, useState } from "react";
-import ContentWithoutAside from "../components/layout/ContentWithoutAside";
-import Presentation from "../components/layout/Presentation";
+import Content from "../components/layout/Content";
 import { IngredientType } from "../1_types/IngredientType";
 import { RecipeType } from "../1_types/RecipeType";
 import { useContext } from "react";
@@ -9,7 +8,6 @@ import { getEmailFromToken } from "../components/auth/getEmailFromToken";
 import RecipeList from "../components/common/RecipeList";
 import IngredientList from "../components/common/IngredientList";
 import get from "../api/get";
-import RecipeCarousel from "../components/common/RecipeCarousel";
 import Pages from "../components/layout/Pages";
 import HeroSection from "../components/layout/HeroSection";
 
@@ -58,14 +56,14 @@ export const Favorite: FC<{}> = ({}) => {
     <Pages pageTitle="Mes Favoris">
       <HeroSection>Favoris</HeroSection>
       <main>
-        <ContentWithoutAside>
+        <Content>
           <section>
-            <p>
+            <article>
               Ajoutez vos recettes préférées à vos favoris en un clic sur le
               cœur et retrouvez-les facilement ici. De plus, marquez vos
               ingrédients favoris pour qu'ils apparaissent en tête de liste lors
               de vos recherches.
-            </p>
+            </article>
 
             <article>
               {recipes && recipes.length > 0 ? (
@@ -82,7 +80,7 @@ export const Favorite: FC<{}> = ({}) => {
               />
             </article>
           </section>
-        </ContentWithoutAside>
+        </Content>
       </main>
     </Pages>
   );

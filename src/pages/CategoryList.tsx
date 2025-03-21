@@ -1,6 +1,4 @@
 import { FC, startTransition, useEffect, useState } from "react";
-import ContentWithoutAside from "../components/layout/ContentWithoutAside";
-import Presentation from "../components/layout/Presentation";
 import get from "../api/get";
 import { RecipeType } from "../1_types/RecipeType";
 import { useLocation } from "react-router-dom";
@@ -9,6 +7,7 @@ import DynamicFilter from "../components/common/DynamicFilter";
 import { collections } from "../1_types/CollectionsNames";
 import Pages from "../components/layout/Pages";
 import HeroSection from "../components/layout/HeroSection";
+import Content from "../components/layout/Content";
 
 const CategoryList: FC<{}> = ({}) => {
   const [recipeCollection, setRecipeCollection] = useState<
@@ -36,7 +35,7 @@ const CategoryList: FC<{}> = ({}) => {
     <Pages pageTitle={title}>
       <HeroSection>{title}</HeroSection>
       <main>
-        <ContentWithoutAside>
+        <Content>
           <section>
             <DynamicFilter display={true} />
             <article>
@@ -47,7 +46,7 @@ const CategoryList: FC<{}> = ({}) => {
               )}
             </article>
           </section>
-        </ContentWithoutAside>
+        </Content>
       </main>
     </Pages>
   );

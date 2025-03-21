@@ -45,15 +45,15 @@ nav {
 }
 
 #nav-container > * {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    height: 50px;
-    width: 50px !important;
-    box-sizing: border-box;
-    border-radius: 50%;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 50px;
+  width: 50px !important;
+  box-sizing: border-box;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 /* CONTENEUR DE LA BAR DE RECHERCHE COMPLETE, AVEC INPUTS*/
@@ -174,7 +174,7 @@ nav {
   padding-top: 55px;
   background-color: var(--color-bg-secondary-tr-80);
   border-radius: 0 0 20px 20px;
-  height: 40vh;
+  height: fit-content;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease;
 }
@@ -233,7 +233,7 @@ nav {
   align-content: flex-start;
   width: 100%;
   padding: 10px;
-  list-style: none;
+  overflow: scroll;
 }
 
 /* DIV D'AFFICHAGE DES TAG DE LA BARRE DE RECHERCHE*/
@@ -241,7 +241,6 @@ nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: fit-content;
   width: 100%;
   gap: 10px;
   padding: 10px;
