@@ -18,15 +18,16 @@ interface FilterSelectionProps {
 }
 
 export const ResultsList: React.FC<FilterSelectionProps> = ({
-                                                                    resultIsVisible,
-                                                                    recipeResults,
-                                                                    ingredientResults,
-                                                                    searchIngredientsList,
-                                                                    handleCheck,
-                                                                    handleClearSearch,
-                                                                    handleForceClose,
-                                                                }) => {
-    const navigate = useNavigate();
+  resultIsVisible,
+  recipeResults,
+  ingredientResults,
+  searchIngredientsList,
+  handleCheck,
+  handleClearSearch,
+  handleForceClose,
+}) => {
+  const navigate = useNavigate();
+
 
     const handleAddIngredient = (ing: IngredientType) => {
         handleCheck(ing);
