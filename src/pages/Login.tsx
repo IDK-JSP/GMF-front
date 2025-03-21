@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import LoginForm from "../components/auth/LoginForm";
 import RegisterForm from "../components/auth/RegisterForm";
 import "../styles/loginForm.css";
-import ContentWithoutAside from "../components/layout/ContentWithoutAside";
+import Content from "../components/layout/Content";
 import Pages from "../components/layout/Pages";
 import HeroSection from "../components/layout/HeroSection";
 
@@ -34,11 +34,11 @@ const Login: FC<{}> = ({ }) => {
   };
 
   return (
-    <Pages>
+    <Pages pageTitle="Se connecter">
       <div className="login-container">
         <HeroSection>Se connecter</HeroSection>
 
-        <ContentWithoutAside>
+        <Content>
           <section>
             <div className="form-container" ref={formContainerRef}>
               <div
@@ -72,7 +72,7 @@ const Login: FC<{}> = ({ }) => {
               </div>
             </div>
           </section>
-        </ContentWithoutAside>
+        </Content>
       </div>
     </Pages>
   );

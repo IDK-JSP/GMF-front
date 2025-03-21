@@ -43,7 +43,7 @@ nav {
   color: var(--color-text-secondary);
 }
 
-#nav-container>* {
+#nav-container > * {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +77,7 @@ nav {
 }
 
 /* BOUTONS DE LA BARRE DE RECHERCHE */
-.search-container>* {
+.search-container > * {
   height: 40px;
   padding: 5px;
   box-sizing: border-box;
@@ -116,16 +116,16 @@ nav {
   width: 50px;
   border-radius: 0 10px 10px 0;
   border-right: 1px solid var(--color-border) !important;
-  padding: .6em 1em;
+  padding: 0.6em 1em;
   cursor: pointer;
 }
 
-#filter-button>*:hover {
+#filter-button > *:hover {
   scale: 1.1;
   transition: zoom 0.5s ease;
 }
 
-#validate-button>*:hover {
+#validate-button > *:hover {
   scale: 1.1;
   transition: zoom 0.5s ease;
 }
@@ -148,7 +148,7 @@ nav {
   transition: all 0.5s ease;
 }
 
-.results-container>span {
+.results-container > span {
   padding: 10px;
   padding-bottom: unset;
   display: flex;
@@ -169,7 +169,7 @@ span.flex-row {
   font-weight: bold;
   display: flex;
   align-items: center;
-  gap: .5em;
+  gap: 0.5em;
 }
 
 /* DIV DE SELECTION DES FILTRES  */
@@ -190,7 +190,7 @@ span.flex-row {
 }
 
 /* AVANT LA LISTE DES INGREDIENTS */
-.filter-container>div:first-child {
+.filter-container > div:first-child {
   display: flex;
   align-items: center;
   height: calc(50px);
@@ -199,7 +199,7 @@ span.flex-row {
 }
 
 /* DIV DE LA LISTE DES INGREDIENTS */
-.filter-container>div:last-child {
+.filter-container > div:last-child {
   height: calc(45vh - 55px);
   background-color: var(--color-bg-white-tr-80);
   overflow-y: auto;
@@ -255,7 +255,6 @@ span.flex-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: fit-content;
   width: 100%;
   gap: 10px;
   padding: 10px;
@@ -280,7 +279,7 @@ span.flex-row {
   transition: all 0.5s ease;
 }
 
-.search-tag>input {
+.search-tag > input {
   display: none;
 }
 
@@ -302,16 +301,16 @@ span.flex-row {
   border-radius: 0 0 15px 15px;
 }
 
-.filter-category>div {
+.filter-category > div {
   width: 50%;
   gap: 10px;
 }
 
-#matching>div {
+#matching > div {
   box-shadow: #4caf50 1px 1px 5px;
 }
 
-#not-matching>div {
+#not-matching > div {
   box-shadow: #ff0000 1px 1px 5px;
 }
 

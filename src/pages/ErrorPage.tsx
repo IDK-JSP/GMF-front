@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ContentWithoutAside from "../components/layout/ContentWithoutAside";
+import Content from "../components/layout/Content";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router";
 import "../styles/errorPage.css";
@@ -11,7 +11,7 @@ const ErrorPage: FC<{}> = ({}) => {
   return (
     <Pages pageTitle="Erreur 404">
       <main>
-        <ContentWithoutAside>
+        <Content>
           <section style={{ marginTop: "75px" }}>
             <article>
               <img src={"/404.png"} alt={"Erreur 404"} />
@@ -28,7 +28,7 @@ const ErrorPage: FC<{}> = ({}) => {
               </button>
             </article>
           </section>
-        </ContentWithoutAside>
+        </Content>
       </main>
     </Pages>
   );

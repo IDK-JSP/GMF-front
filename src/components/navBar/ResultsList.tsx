@@ -5,7 +5,7 @@ import { RecipeType } from "../../1_types/RecipeType";
 import RecipeItem from "../common/RecipeItem";
 import FilterTags from "./FilterTags";
 import { useNavigate } from "react-router";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface FilterSelectionProps {
   resultIsVisible: boolean;
@@ -39,6 +39,7 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
 
   return (
     <>
+      {/* TODO : ajouter un div de focus pour éviter le click sur la page */}
       {/* <div className="search-focus-background">div de focus pour éviter le click sur la page</div> */}
       <div
         className="results-container"
@@ -82,9 +83,9 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
             const matchPercent =
               searchIngredientsList.length > 0
                 ? (
-                  (recipe.matching_ingredients ?? 0) /
-                  searchIngredientsList.length
-                ).toFixed(2)
+                    (recipe.matching_ingredients ?? 0) /
+                    searchIngredientsList.length
+                  ).toFixed(2)
                 : "1";
 
             return (

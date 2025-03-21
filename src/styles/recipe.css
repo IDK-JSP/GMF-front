@@ -3,9 +3,10 @@
   min-height: 100px;
   display: flex;
   align-items: flex-start;
+  cursor: pointer;
   display: flex;
   align-items: flex-end;
-  margin: .5em 0;
+  margin: 0.5em 0;
 }
 
 .recipe-stage:hover {
@@ -43,7 +44,7 @@
   font-weight: bold !important;
 }
 
-.recipe-stage:focus>span:first-child {
+.recipe-stage:focus > span:first-child {
   color: var(--color-bg-secondary);
   font-size: 4rem;
 }
@@ -53,5 +54,5 @@
   flex-direction: column;
   padding: 20px;
   font-size: 1.2rem;
-  border-bottom: 1px solid #00000057
+  border-bottom: 1px solid #00000057;
 }

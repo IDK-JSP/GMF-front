@@ -3,9 +3,7 @@ import { ResultsList$ } from "../observables/ResultsList$";
 import { RecipeType } from "../1_types/RecipeType";
 import RecipeList from "../components/common/RecipeList";
 import { IngredientType } from "../1_types/IngredientType";
-import Presentation from "../components/layout/Presentation";
-import RecipeCarousel from "../components/common/RecipeCarousel";
-import ContentWithoutAside from "../components/layout/ContentWithoutAside";
+import Content from "../components/layout/Content";
 import { SearchIngredientsList$ } from "../observables/SearchIngredientsList$";
 import DynamicFilter from "../components/common/DynamicFilter";
 import { DynamicFilterContext } from "../context/DynamicFilterContext";
@@ -73,17 +71,17 @@ const Research: FC<{}> = ({}) => {
   }
 
   return (
-    <Pages>
+    <Pages pageTitle="Résultats">
       <HeroSection imgUrl={imagePresentation}>Recherches</HeroSection>
       <main>
-        <ContentWithoutAside>
+        <Content>
           <section>
             <DynamicFilter matching={matchingButton} display={true} />
             <article>
               <RecipeList recipeCollection={filteredRecipes} />
             </article>
           </section>
-        </ContentWithoutAside>
+        </Content>
       </main>
     </Pages>
   );
