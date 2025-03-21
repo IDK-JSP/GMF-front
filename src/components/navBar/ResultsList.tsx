@@ -5,6 +5,7 @@ import { RecipeType } from "../../1_types/RecipeType";
 import RecipeItem from "../common/RecipeItem";
 import FilterTags from "./FilterTags";
 import { useNavigate } from "react-router";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 interface FilterSelectionProps {
   resultIsVisible: boolean;
@@ -81,9 +82,9 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
             const matchPercent =
               searchIngredientsList.length > 0
                 ? (
-                    (recipe.matching_ingredients ?? 0) /
-                    searchIngredientsList.length
-                  ).toFixed(2)
+                  (recipe.matching_ingredients ?? 0) /
+                  searchIngredientsList.length
+                ).toFixed(2)
                 : "1";
 
             return (
@@ -101,14 +102,14 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
             );
           })}
         </div>
-        <span className="flex-row" style={{ justifyContent: "space-between" }}>
-          {recipeResults.length == 0 && "aucun résultats"}
+        <span className="flex-row">
+          {recipeResults.length == 0 && "aucun résultat"}
           {recipeResults.length == 1 && "1 recette trouvée"}
           {recipeResults.length > 1 &&
             recipeResults.length + " recettes trouvées"}
           <button id="results-button" onClick={() => handleValidate()}>
             {recipeResults.length == 0 && "Aller à la page de recherche"}
-            {recipeResults.length > 0 && "tout afficher"}
+            {recipeResults.length > 0 && "Tout afficher"} <ArrowForwardIcon />
           </button>
         </span>
       </div>

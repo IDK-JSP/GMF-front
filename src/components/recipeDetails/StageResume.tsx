@@ -19,7 +19,7 @@ const StageResume: FC<Props> = ({ stageList, isLoading, error }) => {
       <>
         {data.map((stage, index) => (
           <article key={index} className="recipe-stage" tabIndex={0}>
-            <span>{stage.stage}</span>
+            <span>{stage.stage}.</span>
             <span>{stage.content}</span>
           </article>
         ))}
