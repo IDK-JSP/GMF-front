@@ -6,7 +6,7 @@ import Content from "../components/layout/Content";
 import Pages from "../components/layout/Pages";
 import HeroSection from "../components/layout/HeroSection";
 
-const Login: FC<{}> = ({ }) => {
+const Login: FC<{}> = ({}) => {
   const [activeForm, setActiveForm] = useState<"none" | "login" | "register">(
     "none"
   );
@@ -35,45 +35,48 @@ const Login: FC<{}> = ({ }) => {
 
   return (
     <Pages pageTitle="Se connecter">
-      <div className="login-container">
-        <HeroSection>Se connecter</HeroSection>
-
-        <Content>
-          <section>
-            <div className="form-container" ref={formContainerRef}>
-              <div
-                className={`form-card ${activeForm === "login"
-                  ? "active"
-                  : activeForm === "none"
-                    ? "neutral"
-                    : ""
+      <main>
+        <div className="login-container">
+          <HeroSection>Se connecter</HeroSection>
+          <Content>
+            <section>
+              <div className="form-container" ref={formContainerRef}>
+                <div
+                  className={`form-card ${
+                    activeForm === "login"
+                      ? "active"
+                      : activeForm === "none"
+                      ? "neutral"
+                      : ""
                   }`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleForm("login");
-                }}
-              >
-                <LoginForm />
-              </div>
-              <p id="login-form-or">OU</p>
-              <div
-                className={`form-card ${activeForm === "register"
-                  ? "active"
-                  : activeForm === "none"
-                    ? "neutral"
-                    : ""
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleForm("login");
+                  }}
+                >
+                  <LoginForm />
+                </div>
+                <p id="login-form-or">OU</p>
+                <div
+                  className={`form-card ${
+                    activeForm === "register"
+                      ? "active"
+                      : activeForm === "none"
+                      ? "neutral"
+                      : ""
                   }`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleForm("register");
-                }}
-              >
-                <RegisterForm />
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleForm("register");
+                  }}
+                >
+                  <RegisterForm />
+                </div>
               </div>
-            </div>
-          </section>
-        </Content>
-      </div>
+            </section>
+          </Content>
+        </div>
+      </main>
     </Pages>
   );
 };
