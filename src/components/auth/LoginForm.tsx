@@ -38,7 +38,7 @@ const LoginForm: FC<{}> = ({ }) => {
             <Typography fontWeight="fontWeightBold" variant="h5">Se connecter</Typography>
             <hr />
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <div className="input-group">
                         <label>Email</label>
