@@ -1,0 +1,247 @@
+/* Styles Généraux */
+.recipe-container,
+.recipe-card {
+  display: flex;
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: -1px 2px 12px 0px rgb(0 0 0 / 27%);
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.recipe-container {
+  height: 120px;
+  box-sizing: border-box;
+}
+
+.recipe-card {
+  flex-direction: column;
+  width: 250px;
+}
+
+.recipe-container:hover,
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Image des recettes */
+.recipe-item-image {
+  position: absolute;
+  right: 0;
+  left: auto;
+  width: 78%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+}
+
+.recipe-card-image {
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+  filter: brightness(0.7);
+}
+
+/* Bouton Favori */
+.favorite-badge {
+  position: absolute !important;
+  top: 5px;
+  right: 5px;
+  z-index: 5;
+}
+
+/* Badges */
+.diet-badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 5;
+}
+
+.badge-item-card > * {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* Container Item Btn */
+.item-btn-container {
+  display: flex;
+  justify-content: end !important;
+  gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  width: 130px;
+}
+
+/* Contenu des cartes */
+.recipe-item-content,
+.recipe-card-content {
+  display: flex;
+  padding: 10px;
+}
+
+.recipe-item-content {
+  position: relative;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.recipe-card-content {
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+/* Titre */
+
+.recipe-item-title,
+.recipe-card-title {
+  justify-content: space-between;
+  align-items: center;
+  text-shadow: 0 0 10px lightgray;
+  font-size: clamp(0.8em, 5vw, 3em);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
+  margin: 0;
+}
+
+.recipe-card-title {
+  font-size: 1.5em;
+}
+
+.first-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Info / Description */
+.recipe-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recipe-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(0.5em, 5vw, 2em);
+  /*
+    justify-content: space-between;
+    */
+}
+
+.recipe-time {
+  color: gray;
+  font-size: 1.4rem;
+}
+
+/* Dégradé blanc de RecipeItem */
+.recipe-gradiant {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 55%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    var(--color-bg-tr-100),
+    var(--color-bg-tr-100),
+    var(--color-bg-tr-90),
+    transparent
+  );
+}
+/* Grid pour Card */
+.recipe-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  justify-content: center;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .recipe-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .recipe-title {
+    font-size: 1.25rem;
+  }
+
+  .recipe-description {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .recipe-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .recipe-title {
+    font-size: 1.15rem;
+  }
+
+  .recipe-description {
+    font-size: 0.85rem;
+  }
+
+  .favorite-btn {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .favorite-btn > * {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .badge-item-card > div {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .recipe-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-title {
+    font-size: 1rem;
+  }
+
+  .recipe-description {
+    font-size: 0.75rem;
+  }
+
+  .favorite-btn {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .favorite-btn > * {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .badge-item-card > div {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}

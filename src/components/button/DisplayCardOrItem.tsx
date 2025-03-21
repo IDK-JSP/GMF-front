@@ -1,36 +1,26 @@
-import {FC, useEffect, useState} from "react";
-import {Stack, ToggleButton, ToggleButtonGroup} from "@mui/material";
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import GridViewIcon from '@mui/icons-material/GridView';
-import {DisplayObservable$, setViewMode} from "../../observables/DisplayObservable$";
+import React, { FC, useContext, useState } from "react";
+import { DisplayContext } from "../../context/DisplayContext";
 
-const DisplayCardOrItem: FC<{}> = ({}) => {
+const DisplayCardOrItem: FC = () => {
+  const displayContext = useContext(DisplayContext);
+  const [selected, setSelected] = useState(displayContext?.isItem);
 
-    const [isItem, setIsItem] = useState(true)
+  const toggleView = (newViewMode: boolean) => {
+    setSelected(newViewMode);
+    displayContext?.setIsItem(newViewMode);
+  };
 
-    useEffect(() => {
-        // S'abonner à l'observable pour écouter les changements
-        const subscription = DisplayObservable$.subscribe(setIsItem);
-
-        return () => subscription.unsubscribe(); // Nettoyage de l'abonnement
-    }, []);
-
-    const toggleView = () => {
-        setViewMode(!isItem); // Màj l'observable
-    }
-
-    return (
-        <Stack direction="row" justifyContent="center" mt={13} mb={5}>
-            <ToggleButtonGroup value={isItem} exclusive onChange={toggleView} aria-label="display of result">
-                <ToggleButton value="false" aria-label="display item">
-                    <FormatListBulletedIcon/>
-                </ToggleButton>
-                <ToggleButton value="true" aria-label="display card">
-                    <GridViewIcon/>
-                </ToggleButton>
-            </ToggleButtonGroup>
-        </Stack>
-    );
+  return (
+    <div className='dyna-filter-container'>
+      <span>Affichage </span>
+      <button onClick={() => toggleView(true)} disabled={selected === true}>
+        liste
+      </button>
+      <button onClick={() => toggleView(false)} disabled={selected === false}>
+        grille
+      </button>
+    </div>
+  );
 };
 
 export default DisplayCardOrItem;
