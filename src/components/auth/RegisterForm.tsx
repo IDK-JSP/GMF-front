@@ -56,7 +56,7 @@ const RegisterForm: FC<{}> = ({ }) => {
         <div className="login-card">
             <Typography fontWeight="fontWeightBold" variant="h5">S'enregistrer</Typography>
             <hr />
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-group">
                     <label>Email</label>
                     <input type="email" {...register("email", { required: "Email requis" })} />
