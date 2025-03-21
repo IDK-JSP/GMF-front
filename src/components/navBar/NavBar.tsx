@@ -22,11 +22,11 @@ const Nav: FC = () => {
             <InputSearch/>
             <div id='nav-container'>
                 {authContext?.isLoggedIn ? (
-                    <div onClick={() => navigate('/Favorite')}>
+                    <div className="nav-favorite" onClick={() => navigate('/Favorite')}>
                         <FavoriteIcon fontSize="large"/>
                     </div>
                 ) : (
-                    <div onClick={() => toast.error("Veuillez-vous connecter")}>
+                    <div className="nav-favorite" onClick={() => toast.error("Veuillez-vous connecter")}>
                         <FavoriteIcon fontSize="large"/>
                     </div>
                 )}

@@ -338,6 +338,15 @@ span.flex-row {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+.nav-favorite {
+  transition: transform 0.5s ease, color 0.5s ease;
+}
+
+.nav-favorite:hover {
+  color: var(--color-bg-secondary);
+  transform: scale(1.2);
+}
+
 @media (max-width: 768px) {
   .results-container {
     position: absolute;
