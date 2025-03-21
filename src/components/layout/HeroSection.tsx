@@ -18,7 +18,7 @@ interface PresentationProps extends Children {
 
 const HeroSection: React.FC<PresentationProps> = ({
   children,
-  imgUrl = "research.jpg",
+  imgUrl = "/research.jpg",
   recipeNbRate,
   recipeRate,
   carousel,
