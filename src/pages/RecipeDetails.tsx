@@ -82,7 +82,7 @@ const RecipeDetails: FC = () => {
       {recipe ? (
         <>
           <HeroSection
-            imgUrl={`/recipe/recipe_${recipe.id_recipe}.jpg`}
+            imgUrl={`/recipe/carousel/recipe_${recipe.id_recipe}.png`}
             recipeRate={recipe.rate ?? 0}
             recipeNbRate={recipe.nbRate ?? 0}
           >

@@ -35,7 +35,7 @@
   width: 78%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.9)
+  filter: brightness(0.9);
 }
 
 .recipe-card-image {
@@ -62,7 +62,7 @@
   z-index: 5;
 }
 
-.badge-item-card>* {
+.badge-item-card > * {
   position: relative !important;
   top: 0 !important;
   left: 0 !important;
@@ -156,11 +156,13 @@
   right: 55%;
   width: 30%;
   height: 100%;
-  background: linear-gradient(to right,
-      var(--color-bg-tr-100),
-      var(--color-bg-tr-100),
-      var(--color-bg-tr-90),
-      transparent);
+  background: linear-gradient(
+    to right,
+    var(--color-bg-tr-100),
+    var(--color-bg-tr-100),
+    var(--color-bg-tr-90),
+    transparent
+  );
 }
 
 /* Grid pour Card */
@@ -205,12 +207,12 @@
     height: 50px !important;
   }
 
-  .favorite-btn>* {
+  .favorite-btn > * {
     width: 50px !important;
     height: 50px !important;
   }
 
-  .badge-item-card>div {
+  .badge-item-card > div {
     width: 50px !important;
     height: 50px !important;
   }
@@ -234,12 +236,12 @@
     height: 40px !important;
   }
 
-  .favorite-btn>* {
+  .favorite-btn > * {
     width: 40px !important;
     height: 40px !important;
   }
 
-  .badge-item-card>div {
+  .badge-item-card > div {
     width: 40px !important;
     height: 40px !important;
   }

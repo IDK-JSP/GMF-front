@@ -17,7 +17,7 @@ interface FilterSelectionProps {
   handleForceClose: () => void;
 }
 
-export const FilterSelection: React.FC<FilterSelectionProps> = ({
+export const ResultsList: React.FC<FilterSelectionProps> = ({
   resultIsVisible,
   recipeResults,
   ingredientResults,
@@ -118,4 +118,4 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
   );
 };
 
-export default FilterSelection;
+export default ResultsList;
