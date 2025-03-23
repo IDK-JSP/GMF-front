@@ -18,13 +18,13 @@ const Footer: FC = () => {
 
             <div className="social-icons">
                 <a href="https://facebook.com" target="_blank">
-                    <i className="fab fa-facebook"></i>
+                    <div className="fab fa-facebook"></div>
                 </a>
                 <a href="https://instagram.com" target="_blank">
-                    <i className="fab fa-instagram"></i>
+                    <div className="fab fa-instagram"></div>
                 </a>
                 <a href="https://twitter.com" target="_blank">
-                    <i className="fab fa-twitter"></i>
+                    <div className="fab fa-twitter"></div>
                 </a>
             </div>
         </footer>

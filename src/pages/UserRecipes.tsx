@@ -36,9 +36,11 @@ const UserRecipes: FC<{}> = ({}) => {
         <Content>
           <section>
             <article>
+              <p>
               Retrouvez ici toutes les recettes que vous avez créées. Un espace
               dédié pour consulter, modifier ou simplement vous inspirer de vos
               propres créations culinaires.
+              </p>
             </article>
           </section>
           {recipeCollection == undefined || recipeCollection.length === 0 ? (
