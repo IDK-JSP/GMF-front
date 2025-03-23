@@ -2,7 +2,6 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  /* Active le défilement horizontal si nécessaire */
   gap: 3em;
   padding: 1em 0;
   scroll-behavior: smooth;

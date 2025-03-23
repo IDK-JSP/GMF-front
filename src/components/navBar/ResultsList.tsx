@@ -39,15 +39,8 @@ export const ResultsList: React.FC<FilterSelectionProps> = ({
 
   return (
     <>
-      <div
-        className="results-container"
-        style={{
-          display: resultIsVisible ? "block" : "none",
-          opacity: resultIsVisible ? "1" : "0",
-          top: resultIsVisible ? 0 : -500,
-        }}
-      >
-        <FilterTags
+      <div className={`results-container ${resultIsVisible ? "visible" : ""}`}>
+      <FilterTags
           checkedIngredients={searchIngredientsList}
           handleCheck={handleCheck}
         />

@@ -147,20 +147,29 @@ nav {
 /* DIV DES RESULTATS*/
 .results-container {
   position: absolute;
-  display: block;
-  justify-content: center;
-  top: 0;
-  z-index: 100;
   width: 100%;
+  display: block;
+  top : 0;
   padding: 10px;
   padding-top: 55px;
   background-color: var(--color-bg-tr-90);
-  opacity: 0.95;
   border-radius: 0 0 20px 20px;
   height: fit-content;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: all 0.5s ease;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  opacity: 0;
+  transform: translateY(-20px);
+  z-index: -1;
+  pointer-events: none; /* Désactive les clics */
 }
+
+.results-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 100;
+  pointer-events: auto; /* Réactive les clics */
+}
+
 
 .results-container > span {
   padding: 10px;
@@ -189,19 +198,29 @@ span.flex-row {
 /* DIV DE SELECTION DES FILTRES  */
 .filter-container {
   position: absolute;
-  display: block;
-  justify-content: center;
-  top: 0;
-  z-index: 101;
   width: 100%;
+  height: 65vh;
+  top: 0;
   padding: 10px;
   padding-top: 55px;
   background-color: var(--toastify-text-color-dark);
   border-radius: 0 0 20px 20px;
-  height: 65vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: all 0.5s ease;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  opacity: 0;
+  transform: translateY(-20px);
+  z-index: -1;
+  pointer-events: none; /* Désactive les clics */
 }
+
+/* Quand le filtre est visible */
+.filter-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 101;
+  pointer-events: auto; /* Réactive les clics */
+}
+
 
 /* AVANT LA LISTE DES INGREDIENTS */
 .filter-container > div:first-child {
@@ -350,14 +369,8 @@ span.flex-row {
 
 @media (max-width: 768px) {
   .results-container {
-    position: absolute;
-    display: block;
-    top: 0;
     width: 100vw;
-    padding-top: 55px;
-    background-color: var(--color-bg-tr-90);
     border-radius: unset;
-    height: fit-content;
     box-shadow: unset;
     box-sizing: border-box;
   }
@@ -379,14 +392,8 @@ span.flex-row {
   }
 
   .results-container {
-    position: absolute;
-    display: block;
-    top: 0;
     width: 100vw;
-    padding-top: 55px;
-    background-color: var(--color-bg-tr-90);
     border-radius: unset;
-    height: fit-content;
     box-shadow: unset;
     box-sizing: border-box;
   }
