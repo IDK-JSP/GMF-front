@@ -176,9 +176,13 @@ export const InputSearch: React.FC = () => {
         handleClickInside={handleClickInside}
       />
 
-      {filterIsVisible && (
-          <div className="search-focus-background" onClick={handleForceClose}></div>
+      {(filterIsVisible || resultIsVisible) && (
+          <div
+              className="search-focus-background"
+              onClick={handleForceClose}
+          ></div>
       )}
+
       <FilterSelection
         filterIsVisible={filterIsVisible}
         ingredientList={ingredientList}
