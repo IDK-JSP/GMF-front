@@ -41,11 +41,9 @@ const RecipeDetails: FC = () => {
 
       try {
         if (location.state?.recipeData) {
-          console.log("state: ", location.state.recipeData);
           setRecipe(location.state.recipeData as RecipeType);
       } else if (id) {
           const fetchedRecipe = await get("/recipe/" + parseInt(id));
-          console.log("fetch: ", fetchedRecipe);
           setRecipe(fetchedRecipe);
         } else {
           throw new Error("Aucun ID de recette disponible !");
