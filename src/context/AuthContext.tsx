@@ -56,23 +56,14 @@ export const AuthProvider: FC<{ children: any }> = ({children}) => {
     };
 
     const logout = () => {
-        console.log("Déconnexion en cours...");
-        console.log("Avant suppression, URL stockée :", localStorage.getItem("previousURL"));
-
         const currentPath = window.location.pathname;
         localStorage.setItem("redirectAfterLogin", currentPath); // Stockage de l'URL actuelle
-        console.log("Valeur stockée dans localStorage :", localStorage.getItem("redirectAfterLogin"));
         localStorage.removeItem("token");
-
-        localStorage.removeItem("previousURL"); // Vérifie si tu le supprimes quelque part
-
         //localStorage.removeItem("role");
         setToken(null);
         //setRole("");
         setIsLoggedIn(false);
         navigate("/login")
-        console.log("Après suppression, URL stockée :", localStorage.getItem("previousURL"));
-
     };
 
     return (
