@@ -9,7 +9,7 @@ import withLoadingAndError from "../hoc/WithLoadingAndError";
 import CardSkeleton from "../skeleton/CardSkeleton";
 import ImageLoarder from "./ImageLoader";
 
-export const RecipeCard: FC<{ recipe: RecipeType }> = ({ recipe }) => {
+export const RecipeCard: FC<{ recipe: RecipeType, setRecipes?:any }> = ({ recipe,setRecipes }) => {
   const [recipeData, setRecipeData] = useState<RecipeType>(recipe);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -17,7 +17,6 @@ export const RecipeCard: FC<{ recipe: RecipeType }> = ({ recipe }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("maj recipe :", recipe);
     setRecipeData(recipe);
     setIsLoading(false);
   }, [recipe]);
@@ -41,13 +40,13 @@ export const RecipeCard: FC<{ recipe: RecipeType }> = ({ recipe }) => {
 
         {/* Bouton Favoris */}
         <div className="favorite-badge">
-        {data[0].favorite}
           <FavoriteButton
             id={data[0].id_recipe}
             type="recipe"
             sizeInPixels={50}
             recipe={data[0]}
             setRecipeData={setRecipeData}
+            setRecipes={setRecipes}
           />
         </div>
 

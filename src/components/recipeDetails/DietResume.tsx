@@ -11,18 +11,20 @@ const IngredientResume: FC<{ dietList: Array<RecipeIngredientType> }> = ({
 
   // Vérifier la présence de chaque type d'aliment
   const hasNonVegetarian = dietList.some(({ diet }) =>
-    diet?.includes("non végétarien")
+    diet?.includes("Non renseigné")
   );
   const hasVegetarian = dietList.some(({ diet }) =>
-    diet?.includes("végétarien")
+    diet?.includes("Végétarien")
   );
-  const hasVegan = dietList.every(({ diet }) => diet?.includes("végan"));
+  const hasVegan = dietList.every(({ diet }) =>
+    diet?.includes("Végan")
+);
 
   let recipeType = "non végétarienne"; // Par défaut
   let badge = "non végétarien";
 
   if (!hasNonVegetarian) {
-    recipeType = hasVegan ? "végan" : "végétarienne";
+    recipeType = hasVegan ? "Végan" : "Végétarienne";
     badge = hasVegan ? "Végan" : "Végétarien";
   }
 

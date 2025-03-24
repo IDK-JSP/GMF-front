@@ -64,7 +64,7 @@ const RecipeCollection: FC<{ path: string; title: string }> = ({
       </div>
       <div className="recipe-collection-container">
         {recipeCollectionCut?.map((recipe) => (
-          <RecipeCard key={recipe.id_recipe} recipe={recipe} />
+          <RecipeCard key={recipe.id_recipe} recipe={recipe}/>
         ))}
       </div>
     </article>

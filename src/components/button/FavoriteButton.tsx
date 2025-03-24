@@ -10,6 +10,7 @@ interface FavoriteButtonProps {
   sizeInPixels: number;
   recipe?: any;
   setRecipeData?: any;
+  setRecipes?: any;
 }
 
 const FavoriteButton: FC<FavoriteButtonProps> = ({
@@ -18,6 +19,7 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
   sizeInPixels,
   recipe,
   setRecipeData,
+  setRecipes,
 }) => {
   const [isFavorite, setIsFavorite] = useState(recipe?.favorite);
   const authContext = useContext(AuthContext);
@@ -30,6 +32,11 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
             setIsFavorite("false");
             if (setRecipeData) {
               setRecipeData({ ...recipe, favorite: "false" });
+            }
+            if (setRecipes) {
+              setRecipes((prev: any) => {
+                return prev.filter((recipe: any) => recipe.id_recipe !== id);
+              });
             }
           } else {
           }
@@ -45,6 +52,17 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
           setIsFavorite("true");
           if (setRecipeData) {
             setRecipeData({ ...recipe, favorite: "true" });
+          }
+          if(setRecipes) {
+            setRecipes((prev: any) => {
+              return prev.map((recipe: any) => {
+                if (recipe.id_recipe === id) {
+                  return { ...recipe, favorite: "true" };
+                } else {
+                  return recipe;
+                }
+              });
+            });
           }
         } else {
         }
@@ -69,7 +87,6 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
             height: sizeInPixels,
           }}
         >
-          <span>{isFavorite}/{recipe?.favorite}</span>
           <FavoriteIcon fontSize="large" />
         </div>
       ) : null}

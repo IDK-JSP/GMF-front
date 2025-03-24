@@ -9,7 +9,7 @@ import withLoadingAndError from "../hoc/WithLoadingAndError";
 import ImageLoarder from "./ImageLoader";
 import ItemSkeleton from "../skeleton/ItemSkeleton";
 
-export const RecipeItem: FC<{ recipe: RecipeType }> = ({ recipe }) => {
+export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recipe, setRecipes }) => {
   const [recipeData, setRecipeData] = useState<RecipeType>(recipe);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -60,10 +60,13 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({ recipe }) => {
             {/* Favorite Btn */}
             <div className="favorite-badge">
               <FavoriteButton
-                id={recipe.id_recipe}
-                type="recipe"
-                sizeInPixels={60}
-              />
+              id={data[0].id_recipe}
+              type="recipe"
+              sizeInPixels={50}
+              recipe={data[0]}
+              setRecipeData={setRecipeData}
+              setRecipes={setRecipes}
+            />
             </div>
           </div>
         </div>
