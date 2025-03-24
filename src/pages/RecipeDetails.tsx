@@ -40,9 +40,9 @@ const RecipeDetails: FC = () => {
       setError(null);
 
       try {
-        if (location.state?.recipe) {
-          setRecipe(location.state.recipe as RecipeType);
-        } else if (id) {
+        if (location.state?.recipeData) {
+          setRecipe(location.state.recipeData as RecipeType);
+      } else if (id) {
           const fetchedRecipe = await get("/recipe/" + parseInt(id));
           setRecipe(fetchedRecipe);
         } else {
@@ -55,6 +55,24 @@ const RecipeDetails: FC = () => {
 
     fetchRecipe();
   }, [id, location]);
+
+// Ajouter une méthode de rechargement de la recette :
+const reloadRecipe = async () => {
+  setIsPending(true);
+  setError(null);
+  try{
+    if (id) {
+    const fetchedRecipe = await get("/recipe/" + parseInt(id));
+    setRecipe(fetchedRecipe);
+    }
+  }
+  catch (err) {
+    setError(err instanceof Error ? err.message : "Erreur inconnue");
+  }
+  finally {
+    setIsPending(false);
+  }
+}
 
   // Assurer que `isPending` reste `true` jusqu'à ce que `recipeDetails` soit chargé
   useEffect(() => {
@@ -92,12 +110,15 @@ const RecipeDetails: FC = () => {
             >
               {recipe.title}
               {authContext?.isLoggedIn && (
+                <>
                 <FavoriteButton
                   id={recipe.id_recipe}
                   type="recipe"
-                  favorite={recipe.favorite ?? "false"}
                   sizeInPixels={50}
+                  recipe={recipe}
+                  setRecipeData={setRecipe}
                 />
+                </>
               )}
             </div>
           </HeroSection>
@@ -144,6 +165,7 @@ const RecipeDetails: FC = () => {
                 opinionList={recipeDetails?.opinions || []}
                 isLoading={isPending}
                 error={error}
+                reloadRecipe={reloadRecipe}
               />
             </AsideRight>
           </main>

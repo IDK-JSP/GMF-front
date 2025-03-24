@@ -48,6 +48,7 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
                                 type="checkbox"
                                 id={`ingredient-${ing.id_ingredient}`}
                                 checked={searchIngredientsList.some((checkedIng) => checkedIng.id_ingredient === ing.id_ingredient)}
+                                readOnly
                             />
                             <img src={`/ingredient/${ing.name}.png`} alt={ing.name} width={15} height={15}/>
                             <label htmlFor={ing.name}>{ing.name}</label>

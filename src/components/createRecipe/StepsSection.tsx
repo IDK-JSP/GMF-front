@@ -5,7 +5,7 @@ import {StepsSectionProps} from "../../1_types/CreateRecipeType";
 const StepsSection: FC<StepsSectionProps> = ({steps, addStep, updateStep, removeStep}) => {
 
     return (
-        <div>
+        <div className="ingredients-section">
             <h3 className="section-title">Étapes</h3>
             {steps.map((step, index) => (
                 <div key={index} className="step-container">
@@ -13,6 +13,7 @@ const StepsSection: FC<StepsSectionProps> = ({steps, addStep, updateStep, remove
                     <textarea
                         className="input-field step-input"
                         value={step}
+                        maxLength={500}
                         onChange={(e) => updateStep(index, e.target.value)}
                         placeholder={`Étape ${index + 1}`}
                         required

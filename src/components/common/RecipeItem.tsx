@@ -9,7 +9,7 @@ import withLoadingAndError from "../hoc/WithLoadingAndError";
 import ImageLoarder from "./ImageLoader";
 import ItemSkeleton from "../skeleton/ItemSkeleton";
 
-export const RecipeItem: FC<{ recipe: RecipeType }> = ({ recipe }) => {
+export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recipe, setRecipes }) => {
   const [recipeData, setRecipeData] = useState<RecipeType>(recipe);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,11 +29,11 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({ recipe }) => {
     error,
     data: [recipeData],
     SkeletonComponent: ItemSkeleton,
-    children: (data) => (
-      <div className="recipe-container" onClick={() => handleNavigate(recipe)}>
+    children: (dataItem) => (
+      <div className="recipe-container" onClick={() => handleNavigate(dataItem[0])}>
         <ImageLoarder
-          imgUrl={`/recipe/item/recipe_${data[0].id_recipe}.png`}
-          title={data[0].title}
+          imgUrl={`/recipe/item/recipe_${dataItem[0].id_recipe}.png`}
+          title={dataItem[0].title}
           classCss={"recipe-item-image"}
         />
         {/* Dégradé blanc */}
@@ -46,12 +46,12 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({ recipe }) => {
           <div className="recipe-item-content">
             <div className="first-row">
               {/* Titre */}
-              <h3 className="recipe-item-title">{recipe.title}</h3>
+              <h3 className="recipe-item-title">{dataItem[0].title}</h3>
             </div>
             {/* Note */}
             <div className="recipe-item-info">
-              <span className="recipe-time"> 60min</span>
-              <StarRating rate={recipe.rate} size={"50px"} />
+              <span className="recipe-time"> {dataItem[0].cooking_time}min</span>
+              <StarRating rate={dataItem[0].rate} size={"50px"} />
             </div>
           </div>
           <div className="item-btn-container badge-item-card">
@@ -62,11 +62,13 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({ recipe }) => {
             {/* Favorite Btn */}
             <div className="favorite-badge">
               <FavoriteButton
-                id={recipe.id_recipe}
-                type="recipe"
-                favorite={recipe.favorite ?? "false"}
-                sizeInPixels={60}
-              />
+              id={dataItem[0].id_recipe}
+              type="recipe"
+              sizeInPixels={50}
+              recipe={dataItem[0]}
+              setRecipeData={setRecipeData}
+              setRecipes={setRecipes}
+            />
             </div>
           </div>
         </div>

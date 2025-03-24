@@ -9,22 +9,24 @@ const IngredientResume: FC<{ dietList: Array<RecipeIngredientType> }> = ({
         return <p>Aucun ingrédient</p>;
     }
 
-    // Vérifier la présence de chaque type d'aliment
-    const hasNonVegetarian = dietList.some(({diet}) =>
-        diet?.includes("non végétarien")
-    );
-    const hasVegetarian = dietList.some(({diet}) =>
-        diet?.includes("végétarien")
-    );
-    const hasVegan = dietList.every(({diet}) => diet?.includes("végan"));
+  // Vérifier la présence de chaque type d'aliment
+  const hasNonVegetarian = dietList.some(({ diet }) =>
+    diet?.includes("Non renseigné")
+  );
+  const hasVegetarian = dietList.some(({ diet }) =>
+    diet?.includes("Végétarien")
+  );
+  const hasVegan = dietList.every(({ diet }) =>
+    diet?.includes("Végan")
+);
 
     let recipeType = "non végétarienne"; // Par défaut
     let badge = "non végétarien";
 
-    if (!hasNonVegetarian) {
-        recipeType = hasVegan ? "végan" : "végétarienne";
-        badge = hasVegan ? "Végan" : "Végétarien";
-    }
+  if (!hasNonVegetarian) {
+    recipeType = hasVegan ? "Végan" : "Végétarienne";
+    badge = hasVegan ? "Végan" : "Végétarien";
+  }
 
     return (
         <article className="flex-row">

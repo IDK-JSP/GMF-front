@@ -67,7 +67,7 @@ export const Favorite: FC<{}> = ({}) => {
 
             <article>
               {recipes && recipes.length > 0 ? (
-                <RecipeList recipeCollection={recipes} />
+                <RecipeList recipeCollection={recipes} setRecipes={setRecipes} />
               ) : (
                 <span>Vous n'avez pas encore de recette en favoris.</span>
               )}
