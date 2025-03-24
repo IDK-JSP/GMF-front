@@ -33,6 +33,7 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
       <div className="recipe-container" onClick={() => handleNavigate(dataItem[0])}>
         <ImageLoarder
           imgUrl={`/recipe/item/recipe_${dataItem[0].id_recipe}.png`}
+          imgDefault={"/recipe/item/recipe_0.png"}
           title={dataItem[0].title}
           classCss={"recipe-item-image"}
         />
@@ -57,7 +58,7 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
           <div className="item-btn-container badge-item-card">
             {/* Badges V */}
             <div className="diet-badge">
-              <DietBadge diet={data[0].diet} sizeInPixels={60}/>
+              <DietBadge diet={dataItem[0].diet} sizeInPixels={60}/>
             </div>
             {/* Favorite Btn */}
             <div className="favorite-badge">
