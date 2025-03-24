@@ -57,7 +57,7 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
           <div className="item-btn-container badge-item-card">
             {/* Badges V */}
             <div className="diet-badge">
-              <DietBadge diet={data[0].diet} sizeInPixels={60}/>
+              <DietBadge diet={dataItem[0].diet} sizeInPixels={60}/>
             </div>
             {/* Favorite Btn */}
             <div className="favorite-badge">
