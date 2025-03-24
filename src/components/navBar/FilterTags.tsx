@@ -16,7 +16,7 @@ export const FilterTags: React.FC<FilterTagsProps> = ({ checkedIngredients, hand
                         type="checkbox" 
                         id={`ingredient-${ing.id_ingredient}`} 
                         onChange={() => handleCheck(ing)}
-                        checked 
+                        defaultChecked
                     />
                     <label htmlFor={`ingredient-${ing.id_ingredient}`}>
                     <img src={`/ingredient/${ing.name}.png`} alt={ing.name} width={15} height={15}/>

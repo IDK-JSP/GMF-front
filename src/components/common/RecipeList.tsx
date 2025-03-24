@@ -16,8 +16,8 @@ const RecipeList: FC<{ recipeCollection: RecipeType[], setRecipes?:any }> = ({
       {displayContext?.isItem ? (
         <Grid container spacing={2} justifyContent="center">
           {recipeCollection.map((recipe) => (
-            <Grid size={11} paddingBottom="10px">
-              <RecipeItem key={recipe.id_recipe} recipe={recipe} setRecipes={setRecipes}/>
+            <Grid key={recipe.id_recipe} size={11} paddingBottom="10px">
+              <RecipeItem recipe={recipe} setRecipes={setRecipes}/>
             </Grid>
           ))}
         </Grid>
