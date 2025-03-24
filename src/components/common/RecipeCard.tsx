@@ -17,12 +17,13 @@ export const RecipeCard: FC<{ recipe: RecipeType }> = ({ recipe }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("maj recipe :", recipe);
     setRecipeData(recipe);
     setIsLoading(false);
   }, [recipe]);
 
   const handleNavigate = (recipe: RecipeType) => {
-    navigate(`/RecipeDetails/${recipe.id_recipe}`, { state: { recipe } });
+    navigate(`/RecipeDetails/${recipe.id_recipe}`, { state: { recipeData } });
   };
 
   return withLoadingAndError({
@@ -40,11 +41,13 @@ export const RecipeCard: FC<{ recipe: RecipeType }> = ({ recipe }) => {
 
         {/* Bouton Favoris */}
         <div className="favorite-badge">
+        {data[0].favorite}
           <FavoriteButton
             id={data[0].id_recipe}
             type="recipe"
-            favorite={data[0].favorite ?? "false"}
             sizeInPixels={50}
+            recipe={data[0]}
+            setRecipeData={setRecipeData}
           />
         </div>
 

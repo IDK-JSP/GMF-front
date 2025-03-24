@@ -62,7 +62,6 @@ export const RecipeItem: FC<{ recipe: RecipeType }> = ({ recipe }) => {
               <FavoriteButton
                 id={recipe.id_recipe}
                 type="recipe"
-                favorite={recipe.favorite ?? "false"}
                 sizeInPixels={60}
               />
             </div>

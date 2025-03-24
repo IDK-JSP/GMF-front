@@ -40,9 +40,11 @@ const RecipeDetails: FC = () => {
       setError(null);
 
       try {
-        if (location.state?.recipe) {
-          setRecipe(location.state.recipe as RecipeType);
+        if (location.state?.recipeData) {
+          console.log("local", location.state.recipeData);
+          setRecipe(location.state.recipeData as RecipeType);
         } else if (id) {
+          console.log("param", location.state.recipeData);
           const fetchedRecipe = await get("/recipe/" + parseInt(id));
           setRecipe(fetchedRecipe);
         } else {
@@ -92,12 +94,16 @@ const RecipeDetails: FC = () => {
             >
               {recipe.title}
               {authContext?.isLoggedIn && (
+                <>
+                test : {recipe.favorite}
                 <FavoriteButton
                   id={recipe.id_recipe}
                   type="recipe"
-                  favorite={recipe.favorite ?? "false"}
                   sizeInPixels={50}
+                  recipe={recipe}
+                  setRecipeData={setRecipe}
                 />
+                </>
               )}
             </div>
           </HeroSection>

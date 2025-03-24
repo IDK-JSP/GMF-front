@@ -2,23 +2,24 @@ import { FC, useContext, useState } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import post from "../../api/post";
 import { AuthContext } from "../../context/AuthContext";
-import { toast } from "react-toastify";
 import del from "../../api/del";
 
 interface FavoriteButtonProps {
   id: number;
   type: string;
-  favorite: string;
   sizeInPixels: number;
+  recipe?: any;
+  setRecipeData?: any;
 }
 
 const FavoriteButton: FC<FavoriteButtonProps> = ({
   id,
   type,
-  favorite,
   sizeInPixels,
+  recipe,
+  setRecipeData,
 }) => {
-  const [isFavorite, setIsFavorite] = useState(favorite);
+  const [isFavorite, setIsFavorite] = useState(recipe?.favorite);
   const authContext = useContext(AuthContext);
 
   const handleFavorite = (id: number, type: string, favorite: string) => {
@@ -27,6 +28,9 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
         (response) => {
           if (response === "Favori supprimé avec succès.") {
             setIsFavorite("false");
+            if (setRecipeData) {
+              setRecipeData({ ...recipe, favorite: "false" });
+            }
           } else {
           }
         }
@@ -39,6 +43,9 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
       post("/favorite/new", data, "Favori ajouté").then((response) => {
         if (typeof response === "object") {
           setIsFavorite("true");
+          if (setRecipeData) {
+            setRecipeData({ ...recipe, favorite: "true" });
+          }
         } else {
         }
       });
@@ -62,6 +69,7 @@ const FavoriteButton: FC<FavoriteButtonProps> = ({
             height: sizeInPixels,
           }}
         >
+          <span>{isFavorite}/{recipe?.favorite}</span>
           <FavoriteIcon fontSize="large" />
         </div>
       ) : null}
