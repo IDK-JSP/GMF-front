@@ -23,10 +23,8 @@ const OpinionsResume: FC<Props> = ({ opinionsList, isLoading, error }) => {
       <>
         {opinionsList && opinionsList.length > 0 ? (
           opinionsList.map((opinion, index) => (
-            console.log("opinion_details: ", opinion),
             <div key={index} className="opinion-item">
               <div className="flex-row">
-                {opinion.rate}
                 <StarRating rate={opinion.rate} size="medium" />
               </div>
               <span>"{opinion.comment}"</span>

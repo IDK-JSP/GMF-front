@@ -30,21 +30,21 @@ export const RecipeCard: FC<{ recipe: RecipeType, setRecipes?:any }> = ({ recipe
     error,
     data: [recipeData],
     SkeletonComponent: CardSkeleton,
-    children: (data) => (
-      <div className="recipe-card" onClick={() => handleNavigate(recipe)}>
+    children: (dataCard) => (
+      <div className="recipe-card" onClick={() => handleNavigate(dataCard[0])}>
         <ImageLoarder
-          imgUrl={`/recipe/card/recipe_${data[0].id_recipe}.png`}
-          title={data[0].title}
+          imgUrl={`/recipe/card/recipe_${dataCard[0].id_recipe}.png`}
+          title={dataCard[0].title}
           classCss={"recipe-card-image"}
         />
 
         {/* Bouton Favoris */}
         <div className="favorite-badge">
           <FavoriteButton
-            id={data[0].id_recipe}
+            id={dataCard[0].id_recipe}
             type="recipe"
             sizeInPixels={50}
-            recipe={data[0]}
+            recipe={dataCard[0]}
             setRecipeData={setRecipeData}
             setRecipes={setRecipes}
           />
@@ -52,25 +52,25 @@ export const RecipeCard: FC<{ recipe: RecipeType, setRecipes?:any }> = ({ recipe
 
         {/* Badges V */}
         <div className="diet-badge">
-          <DietBadge diet={data[0].diet} sizeInPixels={50} />
+          <DietBadge diet={dataCard[0].diet} sizeInPixels={50} />
         </div>
 
         <div className="recipe-card-content">
           <div className="first-row">
-            <h3 className="recipe-card-title" title={data[0].title}>
-              {data[0].title}
+            <h3 className="recipe-card-title" title={dataCard[0].title}>
+              {dataCard[0].title}
             </h3>
           </div>
 
           <div className="recipe-card-info">
-            <span className="recipe-time">60 min {/*{data[0].time} min*/}</span>
+            <span className="recipe-time">{dataCard[0].cooking_time} min</span>
             <Rating
               sx={{
                 "& .MuiRating-iconFilled": { color: "orange" },
                 "& .MuiRating-iconEmpty": { color: "orange" },
               }}
               name="recipe-rating"
-              defaultValue={recipe.rate}
+              defaultValue={dataCard[0].rate}
               precision={0.01}
               readOnly
             />

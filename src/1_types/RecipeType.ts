@@ -13,4 +13,5 @@ export interface RecipeType {
   matching_ingredients?: number;
   diet: string;
   favorite?: string;
+  cooking_time: number;
 }

@@ -17,7 +17,7 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
 
     return (
         <div className="ingredients-section">
-            <h3 className="section-title">Ingrédients</h3>
+            <h3 className="section-title">Ingrédients nécessaires</h3>
 
             <div className="ingredients-header">
                 <span>Ingrédient</span>
