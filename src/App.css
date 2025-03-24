@@ -65,7 +65,7 @@ main {
   color: white;
   padding: 0px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.103);
+  background-color: rgba(0, 0, 0, 0.3);
   transition: all ease 0.5s;
 }
 
@@ -155,7 +155,7 @@ main {
 
 .dyna-filter-container>button:disabled {
   background-color: var(--color-bg-secondary);
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   font-weight: bold;
 }
 
