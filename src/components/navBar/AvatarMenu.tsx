@@ -69,10 +69,12 @@ const NavBarAvatar: FC<{}> = () => {
                         ))}
                         <div className="menu-divider"></div>
                         <button className="menu-item" onClick={() => {
+                            console.log("Déconnexion demandée depuis :", window.location.pathname);
+                            localStorage.setItem("previousURL", window.location.pathname);
                             handleCloseMenu();
                             authContext.logout();
                             navigate("/login");
-                            toast.warn("Vous avez été déconnecté.e")
+                            toast.warn("Vous avez été déconnecté.e");
                         }}>
                             Déconnexion
                         </button>

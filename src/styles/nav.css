@@ -99,7 +99,7 @@ nav {
   border-bottom: 1px solid var(--color-border) !important;
   border-right: 0px;
   border-left: 0px;
-  color: white;
+  color: var(--color-text-primary);
   border-right: none;
 }
 
@@ -304,9 +304,8 @@ span.flex-row {
   border-radius: 12px;
   height: 24px;
   padding: 2px 5px;
-  font-weight: bold;
   width: fit-content;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   background-color: var(--color-bg-secondary);
   transition: all 0.5s ease;
 }

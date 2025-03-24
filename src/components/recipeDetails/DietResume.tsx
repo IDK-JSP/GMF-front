@@ -1,13 +1,13 @@
-import { FC } from "react";
-import { RecipeIngredientType } from "../../1_types/RecipeIngredientType";
-import DietBadge from "../common/DietBadge";
+import {FC} from "react";
+import {RecipeIngredientType} from "../../1_types/RecipeIngredientType";
+import DietBadge from "../button/DietBadge";
 
 const IngredientResume: FC<{ dietList: Array<RecipeIngredientType> }> = ({
-  dietList,
-}) => {
-  if (dietList.length === 0) {
-    return <p>Aucun ingrédient</p>;
-  }
+                                                                             dietList,
+                                                                         }) => {
+    if (dietList.length === 0) {
+        return <p>Aucun ingrédient</p>;
+    }
 
   // Vérifier la présence de chaque type d'aliment
   const hasNonVegetarian = dietList.some(({ diet }) =>
@@ -20,20 +20,22 @@ const IngredientResume: FC<{ dietList: Array<RecipeIngredientType> }> = ({
     diet?.includes("Végan")
 );
 
-  let recipeType = "non végétarienne"; // Par défaut
-  let badge = "non végétarien";
+    let recipeType = "non végétarienne"; // Par défaut
+    let badge = "non végétarien";
 
   if (!hasNonVegetarian) {
     recipeType = hasVegan ? "Végan" : "Végétarienne";
     badge = hasVegan ? "Végan" : "Végétarien";
   }
 
-  return (
-    <article className="flex-row">
-      <DietBadge diet={badge} sizeInPixels={60} />
-      Recette {recipeType}
-    </article>
-  );
+    return (
+        <article className="flex-row">
+            <div className={"diet-badge-two"}>
+                <DietBadge diet={badge} sizeInPixels={60}/>
+            </div>
+            Recette {recipeType}
+        </article>
+    );
 };
 
 export default IngredientResume;
