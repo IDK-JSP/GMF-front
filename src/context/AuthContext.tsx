@@ -1,6 +1,7 @@
 import React, {createContext, FC, useEffect, useState} from "react";
 import {isTokenExpired} from "../components/auth/isTokenExpired";
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router";
 
 interface AuthContextProps {
     isLoggedIn: boolean;
@@ -22,24 +23,24 @@ export const AuthProvider: FC<{ children: any }> = ({children}) => {
     const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
     const [role, setRole] = useState<string>(localStorage.getItem("role") || "");
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token && !isTokenExpired(token));
+    const navigate = useNavigate();
 
     // Vérifier si le token est expiré
     useEffect(() => {
         const checkTokenValidity = () => {
             if (token && isTokenExpired(token)) {
-                console.warn("Token expiré, suppression et déconnexion...");
                 toast.warn("Session expirée, vous avez été déconnecté")
                 logout();
             }
         };
 
-        // Vérifier au début
-        checkTokenValidity();
-
-        // Vérifier toutes les 600 secondes
-        const interval = setInterval(checkTokenValidity, 600000);
-
-        return () => clearInterval(interval); // Nettoyage du timer
+        if (token) {
+            // Vérifier au début
+            checkTokenValidity();
+            // Vérifier toutes les 600 secondes
+            const interval = setInterval(checkTokenValidity, 600000);
+            return () => clearInterval(interval); // Nettoyage du timer
+        }
     }, [token]);
 
 
@@ -49,14 +50,20 @@ export const AuthProvider: FC<{ children: any }> = ({children}) => {
         setToken(newToken);
         //setRole(userRole);
         setIsLoggedIn(true);
+        const redirectUrl = localStorage.getItem("redirectAfterLogin") || "/Home";  // Envoie vers l'URL stockée ou vers Home
+        localStorage.removeItem("redirectAfterLogin"); // Supprime l'URL stockée après utilisation
+        navigate(redirectUrl);
     };
 
     const logout = () => {
+        const currentPath = window.location.pathname;
+        localStorage.setItem("redirectAfterLogin", currentPath); // Stockage de l'URL actuelle
         localStorage.removeItem("token");
         //localStorage.removeItem("role");
         setToken(null);
         //setRole("");
         setIsLoggedIn(false);
+        navigate("/login")
     };
 
     return (

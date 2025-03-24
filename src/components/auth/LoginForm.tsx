@@ -29,7 +29,6 @@ const LoginForm: FC<{}> = ({}) => {
     const response = await post(`/auth/login`, data, "Connexion réussie");
     if (response) {
       authContext.login(response);
-      navigate("/Home");
     } else {
       toast.error("Mauvais identifiants");
     }
