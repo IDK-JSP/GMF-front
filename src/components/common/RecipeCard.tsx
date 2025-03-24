@@ -4,7 +4,7 @@ import { RecipeType } from "../../1_types/RecipeType";
 import "../../styles/recipeDisplay.css";
 import { Rating } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import DietBadge from "./DietBadge";
+import DietBadge from "../button/DietBadge";
 import withLoadingAndError from "../hoc/WithLoadingAndError";
 import CardSkeleton from "../skeleton/CardSkeleton";
 import ImageLoarder from "./ImageLoader";

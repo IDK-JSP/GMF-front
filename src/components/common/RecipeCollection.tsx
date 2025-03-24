@@ -18,7 +18,7 @@ const RecipeCollection: FC<{ path: string; title: string }> = ({
     RecipeType[] | undefined
   >(undefined);
   const [isPending, startTransition] = useTransition();
-  const [cut, setCut] = useState(Math.floor(window.innerWidth / 270));
+  const [cut, setCut] = useState(Math.floor((window.innerWidth -60) / 260));
 
   const hydrate = () => {
     // @ts-ignore
@@ -35,7 +35,7 @@ const RecipeCollection: FC<{ path: string; title: string }> = ({
 
   useEffect(() => {
     const handleResize = () => {
-      setCut(Math.floor(window.innerWidth / 270));
+      setCut(Math.floor((window.innerWidth - 60) / 260));
     };
 
     window.addEventListener("resize", handleResize);

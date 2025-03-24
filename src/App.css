@@ -78,6 +78,14 @@ main {
   scale: 1.1;
 }
 
+.diet-badge {
+  transition: all ease 0.5s;
+}
+
+.diet-badge:hover {
+  scale: 1.1;
+}
+
 .presentation {
   width: 100%;
   display: flex;
