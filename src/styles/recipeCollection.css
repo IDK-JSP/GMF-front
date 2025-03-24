@@ -1,5 +1,6 @@
 .recipe-collection-container {
   display: flex;
+  justify-content: space-around;
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 3em;
