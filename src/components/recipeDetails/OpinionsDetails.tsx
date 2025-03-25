@@ -13,6 +13,7 @@ interface OpinionsDetailsProps {
   opinionList: Array<RecipeOpinionsType>;
   isLoading: boolean;
   error: string | null;
+  reloadRecipe?: () => Promise<void>;
 }
 
 const OpinionsDetails: React.FC<OpinionsDetailsProps> = ({
@@ -22,6 +23,7 @@ const OpinionsDetails: React.FC<OpinionsDetailsProps> = ({
   opinionList,
   isLoading,
   error,
+  reloadRecipe
 }) => {
   // Récuperation du mail depuis le token du localStorage
   const authContext = useContext(AuthContext);
@@ -36,16 +38,21 @@ const OpinionsDetails: React.FC<OpinionsDetailsProps> = ({
     setOpinions(opinionList);
   }, [opinionList]);
 
+// // Création d'une méthode pour mettre à jour les opinions
+// const updateOpinions = (newOpinion: RecipeOpinionsType) => {
+//   setOpinions((opinions) => [...opinions, newOpinion]);
+// };
+
   return (
     <div className="opinion-box">
       {/* TODO : Ne pas afficher le formulaire si l'utilisateur à déjà donné son avis */}
       {authContext?.isLoggedIn &&
         opinions.filter((opinion) => opinion.email === email).length === 0 && (
-          <OpinionMyself recipeId={recipeId} setOpinions={setOpinions} />
+          <OpinionMyself recipeId={recipeId} reloadRecipe={reloadRecipe} />
         )}
 
       <OpinionsResume
-        opinionsList={opinionList || []}
+        opinionsList={opinions || []}
         recipeRate={recipeRate ?? 0}
         recipeNbRate={recipeNbRate ?? 0}
         isLoading={isLoading}

@@ -56,7 +56,6 @@ export const api = async (
                     // TODO
                     break;
                 case 404:
-                    console.log(`🔍 Erreur 404 : Ressource non trouvée`);
                     break;
                 case 500:
                     toast.error(`💥 Erreur 500 : Erreur serveur`);

@@ -7,12 +7,14 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 type Props = {
   ingredientsList: Array<RecipeIngredientType>;
   person: number;
+  time: number;
   isLoading: boolean;
   error: string | null;
 };
 
 const IngredientResume: FC<Props> = ({
   person,
+  time,
   ingredientsList,
   isLoading,
   error,
@@ -30,15 +32,16 @@ const IngredientResume: FC<Props> = ({
     SkeletonComponent: IngredientSkeleton,
     children: (data) => (
       <>
-        <article>
+        <article className="container-responsive">
           <h3
             className="flex-row"
             style={{ justifyContent: "center", gap: "0.3rem" }}
           >
             Recette prévue pour {person} <PeopleAltIcon />
           </h3>
+          <h4>{time} min</h4>
         </article>
-        <article>
+        <article className="container-responsive">
           <div className="flex-row">
             <label htmlFor="person">Adapter les quantités pour </label>
             <input

@@ -3,9 +3,10 @@ import ControlRating from "../common/ControlRating";
 import post from "../../api/post";
 import { AuthContext } from "../../context/AuthContext";
 
-const OpinionMyself: React.FC<{ recipeId: number; setOpinions: any }> = ({
+const OpinionMyself: React.FC<{ recipeId: number; reloadRecipe: any }> = ({
   recipeId,
-  setOpinions,
+  // updateOpinions,
+  reloadRecipe,
 }) => {
   const authContext = useContext(AuthContext); // 🔐 Récupère le token de l'utilisateur
   const token = authContext ? authContext.token : ""; // Gère le cas où authContext est undefined
@@ -32,8 +33,11 @@ const OpinionMyself: React.FC<{ recipeId: number; setOpinions: any }> = ({
       rate: Number(rating),
       comment: comment,
     };
-    console.log(data);
-    await post("/opinion/new", data, "Avis ajouté avec succès");
+    await post("/opinion/new", data, "Avis ajouté avec succès").then(
+      async () => {
+        await reloadRecipe();
+      }
+    );
     setRating(null);
     setComment("");
     setLoading(false);

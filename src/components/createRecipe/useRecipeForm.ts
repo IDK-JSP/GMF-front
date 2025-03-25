@@ -6,11 +6,13 @@ import {Ingredient, Measurement, RecipeIngredient} from "../../1_types/CreateRec
 export const useRecipeForm = () => {
     const [title, setTitle] = useState("");
     const [person, setPerson] = useState(1);
+    const [image, setImage] = useState("recipe_0");
     const [description, setDescription] = useState("");
     const [ingredients, setIngredients] = useState<RecipeIngredient[]>([]);
     const [steps, setSteps] = useState<string[]>([""]);
     const [allIngredients, setAllIngredients] = useState<Ingredient[]>([]);
     const [allMeasurements, setAllMeasurements] = useState<Measurement[]>([]);
+    const [cookingTime, setCookingTime] = useState<number>();
 
     useEffect(() => {
         const fetchIngredients = async () => {
@@ -63,7 +65,7 @@ export const useRecipeForm = () => {
             await post(
                 "/recipe/new",
                 {
-                    recipe: {title, person},
+                    recipe: {title, person, image, cookingTime},
                     stages: steps.map((step, index) => ({stage: index + 1, content: step})),
                     recipeIngredients: ingredients,
                 },
@@ -77,7 +79,9 @@ export const useRecipeForm = () => {
     return {
         title, setTitle,
         person, setPerson,
+        image,
         description, setDescription,
+        cookingTime,setCookingTime,
         ingredients, addIngredient, updateIngredient, removeIngredient,
         steps, addStep, updateStep, removeStep,
         allIngredients, allMeasurements,

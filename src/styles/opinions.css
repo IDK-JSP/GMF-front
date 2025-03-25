@@ -34,7 +34,7 @@
 
 .opinion-submit {
   background-color: #4caf50;
-  color: white;
+  color: var(--color-text-primary);
   border-radius: 0 0 10px 10px;
   height: 30px;
   cursor: pointer;
