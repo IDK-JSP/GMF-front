@@ -44,7 +44,8 @@ export const useRecipeForm = () => {
         setIngredients(newIngredients);
     };
     const removeIngredient = (index: number) => {
-        setIngredients((prev) => prev.length > 1 ? prev.filter((_, i) => i !== index) : prev);
+        const newIng = ingredients.filter((_, i) => i !== index);
+        setIngredients(newIng);
     };
 
 
