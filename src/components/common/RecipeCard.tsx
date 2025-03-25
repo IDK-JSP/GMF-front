@@ -33,8 +33,7 @@ export const RecipeCard: FC<{ recipe: RecipeType, setRecipes?:any }> = ({ recipe
     children: (dataCard) => (
       <div className="recipe-card" onClick={() => handleNavigate(dataCard[0])}>
         <ImageLoarder
-          imgUrl={`/recipe/card/recipe_${dataCard[0].id_recipe}.png`}
-          imgDefault={"/recipe/card/recipe_0.png"}
+          imgUrl={`/recipe/card/${dataCard[0].image}.png`}
           title={dataCard[0].title}
           classCss={"recipe-card-image"}
         />
@@ -79,5 +78,5 @@ export const RecipeCard: FC<{ recipe: RecipeType, setRecipes?:any }> = ({ recipe
         </div>
       </div>
     ),
-  });
+  })
 };
