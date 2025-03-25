@@ -17,7 +17,7 @@ const OpinionRecipe: React.FC<OpinionRecipeProps> = ({
                 "& .MuiRating-iconEmpty": { color: "orange" },
               }}
               name="recipe-rating"
-              defaultValue={recipeRate}
+              value={recipeRate}
               precision={0.01}
               readOnly
               size="large"
