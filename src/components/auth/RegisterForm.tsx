@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import { Typography } from '@mui/material';
 
 const RegisterForm: FC<{}> = ({ }) => {
-    const navigate = useNavigate();
     const authContext = useContext(AuthContext);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [showPasswordInfo, setShowPasswordInfo] = useState<boolean>(false);
@@ -36,7 +35,6 @@ const RegisterForm: FC<{}> = ({ }) => {
         }
         const response = await post("/auth/register", dataConnexion, "Inscription réussie");
         if (response) {
-            console.log("Inscription réussie", response.data);
             // Connexion automatique après l'inscription
             const loginResponse = await post("/auth/login", {
                 email: data.email,

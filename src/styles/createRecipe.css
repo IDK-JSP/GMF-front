@@ -128,6 +128,7 @@
 .btn-submit {
     background-color: #007bff;
     color: white;
+    width: 100%;
 }
 
 .btn-submit:hover {

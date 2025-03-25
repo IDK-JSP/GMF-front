@@ -97,8 +97,8 @@ nav {
   box-sizing: border-box;
   border-top: 1px solid var(--color-border) !important;
   border-bottom: 1px solid var(--color-border) !important;
-  border-right: 0px;
-  border-left: 0px;
+  border-right: 0;
+  border-left: 0;
   color: var(--color-text-primary);
   border-right: none;
 }
@@ -110,7 +110,7 @@ nav {
   border-left: 1px solid var(--color-border) !important;
   background-color: var(--toastify-text-color-dark);
   border-radius: 10px 0 0 10px;
-  color: var(--color-text);
+  color: var(--color-text-primary);
 }
 
 #filter-button {
@@ -233,7 +233,7 @@ span.flex-row {
 
 /* DIV DE LA LISTE DES INGREDIENTS */
 .filter-container > div:last-child {
-  height: calc(45vh - 55px);
+  height: calc(60vh - 55px);
   background-color: var(--color-bg-white-tr-80);
   overflow-y: auto;
   overflow-x: hidden;
@@ -248,7 +248,7 @@ span.flex-row {
   align-self: end;
   border-bottom: none;
   border-radius: 10px 10px 0 0;
-  color: var(--color-text);
+  color: var(--color-text-primary);
   box-sizing: border-box;
 }
 
@@ -260,7 +260,7 @@ span.flex-row {
   align-self: end;
   border-bottom: none;
   border-radius: 10px 10px 0 0;
-  color: var(--color-text);
+  color: var(--color-text-primary);
   box-sizing: border-box;
   cursor: pointer;
 }

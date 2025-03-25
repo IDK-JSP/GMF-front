@@ -1,14 +1,13 @@
-import React, { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { RecipeType } from "../../1_types/RecipeType";
+import React, {FC, useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {RecipeType} from "../../1_types/RecipeType";
 import FavoriteButton from "../button/FavoriteButton";
 import "../../styles/recipeDisplay.css";
-import StarRating from "./StarRating";
 import DietBadge from "../button/DietBadge";
 import withLoadingAndError from "../hoc/WithLoadingAndError";
 import ImageLoarder from "./ImageLoader";
 import ItemSkeleton from "../skeleton/ItemSkeleton";
-import { Rating } from "@mui/material";
+import {Rating} from "@mui/material";
 
 export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recipe, setRecipes }) => {
   const [recipeData, setRecipeData] = useState<RecipeType>(recipe);
@@ -24,7 +23,6 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
   const handleNavigate = (recipe: RecipeType) => {
     navigate(`/RecipeDetails/${recipe.id_recipe}`, { state: { recipe } });
   };
-  console.log("Diet value:", recipe.diet);
 
 
   return withLoadingAndError({
@@ -69,7 +67,7 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
           <div className="item-btn-container badge-item-card">
             {/* Badges V */}
             <div className="diet-badge">
-              <DietBadge diet={recipe.diet} sizeInPixels={30}/>
+              <DietBadge diet={recipe.diet} sizeInPixels={60}/>
             </div>
             {/* Favorite Btn */}
             <div className="favorite-badge">

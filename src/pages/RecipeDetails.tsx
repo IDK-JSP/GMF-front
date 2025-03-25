@@ -114,7 +114,7 @@ const reloadRecipe = async () => {
                 <FavoriteButton
                   id={recipe.id_recipe}
                   type="recipe"
-                  sizeInPixels={50}
+                  sizeInPixels={40}
                   recipe={recipe}
                   setRecipeData={setRecipe}
                 />

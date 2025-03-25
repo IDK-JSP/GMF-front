@@ -28,15 +28,6 @@ export const ResultsList: React.FC<FilterSelectionProps> = ({
                                                             }) => {
     const navigate = useNavigate();
 
-    // Ajout du console.log pour afficher les données des recettes filtrées
-    console.log(
-        "Liste filtrée des recettes :",
-        recipeResults.map((recipe) => ({
-            id: recipe.id_recipe,
-            diet: recipe.diet,
-        }))
-    );
-
     const handleAddIngredient = (ing: IngredientType) => {
         handleCheck(ing);
         handleClearSearch();
