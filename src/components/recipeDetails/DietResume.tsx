@@ -29,7 +29,7 @@ const IngredientResume: FC<{ dietList: Array<RecipeIngredientType> }> = ({
   }
 
     return (
-        <article className="flex-row">
+        <article className="flex-row container-responsive">
             <div className={"diet-badge-two"}>
                 <DietBadge diet={badge} sizeInPixels={60}/>
             </div>

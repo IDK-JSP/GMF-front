@@ -15,6 +15,7 @@
 }
 
 .recipe-stage span:first-child {
+  align-self: flex-start;
   font-size: 3rem;
   padding: 10px;
   font-weight: 700;

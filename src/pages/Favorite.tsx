@@ -10,6 +10,7 @@ import IngredientList from "../components/common/IngredientList";
 import get from "../api/get";
 import Pages from "../components/layout/Pages";
 import HeroSection from "../components/layout/HeroSection";
+import DynamicFilter from "../components/common/DynamicFilter";
 
 export const Favorite: FC<{}> = ({}) => {
   const authContext = useContext(AuthContext);
@@ -58,6 +59,7 @@ export const Favorite: FC<{}> = ({}) => {
       <main>
         <Content>
           <section>
+          <DynamicFilter display={true} />
             <article>
               Ajoutez vos recettes préférées à vos favoris en un clic sur le
               cœur et retrouvez-les facilement ici. De plus, marquez vos

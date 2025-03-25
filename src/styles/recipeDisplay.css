@@ -201,7 +201,7 @@
   .recipe-description {
     font-size: 0.85rem;
   }
-
+/* 
   .favorite-btn {
     width: 50px !important;
     height: 50px !important;
@@ -215,7 +215,11 @@
   .badge-item-card > div {
     width: 50px !important;
     height: 50px !important;
-  }
+  } */
+}
+.container-responsive {
+  max-width: 400px;
+  align-self: center;
 }
 
 @media screen and (max-width: 480px) {
@@ -230,7 +234,7 @@
   .recipe-description {
     font-size: 0.75rem;
   }
-
+/* 
   .favorite-btn {
     width: 40px !important;
     height: 40px !important;
@@ -244,5 +248,8 @@
   .badge-item-card > div {
     width: 40px !important;
     height: 40px !important;
+  } */
+  .container-responsive {
+    max-width: 100%;
   }
 }
