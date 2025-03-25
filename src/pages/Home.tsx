@@ -18,7 +18,7 @@ const Home: FC<{}> = ({}) => {
   const hydrate = () => {
     startTransition(async () => {
       try {
-        const results = await get("/collection/top");
+        const results = await get("/collection/validate");
         setRecipeCollection(results);
       } catch (error) {
         console.error("Erreur lors du chargement des recettes :", error);
@@ -44,17 +44,13 @@ const Home: FC<{}> = ({}) => {
           <main>
             <Content>
               <section>
-                {recipeCollection ? (
-                  collections.map((collection) => (
+                {collections.map((collection) => (
                     <RecipeCollection
                       key={collection.path}
                       path={collection.path}
                       title={collection.title}
                     />
-                  ))
-                ) : (
-                  <></>
-                )}
+                ))}
               </section>
             </Content>
           </main>
