@@ -41,19 +41,19 @@ Le projet utilise une API back-end développée ici :
 ---
 
 ## 📦 Installation & Exécution
-### 1⃣ Cloner le projet
+### 1 Cloner le projet
 ```sh
 git clone https://github.com/ton-utilisateur/GMF-front.git
 cd GMF-front
 ```
 
-### 2⃣ Installer les dépendances
+### 2 Installer les dépendances
 ```sh
 npm install
 ```
 Certaines dépendances spécifiques peuvent être nécessaires.
 
-### 3⃣ Lancer l'application
+### 3 Lancer l'application
 ```sh
 npm start
 ```
@@ -90,8 +90,6 @@ src/
 - **Gabriel** → [GitHub](https://github.com/gabrielloop/)
 - **Martin** → [GitHub](https://github.com/IDK-JSP)
 - **Florian** → [GitHub](https://github.com/Flo-Foui)
-
-👥 Contributions bienvenues ! Ouvrez une **issue** ou soumettez une **pull request**.  
 
 ---
 
