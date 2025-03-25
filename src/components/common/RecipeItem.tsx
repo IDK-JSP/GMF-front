@@ -23,6 +23,8 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
   const handleNavigate = (recipe: RecipeType) => {
     navigate(`/RecipeDetails/${recipe.id_recipe}`, { state: { recipe } });
   };
+  console.log("Diet value:", recipe.diet);
+
 
   return withLoadingAndError({
     isLoading,
@@ -57,7 +59,7 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
           <div className="item-btn-container badge-item-card">
             {/* Badges V */}
             <div className="diet-badge">
-              <DietBadge diet={dataItem[0].diet} sizeInPixels={60}/>
+              <DietBadge diet={recipe.diet} sizeInPixels={30}/>
             </div>
             {/* Favorite Btn */}
             <div className="favorite-badge">
