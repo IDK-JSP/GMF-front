@@ -272,13 +272,21 @@ span.flex-row {
 /* LISTE DES INGREDIENTS SOUS UNE CATEGORY */
 .filter-list {
   display: flex;
-  gap: 8px;
+  gap: 15px;
   flex-wrap: wrap;
   padding: 10px;
   padding-top: 1.5em;
 
   & div {
-    width: 130px;
+    width: 200px;
+    font-size: 1.2em;
+    display: flex;
+    gap: 5px;
+  }
+  & img {
+    width: 30px;
+    height: 30px; 
+    object-fit: cover;
   }
 }
 
@@ -305,9 +313,11 @@ span.flex-row {
   height: 24px;
   padding: 2px 5px;
   width: fit-content;
+  max-width: 150px;
   color: var(--color-text-primary);
   background-color: var(--color-bg-secondary);
   transition: all 0.5s ease;
+  font-size: clamp(5px, 10vw, 15px);
 }
 
 .search-tag > input {

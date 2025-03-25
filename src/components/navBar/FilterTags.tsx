@@ -20,7 +20,7 @@ export const FilterTags: React.FC<FilterTagsProps> = ({ checkedIngredients, hand
                     />
                     <label htmlFor={`ingredient-${ing.id_ingredient}`}>
                     <img src={`/ingredient/${ing.name}.png`} alt={ing.name} width={15} height={15}/>
-                        {ing.name.slice(0, 10)}
+                        {ing.name}
                     </label>
                 </span>
             ))}
