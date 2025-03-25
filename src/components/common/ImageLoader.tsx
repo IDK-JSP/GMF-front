@@ -1,30 +1,29 @@
-import React from "react";
-import withLoadingAndError from "../hoc/WithLoadingAndError";
-import useImage from "../../hook/useImage";
-import ImageSkeleton from "../skeleton/ImageSkeleton";
+import React, { useState } from "react";
 
 interface ImageLoaderProps {
-    imgUrl: string;
-    title: string;
-    classCss: string;
+  imgUrl: string;
+  imgDefault?: string;
+  title: string;
+  classCss?: string;
 }
 
-const ImageLoader: React.FC<ImageLoaderProps> = ({ imgUrl, title, classCss }) => {
-    const { image, isLoading, error } = useImage(imgUrl);
+const ImageLoader: React.FC<ImageLoaderProps> = ({
+  imgUrl,
+  imgDefault = "/default.png", // chemin vers ton image de secours
+  title,
+  classCss = "",
+}) => {
+  const [src, setSrc] = useState(imgUrl);
 
-    return withLoadingAndError({
-        isLoading,
-        error,
-        data: image ? [image] : [],
-        SkeletonComponent: ImageSkeleton,
-        children: (data) => (
-            <img
-                src={data[0] || "https://placehold.co/500x500?text=No\nImage"}
-                alt={title}
-                className={classCss}
-            />
-        ),
-    });
+  return (
+    <img
+      src={src}
+      alt={title}
+      className={classCss}
+      onError={() => setSrc(imgDefault)}
+      loading="lazy"
+    />
+  );
 };
 
 export default ImageLoader;

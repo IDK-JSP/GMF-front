@@ -8,6 +8,7 @@ import DietBadge from "../button/DietBadge";
 import withLoadingAndError from "../hoc/WithLoadingAndError";
 import ImageLoarder from "./ImageLoader";
 import ItemSkeleton from "../skeleton/ItemSkeleton";
+import { Rating } from "@mui/material";
 
 export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recipe, setRecipes }) => {
   const [recipeData, setRecipeData] = useState<RecipeType>(recipe);
@@ -32,7 +33,7 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
     children: (dataItem) => (
       <div className="recipe-container" onClick={() => handleNavigate(dataItem[0])}>
         <ImageLoarder
-          imgUrl={`/recipe/item/recipe_${dataItem[0].id_recipe}.png`}
+          imgUrl={`/recipe/item/${dataItem[0].image}.png`}
           title={dataItem[0].title}
           classCss={"recipe-item-image"}
         />
@@ -51,7 +52,16 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
             {/* Note */}
             <div className="recipe-item-info">
               <span className="recipe-time"> {dataItem[0].cooking_time}min</span>
-              <StarRating rate={dataItem[0].rate} size={"50px"} />
+              <Rating
+              sx={{
+                "& .MuiRating-iconFilled": { color: "orange" },
+                "& .MuiRating-iconEmpty": { color: "orange" },
+              }}
+              name="recipe-rating"
+              defaultValue={dataItem[0].rate}
+              precision={0.01}
+              readOnly
+            />
             </div>
           </div>
           <div className="item-btn-container badge-item-card">
@@ -64,7 +74,7 @@ export const RecipeItem: FC<{ recipe: RecipeType, setRecipes?: any }> = ({ recip
               <FavoriteButton
               id={dataItem[0].id_recipe}
               type="recipe"
-              sizeInPixels={50}
+              sizeInPixels={60}
               recipe={dataItem[0]}
               setRecipeData={setRecipeData}
               setRecipes={setRecipes}

@@ -100,7 +100,7 @@ const reloadRecipe = async () => {
       {recipe ? (
         <>
           <HeroSection
-            imgUrl={`/recipe/carousel/recipe_${recipe.id_recipe}.png`}
+            imgUrl={`/recipe/carousel/${recipe.image}.png`}
             recipeRate={recipe.rate ?? 0}
             recipeNbRate={recipe.nbRate ?? 0}
           >
@@ -127,6 +127,7 @@ const reloadRecipe = async () => {
               <IngredientResume
                 ingredientsList={recipeDetails?.ingredientDetailDtos || []}
                 person={recipe.person ?? 1}
+                time={recipe.cooking_time ?? 0}
                 isLoading={isPending}
                 error={error}
               />
