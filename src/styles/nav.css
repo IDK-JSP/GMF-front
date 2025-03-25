@@ -281,6 +281,7 @@ span.flex-row {
     width: 200px;
     font-size: 1.2em;
     display: flex;
+    align-items: center;
     gap: 5px;
   }
   & img {
@@ -289,7 +290,10 @@ span.flex-row {
     object-fit: cover;
   }
 }
-
+.filter-list > div:hover {
+  background-color: var(--color-bg-secondary);
+  border-radius: 10px;
+}
 /* DIV D'AFFICHAGE DES TAG DE LA BARRE DE RECHERCHE*/
 #search-filters {
   display: flex;
