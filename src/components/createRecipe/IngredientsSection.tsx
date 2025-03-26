@@ -11,7 +11,13 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
                                                              allMeasurements
                                                          }) => {
 
-    const [inputValues, setInputValues] = useState("");
+    const [inputValue, setInputValue] = useState("");
+
+    const handleInputChange = (e : any) => {
+        const value = e.target.value;
+        setInputValue(value);
+    };
+
 
     // Vérifier qu'il y a au moins un ingrédient
     if (ingredients.length === 0) {
@@ -35,20 +41,17 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
                         className="input-field ingredient-search"
                         list={`ingredients-list-${index}`}
                         placeholder="Rechercher un ingrédient"
-                        onChange={(e) => {
-                            const selectedIngredient = allIngredients.find(ing => ing.name === e.target.value);
-                            if (selectedIngredient) {
-                                updateIngredient(index, "id_ingredient", selectedIngredient.id_ingredient);
-                            }
-                        }}
+                        value={inputValue}
+                        onChange={handleInputChange}
                         required
                     />
                     <datalist id={`ingredients-list-${index}`}>
                         {allIngredients
                             .filter(ingredient =>
-                                ingredient.name.toLowerCase().includes((inputValues[index] || "").toLowerCase())
+                                ingredient.name.toLowerCase().includes((inputValue[index] || "").toLowerCase())
                             )
                             .sort((a, b) => a.name.localeCompare(b.name))
+                            .slice(0, 10)
                             .map((ingredient) => (
                                 <option key={ingredient.id_ingredient} value={ingredient.name}/>
                             ))}
@@ -57,6 +60,7 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
                     <input
                         className="input-field ingredient-quantity"
                         type="number"
+                        min="0"
                         placeholder="Quantité"
                         value={ing.quantity}
                         onChange={(e) => updateIngredient(index, "quantity", Number(e.target.value))}
