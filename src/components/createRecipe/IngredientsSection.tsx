@@ -71,7 +71,7 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
 
                     {ingredients.length > 1 && (
                         <button type="button" className="btn-delete" onClick={() => removeIngredient(index)}>
-                            <DeleteIcon/>
+                            <DeleteIcon/> {index}
                         </button>
                     )}
                 </div>
