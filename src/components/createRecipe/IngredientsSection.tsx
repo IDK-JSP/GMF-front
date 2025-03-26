@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {IngredientsSectionProps} from "../../1_types/CreateRecipeType";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -10,6 +10,9 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
                                                              allIngredients,
                                                              allMeasurements
                                                          }) => {
+
+    const [inputValues, setInputValues] = useState("");
+
     // Vérifier qu'il y a au moins un ingrédient
     if (ingredients.length === 0) {
         addIngredient();
@@ -41,9 +44,14 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
                         required
                     />
                     <datalist id={`ingredients-list-${index}`}>
-                        {allIngredients.map((ingredient) => (
-                            <option key={ingredient.id_ingredient} value={ingredient.name}/>
-                        ))}
+                        {allIngredients
+                            .filter(ingredient =>
+                                ingredient.name.toLowerCase().includes((inputValues[index] || "").toLowerCase())
+                            )
+                            .sort((a, b) => a.name.localeCompare(b.name))
+                            .map((ingredient) => (
+                                <option key={ingredient.id_ingredient} value={ingredient.name}/>
+                            ))}
                     </datalist>
 
                     <input
