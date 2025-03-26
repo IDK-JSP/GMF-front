@@ -1,52 +1,91 @@
-import {useState} from "react";
+import {useState, useEffect, FormEvent} from "react";
+import post from "../../api/post";
+import get from "../../api/get";
+import {Ingredient, Measurement, RecipeIngredient} from "../../1_types/CreateRecipeType";
 
-interface Ingredient {
-    id: number;
-    name: string;
-    quantity: string;
-    unit: string;
-}
-
-interface Step {
-    id: number;
-    description: string;
-}
-
-export default function useRecipeForm() {
+export const useRecipeForm = () => {
     const [title, setTitle] = useState("");
-    const [servings, setServings] = useState(1);
-    const [ingredients, setIngredients] = useState<Ingredient[]>([]);
-    const [steps, setSteps] = useState<Step[]>([]);
+    const [person, setPerson] = useState(1);
+    const [image, setImage] = useState("recipe_0");
+    const [description, setDescription] = useState("");
+    const [ingredients, setIngredients] = useState<RecipeIngredient[]>([]);
+    const [steps, setSteps] = useState<string[]>([""]);
+    const [allIngredients, setAllIngredients] = useState<Ingredient[]>([]);
+    const [allMeasurements, setAllMeasurements] = useState<Measurement[]>([]);
+    const [cookingTime, setCookingTime] = useState<number>();
 
-    const addIngredient = (name: string, quantity: string, unit: string) => {
-        setIngredients((prev) => [
-            ...prev,
-            {id: Date.now(), name, quantity, unit},
-        ]);
+    useEffect(() => {
+        const fetchIngredients = async () => {
+            try {
+                const response = await get("/ingredient/all");
+                if (response) setAllIngredients(response);
+            } catch (error) {
+                console.error("Erreur lors de la récupération des ingrédients", error);
+            }
+        };
+
+        const fetchMeasurements = async () => {
+            try {
+                const response = await get("/measurement/all");
+                if (response) setAllMeasurements(response);
+            } catch (error) {
+                console.error("Erreur lors de la récupération des mesures", error);
+            }
+        };
+
+        fetchIngredients();
+        fetchMeasurements();
+    }, []);
+
+    const addIngredient = () => setIngredients([...ingredients, {id_ingredient: 0, quantity: 0, id_measurement: 0}]);
+    const updateIngredient = (index: number, field: keyof RecipeIngredient, value: number) => {
+        const newIngredients = [...ingredients];
+        newIngredients[index] = {...newIngredients[index], [field]: value};
+        setIngredients(newIngredients);
+    };
+    const removeIngredient = (index: number) => {
+        const newIng = ingredients.filter((_, i) => i !== index);
+        setIngredients(newIng);
     };
 
-    const removeIngredient = (id: number) => {
-        setIngredients((prev) => prev.filter((ingredient) => ingredient.id !== id));
+
+    const addStep = () => setSteps([...steps, ""]);
+    const updateStep = (index: number, value: string) => {
+        const newSteps = [...steps];
+        newSteps[index] = value;
+        setSteps(newSteps);
+    };
+    const removeStep = (index: number) => {
+        setSteps(steps.filter((_, i) => i !== index));
     };
 
-    const addStep = (description: string) => {
-        setSteps((prev) => [...prev, {id: Date.now(), description}]);
-    };
 
-    const removeStep = (id: number) => {
-        setSteps((prev) => prev.filter((step) => step.id !== id));
+    const submitRecipe = async (e: FormEvent) => {
+        e.preventDefault();
+        try {
+            await post(
+                "/recipe/new",
+                {
+                    recipe: {title, person, image, cookingTime},
+                    stages: steps.map((step, index) => ({stage: index + 1, content: step})),
+                    recipeIngredients: ingredients,
+                },
+                "Recette créée avec succès !"
+            );
+        } catch (error) {
+            console.error("Erreur lors de la création de la recette", error);
+        }
     };
 
     return {
-        title,
-        setTitle,
-        servings,
-        setServings,
-        ingredients,
-        addIngredient,
-        removeIngredient,
-        steps,
-        addStep,
-        removeStep,
+        title, setTitle,
+        person, setPerson,
+        image,
+        description, setDescription,
+        cookingTime, setCookingTime,
+        ingredients, addIngredient, updateIngredient, removeIngredient,
+        steps, addStep, updateStep, removeStep,
+        allIngredients, allMeasurements,
+        submitRecipe
     };
-}
+};

@@ -17,11 +17,6 @@ export interface RecipeIngredient {
     id_measurement: number;
 }
 
-export interface Stage {
-    stage: number;
-    content: string;
-}
-
 export interface IngredientsSectionProps {
     ingredients: Ingredient[];
     addIngredient: () => void;
