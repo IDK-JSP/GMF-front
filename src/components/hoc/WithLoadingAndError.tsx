@@ -1,6 +1,5 @@
 import { FC, JSX } from "react";
 import Skeleton from "react-loading-skeleton";
-import { RecipeType } from "../../1_types/RecipeType";
 
 type Props<T> = {
   isLoading: boolean;
@@ -33,7 +32,7 @@ const WithLoadingAndError = <T,>({
 
   // Si les données sont vides après le chargement
   if (!data || data.length === 0) {
-    return <p style={{ color: "gray" }}>Aucune donnée trouvée.</p>;
+    return children([]);
   }
 
   // Affichage normal si tout est bon
