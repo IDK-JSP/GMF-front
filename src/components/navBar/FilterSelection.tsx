@@ -41,6 +41,7 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
             <div className='filter-list'>
                 {ingredientList
                     .filter((ing) => ing.name.toLowerCase().includes(filterOnIngredientValue))
+                    .sort((a, b) => a.name.localeCompare(b.name))
                     .map((ing) => (
                         <div key={ing.name}
                              onClick={() => handleCheck(ing)}>
