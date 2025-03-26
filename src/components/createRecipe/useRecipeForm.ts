@@ -2,6 +2,7 @@ import {useState, useEffect, FormEvent} from "react";
 import post from "../../api/post";
 import get from "../../api/get";
 import {Ingredient, Measurement, RecipeIngredient} from "../../1_types/CreateRecipeType";
+import {useNavigate} from "react-router-dom";
 
 export const useRecipeForm = () => {
     const [title, setTitle] = useState("");
@@ -12,7 +13,8 @@ export const useRecipeForm = () => {
     const [steps, setSteps] = useState<string[]>([""]);
     const [allIngredients, setAllIngredients] = useState<Ingredient[]>([]);
     const [allMeasurements, setAllMeasurements] = useState<Measurement[]>([]);
-    const [cookingTime, setCookingTime] = useState<number>();
+    const [cooking_time, setCooking_time] = useState<number>();
+      const navigate = useNavigate();
 
     useEffect(() => {
         const fetchIngredients = async () => {
@@ -62,15 +64,16 @@ export const useRecipeForm = () => {
     const submitRecipe = async (e: FormEvent) => {
         e.preventDefault();
         try {
-            await post(
+            const response = await post(
                 "/recipe/new",
                 {
-                    recipe: {title, person, image, cookingTime},
+                    recipe: {title, person, image, cooking_time},
                     stages: steps.map((step, index) => ({stage: index + 1, content: step})),
                     recipeIngredients: ingredients,
                 },
                 "Recette créée avec succès !"
-            );
+            )
+            navigate(`/RecipeDetails/${response.recipeDietsDto.id_recipe}`, { state: { recipeDietsDto: response.recipeDietsDto } });
         } catch (error) {
             console.error("Erreur lors de la création de la recette", error);
         }
@@ -81,7 +84,7 @@ export const useRecipeForm = () => {
         person, setPerson,
         image,
         description, setDescription,
-        cookingTime,setCookingTime,
+        cooking_time,setCooking_time,
         ingredients, addIngredient, updateIngredient, removeIngredient,
         steps, addStep, updateStep, removeStep,
         allIngredients, allMeasurements,
