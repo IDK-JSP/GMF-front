@@ -34,7 +34,7 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
         >
 
             <input id='filter-input' onChange={(e) => setFilterOnIngredientValue(e.target.value)} type='text'
-                   placeholder='Filtrer les ingrédients'/>
+                   placeholder='Rechercher un ingrédient'/>
             <button id='filter-raz' onClick={handlerResetIngredients} title='Raz'>
                 Retirer tous les filtres
             </button>
