@@ -58,7 +58,6 @@ const NavBarAvatar: FC<{}> = () => {
                 {!authContext?.isLoggedIn ? (
                     <button className="menu-item" onClick={() => {
                         const currentPath = window.location.pathname;
-                        console.log("currentPath", currentPath);
                         localStorage.setItem("redirectAfterLogin", currentPath); // Stockage de l'URL actuelle
                         handleCloseMenu("/Login")
                     }}>
