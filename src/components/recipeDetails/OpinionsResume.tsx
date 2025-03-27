@@ -1,9 +1,12 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import withLoadingAndError from "../hoc/WithLoadingAndError";
 import OpinionsSkeleton from "../skeleton/OpinionsSkeleton";
 import { RecipeOpinionsType } from "../../1_types/RecipeOpinionsType";
 import StarRating from "../common/StarRating";
 import "../../styles/opinions.css";
+import { useNavigate } from "react-router";
+import { Typography } from "@mui/material";
+import { AuthContext } from "../../context/AuthContext";
 
 type Props = {
   recipeRate: number;
@@ -14,6 +17,10 @@ type Props = {
 };
 
 const OpinionsResume: FC<Props> = ({ opinionsList, isLoading, error }) => {
+
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
+
   return withLoadingAndError({
     isLoading,
     error,
@@ -32,7 +39,29 @@ const OpinionsResume: FC<Props> = ({ opinionsList, isLoading, error }) => {
             </div>
           ))
         ) : (
-          <div>Aucune note trouvée.</div>
+          <>
+          {authContext?.isLoggedIn==false &&
+          <div
+          className="flex-column"
+          style={
+            { fontWeight: "bold",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "1rem auto",
+             }
+          }><p style={{textAlign:"center"}}>Aucune note trouvée.<br/>Soyez le premier à noter cette recette :</p>
+          <button
+                  className="home-btn"
+                  onClick={() => {
+                    navigate("/Login");
+                  }}
+                >
+                  <Typography variant="h5">
+                    Se connecter
+                  </Typography>
+                </button></div>}
+</>
         )}
       </>
     ),

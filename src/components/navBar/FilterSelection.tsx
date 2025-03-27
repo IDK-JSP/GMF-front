@@ -34,13 +34,14 @@ export const FilterSelection: React.FC<FilterSelectionProps> = ({
         >
 
             <input id='filter-input' onChange={(e) => setFilterOnIngredientValue(e.target.value)} type='text'
-                   placeholder='Filtrer les ingrédients'/>
+                   placeholder='Rechercher un ingrédient'/>
             <button id='filter-raz' onClick={handlerResetIngredients} title='Raz'>
                 Retirer tous les filtres
             </button>
             <div className='filter-list'>
                 {ingredientList
                     .filter((ing) => ing.name.toLowerCase().includes(filterOnIngredientValue))
+                    .sort((a, b) => a.name.localeCompare(b.name))
                     .map((ing) => (
                         <div key={ing.name}
                              onClick={() => handleCheck(ing)}>

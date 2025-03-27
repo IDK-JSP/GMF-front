@@ -16,8 +16,8 @@ const CreateRecipe: FC<{}> = ({}) => {
         setPerson,
         description,
         setDescription,
-        cookingTime,
-        setCookingTime,
+        cooking_time,
+        setCooking_time,
         ingredients,
         addIngredient,
         updateIngredient,
@@ -55,8 +55,8 @@ const CreateRecipe: FC<{}> = ({}) => {
                                     type="number"
                                     min={0}
                                     placeholder="Durée nécessaire pour réaliser la recette (exemple : '90' pour une recette prête en 1h30)"
-                                    value={cookingTime}
-                                    onChange={(e) => setCookingTime(parseInt(e.target.value))}
+                                    value={cooking_time}
+                                    onChange={(e) => setCooking_time(parseInt(e.target.value))}
                                     required
                                 />
                                 <p>

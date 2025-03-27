@@ -66,7 +66,8 @@ export const IngredientList: React.FC<Props> = ({
                   (fav) => ing.id_ingredient === fav.id_ingredient
                 )
               )
-              .map((ing) => (
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((ing)=> (
                 <div
                   key={ing.name}
                   className="flex-column"
@@ -97,6 +98,7 @@ export const IngredientList: React.FC<Props> = ({
                     (fav) => ing.id_ingredient === fav.id_ingredient
                   )
               )
+              .sort((a, b) => a.name.localeCompare(b.name))
               .map((ing) => (
                 <div
                   key={ing.name}

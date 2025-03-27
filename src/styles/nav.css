@@ -272,6 +272,7 @@ span.flex-row {
 /* LISTE DES INGREDIENTS SOUS UNE CATEGORY */
 .filter-list {
   display: flex;
+  align-content: flex-start;
   gap: 15px;
   flex-wrap: wrap;
   padding: 10px;
@@ -383,6 +384,7 @@ span.flex-row {
 @media (max-width: 768px) {
   .results-container {
     width: 100vw;
+    height: 80vh;
     border-radius: unset;
     box-shadow: unset;
     box-sizing: border-box;
@@ -392,6 +394,7 @@ span.flex-row {
     position: absolute;
     display: block;
     width: 100vw;
+    height: 80vh;
     border-radius: unset;
     box-shadow: unset;
     box-sizing: border-box;
