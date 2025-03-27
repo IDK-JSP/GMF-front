@@ -41,7 +41,9 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
                         required
                     />
                     <datalist id={`ingredients-list-${index}`}>
-                        {allIngredients.map((ingredient) => (
+                        {allIngredients
+                            .sort((a, b) => a.name.localeCompare(b.name))
+                            .map((ingredient) => (
                             <option key={ingredient.id_ingredient} value={ingredient.name}/>
                         ))}
                     </datalist>

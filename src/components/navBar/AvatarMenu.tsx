@@ -56,7 +56,11 @@ const NavBarAvatar: FC<{}> = () => {
             </button>
             <div className={`avatar-menu ${isOpen ? "open" : "closed"}`}>
                 {!authContext?.isLoggedIn ? (
-                    <button className="menu-item" onClick={() => handleCloseMenu("/Login")}>
+                    <button className="menu-item" onClick={() => {
+                        const currentPath = window.location.pathname;
+                        localStorage.setItem("redirectAfterLogin", currentPath); // Stockage de l'URL actuelle
+                        handleCloseMenu("/Login")
+                    }}>
                         Connexion
                     </button>
                 ) : (
@@ -70,9 +74,8 @@ const NavBarAvatar: FC<{}> = () => {
                         <div className="menu-divider"></div>
                         <button className="menu-item" onClick={() => {
                             localStorage.setItem("previousURL", window.location.pathname);
-                            handleCloseMenu();
+                            handleCloseMenu("/login");
                             authContext.logout();
-                            navigate("/login");
                             toast.warn("Vous avez été déconnecté.e");
                         }}>
                             Déconnexion
