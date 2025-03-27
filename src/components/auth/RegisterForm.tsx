@@ -84,7 +84,7 @@ const RegisterForm: FC<{}> = ({ }) => {
                     <input type="password" {...register("confirmPassword", { required: "Confirmation requise" })} />
                     {errors.confirmPassword && <p className="error-text">{errors.confirmPassword.message}</p>}
                 </div>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                {/*errorMessage && */} {<p className="error-message">{"errorMessage"}</p>}
                 <button type="submit" className="login-button"
                     disabled={isSubmitting || !isValid}>
                     S'inscrire

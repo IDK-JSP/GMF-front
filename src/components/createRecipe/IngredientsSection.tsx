@@ -51,7 +51,7 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
                                 ingredient.name.toLowerCase().includes((inputValue[index] || "").toLowerCase())
                             )
                             .sort((a, b) => a.name.localeCompare(b.name))
-                            .slice(0, 10)
+                            .splice(0, 10)
                             .map((ingredient) => (
                                 <option key={ingredient.id_ingredient} value={ingredient.name}/>
                             ))}
