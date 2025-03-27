@@ -1,18 +1,17 @@
-import { FC, useContext, useState } from "react";
-import { useNavigate } from "react-router";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { RegisterFormType } from "../../1_types/RegisterFormType";
+import {FC, useContext, useState} from "react";
+import {SubmitHandler, useForm} from "react-hook-form";
+import {RegisterFormType} from "../../1_types/RegisterFormType";
 import "../../styles/loginForm.css";
-import { AuthContext } from "../../context/AuthContext";
+import {AuthContext} from "../../context/AuthContext";
 import post from "../../api/post";
-import { toast } from "react-toastify";
-import { Typography } from '@mui/material';
+import {toast} from "react-toastify";
+import {Typography} from '@mui/material';
 
-const RegisterForm: FC<{}> = ({ }) => {
+const RegisterForm: FC<{}> = ({}) => {
     const authContext = useContext(AuthContext);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [showPasswordInfo, setShowPasswordInfo] = useState<boolean>(false);
-    const { register, handleSubmit, formState: { errors, isSubmitting, isValid } } = useForm<RegisterFormType>({
+    const {register, handleSubmit, formState: {errors, isSubmitting, isValid}} = useForm<RegisterFormType>({
         defaultValues: {
             email: "",
             password: "",
@@ -52,20 +51,20 @@ const RegisterForm: FC<{}> = ({ }) => {
     return (
         <div className="login-card">
             <Typography fontWeight="fontWeightBold" variant="h5">S'enregistrer</Typography>
-            <hr />
+            <hr/>
             <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-group">
                     <label>Email</label>
-                    <input type="email" {...register("email", { required: "Email requis" })} />
+                    <input type="email" {...register("email", {required: "Email requis"})} />
                     {errors.email && <p className="error-text">{errors.email.message}</p>}
                 </div>
                 <div className="input-group">
                     <label>Mot de passe</label>
                     <input
                         type="password"
-                        {...register("password", { required: "Mot de passe requis" })}
+                        {...register("password", {required: "Mot de passe requis"})}
                         onFocus={() => setShowPasswordInfo(true)}
-                        onBlur={(e) => e.target.value === "" && setShowPasswordInfo(false)}
+                        onBlur={() => setShowPasswordInfo(false)}
                     />
                     {showPasswordInfo && (
                         <div className="password-info">
@@ -81,12 +80,12 @@ const RegisterForm: FC<{}> = ({ }) => {
                 </div>
                 <div className="input-group">
                     <label>Confirmer le mot de passe</label>
-                    <input type="password" {...register("confirmPassword", { required: "Confirmation requise" })} />
+                    <input type="password" {...register("confirmPassword", {required: "Confirmation requise"})} />
                     {errors.confirmPassword && <p className="error-text">{errors.confirmPassword.message}</p>}
                 </div>
-                {/*errorMessage && */} {<p className="error-message">{"errorMessage"}</p>}
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <button type="submit" className="login-button"
-                    disabled={isSubmitting || !isValid}>
+                        disabled={isSubmitting || !isValid}>
                     S'inscrire
                 </button>
             </form>

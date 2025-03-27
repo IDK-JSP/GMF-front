@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {IngredientsSectionProps} from "../../1_types/CreateRecipeType";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -10,15 +10,6 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
                                                              allIngredients,
                                                              allMeasurements
                                                          }) => {
-
-    const [inputValue, setInputValue] = useState("");
-
-    const handleInputChange = (e : any) => {
-        const value = e.target.value;
-        setInputValue(value);
-    };
-
-
     // Vérifier qu'il y a au moins un ingrédient
     if (ingredients.length === 0) {
         addIngredient();
@@ -41,20 +32,20 @@ const IngredientsSection: FC<IngredientsSectionProps> = ({
                         className="input-field ingredient-search"
                         list={`ingredients-list-${index}`}
                         placeholder="Rechercher un ingrédient"
-                        value={inputValue}
-                        onChange={handleInputChange}
+                        onChange={(e) => {
+                            const selectedIngredient = allIngredients.find(ing => ing.name === e.target.value);
+                            if (selectedIngredient) {
+                                updateIngredient(index, "id_ingredient", selectedIngredient.id_ingredient);
+                            }
+                        }}
                         required
                     />
                     <datalist id={`ingredients-list-${index}`}>
                         {allIngredients
-                            .filter(ingredient =>
-                                ingredient.name.toLowerCase().includes((inputValue[index] || "").toLowerCase())
-                            )
                             .sort((a, b) => a.name.localeCompare(b.name))
-                            .splice(0, 10)
                             .map((ingredient) => (
-                                <option key={ingredient.id_ingredient} value={ingredient.name}/>
-                            ))}
+                            <option key={ingredient.id_ingredient} value={ingredient.name}/>
+                        ))}
                     </datalist>
 
                     <input

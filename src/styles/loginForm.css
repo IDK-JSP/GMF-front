@@ -22,13 +22,14 @@
 
 .error-message {
     color: red;
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bold;
+    margin: 8px !important;
 }
 
 .error-text {
     color: red;
-    font-size: 18px;
+    font-size: 1rem;
     margin-top: 8px;
 }
 
@@ -65,11 +66,12 @@
 }
 
 .login-form {
-    margin-top: 1.5em;
+    margin-top: 1em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 400px;
+    height: 100%;
+    min-height: 400px;
 }
 
 .form-container {
@@ -89,7 +91,8 @@
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     transform: scale(0.9);
-    height: 450px;
+    height: 100%;
+    min-height: 450px;
     opacity: 0.7;
     z-index: 1000;
 }
@@ -108,11 +111,10 @@
     margin-top: 5px;
     position: absolute;
     background: white;
-    padding: 10px;
+    padding: 5px 10px 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 250px;
     z-index: 10;
 }
 
