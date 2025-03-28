@@ -51,8 +51,8 @@ export const AuthProvider: FC<{ children: any }> = ({children}) => {
         //setRole(userRole);
         setIsLoggedIn(true);
         const redirectUrl = localStorage.getItem("redirectAfterLogin") || "/Home";  // Envoie vers l'URL stockée ou vers Home
-        localStorage.removeItem("redirectAfterLogin"); // Supprime l'URL stockée après utilisation
         navigate(redirectUrl);
+        localStorage.removeItem("redirectAfterLogin"); // Supprime l'URL stockée après utilisation
     };
 
     const logout = () => {

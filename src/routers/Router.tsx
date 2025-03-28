@@ -19,6 +19,15 @@ const Router: FC<{}> = ({}) => {
 
     return (
         <Routes>
+            <Route element={<Layout/>}>
+                <Route path="/" element={<Navigate to="/Home" replace/>}/>
+                <Route path="Home" element={<Home/>}/>
+                <Route path="RecipeDetails/:id" element={<RecipeDetails/>}/>
+                <Route path="Research" element={<Research/>}/>
+                <Route path="Research/:searchQuery" element={<Research/>}/>
+                <Route path="CategoryList/:category" element={<CategoryList/>}/>
+                <Route path="Login" element={<Login/>}/>
+            </Route>
 
             {authContext?.isLoggedIn &&
                 <Route element={<Layout/>}>
@@ -26,7 +35,6 @@ const Router: FC<{}> = ({}) => {
                     <Route path="UserRecipes" element={<UserRecipes/>}/>
                     <Route path="CreateRecipe" element={<CreateRecipe/>}/>
                     <Route path="Settings" element={<Settings/>}/>
-                    <Route path="Login" element={<Navigate to="/Home" replace/>}/>
                 </Route>}
 
             {authContext?.isLoggedIn && authContext.role === "ADMIN" && (
@@ -36,13 +44,6 @@ const Router: FC<{}> = ({}) => {
             )}
 
             <Route element={<Layout/>}>
-                <Route path="/" element={<Navigate to="/Home" replace/>}/>
-                <Route path="Home" element={<Home/>}/>
-                <Route path="RecipeDetails/:id" element={<RecipeDetails/>}/>
-                <Route path="Research" element={<Research/>}/>
-                <Route path="Research/:searchQuery" element={<Research/>}/>
-                <Route path="CategoryList/:category" element={<CategoryList/>}/>
-                <Route path="Login" element={<Login/>}/>
                 <Route path="Error" element={<ErrorPage/>}/>
                 <Route path="*" element={<Navigate to="/Error" replace/>}/>
             </Route>
